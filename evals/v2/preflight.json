@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "issues": [],
+  "source_hash_verified": true,
+  "source_id_unique_and_indexed": true,
+  "annotations_match_sources": true,
+  "ground_truth_not_indexed": true,
+  "feedback": 400,
+  "tickets": 120,
+  "prds": 6,
+  "release_notes": 8,
+  "missing_production_fields": [],
+  "benchmark_questions": 50,
+  "hard_negative_groups_present": true,
+  "contradictory_reactions_present": true,
+  "v1_preservation": {
+    "database_exists": true,
+    "feedback_source_exists": true,
+    "feedback": 400,
+    "tickets": 120,
+    "documents": 14,
+    "v2_prefixed_sources": 0
+  },
+  "benchmark_categories": {
+    "direct": 15,
+    "semantic": 15,
+    "multi_source": 10,
+    "contradiction_ambiguity": 5,
+    "unanswerable": 5
+  },
+  "split": {
+    "development": 30,
+    "heldout_test": 20,
+    "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+    "benchmark_sha256": "33cf4998e14a00013ee1b436c91a23c8b8ccb356a204b7559ea7eda2e849a8ac"
+  },
+  "index": {
+    "dataset_version": "v2",
+    "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+    "sources": 534,
+    "source_kinds": {
+      "prd": 6,
+      "release_note": 8,
+      "feedback": 400,
+      "support_ticket": 120
+    },
+    "chunks": 536,
+    "chunk_words": 18296,
+    "chunk_characters": 109802,
+    "approx_embedding_tokens_characters_divided_by_4": 27450,
+    "approx_embedding_tokens_words_times_1_5": 27444,
+    "fts_rows": 536,
+    "embedding_models": {
+      "gist-demo-hash-v1": 536
+    },
+    "openai_embedding_rows": 0,
+    "missing_source_metadata": [],
+    "non_v2_paths": [],
+    "hidden_marker_hits": 0,
+    "orphan_chunks": 0,
+    "word_count_mismatches": 0,
+    "api_usage": {
+      "calls": 0
+    },
+    "api_tokens": [
+      0,
+      0,
+      0
+    ],
+    "integrity_check": "ok"
+  },
+  "quality": {
+    "dataset_version": "v2",
+    "feedback": 400,
+    "tickets": 120,
+    "prds": 6,
+    "release_notes": 8,
+    "exact_duplicate_records": 6,
+    "near_duplicate_pairs": 1,
+    "near_duplicate_examples": [
+      [
+        "V2-FB-0178",
+        "V2-FB-0322",
+        0.894
+      ]
+    ],
+    "text_length_words": {
+      "min": 6,
+      "median": 22.0,
+      "p90": 31,
+      "max": 50
+    },
+    "vocabulary": {
+      "unique_tokens": 701,
+      "total_tokens": 8875,
+      "type_token_ratio": 0.079
+    },
+    "issue_distribution": {
+      "ALERT_DELAY": 30,
+      "CRM_SYNC": 36,
+      "CSV_MAPPING": 33,
+      "DASH_FILTER": 32,
+      "DASH_SLOW": 33,
+      "DIGEST_NOISE": 34,
+      "INVITE_LOOP": 36,
+      "RESET_LOGIN": 38,
+      "SEAT_BILL": 33,
+      "SSO_SETUP": 35,
+      "TEMPLATE_ACCESS": 31,
+      "TEMPLATE_FIND": 33
+    },
+    "segment_distribution": {
+      "Enterprise": 126,
+      "Individual": 44,
+      "Mid-market": 130,
+      "SMB": 100
+    },
+    "date_distribution_by_month": {
+      "2025-01": 15,
+      "2025-02": 12,
+      "2025-03": 31,
+      "2025-04": 22,
+      "2025-05": 26,
+      "2025-06": 37,
+      "2025-07": 48,
+      "2025-08": 42,
+      "2025-09": 56,
+      "2025-10": 33,
+      "2025-11": 53,
+      "2025-12": 25
+    },
+    "multi_issue_feedback": 35,
+    "ambiguous_feedback": 31,
+    "limited_context_feedback": 64,
+    "timeline_errors": []
+  },
+  "embedding_cost_estimate_usd_at_0_02_per_m": 0.000549,
+  "token_estimate_method": "Approximation only: max(characters/4, words*1.5); provider-reported usage will be authoritative."
+}

@@ -1,0 +1,524 @@
+{
+  "dataset_version": "v2",
+  "split": "development",
+  "split_version": "v2-baseline-1",
+  "mode": "demo",
+  "questions": 30,
+  "retrieved_source_ids_valid": true,
+  "generated_citations_empty": true,
+  "unanswerable_questions": 3,
+  "correct_abstentions": 3,
+  "answer_correctness": "BLOCKED: retrieval-only mode does not generate answers",
+  "per_question": [
+    {
+      "question_id": "V2-Q-001",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "release-01",
+        "V2-SUP-0110",
+        "V2-SUP-0084",
+        "V2-FB-0263",
+        "V2-SUP-0104"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 10
+    },
+    {
+      "question_id": "V2-Q-005",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "release-05",
+        "V2-SUP-0021",
+        "V2-FB-0028",
+        "V2-FB-0148",
+        "release-02"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-006",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0071",
+        "prd-06",
+        "release-06",
+        "V2-SUP-0006",
+        "V2-FB-0275"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-007",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0044",
+        "V2-SUP-0003",
+        "V2-FB-0368",
+        "release-07",
+        "V2-SUP-0095"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-008",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "release-08",
+        "V2-FB-0375",
+        "V2-FB-0210",
+        "V2-FB-0042",
+        "V2-FB-0054"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-012",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "prd-04",
+        "release-04",
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "V2-SUP-0045"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-013",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "prd-05",
+        "V2-SUP-0025",
+        "V2-FB-0020",
+        "V2-FB-0018",
+        "V2-FB-0211"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-014",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "prd-01",
+        "V2-FB-0265",
+        "V2-FB-0057",
+        "V2-FB-0375",
+        "V2-SUP-0045"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-015",
+      "category": "direct",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0362",
+        "V2-FB-0397",
+        "V2-FB-0034",
+        "V2-FB-0395",
+        "V2-FB-0342"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-016",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0049",
+        "V2-FB-0166",
+        "V2-FB-0073",
+        "V2-SUP-0017",
+        "V2-FB-0118"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-017",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-SUP-0009",
+        "V2-SUP-0006",
+        "V2-SUP-0101",
+        "V2-FB-0211",
+        "V2-FB-0139"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-018",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0036",
+        "V2-FB-0387",
+        "V2-SUP-0098",
+        "V2-SUP-0058",
+        "V2-FB-0288"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-019",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0328",
+        "V2-FB-0232",
+        "V2-FB-0057",
+        "V2-FB-0311",
+        "V2-FB-0068"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-020",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0281",
+        "V2-FB-0005",
+        "V2-FB-0183",
+        "V2-FB-0129",
+        "V2-FB-0293"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-024",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0369",
+        "V2-SUP-0048",
+        "V2-FB-0032",
+        "V2-FB-0009",
+        "prd-02"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-026",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-SUP-0026",
+        "V2-FB-0263",
+        "V2-FB-0371",
+        "V2-FB-0035",
+        "V2-SUP-0060"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-027",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "prd-06",
+        "V2-FB-0360",
+        "V2-FB-0048",
+        "V2-SUP-0115",
+        "V2-FB-0165"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-030",
+      "category": "semantic",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0265",
+        "V2-SUP-0063",
+        "V2-FB-0308",
+        "V2-FB-0024",
+        "V2-SUP-0012"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-031",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0210",
+        "V2-FB-0042",
+        "V2-FB-0140",
+        "V2-FB-0054",
+        "V2-FB-0039"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-033",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0162",
+        "V2-FB-0270",
+        "V2-SUP-0057",
+        "V2-SUP-0111",
+        "V2-SUP-0060"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-034",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-FB-0149",
+        "V2-FB-0161",
+        "V2-FB-0293"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-035",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0044",
+        "V2-SUP-0003",
+        "V2-FB-0368",
+        "release-07",
+        "V2-SUP-0062"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-037",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "prd-04",
+        "V2-FB-0070",
+        "V2-SUP-0033",
+        "V2-FB-0034",
+        "V2-SUP-0073"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-040",
+      "category": "multi_source",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-FB-0165",
+        "V2-FB-0033",
+        "V2-FB-0129",
+        "V2-FB-0061",
+        "V2-FB-0215"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-041",
+      "category": "contradiction_ambiguity",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "V2-SUP-0022",
+        "V2-FB-0355",
+        "V2-FB-0138",
+        "V2-FB-0367",
+        "V2-FB-0282"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-044",
+      "category": "contradiction_ambiguity",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "release-05",
+        "V2-FB-0234",
+        "prd-03",
+        "V2-FB-0268",
+        "V2-FB-0400"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-045",
+      "category": "contradiction_ambiguity",
+      "status": "sources_only",
+      "retrieved_source_ids": [
+        "release-08",
+        "prd-05",
+        "V2-FB-0127",
+        "V2-FB-0019",
+        "V2-FB-0163"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": false,
+      "abstention_correct": null,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-047",
+      "category": "unanswerable",
+      "status": "insufficient_evidence",
+      "retrieved_source_ids": [
+        "release-05",
+        "prd-03",
+        "V2-FB-0100",
+        "V2-FB-0076",
+        "V2-FB-0112"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": true,
+      "abstention_correct": true,
+      "latency_ms": 3
+    },
+    {
+      "question_id": "V2-Q-048",
+      "category": "unanswerable",
+      "status": "insufficient_evidence",
+      "retrieved_source_ids": [
+        "V2-FB-0044",
+        "V2-SUP-0003",
+        "V2-FB-0368",
+        "release-07",
+        "V2-FB-0008"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": true,
+      "abstention_correct": true,
+      "latency_ms": 2
+    },
+    {
+      "question_id": "V2-Q-049",
+      "category": "unanswerable",
+      "status": "insufficient_evidence",
+      "retrieved_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0127",
+        "V2-FB-0163",
+        "V2-FB-0143",
+        "V2-FB-0349"
+      ],
+      "retrieved_source_ids_valid": true,
+      "generated_citations_empty": true,
+      "expected_abstention": true,
+      "abstention_correct": true,
+      "latency_ms": 3
+    }
+  ]
+}

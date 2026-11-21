@@ -1,0 +1,12 @@
+{
+  "dataset_version": "v2",
+  "split_version": "v2-baseline-1",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "benchmark_sha256": "33cf4998e14a00013ee1b436c91a23c8b8ccb356a204b7559ea7eda2e849a8ac",
+  "embedding_model": "text-embedding-3-small",
+  "files_sha256": {
+    "backend/app/rag/retrieval.py": "f62234c6a72695fd51e5f96deebb8ae626bfd8deee664c5c137cc0ff656c3207",
+    "backend/scripts/run_v2_retrieval.py": "88f78ad4d921fe5f31e137d411f491f18be18b40c3670252fd9df98ada57360f"
+  },
+  "decision": "Original chunk-level reciprocal rank fusion retained after source-level trial showed no development metric gain."
+}

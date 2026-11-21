@@ -1,0 +1,186 @@
+{
+  "synthetic": true,
+  "dataset_version": "v1",
+  "questions": [
+    {
+      "id": "Q-01",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-02-05?",
+      "expected_answer": "Workspace verification checklist",
+      "source_ids": [
+        "release-01"
+      ]
+    },
+    {
+      "id": "Q-02",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-03-05?",
+      "expected_answer": "Portfolio dashboard filters",
+      "source_ids": [
+        "release-02"
+      ]
+    },
+    {
+      "id": "Q-03",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-04-05?",
+      "expected_answer": "Notification digest update",
+      "source_ids": [
+        "release-03"
+      ]
+    },
+    {
+      "id": "Q-04",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-05-05?",
+      "expected_answer": "Seat invoice breakdown",
+      "source_ids": [
+        "release-04"
+      ]
+    },
+    {
+      "id": "Q-05",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-06-05?",
+      "expected_answer": "CRM connector refresh",
+      "source_ids": [
+        "release-05"
+      ]
+    },
+    {
+      "id": "Q-06",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-07-05?",
+      "expected_answer": "Shared template gallery",
+      "source_ids": [
+        "release-06"
+      ]
+    },
+    {
+      "id": "Q-07",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-08-05?",
+      "expected_answer": "Dashboard loading update",
+      "source_ids": [
+        "release-07"
+      ]
+    },
+    {
+      "id": "Q-08",
+      "dataset_version": "v1",
+      "question": "What did Pulse release on 2025-09-05?",
+      "expected_answer": "Notification project controls",
+      "source_ids": [
+        "release-08"
+      ]
+    },
+    {
+      "id": "Q-09",
+      "dataset_version": "v1",
+      "question": "Which product area owns the workspace verification PRD?",
+      "expected_answer": "Onboarding",
+      "source_ids": [
+        "prd-01"
+      ]
+    },
+    {
+      "id": "Q-10",
+      "dataset_version": "v1",
+      "question": "What issue category does the workspace verification PRD address?",
+      "expected_answer": "Verification friction",
+      "source_ids": [
+        "prd-01"
+      ]
+    },
+    {
+      "id": "Q-11",
+      "dataset_version": "v1",
+      "question": "Which product area owns the CRM sync PRD?",
+      "expected_answer": "Integrations",
+      "source_ids": [
+        "prd-02"
+      ]
+    },
+    {
+      "id": "Q-12",
+      "dataset_version": "v1",
+      "question": "What issue category does the CRM sync PRD address?",
+      "expected_answer": "Integration failures",
+      "source_ids": [
+        "prd-02"
+      ]
+    },
+    {
+      "id": "Q-13",
+      "dataset_version": "v1",
+      "question": "Which product area owns the notification digest PRD?",
+      "expected_answer": "Notifications",
+      "source_ids": [
+        "prd-03"
+      ]
+    },
+    {
+      "id": "Q-14",
+      "dataset_version": "v1",
+      "question": "What issue category does the notification digest PRD address?",
+      "expected_answer": "Notification overload",
+      "source_ids": [
+        "prd-03"
+      ]
+    },
+    {
+      "id": "Q-15",
+      "dataset_version": "v1",
+      "question": "Which product area owns the portfolio dashboard PRD?",
+      "expected_answer": "Dashboard",
+      "source_ids": [
+        "prd-04"
+      ]
+    },
+    {
+      "id": "Q-16",
+      "dataset_version": "v1",
+      "question": "What issue category does the portfolio dashboard PRD address?",
+      "expected_answer": "Slow performance",
+      "source_ids": [
+        "prd-04"
+      ]
+    },
+    {
+      "id": "Q-17",
+      "dataset_version": "v1",
+      "question": "Which product area owns the seat billing PRD?",
+      "expected_answer": "Billing",
+      "source_ids": [
+        "prd-05"
+      ]
+    },
+    {
+      "id": "Q-18",
+      "dataset_version": "v1",
+      "question": "What issue category does the seat billing PRD address?",
+      "expected_answer": "Billing confusion",
+      "source_ids": [
+        "prd-05"
+      ]
+    },
+    {
+      "id": "Q-19",
+      "dataset_version": "v1",
+      "question": "Which product area owns the shared templates PRD?",
+      "expected_answer": "Collaboration",
+      "source_ids": [
+        "prd-06"
+      ]
+    },
+    {
+      "id": "Q-20",
+      "dataset_version": "v1",
+      "question": "What issue category does the shared templates PRD address?",
+      "expected_answer": "Feature discoverability",
+      "source_ids": [
+        "prd-06"
+      ]
+    }
+  ]
+}

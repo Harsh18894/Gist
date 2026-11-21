@@ -1,0 +1,65 @@
+{
+  "dataset_version": "v2",
+  "feedback": 400,
+  "tickets": 120,
+  "prds": 6,
+  "release_notes": 8,
+  "exact_duplicate_records": 6,
+  "near_duplicate_pairs": 1,
+  "near_duplicate_examples": [
+    [
+      "V2-FB-0178",
+      "V2-FB-0322",
+      0.894
+    ]
+  ],
+  "text_length_words": {
+    "min": 6,
+    "median": 22.0,
+    "p90": 31,
+    "max": 50
+  },
+  "vocabulary": {
+    "unique_tokens": 701,
+    "total_tokens": 8875,
+    "type_token_ratio": 0.079
+  },
+  "issue_distribution": {
+    "ALERT_DELAY": 30,
+    "CRM_SYNC": 36,
+    "CSV_MAPPING": 33,
+    "DASH_FILTER": 32,
+    "DASH_SLOW": 33,
+    "DIGEST_NOISE": 34,
+    "INVITE_LOOP": 36,
+    "RESET_LOGIN": 38,
+    "SEAT_BILL": 33,
+    "SSO_SETUP": 35,
+    "TEMPLATE_ACCESS": 31,
+    "TEMPLATE_FIND": 33
+  },
+  "segment_distribution": {
+    "Enterprise": 126,
+    "Individual": 44,
+    "Mid-market": 130,
+    "SMB": 100
+  },
+  "date_distribution_by_month": {
+    "2025-01": 15,
+    "2025-02": 12,
+    "2025-03": 31,
+    "2025-04": 22,
+    "2025-05": 26,
+    "2025-06": 37,
+    "2025-07": 48,
+    "2025-08": 42,
+    "2025-09": 56,
+    "2025-10": 33,
+    "2025-11": 53,
+    "2025-12": 25
+  },
+  "multi_issue_feedback": 35,
+  "ambiguous_feedback": 31,
+  "limited_context_feedback": 64,
+  "timeline_errors": []
+}

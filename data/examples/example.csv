@@ -1,0 +1,3 @@
+id,title,text,customer_segment,product_area,timestamp
+1,Synthetic CRM retry note,"A fictional Enterprise team reports that CRM sync retries restored missing tasks after reconnecting.",Enterprise,Integrations,2025-10-01
+2,Synthetic digest note,"A fictional SMB team prefers a weekly digest for shared project notifications.",SMB,Notifications,2025-10-02

@@ -1,0 +1,11 @@
+.env
+.env.local
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+node_modules/
+.next/
+*.tsbuildinfo
+backend/gist.sqlite3
+backend/gist-*.sqlite3

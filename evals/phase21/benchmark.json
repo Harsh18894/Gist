@@ -1,0 +1,556 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-1-draft",
+  "dataset_version": "v2",
+  "synthetic": true,
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "5ea7b7ddc461da5fff6790cd314cdf56c9d0f8bea07e58831f1d9973969ab1b4",
+  "heldout_sha256": "d84de27c76b7047cd2a4af5986bfe3d946c8009b5065fe90c45b86c981aa7870",
+  "split_counts": {
+    "development": 18,
+    "heldout": 6
+  },
+  "human_review_status": "pending; do not use held-out for tuning or final evaluation",
+  "label_policy": "Groups are distinct evidence needs; members are alternative supporting sources. Labels are agent-prepared, non-exhaustive and require independent human adjudication.",
+  "questions": [
+    {
+      "id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "question": "Where does an admin find the date and project controls for a portfolio chart?",
+      "evidence_groups": [
+        [
+          "release-02"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-02"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "Above the chart.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "question": "How does Pulse bill a seat archived partway through the month?",
+      "evidence_groups": [
+        [
+          "release-04"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-04"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "It remains counted until the billing cycle closes.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "question": "Which workspace roles can duplicate a shared starter?",
+      "evidence_groups": [
+        [
+          "release-06"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-06"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0011"
+      ],
+      "expected_answer_or_abstention": "Editors and admins.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Which alert classes are intended to remain timely after per-project tuning?",
+      "evidence_groups": [
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-08"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0018"
+      ],
+      "expected_answer_or_abstention": "Critical and direct-mention alerts.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a customer whose account recovery email became useless during a call.",
+      "evidence_groups": [
+        [
+          "V2-FB-0098"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0098"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0002"
+      ],
+      "expected_answer_or_abstention": "A reset link expired during the call.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "question": "Is there a report of a company-side identity redirect setting preventing entry?",
+      "evidence_groups": [
+        [
+          "V2-FB-0063"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0063"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0098"
+      ],
+      "expected_answer_or_abstention": "The IT team entered the wrong callback URL.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-007",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a case where an empty-looking chart was actually a view setting.",
+      "evidence_groups": [
+        [
+          "V2-FB-0009",
+          "V2-FB-0045"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0009",
+        "V2-FB-0045"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0020"
+      ],
+      "expected_answer_or_abstention": "A prior filter was still applied.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Which customer says a successful one-time upload misassigned columns?",
+      "evidence_groups": [
+        [
+          "V2-FB-0041",
+          "V2-FB-0005"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0041"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0028"
+      ],
+      "expected_answer_or_abstention": "The spreadsheet import mapped fields incorrectly.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-009",
+      "split": "development",
+      "category": "multi_source",
+      "question": "What distinct checks should support make before calling every sign-in failure the same defect?",
+      "evidence_groups": [
+        [
+          "prd-01",
+          "V2-FB-0049",
+          "V2-FB-0145"
+        ],
+        [
+          "V2-FB-0098",
+          "V2-FB-0038"
+        ],
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0063"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0038",
+        "V2-FB-0049",
+        "V2-FB-0051",
+        "V2-FB-0063",
+        "V2-FB-0098",
+        "V2-FB-0145",
+        "prd-01"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0027"
+      ],
+      "expected_answer_or_abstention": "Check invite handoff, password recovery, and SSO configuration separately.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-010",
+      "split": "development",
+      "category": "multi_source",
+      "question": "How can an analyst separate missing live CRM records from a bad file upload?",
+      "evidence_groups": [
+        [
+          "prd-03",
+          "V2-FB-0028",
+          "V2-FB-0112"
+        ],
+        [
+          "V2-FB-0005",
+          "V2-FB-0041"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0028",
+        "V2-FB-0041",
+        "V2-FB-0112",
+        "prd-03"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0052"
+      ],
+      "expected_answer_or_abstention": "Inspect connector completeness separately from CSV field mapping.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-011",
+      "split": "development",
+      "category": "multi_source",
+      "question": "Which evidence separates finding a team template from being allowed to copy it?",
+      "evidence_groups": [
+        [
+          "V2-FB-0011",
+          "V2-FB-0047"
+        ],
+        [
+          "V2-FB-0048",
+          "V2-FB-0060",
+          "release-06"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0011",
+        "V2-FB-0047",
+        "V2-FB-0048",
+        "V2-FB-0060",
+        "release-06"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0035"
+      ],
+      "expected_answer_or_abstention": "Discovery and role permissions are distinct problems.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "How should an analyst distinguish a slow portfolio page from a hidden chart selection?",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0032",
+          "prd-02"
+        ],
+        [
+          "V2-FB-0009",
+          "V2-FB-0045"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0009",
+        "V2-FB-0020",
+        "V2-FB-0032",
+        "V2-FB-0045",
+        "prd-02"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0033"
+      ],
+      "expected_answer_or_abstention": "Slow aggregation and persistent filters require different evidence.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-013",
+      "split": "development",
+      "category": "temporal",
+      "question": "What was reported about large workspaces before the August loading change, and what later improved?",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0032"
+        ],
+        [
+          "release-07"
+        ],
+        [
+          "V2-FB-0044"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0020",
+        "V2-FB-0032",
+        "V2-FB-0044",
+        "release-07"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "Earlier large-workspace slowness preceded the faster path; a later enterprise report welcomed it. Causation is not proven by timing alone.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-014",
+      "split": "development",
+      "category": "temporal",
+      "question": "After the April digest default changed, how did two workspaces describe the outcome?",
+      "evidence_groups": [
+        [
+          "release-03"
+        ],
+        [
+          "V2-FB-0030"
+        ],
+        [
+          "V2-FB-0102"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "release-03"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "A one-board user liked it; another reported too many emails. Both reports are later than the release.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-015",
+      "split": "development",
+      "category": "temporal",
+      "question": "What did the June connector update promise, and what later gap did a customer describe?",
+      "evidence_groups": [
+        [
+          "release-05"
+        ],
+        [
+          "V2-FB-0064"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0064",
+        "release-05"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "The reconnect and status flow changed; a customer later reported a gap and backfill. The report does not establish the release caused it.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "How do September's alert-control intent and later delayed-urgent reports relate?",
+      "evidence_groups": [
+        [
+          "release-08"
+        ],
+        [
+          "V2-FB-0019",
+          "V2-FB-0067"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "release-08"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "Urgent alerts were intended to remain timely, while later reports describe delays; causation remains unresolved.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-017",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Does a healthy connector indicator establish that every sales task arrived?",
+      "evidence_groups": [
+        [
+          "release-05",
+          "prd-03"
+        ],
+        [
+          "V2-FB-0028"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0028",
+        "prd-03",
+        "release-05"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "No. The product notes limit what status proves, and a customer saw missing tasks despite a connected state.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-018",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Did customers agree that the project digest made their inbox better?",
+      "evidence_groups": [
+        [
+          "V2-FB-0030"
+        ],
+        [
+          "V2-FB-0102"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "No. One liked it in a one-board workspace; another reported overload.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-019",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Was portfolio loading uniformly slow across workspace sizes before the August update?",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0068"
+        ],
+        [
+          "V2-FB-0032"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0020",
+        "V2-FB-0032",
+        "V2-FB-0068"
+      ],
+      "hard_negative_source_ids": [],
+      "expected_answer_or_abstention": "No. Small workspaces could be quick while larger roll-ups were slow.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Can a visible starter still be unavailable to a teammate?",
+      "evidence_groups": [
+        [
+          "V2-FB-0048"
+        ],
+        [
+          "release-06"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0048",
+        "release-06"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0047"
+      ],
+      "expected_answer_or_abstention": "Yes. Visibility does not grant duplication permission; roles control copying.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-021",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "What exact revenue increase came from the portfolio speed update?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-07",
+        "V2-FB-0044"
+      ],
+      "expected_answer_or_abstention": "Abstain: no revenue outcome is provided.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-022",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "Name the engineer who approved the customer's SAML callback setting.",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0063"
+      ],
+      "expected_answer_or_abstention": "Abstain: no responsible engineer is identified.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-023",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "What is the complete count of urgent alerts lost across all Pulse customers?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067"
+      ],
+      "expected_answer_or_abstention": "Abstain: reports do not provide an exhaustive count.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    },
+    {
+      "id": "P21-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Who approved the April digest default for every workspace?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-03"
+      ],
+      "expected_answer_or_abstention": "Abstain: the release note does not name an approver.",
+      "judgment_completeness": "provisional_non_exhaustive_source_review",
+      "review_status": "independent_human_review_required"
+    }
+  ]
+}

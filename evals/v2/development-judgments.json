@@ -1,0 +1,685 @@
+{
+  "dataset_version": "v2",
+  "split": "development",
+  "scope": "Additional source-text judgments for development only; held-out benchmark is unchanged.",
+  "questions": [
+    {
+      "question_id": "V2-Q-001",
+      "reviewed_relevant_source_ids": [
+        "release-01"
+      ],
+      "representative_anchor_ids": [
+        "release-01"
+      ],
+      "evidence_groups": [
+        [
+          "release-01"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-005",
+      "reviewed_relevant_source_ids": [
+        "release-05"
+      ],
+      "representative_anchor_ids": [
+        "release-05"
+      ],
+      "evidence_groups": [
+        [
+          "release-05"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-006",
+      "reviewed_relevant_source_ids": [
+        "release-06"
+      ],
+      "representative_anchor_ids": [
+        "release-06"
+      ],
+      "evidence_groups": [
+        [
+          "release-06"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-007",
+      "reviewed_relevant_source_ids": [
+        "release-07"
+      ],
+      "representative_anchor_ids": [
+        "release-07"
+      ],
+      "evidence_groups": [
+        [
+          "release-07"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-008",
+      "reviewed_relevant_source_ids": [
+        "release-08"
+      ],
+      "representative_anchor_ids": [
+        "release-08"
+      ],
+      "evidence_groups": [
+        [
+          "release-08"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-012",
+      "reviewed_relevant_source_ids": [
+        "prd-04"
+      ],
+      "representative_anchor_ids": [
+        "prd-04"
+      ],
+      "evidence_groups": [
+        [
+          "prd-04"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-013",
+      "reviewed_relevant_source_ids": [
+        "prd-05"
+      ],
+      "representative_anchor_ids": [
+        "prd-05"
+      ],
+      "evidence_groups": [
+        [
+          "prd-05"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-014",
+      "reviewed_relevant_source_ids": [
+        "prd-06"
+      ],
+      "representative_anchor_ids": [
+        "prd-06"
+      ],
+      "evidence_groups": [
+        [
+          "prd-06"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-015",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0362"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0362"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0362"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-016",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0049",
+        "V2-FB-0145",
+        "V2-FB-0025",
+        "V2-FB-0085",
+        "V2-FB-0109"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0049",
+        "V2-FB-0145"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0049",
+          "V2-FB-0145",
+          "V2-FB-0025",
+          "V2-FB-0085",
+          "V2-FB-0109"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-017",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0098",
+        "V2-FB-0089",
+        "V2-FB-0362"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0098"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0098",
+          "V2-FB-0089",
+          "V2-FB-0362"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-018",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0063",
+        "V2-FB-0051",
+        "V2-FB-0099"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0003",
+        "V2-FB-0063"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0003",
+          "V2-FB-0063",
+          "V2-FB-0051",
+          "V2-FB-0099"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-019",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0112",
+        "V2-FB-0304",
+        "V2-FB-0028",
+        "V2-FB-0076"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0112",
+        "V2-FB-0304"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0112",
+          "V2-FB-0304",
+          "V2-FB-0028",
+          "V2-FB-0076"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-020",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0041",
+        "V2-FB-0173",
+        "V2-FB-0005",
+        "V2-FB-0089"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0041",
+        "V2-FB-0173"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0041",
+          "V2-FB-0173",
+          "V2-FB-0005",
+          "V2-FB-0089"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-024",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0009",
+        "V2-FB-0237",
+        "V2-FB-0045",
+        "V2-FB-0117"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0009",
+        "V2-FB-0237"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0009",
+          "V2-FB-0237",
+          "V2-FB-0045",
+          "V2-FB-0117"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-026",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0047",
+        "V2-FB-0179",
+        "V2-FB-0011",
+        "V2-FB-0035"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0047",
+        "V2-FB-0179"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0047",
+          "V2-FB-0179",
+          "V2-FB-0011",
+          "V2-FB-0035"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-027",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0048",
+        "V2-FB-0168",
+        "V2-FB-0012",
+        "V2-FB-0108"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0048",
+        "V2-FB-0168"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0048",
+          "V2-FB-0168",
+          "V2-FB-0012",
+          "V2-FB-0108"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-030",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0024",
+        "V2-FB-0060",
+        "V2-FB-0084"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0024"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0024",
+          "V2-FB-0060",
+          "V2-FB-0084"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-031",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0098",
+        "V2-FB-0145",
+        "prd-01",
+        "V2-FB-0025",
+        "V2-FB-0038",
+        "V2-FB-0051",
+        "V2-FB-0063"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0003",
+        "V2-FB-0098",
+        "V2-FB-0145",
+        "prd-01"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0025",
+          "V2-FB-0145"
+        ],
+        [
+          "V2-FB-0038",
+          "V2-FB-0098"
+        ],
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0063"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-033",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "release-03",
+        "V2-FB-0042",
+        "V2-FB-0090"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "release-03"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0030"
+        ],
+        [
+          "V2-FB-0042",
+          "V2-FB-0102"
+        ],
+        [
+          "release-03"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-034",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0112",
+        "V2-FB-0173",
+        "prd-03",
+        "V2-FB-0005",
+        "V2-FB-0028",
+        "V2-FB-0041"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0112",
+        "V2-FB-0173",
+        "prd-03"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0028",
+          "V2-FB-0112"
+        ],
+        [
+          "V2-FB-0005",
+          "V2-FB-0041",
+          "V2-FB-0173"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-035",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0044",
+        "V2-FB-0332",
+        "release-07",
+        "V2-FB-0020",
+        "V2-FB-0080"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0044",
+        "V2-FB-0332",
+        "release-07"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0080",
+          "V2-FB-0332"
+        ],
+        [
+          "V2-FB-0044"
+        ],
+        [
+          "release-07"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-037",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0046",
+        "V2-FB-0082",
+        "release-04",
+        "V2-FB-0034",
+        "V2-FB-0070"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0046",
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0034",
+          "V2-FB-0046",
+          "V2-FB-0070"
+        ],
+        [
+          "V2-FB-0082"
+        ],
+        [
+          "release-04"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-040",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0047",
+        "V2-FB-0049",
+        "prd-01",
+        "prd-06",
+        "V2-FB-0012",
+        "V2-FB-0035",
+        "V2-FB-0145"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0047",
+        "V2-FB-0049",
+        "prd-01",
+        "prd-06"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0049",
+          "V2-FB-0145"
+        ],
+        [
+          "V2-FB-0012",
+          "V2-FB-0035",
+          "V2-FB-0047"
+        ],
+        [
+          "prd-01",
+          "prd-06"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": true
+    },
+    {
+      "question_id": "V2-Q-041",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "release-03",
+        "V2-FB-0042",
+        "V2-FB-0090"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "release-03"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0030"
+        ],
+        [
+          "V2-FB-0042",
+          "V2-FB-0102"
+        ],
+        [
+          "release-03"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-044",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0004",
+        "V2-FB-0112",
+        "release-05",
+        "V2-FB-0028",
+        "V2-FB-0076"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0004",
+        "V2-FB-0112",
+        "release-05"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0028",
+          "V2-FB-0112"
+        ],
+        [
+          "V2-FB-0004"
+        ],
+        [
+          "release-05"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-045",
+      "reviewed_relevant_source_ids": [
+        "V2-FB-0151",
+        "V2-FB-0319",
+        "release-08",
+        "V2-FB-0019",
+        "V2-FB-0103"
+      ],
+      "representative_anchor_ids": [
+        "V2-FB-0151",
+        "V2-FB-0319",
+        "release-08"
+      ],
+      "evidence_groups": [
+        [
+          "V2-FB-0019",
+          "V2-FB-0151"
+        ],
+        [
+          "V2-FB-0103",
+          "V2-FB-0319"
+        ],
+        [
+          "release-08"
+        ]
+      ],
+      "judgment_completeness": "reviewed_subset_not_exhaustive",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-047",
+      "reviewed_relevant_source_ids": [],
+      "representative_anchor_ids": [],
+      "evidence_groups": [],
+      "judgment_completeness": "no_supporting_source",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-048",
+      "reviewed_relevant_source_ids": [],
+      "representative_anchor_ids": [],
+      "evidence_groups": [],
+      "judgment_completeness": "no_supporting_source",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    },
+    {
+      "question_id": "V2-Q-049",
+      "reviewed_relevant_source_ids": [],
+      "representative_anchor_ids": [],
+      "evidence_groups": [],
+      "judgment_completeness": "no_supporting_source",
+      "review_basis": "Source text and scenario context reviewed without retriever ranks; candidate membership alone was not treated as relevance.",
+      "aggregate_analysis_required": false
+    }
+  ]
+}

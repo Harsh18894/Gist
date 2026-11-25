@@ -10,8 +10,9 @@ from scripts import import_phase21_review as importer
 ROOT = Path(__file__).resolve().parents[2]
 DRAFT_PATH, _OUT, VERSION = importer.TARGETS["v4"]
 DRAFT = json.loads(DRAFT_PATH.read_text())
-QCSV = ROOT / "evals/phase22/Gist_Benchmark4_Questions_for_Human_Review.csv"
-SCSV = ROOT / "evals/phase22/Gist_Benchmark4_Sources_for_Human_Review.csv"
+QCSV = ROOT / "evals/phase22/Gist_Benchmark4_Draft2_Questions_for_Human_Review.csv"
+SCSV = ROOT / "evals/phase22/Gist_Benchmark4_Draft2_Sources_for_Human_Review.csv"
+DRAFT1 = ROOT / "evals/phase22/benchmark-v4-draft.json"
 
 
 def test_draft_is_heldout_only_balanced_and_hashed():
@@ -61,3 +62,21 @@ def test_full_owner_approval_freezes_v4(tmp_path):
     manifest = importer.freeze(questions, sources, out=tmp_path / "frozen", draft_path=DRAFT_PATH, version=VERSION)
     assert manifest["benchmark_version"] == VERSION and len(manifest["heldout_ids"]) == 24
     assert manifest["development_ids"] == [] and importer.verify(tmp_path / "frozen")
+    frozen = json.loads((tmp_path / "frozen/benchmark.json").read_text())
+    assert frozen["human_review"]["assisted_by_ai_prereview"].startswith("Owner review with an AI pre-review")
+
+
+def test_draft2_keeps_ids_draft1_and_shows_ai_prereview_read_only():
+    draft1 = json.loads(DRAFT1.read_text())
+    raw = json.dumps(draft1["questions"], sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
+    assert hashlib.sha256(raw).hexdigest() == draft1["questions_sha256"]
+    assert DRAFT["benchmark_version"].endswith("draft-2") and DRAFT["derived_from"]["benchmark_version"] == draft1["benchmark_version"]
+    old = {q["id"]: q for q in draft1["questions"]}
+    changed = [q["id"] for q in DRAFT["questions"] if q["question"] != old[q["id"]]["question"]]
+    assert changed == ["B4-Q-010"] and all(q["category"] == old[q["id"]]["category"] for q in DRAFT["questions"])
+    q13 = next(q for q in DRAFT["questions"] if q["id"] == "B4-Q-013")
+    assert "V2-FB-0012" in q13["relevant_source_ids"] and "V2-FB-0012" not in q13["hard_negative_source_ids"]
+    with SCSV.open(encoding="utf-8") as handle:
+        headers = next(csv.reader(handle))
+    assert any(h.startswith("ai_prereview_verdict (read-only)") for h in headers)
+    assert "your_source_verdict (supports/partial/unsupported/unclear/hard_negative)" in headers

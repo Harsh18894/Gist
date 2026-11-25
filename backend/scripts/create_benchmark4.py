@@ -36,8 +36,8 @@ MAX_NEGATIVES = 3  # keeps review effort bounded; evidence groups stay complete 
 Q = []
 
 
-def q(category, question, groups, negatives, answer, note=""):
-    Q.append({"category": category, "question": question, "groups": groups, "negatives": negatives,
+def q(category, question, groups, negatives, answer, note="", into=None):
+    (Q if into is None else into).append({"category": category, "question": question, "groups": groups, "negatives": negatives,
               "answer": answer, "note": note})
 
 
@@ -152,9 +152,9 @@ q("unanswerable", "On what date is the next Pulse release scheduled?",
 
 def _matches(db, item) -> list[str]:
     if isinstance(item, str):
-        source_id = item.removeprefix("doc:")
+        source_id = item.split(":", 1)[1]  # "doc:<id>" for documents, "id:<id>" for a named record
         if not db.execute("SELECT 1 FROM sources WHERE id=?", (source_id,)).fetchone():
-            raise ValueError(f"Unknown document {source_id}")
+            raise ValueError(f"Unknown source {source_id}")
         return [source_id]
     phrase, start, end = item
     rows = db.execute("SELECT id, source_date FROM sources WHERE instr(content, ?) > 0 ORDER BY id", (phrase,)).fetchall()
@@ -166,7 +166,8 @@ def _matches(db, item) -> list[str]:
 
 def _describe(item) -> str:
     if isinstance(item, str):
-        return f"document {item.removeprefix('doc:')}"
+        kind, source_id = item.split(":", 1)
+        return f"document {source_id}" if kind == "doc" else f"record {source_id} (named individually)"
     phrase, start, end = item
     bounds = f" dated {start or '…'}–{end or '…'}" if start or end else ""
     return f"exact phrase '{phrase}'{bounds}"
@@ -176,7 +177,10 @@ def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9 ]", "", text.lower())
 
 
-def build() -> tuple[dict, list[dict], list[dict]]:
+def build(blueprints: list[dict] | None = None, version: str = VERSION,
+          ai: dict | None = None) -> tuple[dict, list[dict], list[dict]]:
+    """`ai` optionally maps question and (question, source) keys to read-only AI pre-review notes."""
+    Q = blueprints if blueprints is not None else globals()["Q"]
     if len(Q) != 24 or any(sum(x["category"] == c for x in Q) != 4 for c in
                            ("direct", "semantic", "multi_source", "temporal", "contradictory", "unanswerable")):
         raise ValueError("Need exactly four questions in each of six categories.")
@@ -222,6 +226,7 @@ def build() -> tuple[dict, list[dict], list[dict]]:
                            "partial_or_mixed_source_ids": "", "ambiguous_negative_candidates": "", "new_alternative_source_ids": "",
                            "all_source_ids_in_source_review_csv": "; ".join(listed),
                            "ai_review_findings": item["note"] or "Groups list every source containing the stated phrase.",
+                           **(_ai_question_columns(ai, qid) if ai is not None else {}),
                            **{column: "" for column in QUESTION_HUMAN_COLUMNS}})
             for sid in listed:
                 kind, title, day, segment, area, path, content = sources[sid]
@@ -242,6 +247,7 @@ def build() -> tuple[dict, list[dict], list[dict]]:
                                "source_type": kind, "source_title": title, "source_date": day or "", "customer_segment": segment or "",
                                "product_area": area or "", "full_source_text": content, "source_file_path": path,
                                "ai_review_notes": item["note"],
+                               **(_ai_source_columns(ai, qid, sid) if ai is not None else {}),
                                **{column: "" for column in SOURCE_HUMAN_COLUMNS}})
     previous = [x["question"] for x in json.loads((ROOT / "evals/v2/questions.json").read_text())["questions"]]
     previous += [x["question"] for x in json.loads((ROOT / "evals/phase21/reviewed-v3/benchmark.json").read_text())["questions"]]
@@ -250,7 +256,7 @@ def build() -> tuple[dict, list[dict], list[dict]]:
     if similarity[0] >= SIMILARITY_LIMIT:
         raise ValueError(f"Question too similar to an earlier benchmark: {similarity}")
     canonical = lambda value: json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
-    draft = {"benchmark_version": VERSION, "dataset_version": "v2", "synthetic": True, "source_sha256": corpus_sha,
+    draft = {"benchmark_version": version, "dataset_version": "v2", "synthetic": True, "source_sha256": corpus_sha,
              "questions_sha256": hashlib.sha256(canonical(questions)).hexdigest(),
              "heldout_sha256": hashlib.sha256(canonical(questions)).hexdigest(),
              "split_counts": {"development": 0, "heldout": 24},
@@ -260,6 +266,19 @@ def build() -> tuple[dict, list[dict], list[dict]]:
                               "(within stated dates) or the named document. Other wordings may exist."),
              "questions": questions}
     return draft, q_rows, s_rows
+
+
+def _ai_question_columns(ai: dict, qid: str) -> dict:
+    note = ai.get(qid, {})
+    return {"ai_prereview_decision (read-only)": note.get("decision", "(not pre-reviewed)"),
+            "ai_prereview_comment (read-only, draft-1 group numbers)": note.get("comment", "")}
+
+
+def _ai_source_columns(ai: dict, qid: str, sid: str) -> dict:
+    note = ai.get((qid, sid), {})
+    return {"ai_prereview_verdict (read-only)": note.get("verdict", "(not pre-reviewed)"),
+            "ai_prereview_quote (read-only)": note.get("quote", ""),
+            "ai_prereview_comment (read-only)": note.get("comment", "")}
 
 
 QUESTION_HUMAN_COLUMNS = ["question_reviewer_decision (approve/revise/unclear)", "your_corrected_answer", "your_missing_source_ids",

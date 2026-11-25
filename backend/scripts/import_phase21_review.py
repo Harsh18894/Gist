@@ -30,7 +30,8 @@ BENCHMARK_VERSION = "gist-phase2.1-benchmark-3-reviewed"
 # Benchmarks this importer can freeze: draft file, frozen output folder, reviewed version name.
 TARGETS = {
     "v3": (DRAFT, OUT, BENCHMARK_VERSION),
-    "v4": (ROOT / "evals/phase22/benchmark-v4-draft.json", ROOT / "evals/phase22/reviewed-v4",
+    # v4 reviews draft 2; draft 1 is kept unchanged as the pre-AI-review record.
+    "v4": (ROOT / "evals/phase22/benchmark-v4-draft-2.json", ROOT / "evals/phase22/reviewed-v4",
            "gist-phase2.2-benchmark-4-reviewed"),
 }
 
@@ -381,6 +382,16 @@ def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
         shutil.rmtree(staging, ignore_errors=True)
 
 
+def _ai_assisted(sources_csv: Path) -> str | None:
+    """Record when the owner reviewed with AI pre-review suggestions visible (anchoring risk)."""
+    with sources_csv.open(encoding="utf-8-sig", newline="") as handle:
+        headers = next(csv.reader(handle), [])
+    if not any(header.startswith("ai_prereview_verdict") for header in headers):
+        return None
+    return ("Owner review with an AI pre-review visible in read-only columns; final labels are the owner's own. "
+            "Not independent of the AI suggestions.")
+
+
 def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv: Path, *, out: Path, version: str,
                   draft_path: Path, originals: tuple[Path, Path] | None, corrections: Path | None) -> dict:
     questions = sorted(review.questions, key=lambda question: question["id"])
@@ -402,7 +413,8 @@ def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv:
                          "second_reviewer_involved": second,
                          "independence": ("Owner review of agent-proposed labels; not independent adjudication "
                                           "unless a second reviewer resolved disputes."),
-                         "human_ai_disagreements": len(review.disagreements)},
+                         "human_ai_disagreements": len(review.disagreements),
+                         "assisted_by_ai_prereview": _ai_assisted(sources_csv)},
         "label_policy": ("Human final verdicts are authoritative. evidence_groups are distinct evidence needs; "
                          "members are alternative human-supported sources. Partial, unsupported and hard-negative "
                          "sources are not relevant. Labels are a reviewed subset unless marked exhaustive."),

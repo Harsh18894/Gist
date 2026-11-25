@@ -1,0 +1,298 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-3-reviewed",
+  "pipeline": "service.answer mode=openai (v2 hybrid, Phase 2.2 answer path)",
+  "model": "gpt-6-luna",
+  "summary": {
+    "questions": 6,
+    "stopped_early": true,
+    "model_calls": 6,
+    "abstention_correct": 6,
+    "unanswerable_abstained": "0/0",
+    "answerable_answered_by_gist": "3/6",
+    "answerable_partial_by_gist": "3/6",
+    "answerable_wrongly_refused": "0/6",
+    "answers_rejected_by_gist_after_generation": 0,
+    "answers_citing_a_hard_negative": 0,
+    "answers_with_cited_ids_outside_context": 0,
+    "run_estimated_cost_usd": 0.001039,
+    "latency_p50_ms": 2002
+  },
+  "errors": [
+    {
+      "question_id": "P21-Q-009",
+      "error": "ProviderError",
+      "message": "OpenAI returned an incomplete answer."
+    }
+  ],
+  "answers": [
+    {
+      "question_id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "question": "Where does an admin find the date and project controls for a portfolio chart?",
+      "expected_answer": "The project/date portfolio filters appear above the chart (release-02). Customer feedback independently notes that controls are above the chart, but does not confirm both control types.",
+      "raw_model_answer": "Status: answered\n\nThe admin finds the date and project controls above the portfolio chart. [release-02]",
+      "gist_answer": "The admin finds the date and project controls above the portfolio chart. [release-02]",
+      "citations": [
+        "release-02"
+      ],
+      "retrieved_source_ids": [
+        "release-02",
+        "V2-FB-0153",
+        "V2-SUP-0080",
+        "V2-FB-0189",
+        "V2-FB-0381",
+        "V2-FB-0057",
+        "V2-FB-0272",
+        "V2-SUP-0087"
+      ],
+      "input_tokens": 726,
+      "output_tokens": 26,
+      "estimated_cost_usd": 8.56e-05,
+      "latency_ms": 5757,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-02"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-02"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "question": "How does Pulse bill a seat archived partway through the month?",
+      "expected_answer": "A seat archived mid-cycle remains counted until the current billing cycle closes. The rule is explicit in release-04 and echoed by V2-FB-0082.",
+      "raw_model_answer": "Status: answered\n\nA seat archived partway through the month remains counted\u2014and billable\u2014until the billing cycle closes. [release-04] [V2-FB-0082]",
+      "gist_answer": "A seat archived partway through the month remains counted\u2014and billable\u2014until the billing cycle closes. [release-04] [V2-FB-0082]",
+      "citations": [
+        "release-04",
+        "V2-FB-0082"
+      ],
+      "retrieved_source_ids": [
+        "release-04",
+        "prd-04",
+        "V2-FB-0178",
+        "V2-FB-0082",
+        "V2-FB-0370",
+        "V2-FB-0322",
+        "V2-FB-0250",
+        "V2-FB-0070"
+      ],
+      "input_tokens": 705,
+      "output_tokens": 42,
+      "estimated_cost_usd": 9.15e-05,
+      "latency_ms": 1429,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0082",
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "question": "Which workspace roles can duplicate a shared starter?",
+      "expected_answer": "Editors and admins can duplicate a shared starter. Only release-06 establishes both roles.",
+      "raw_model_answer": "Status: partial\n\nOne support report says duplication was restricted to editors in that customer\u2019s workspace [V2-SUP-0023].\n\nLimitation: The evidence does not establish the full role permissions or whether this rule applies across workspaces.",
+      "gist_answer": "One support report says duplication was restricted to editors in that customer\u2019s workspace [V2-SUP-0023].\n\nLimitation: The evidence does not establish the full role permissions or whether this rule applies across workspaces.",
+      "citations": [
+        "V2-SUP-0023"
+      ],
+      "retrieved_source_ids": [
+        "prd-06",
+        "V2-FB-0012",
+        "V2-SUP-0018",
+        "V2-FB-0168",
+        "V2-SUP-0023",
+        "V2-FB-0396",
+        "V2-FB-0228",
+        "V2-SUP-0011"
+      ],
+      "input_tokens": 761,
+      "output_tokens": 152,
+      "estimated_cost_usd": 0.0001521,
+      "latency_ms": 1976,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-SUP-0023"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-SUP-0023"
+      ],
+      "evidence_groups_cited": "0/1",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a customer whose account recovery email became useless during a call.",
+      "expected_answer": "Several customers report a reset link expiring during a call, including V2-FB-0098, V2-FB-0182, V2-FB-0278 and V2-FB-0089.",
+      "raw_model_answer": "Status: partial\n\nFeedback V2-FB-0098 reports that a customer\u2019s reset link expired while they were on a call. [V2-FB-0098]\n\nLimitation: The evidence does not identify the customer by name.",
+      "gist_answer": "Feedback V2-FB-0098 reports that a customer\u2019s reset link expired while they were on a call. [V2-FB-0098]\n\nLimitation: The evidence does not identify the customer by name.",
+      "citations": [
+        "V2-FB-0098"
+      ],
+      "retrieved_source_ids": [
+        "V2-SUP-0021",
+        "V2-FB-0242",
+        "V2-FB-0098",
+        "V2-FB-0350",
+        "V2-FB-0134",
+        "V2-FB-0038",
+        "V2-FB-0074",
+        "V2-FB-0398"
+      ],
+      "input_tokens": 679,
+      "output_tokens": 163,
+      "estimated_cost_usd": 0.0001494,
+      "latency_ms": 2002,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0098"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0098"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0098"
+      ]
+    },
+    {
+      "question_id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "question": "Is there a report of a company-side identity redirect setting preventing entry?",
+      "expected_answer": "Yes. Multiple customer records report that IT entered a wrong callback URL, including V2-FB-0063, V2-FB-0207 and V2-FB-0351.",
+      "raw_model_answer": "Status: partial\n\nA report says the company\u2019s IT team had entered the wrong callback URL, a company-side identity setting [V2-FB-0063].\n\nLimitation: The report does not explicitly say the wrong callback URL prevented entry.",
+      "gist_answer": "A report says the company\u2019s IT team had entered the wrong callback URL, a company-side identity setting [V2-FB-0063].\n\nLimitation: The report does not explicitly say the wrong callback URL prevented entry.",
+      "citations": [
+        "V2-FB-0063"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0243",
+        "V2-FB-0159",
+        "V2-FB-0099",
+        "V2-SUP-0002",
+        "V2-FB-0003",
+        "V2-FB-0231",
+        "V2-FB-0195",
+        "V2-FB-0063"
+      ],
+      "input_tokens": 658,
+      "output_tokens": 210,
+      "estimated_cost_usd": 0.0001708,
+      "latency_ms": 2477,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0063"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0063"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0063"
+      ]
+    },
+    {
+      "question_id": "P21-Q-007",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a case where an empty-looking chart was actually a view setting.",
+      "expected_answer": "Yes. Several users found that the chart data was present, but a previously applied filter made the view look empty: V2-FB-0009, V2-FB-0045, V2-FB-0285, V2-FB-0369, V2-FB-0393 and V2-SUP-0048.",
+      "raw_model_answer": "Status: answered\n\nIn support case V2-SUP-0048, the chart wasn\u2019t missing data; a previous filter had been left applied. [V2-SUP-0048]",
+      "gist_answer": "In support case V2-SUP-0048, the chart wasn\u2019t missing data; a previous filter had been left applied. [V2-SUP-0048]",
+      "citations": [
+        "V2-SUP-0048"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0381",
+        "V2-FB-0153",
+        "V2-SUP-0080",
+        "V2-FB-0057",
+        "V2-FB-0375",
+        "V2-SUP-0048",
+        "V2-FB-0369",
+        "V2-FB-0285"
+      ],
+      "input_tokens": 667,
+      "output_tokens": 148,
+      "estimated_cost_usd": 0.0001407,
+      "latency_ms": 1990,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-SUP-0048"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-SUP-0048"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0285",
+        "V2-FB-0369",
+        "V2-SUP-0048"
+      ]
+    }
+  ],
+  "limitations": "Deterministic checks verify abstention, citation IDs and label overlap only. Claim-level support requires the human review CSV. One sample per question."
+}

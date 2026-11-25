@@ -35,7 +35,6 @@ RESULT = RESULTS / "benchmark3-answers.json"
 REVIEW_CSV = RESULTS / "benchmark3-answer-claim-review.csv"
 MAX_ANSWERS = 24
 RUN_STOP_USD = 0.02
-ABSTAIN = re.compile(r"\b(?:insufficient evidence|not enough evidence|cannot determine|no source|do not have enough)\b", re.I)
 
 
 def checks(question: dict, response: dict, raw: str | None) -> dict:
@@ -45,7 +44,8 @@ def checks(question: dict, response: dict, raw: str | None) -> dict:
     relevant = set(question["relevant_source_ids"])
     negatives = set(question["hard_negative_source_ids"])
     covered = [bool(set(group) & set(cited)) for group in question["evidence_groups"]]
-    abstained = response["status"] == "insufficient_evidence" or bool(raw and ABSTAIN.search(raw))
+    # Gist's final status decides abstention; a partial answer that names a gap is not an abstention.
+    abstained = response["status"] == "insufficient_evidence"
     return {"expected_abstention": unanswerable, "abstained": abstained,
             "abstention_correct": abstained == unanswerable,
             "gist_status": response["status"],
@@ -59,13 +59,20 @@ def checks(question: dict, response: dict, raw: str | None) -> dict:
             "retrieved_relevant_in_context": sorted(set(retrieved) & relevant)}
 
 
-def run() -> dict:
-    if RESULT.exists():
+def run(*, development_only: bool = False, label: str | None = None) -> dict:
+    """Answer every question once (original run) or, with a label, the development split only."""
+    result_path = RESULTS / f"benchmark3-answers-{label}.json" if label else RESULT
+    review_path = RESULTS / f"benchmark3-answer-claim-review-{label}.csv" if label else REVIEW_CSV
+    if label and not development_only:
+        raise ValueError("Labelled reruns are development-only; the held-out answers were already run once.")
+    if result_path.exists():
         raise FileExistsError("The benchmark-3 answer check already ran; it is not rerun.")
     if os.getenv("GIST_DATASET_VERSION") != "v2":
         raise RuntimeError("Set GIST_DATASET_VERSION=v2.")
     manifest = review.verify()
     questions = json.loads((review.OUT / "benchmark.json").read_text())["questions"]
+    if development_only:
+        questions = [q for q in questions if q["id"] in set(manifest["development_ids"]) and q["split"] == "development"]
     if len(questions) > MAX_ANSWERS:
         raise ValueError("More questions than the approved answer bound.")
     spend_start = spend_summary()["committed_or_reserved_usd"]
@@ -105,19 +112,21 @@ def run() -> dict:
                "unanswerable_abstained": f"{sum(r['abstained'] for r in rows if r['expected_abstention'])}/"
                                          f"{sum(r['expected_abstention'] for r in rows)}",
                "answerable_answered_by_gist": f"{sum(r['gist_status'] == 'answered' for r in answerable)}/{len(answerable)}",
-               "answers_rejected_by_gist_after_generation": sum(r["model_called"] and r["gist_status"] != "answered" for r in rows),
+               "answerable_partial_by_gist": f"{sum(r['gist_status'] == 'partial' for r in answerable)}/{len(answerable)}",
+               "answerable_wrongly_refused": f"{sum(r['gist_status'] == 'insufficient_evidence' for r in answerable)}/{len(answerable)}",
+               "answers_rejected_by_gist_after_generation": sum(r["model_called"] and r["gist_status"] == "insufficient_evidence" for r in rows),
                "answers_citing_a_hard_negative": sum(bool(r["cited_hard_negatives"]) for r in rows),
                "answers_with_cited_ids_outside_context": sum(not r["cited_ids_all_retrieved"] for r in rows),
                "run_estimated_cost_usd": spent,
                "latency_p50_ms": sorted(r["latency_ms"] for r in rows)[len(rows) // 2]}
-    result = {"benchmark_version": review.BENCHMARK_VERSION, "pipeline": "service.answer mode=openai (locked v2 hybrid)",
+    result = {"benchmark_version": review.BENCHMARK_VERSION, "pipeline": "service.answer mode=openai (v2 hybrid, Phase 2.2 answer path)" if label else "service.answer mode=openai (locked v2 hybrid)",
               "model": os.getenv("GIST_LLM_MODEL", "gpt-6-luna"), "summary": summary, "errors": errors, "answers": rows,
               "limitations": ("Deterministic checks verify abstention, citation IDs and label overlap only. "
                               "Claim-level support requires the human review CSV. One sample per question.")}
     RESULTS.mkdir(parents=True, exist_ok=True)
-    with RESULT.open("x") as handle:
+    with result_path.open("x") as handle:
         handle.write(json.dumps(result, indent=2) + "\n")
-    with REVIEW_CSV.open("x", newline="", encoding="utf-8") as handle:
+    with review_path.open("x", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow(["question_id", "split", "category", "question", "expected_answer", "generated_answer",
                          "gist_status", "cited_source_ids", "cited_source_texts", "auto_flags",
@@ -137,10 +146,12 @@ def run() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--confirm-paid", action="store_true", required=True)
-    parser.parse_args()
-    result = run()
+    parser.add_argument("--development-only", action="store_true")
+    parser.add_argument("--label", help="Required for development reruns, e.g. phase22-dev")
+    args = parser.parse_args()
+    result = run(development_only=args.development_only, label=args.label)
     print(json.dumps(result["summary"], indent=2))
-    print(f"Saved {RESULT.relative_to(ROOT)} and {REVIEW_CSV.relative_to(ROOT)}")
+    print("Saved results under evals/phase21/results/")
     return 0
 
 

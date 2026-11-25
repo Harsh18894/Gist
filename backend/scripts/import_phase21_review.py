@@ -27,6 +27,12 @@ DRAFT = ROOT / "evals/phase21/benchmark-v2-draft.json"
 DATA = source_dir("v2", ROOT)
 OUT = ROOT / "evals/phase21/reviewed-v3"
 BENCHMARK_VERSION = "gist-phase2.1-benchmark-3-reviewed"
+# Benchmarks this importer can freeze: draft file, frozen output folder, reviewed version name.
+TARGETS = {
+    "v3": (DRAFT, OUT, BENCHMARK_VERSION),
+    "v4": (ROOT / "evals/phase22/benchmark-v4-draft.json", ROOT / "evals/phase22/reviewed-v4",
+           "gist-phase2.2-benchmark-4-reviewed"),
+}
 
 VERDICTS = {"supports", "partial", "unsupported", "unclear", "hard_negative"}
 DECISIONS = {"approve", "revise", "unclear"}
@@ -354,7 +360,8 @@ def load(questions_csv: Path, sources_csv: Path, *, draft_path: Path = DRAFT,
 
 
 def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
-           draft_path: Path = DRAFT, data: Path = DATA, corrections: Path | None = None) -> dict:
+           draft_path: Path = DRAFT, data: Path = DATA, corrections: Path | None = None,
+           version: str = BENCHMARK_VERSION) -> dict:
     if out.exists():
         raise FileExistsError(f"{out} already exists. Reviewed benchmarks are immutable; create a new version.")
     staging = out.with_name(out.name + ".staging")
@@ -368,13 +375,13 @@ def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
         review, draft = load(questions_csv, sources_csv, draft_path=draft_path, data=data)
         if review.blockers:
             raise ValueError(f"Review has {len(review.blockers)} blockers; run 'check' and resolve them first.")
-        return _write_frozen(review, draft, questions_csv, sources_csv, out=out, draft_path=draft_path,
+        return _write_frozen(review, draft, questions_csv, sources_csv, out=out, draft_path=draft_path, version=version,
                              originals=originals if corrections else None, corrections=corrections)
     finally:
         shutil.rmtree(staging, ignore_errors=True)
 
 
-def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv: Path, *, out: Path,
+def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv: Path, *, out: Path, version: str,
                   draft_path: Path, originals: tuple[Path, Path] | None, corrections: Path | None) -> dict:
     questions = sorted(review.questions, key=lambda question: question["id"])
     heldout = [question for question in questions if question["split"] == "heldout"]
@@ -383,7 +390,7 @@ def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv:
         judgment["second_reviewer_resolution"] for judgment in question["source_judgments"])
         for question in questions)
     benchmark = {
-        "benchmark_version": BENCHMARK_VERSION, "dataset_version": "v2", "synthetic": True,
+        "benchmark_version": version, "dataset_version": "v2", "synthetic": True,
         "derived_from": {"benchmark_version": draft["benchmark_version"],
                          "file_sha256": sha256_bytes(draft_path.read_bytes())},
         "source_sha256": draft["source_sha256"],
@@ -419,7 +426,7 @@ def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv:
         shutil.copyfile(corrections, out / "corrections.json")
     (out / "benchmark.json").write_text(json.dumps(benchmark, indent=2, ensure_ascii=False) + "\n")
     (out / "review-report.json").write_text(json.dumps(review.report(), indent=2, ensure_ascii=False) + "\n")
-    manifest = {"benchmark_version": BENCHMARK_VERSION, "frozen": True,
+    manifest = {"benchmark_version": version, "frozen": True,
                 "frozen_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "source_sha256": draft["source_sha256"],
                 "questions_sha256": benchmark["questions_sha256"], "heldout_sha256": benchmark["heldout_sha256"],
@@ -453,21 +460,25 @@ def main() -> int:
         command.add_argument("--questions", type=Path, required=True)
         command.add_argument("--sources", type=Path, required=True)
         command.add_argument("--corrections", type=Path, help="Owner-approved cell corrections (JSON)")
-    commands.choices["check"].add_argument("--report", type=Path, help="Optional JSON report path outside evals/")
     commands.add_parser("verify")
+    for command in commands.choices.values():
+        command.add_argument("--benchmark", choices=sorted(TARGETS), default="v3")
+    commands.choices["check"].add_argument("--report", type=Path, help="Optional JSON report path outside evals/")
     args = parser.parse_args()
+    draft_path, out, version = TARGETS[args.benchmark]
     if args.command == "verify":
-        print(json.dumps(verify(), indent=2))
+        print(json.dumps(verify(out), indent=2))
         return 0
     if args.command == "freeze":
-        print(json.dumps(freeze(args.questions, args.sources, corrections=args.corrections), indent=2))
+        print(json.dumps(freeze(args.questions, args.sources, corrections=args.corrections, out=out,
+                                draft_path=draft_path, version=version), indent=2))
         return 0
     if args.corrections:
         with tempfile.TemporaryDirectory() as scratch:
             corrected = apply_corrections(args.questions, args.sources, args.corrections, Path(scratch))
-            review, _draft = load(*corrected)
+            review, _draft = load(*corrected, draft_path=draft_path)
     else:
-        review, _draft = load(args.questions, args.sources)
+        review, _draft = load(args.questions, args.sources, draft_path=draft_path)
     report = review.report()
     if args.report:
         args.report.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")

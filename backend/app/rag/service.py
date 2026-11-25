@@ -29,18 +29,38 @@ def citation(hit: Hit) -> SearchHit:
 
 
 def cited_source_ids(answer_text: str) -> set[str] | None:
-    """Accept one or more comma-separated IDs per bracket; reject malformed groups."""
+    """Accept one or more comma- or semicolon-separated IDs per bracket; reject malformed groups."""
     groups = re.findall(r"\[([^\]]+)\]", answer_text)
     if not groups:
         return None
     ids: set[str] = set()
     for group in groups:
-        for item in group.split(","):
+        for item in re.split(r"[,;]", group):
             source_id = item.strip()
             if not re.fullmatch(r"[A-Za-z0-9_-]+", source_id):
                 return None
             ids.add(source_id)
     return ids
+
+
+STATUS_LINE = re.compile(r"\A\s*\**status:\s*(answered|partial|insufficient)\**\s*(?:\n|\Z)", re.IGNORECASE)
+ABSTENTION = re.compile(r"\binsufficient evidence\b", re.IGNORECASE)
+PAID_CONTEXT_SOURCES = 8
+
+
+def parse_status(generated: str) -> tuple[str, str]:
+    """Read the model's declared status line; fall back to the legacy phrase rule.
+
+    An "answered" reply that still says "insufficient evidence" is downgraded to
+    "partial" so a stated limitation is never presented as a complete answer.
+    """
+    match = STATUS_LINE.match(generated)
+    if not match:
+        return ("insufficient" if ABSTENTION.search(generated) else "answered"), generated.strip()
+    status, body = match.group(1).lower(), generated[match.end():].strip()
+    if status == "answered" and ABSTENTION.search(body):
+        status = "partial"
+    return status, body
 
 
 def answer(db: sqlite3.Connection, request: AskRequest,
@@ -56,10 +76,13 @@ def answer(db: sqlite3.Connection, request: AskRequest,
             raise PaidApiDisabled("OpenAI embeddings are incomplete. Run the guarded embedding command after approval.")
         query_vector, embed_usage = embed_query_cached(db, request.question)
         usage = {key: embed_usage.get(key, 0) for key in usage}
-        hits = hybrid_search(db, request.question, filters, model=EMBED_MODEL, query_vector=query_vector)
+        hits = hybrid_search(db, request.question, filters, model=EMBED_MODEL, query_vector=query_vector,
+                             limit=PAID_CONTEXT_SOURCES)
     else:
         hits = hybrid_search(db, request.question, filters, model=DEMO_MODEL)
-    assessment = assess(request.question, hits)
+    # Demo mode has no model to judge topical fit, so it keeps the lexical coverage rules.
+    # Paid mode keeps only fact-type rules; the model's status line and citation checks follow.
+    assessment = assess(request.question, hits, fact_rules_only=request.mode == "openai")
     if not assessment.sufficient:
         return AskResponse(answer=INSUFFICIENT, status="insufficient_evidence", mode=request.mode,
                            citations=[], retrieved_sources=[citation(hit) for hit in hits],
@@ -75,17 +98,19 @@ def answer(db: sqlite3.Connection, request: AskRequest,
         if audit_generated is not None:
             audit_generated(generated)
         usage = {key: usage[key] + completion_usage[key] for key in usage}
-        source_ids = cited_source_ids(generated)
-        allowed = {hit.source_id for hit in hits}
+        declared, body = parse_status(generated)
+        source_ids = cited_source_ids(body)
+        # Only sources actually sent to the model may be cited.
+        allowed = set(completion_usage.get("sent_source_ids") or [hit.source_id for hit in hits])
         cited_texts = [hit.content for hit in hits if source_ids and hit.source_id in source_ids]
-        if (not source_ids or not source_ids <= allowed or
-                "insufficient evidence" in generated.lower() or
-                unsupported_numbers(generated, cited_texts)):
+        if (declared == "insufficient" or not source_ids or not source_ids <= allowed or
+                unsupported_numbers(body, cited_texts)):
             return AskResponse(answer=INSUFFICIENT, status="insufficient_evidence", mode=request.mode,
                                citations=[], retrieved_sources=[citation(hit) for hit in hits],
                                latency_ms=round((time.perf_counter() - started) * 1000), **usage)
-        response = generated
+        response = body
+        result_status = "partial" if declared == "partial" else "answered"
         cited = [citation(hit) for hit in hits if hit.source_id in source_ids]
-    return AskResponse(answer=response, status="answered", mode=request.mode,
+    return AskResponse(answer=response, status=result_status, mode=request.mode,
                        citations=cited, retrieved_sources=[citation(hit) for hit in hits],
                        latency_ms=round((time.perf_counter() - started) * 1000), **usage)

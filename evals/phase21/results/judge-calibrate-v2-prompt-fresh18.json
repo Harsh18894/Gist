@@ -1,0 +1,461 @@
+{
+  "mode": "calibrate",
+  "sheet": "evals/phase21/results/benchmark3-answer-claim-review-phase22-dev-cap600-completed.csv",
+  "judge_model": "gpt-6-luna",
+  "judge_prompt": "v2",
+  "judge_prompt_sha256": "641660afc874baba5e0b9e1adf2289a345648478dbcf9c7e5c9392056158c033",
+  "date": "2026-11-25",
+  "rows": 18,
+  "errors": [],
+  "estimated_cost_usd": 0.0051477,
+  "status": "AI-assisted pre-review; not a human review.",
+  "judged": [
+    {
+      "question_id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The cited release states that admins can filter portfolio views by project and date, and that the control appears above the chart. The answer directly addresses the question.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited release states that admins can filter portfolio views by project and date, and that the control appears above the chart. The answer directly addresses the question.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 685,
+      "output_tokens": 114
+    },
+    {
+      "question_id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The cited release explicitly states that seats archived mid-cycle remain counted until the billing cycle closes. The answer directly addresses the question without adding unsupported claims.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited release explicitly states that seats archived mid-cycle remain counted until the billing cycle closes. The answer directly addresses the question without adding unsupported claims.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 680,
+      "output_tokens": 81
+    },
+    {
+      "question_id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The claims accurately describe the cited sources, but the question is answerable and asks which roles can duplicate a shared starter. The response says the evidence is insufficient and omits the supported core answer.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The claims accurately describe the cited sources, but the question is answerable and asks which roles can duplicate a shared starter. The response says the evidence is insufficient and omits the supported core answer.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 788,
+      "output_tokens": 286
+    },
+    {
+      "question_id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The cited source says the reset link expired while the writer was on a call, directly answering the request to find a customer. The answer makes no unsupported claims.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited source says the reset link expired while the writer was on a call, directly answering the request to find a customer. The answer makes no unsupported claims.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 664,
+      "output_tokens": 126
+    },
+    {
+      "question_id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "a company-side identity setting"
+        ],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The source supports that the company’s IT team entered the wrong callback URL, but it does not identify that URL as an identity setting or say it prevented entry. The answer stops short of the requested yes/no conclusion, although the question is answerable.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"a company-side identity setting\"],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The source supports that the company’s IT team entered the wrong callback URL, but it does not identify that URL as an identity setting or say it prevented entry. The answer stops short of the requested yes/no conclusion, although the question is answerable.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 682,
+      "output_tokens": 493
+    },
+    {
+      "question_id": "P21-Q-007",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The cited sources state that the chart was not missing data and that a previous filter had been left applied. The answer gives a supported example and corroborates it with feedback reports.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited sources state that the chart was not missing data and that a previous filter had been left applied. The answer gives a supported example and corroborates it with feedback reports.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 803,
+      "output_tokens": 271
+    },
+    {
+      "question_id": "P21-Q-009",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "compare results across browsers and teammates"
+        ],
+        "decision_correct": "yes",
+        "overall": "poor",
+        "reason": "The identity-configuration, workspace, logs, and credential/reset-token checks are supported, but the browser-and-teammate comparison comes from a source about a different issue. The answer also omits invitation handoff, one of the distinct checks central to the question.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"compare results across browsers and teammates\"],\"decision_correct\":\"yes\",\"overall\":\"poor\",\"reason\":\"The identity-configuration, workspace, logs, and credential/reset-token checks are supported, but the browser-and-teammate comparison comes from a source about a different issue. The answer also omits invitation handoff, one of the distinct checks central to the question.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "poor",
+        "unsupported_claims": "compare results across browsers and teammates"
+      },
+      "input_tokens": 915,
+      "output_tokens": 754
+    },
+    {
+      "question_id": "P21-Q-010",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "Limitation: The evidence does not provide a diagnostic procedure or logs that establish which system caused a live-sync omission."
+        ],
+        "decision_correct": "yes",
+        "overall": "acceptable",
+        "reason": "The answer gives a supported way to distinguish a one-time upload from a live sync and compare CRM records with the project view. It omits the point that a green sync indicator does not establish completeness, and its claim about the absence of diagnostics or logs is not stated in the cited sources.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"Limitation: The evidence does not provide a diagnostic procedure or logs that establish which system caused a live-sync omission.\"],\"decision_correct\":\"yes\",\"overall\":\"acceptable\",\"reason\":\"The answer gives a supported way to distinguish a one-time upload from a live sync and compare CRM records with the project view. It omits the point that a green sync indicator does not establish completeness, and its claim about the absence of diagnostics or logs is not stated in the cited sources.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 929,
+      "output_tokens": 783
+    },
+    {
+      "question_id": "P21-Q-011",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The cited sources support the permission-related claims, but provide no evidence about finding or discovering templates. Since that distinction is central to the question, the answer does not resolve the core request.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The cited sources support the permission-related claims, but provide no evidence about finding or discovering templates. Since that distinction is central to the question, the answer does not resolve the core request.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": "template duplication is restricted to editors"
+      },
+      "input_tokens": 842,
+      "output_tokens": 532
+    },
+    {
+      "question_id": "P21-Q-013",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The cited sources support the statements about the August update, the faster aggregation path, and some continuing slow views. But this is an answerable question, and the response explicitly leaves out the requested reports from before the change, so it misses a core part of the answer.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The cited sources support the statements about the August update, the faster aggregation path, and some continuing slow views. But this is an answerable question, and the response explicitly leaves out the requested reports from before the change, so it misses a core part of the answer.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": "The release later gave large-workspace aggregations a faster loading path"
+      },
+      "input_tokens": 866,
+      "output_tokens": 599
+    },
+    {
+      "question_id": "P21-Q-014",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "Limitation: The evidence does not provide outcome descriptions from two workspaces."
+        ],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The reports and support-ticket details are accurately paraphrased, but the cited sources do not state the limitation about evidence from two workspaces. The question is answerable, so saying the evidence is insufficient misses the requested core answer.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"Limitation: The evidence does not provide outcome descriptions from two workspaces.\"],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The reports and support-ticket details are accurately paraphrased, but the cited sources do not state the limitation about evidence from two workspaces. The question is answerable, so saying the evidence is insufficient misses the requested core answer.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 877,
+      "output_tokens": 526
+    },
+    {
+      "question_id": "P21-Q-015",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The answer accurately reports the update’s reconnect flow and sync status, its delivery caveat, and the customer’s gap followed by a Friday backfill. It does not infer that the update caused the gap.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The answer accurately reports the update’s reconnect flow and sync status, its delivery caveat, and the customer’s gap followed by a Friday backfill. It does not infer that the update caused the gap.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 806,
+      "output_tokens": 456
+    },
+    {
+      "question_id": "P21-Q-017",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The release note explicitly says a successful status does not prove every record arrived. The cited report also asks about missing East-region tasks while the connector looks connected.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The release note explicitly says a successful status does not prove every record arrived. The cited report also asks about missing East-region tasks while the connector looks connected.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 745,
+      "output_tokens": 164
+    },
+    {
+      "question_id": "P21-Q-018",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "one report disliked finding an escalation only in the next day’s digest"
+        ],
+        "decision_correct": "yes",
+        "overall": "poor",
+        "reason": "The cited feedback supports liking a calmer inbox and receiving 38 project emails, but it does not say the escalation was available only in the next day’s digest. The answer correctly notes that the sources do not establish overall agreement.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"one report disliked finding an escalation only in the next day’s digest\"],\"decision_correct\":\"yes\",\"overall\":\"poor\",\"reason\":\"The cited feedback supports liking a calmer inbox and receiving 38 project emails, but it does not say the escalation was available only in the next day’s digest. The answer correctly notes that the sources do not establish overall agreement.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 783,
+      "output_tokens": 1041
+    },
+    {
+      "question_id": "P21-Q-019",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "decision_correct": "no",
+        "overall": "poor",
+        "reason": "The cited release note supports the statements about large-workspace aggregations and smaller workspaces, and it does not compare pre-update loading across sizes. But this is an answerable question, and the response fails to give the supported core answer that loading was not uniformly slow.",
+        "correct_abstention": "no"
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"decision_correct\":\"no\",\"overall\":\"poor\",\"reason\":\"The cited release note supports the statements about large-workspace aggregations and smaller workspaces, and it does not compare pre-update loading across sizes. But this is an answerable question, and the response fails to give the supported core answer that loading was not uniformly slow.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 738,
+      "output_tokens": 382
+    },
+    {
+      "question_id": "P21-Q-021",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The question is unanswerable, so declining is the correct decision. The response makes no claim about the revenue uplift itself.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The question is unanswerable, so declining is the correct decision. The response makes no claim about the revenue uplift itself.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 597,
+      "output_tokens": 259
+    },
+    {
+      "question_id": "P21-Q-022",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The question is unanswerable, and the response appropriately declines without naming an engineer or making a product claim.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The question is unanswerable, and the response appropriately declines without naming an engineer or making a product claim.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 596,
+      "output_tokens": 492
+    },
+    {
+      "question_id": "P21-Q-023",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "decision_correct": "yes",
+        "overall": "good",
+        "reason": "The question asks for a complete count that the dataset cannot provide, so declining is the correct decision. The response makes no substantive factual claims about the count.",
+        "correct_abstention": "yes"
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"decision_correct\":\"yes\",\"overall\":\"good\",\"reason\":\"The question asks for a complete count that the dataset cannot provide, so declining is the correct decision. The response makes no substantive factual claims about the count.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 601,
+      "output_tokens": 217
+    }
+  ],
+  "agreement": {
+    "all_rows": {
+      "claims_supported": {
+        "agree": 12,
+        "of": 18,
+        "rate": 0.6667
+      },
+      "correct_abstention": {
+        "agree": 12,
+        "of": 18,
+        "rate": 0.6667
+      },
+      "overall": {
+        "agree": 11,
+        "of": 18,
+        "rate": 0.6111
+      }
+    },
+    "rows_with_claims": {
+      "claims_supported": {
+        "agree": 9,
+        "of": 15,
+        "rate": 0.6
+      },
+      "correct_abstention": {
+        "agree": 9,
+        "of": 15,
+        "rate": 0.6
+      },
+      "overall": {
+        "agree": 8,
+        "of": 15,
+        "rate": 0.5333
+      }
+    },
+    "poor_recall": "1/1",
+    "poor_precision": "1/8",
+    "judge_more_lenient": 0,
+    "judge_stricter": 7,
+    "parse_errors": 0
+  }
+}

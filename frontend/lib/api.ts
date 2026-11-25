@@ -20,7 +20,7 @@ export interface SearchHit {
   snippet: string; score: number; keyword_rank: number | null; semantic_rank: number | null;
 }
 export interface AskResult {
-  answer: string; status: "answered" | "sources_only" | "insufficient_evidence";
+  answer: string; status: "answered" | "partial" | "sources_only" | "insufficient_evidence";
   mode: "demo" | "openai"; citations: SearchHit[]; retrieved_sources: SearchHit[]; latency_ms: number;
   input_tokens: number; output_tokens: number; estimated_cost_usd: number;
 }

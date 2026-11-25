@@ -1,0 +1,858 @@
+{
+  "benchmark_version": "gist-phase2.2-benchmark-4-draft",
+  "dataset_version": "v2",
+  "synthetic": true,
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "7d4277f1dd7b3586845420e5778bd16e77bbc017ec3804f9e6d229ac4017ee91",
+  "heldout_sha256": "7d4277f1dd7b3586845420e5778bd16e77bbc017ec3804f9e6d229ac4017ee91",
+  "split_counts": {
+    "development": 0,
+    "heldout": 24
+  },
+  "max_similarity_to_earlier_questions": {
+    "ratio": 0.656,
+    "pair": [
+      "B4-Q-021",
+      "What percentage of real Pulse customers churned because of the invite loop?"
+    ]
+  },
+  "human_review_status": "pending; owner review required before freezing",
+  "label_policy": "Groups are distinct evidence needs; members are every source containing a group phrase (within stated dates) or the named document. Other wordings may exist.",
+  "questions": [
+    {
+      "id": "B4-Q-001",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Can a team keep shared boards out of the project digest?",
+      "evidence_groups": [
+        [
+          "release-03"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-03"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0078",
+        "V2-FB-0090",
+        "V2-FB-0111"
+      ],
+      "expected_answer_or_abstention": "Yes. Since the April 5 digest update, shared boards are selected by default and teams can opt out (release-03).",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-002",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Did the March portfolio filter release change how fast portfolio views load?",
+      "evidence_groups": [
+        [
+          "release-02"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-02"
+      ],
+      "hard_negative_source_ids": [
+        "release-07"
+      ],
+      "expected_answer_or_abstention": "No. Release-02 states it did not change loading performance; the August release-07 is the loading change.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-003",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Who can tune routine project alerts after the September release?",
+      "evidence_groups": [
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-08"
+      ],
+      "hard_negative_source_ids": [
+        "release-03"
+      ],
+      "expected_answer_or_abstention": "Admins can tune routine project alerts (release-08).",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Does the invoice seat-adjustment line identify which people were billed?",
+      "evidence_groups": [
+        [
+          "prd-04"
+        ],
+        [
+          "V2-FB-0130",
+          "V2-FB-0346"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "hard_negative_source_ids": [
+        "release-04"
+      ],
+      "expected_answer_or_abstention": "No. The PRD says the May line item does not identify people by itself, and a customer says they cannot trace the line to actual people.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-005",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find someone who was told to wipe their browser data but saw the problem on several computers.",
+      "evidence_groups": [
+        [
+          "V2-FB-0140",
+          "V2-FB-0152",
+          "V2-FB-0210"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-FB-0210"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0116",
+        "V2-FB-0164",
+        "V2-FB-0188"
+      ],
+      "expected_answer_or_abstention": "Customers report being told to clear cache although the slow portfolio happens on three machines.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-006",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Is there a newcomer who completed the joining form twice and still could not get in?",
+      "evidence_groups": [
+        [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0373"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0373"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0242",
+        "V2-FB-0266"
+      ],
+      "expected_answer_or_abstention": "Yes. Several reports say a new hire finished the form twice and still is not in the workspace.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-007",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Did anyone ask for a way to reverse a file import they ran the previous day?",
+      "evidence_groups": [
+        [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161",
+          "V2-FB-0293",
+          "V2-FB-0341",
+          "V2-SUP-0044",
+          "V2-SUP-0072",
+          "V2-SUP-0104"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-SUP-0072",
+        "V2-SUP-0104"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0160",
+        "V2-FB-0292",
+        "V2-FB-0316"
+      ],
+      "expected_answer_or_abstention": "Yes. Customers asked for a way to undo yesterday's spreadsheet import.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find a report of someone outside the company's email domain being unable to use the corporate login.",
+      "evidence_groups": [
+        [
+          "V2-FB-0231",
+          "V2-FB-0243",
+          "V2-SUP-0014"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0231",
+        "V2-FB-0243",
+        "V2-SUP-0014"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0045",
+        "V2-FB-0291",
+        "V2-FB-0315"
+      ],
+      "expected_answer_or_abstention": "Customers report that a contractor on a different domain cannot use the company login.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-009",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What different identity-provider problems, besides a wrong callback URL, did customers report?",
+      "evidence_groups": [
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0087",
+          "V2-FB-0267",
+          "V2-FB-0375",
+          "V2-SUP-0046",
+          "V2-SUP-0074"
+        ],
+        [
+          "V2-FB-0045",
+          "V2-FB-0291",
+          "V2-FB-0315",
+          "V2-SUP-0066"
+        ],
+        [
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0265",
+          "V2-FB-0363",
+          "V2-SUP-0016",
+          "V2-SUP-0054"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0045",
+        "V2-FB-0051",
+        "V2-FB-0087",
+        "V2-FB-0111",
+        "V2-FB-0123",
+        "V2-FB-0265",
+        "V2-FB-0267",
+        "V2-FB-0291",
+        "V2-FB-0315",
+        "V2-FB-0363",
+        "V2-FB-0375",
+        "V2-SUP-0016",
+        "V2-SUP-0046",
+        "V2-SUP-0054",
+        "V2-SUP-0066",
+        "V2-SUP-0074"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0122",
+        "V2-FB-0242"
+      ],
+      "expected_answer_or_abstention": "Three distinct SSO problems: login stopping after a SAML certificate change, the IdP assertion rejected because the domain is not allowed, and one region routed to the wrong workspace. Password-reset reports are a different problem.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-010",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "In what different ways did one-time spreadsheet imports put data in the wrong place?",
+      "evidence_groups": [
+        [
+          "V2-FB-0173",
+          "V2-FB-0221",
+          "V2-FB-0329",
+          "V2-SUP-0084"
+        ],
+        [
+          "V2-FB-0137",
+          "V2-FB-0305",
+          "V2-SUP-0032"
+        ],
+        [
+          "V2-FB-0089",
+          "V2-FB-0185",
+          "V2-FB-0197",
+          "V2-SUP-0012"
+        ],
+        [
+          "V2-FB-0125",
+          "V2-FB-0353"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0089",
+        "V2-FB-0125",
+        "V2-FB-0137",
+        "V2-FB-0173",
+        "V2-FB-0185",
+        "V2-FB-0197",
+        "V2-FB-0221",
+        "V2-FB-0305",
+        "V2-FB-0329",
+        "V2-FB-0353",
+        "V2-SUP-0012",
+        "V2-SUP-0032",
+        "V2-SUP-0084"
+      ],
+      "hard_negative_source_ids": [
+        "release-05"
+      ],
+      "expected_answer_or_abstention": "Owner names landed in the due-date column; an Account ID mapped to a custom field was treated as a name; date cells became blank; and a semicolon-separated CSV was read as one column. These are import mapping problems, not live CRM sync.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-011",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What did customers ask to control about project emails, and what controls did Pulse ship?",
+      "evidence_groups": [
+        [
+          "V2-FB-0342",
+          "V2-FB-0078",
+          "V2-FB-0090",
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0186",
+          "V2-FB-0246",
+          "V2-FB-0294",
+          "V2-FB-0306",
+          "V2-SUP-0005",
+          "V2-SUP-0054",
+          "V2-SUP-0089",
+          "V2-SUP-0109"
+        ],
+        [
+          "release-03"
+        ],
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0078",
+        "V2-FB-0090",
+        "V2-FB-0111",
+        "V2-FB-0123",
+        "V2-FB-0186",
+        "V2-FB-0246",
+        "V2-FB-0294",
+        "V2-FB-0306",
+        "V2-FB-0342",
+        "V2-SUP-0005",
+        "V2-SUP-0054",
+        "V2-SUP-0089",
+        "V2-SUP-0109",
+        "release-03",
+        "release-08"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0151",
+        "V2-FB-0187",
+        "V2-FB-0259"
+      ],
+      "expected_answer_or_abstention": "Customers asked to choose which boards feed the digest and for a quiet setting for observed projects. Pulse shipped an opt-out for shared boards in the April digest (release-03) and admin tuning of routine project alerts in September (release-08). Whether these met every request is not established.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "Why did finance see a whole-cycle seat charge for someone removed late in the month, and what would help them trace it?",
+      "evidence_groups": [
+        [
+          "release-04"
+        ],
+        [
+          "V2-FB-0106",
+          "V2-FB-0142",
+          "V2-FB-0190",
+          "V2-FB-0226",
+          "V2-FB-0238",
+          "V2-FB-0286",
+          "V2-FB-0298",
+          "V2-SUP-0065",
+          "V2-SUP-0085"
+        ],
+        [
+          "prd-04",
+          "V2-FB-0010",
+          "V2-FB-0214",
+          "V2-SUP-0001",
+          "V2-SUP-0013"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0010",
+        "V2-FB-0106",
+        "V2-FB-0142",
+        "V2-FB-0190",
+        "V2-FB-0214",
+        "V2-FB-0226",
+        "V2-FB-0238",
+        "V2-FB-0286",
+        "V2-FB-0298",
+        "V2-SUP-0001",
+        "V2-SUP-0013",
+        "V2-SUP-0065",
+        "V2-SUP-0085",
+        "prd-04",
+        "release-04"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0022",
+        "V2-FB-0058",
+        "V2-FB-0202"
+      ],
+      "expected_answer_or_abstention": "Release-04 says seats archived mid-cycle remain counted until the cycle closes, matching a customer billed for a contractor moved out on the 27th. Invoice-time seat evidence (PRD-04), such as a downloadable list of seats counted, would help trace it.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-013",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "When did the shared template gallery ship, and did customers still struggle to find templates afterwards?",
+      "evidence_groups": [
+        [
+          "release-06"
+        ],
+        [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038",
+          "V2-FB-0071",
+          "V2-FB-0095",
+          "V2-FB-0215",
+          "V2-FB-0275",
+          "V2-SUP-0006"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0071",
+        "V2-FB-0095",
+        "V2-FB-0143",
+        "V2-FB-0215",
+        "V2-FB-0239",
+        "V2-FB-0275",
+        "V2-SUP-0006",
+        "V2-SUP-0038",
+        "release-06"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0012",
+        "V2-FB-0168",
+        "V2-FB-0228"
+      ],
+      "expected_answer_or_abstention": "The gallery shipped on 2025-07-05 in the workspace menu (release-06). Later reports say it was found only after support sent a screenshot, or is useful once you know where it lives. Timing does not show the release caused the difficulty.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-014",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were archived-seat billing complaints reported before the May invoice breakdown?",
+      "evidence_groups": [
+        [
+          "release-04"
+        ],
+        [
+          "V2-FB-0046",
+          "V2-FB-0370",
+          "V2-FB-0382",
+          "V2-SUP-0117",
+          "V2-FB-0010",
+          "V2-FB-0214",
+          "V2-SUP-0001",
+          "V2-SUP-0013"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0010",
+        "V2-FB-0046",
+        "V2-FB-0214",
+        "V2-FB-0370",
+        "V2-FB-0382",
+        "V2-SUP-0001",
+        "V2-SUP-0013",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "expected_answer_or_abstention": "Yes. Reports from January to March 2025 already described archived collaborators still counted and asked for an invoice-time seat list, before the May 5 breakdown (release-04).",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-015",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "What did customers say about the portfolio filter controls after the March filter release?",
+      "evidence_groups": [
+        [
+          "release-02"
+        ],
+        [
+          "V2-FB-0081",
+          "V2-FB-0249",
+          "V2-FB-0321",
+          "V2-FB-0345",
+          "V2-FB-0117",
+          "V2-FB-0177",
+          "V2-FB-0225",
+          "V2-FB-0333",
+          "V2-SUP-0020",
+          "V2-FB-0057",
+          "V2-FB-0153",
+          "V2-FB-0375",
+          "V2-FB-0381",
+          "V2-SUP-0046",
+          "V2-SUP-0080"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0057",
+        "V2-FB-0081",
+        "V2-FB-0117",
+        "V2-FB-0153",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0249",
+        "V2-FB-0321",
+        "V2-FB-0333",
+        "V2-FB-0345",
+        "V2-FB-0375",
+        "V2-FB-0381",
+        "V2-SUP-0020",
+        "V2-SUP-0046",
+        "V2-SUP-0080",
+        "release-02"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-FB-0210"
+      ],
+      "expected_answer_or_abstention": "After the March 5 release (release-02), customers liked the new options but found the active state hard to notice, missed the small funnel icon, and said the controls are buried above the chart.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were urgent alerts reported as late before the September per-project controls, or only afterwards?",
+      "evidence_groups": [
+        [
+          "release-08"
+        ],
+        [
+          "V2-FB-0067",
+          "V2-FB-0247",
+          "V2-SUP-0062",
+          "V2-FB-0019",
+          "V2-FB-0127",
+          "V2-FB-0163",
+          "V2-SUP-0010",
+          "V2-SUP-0102",
+          "V2-FB-0151",
+          "V2-FB-0187",
+          "V2-FB-0259",
+          "V2-FB-0271",
+          "V2-SUP-0082"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0151",
+        "V2-FB-0163",
+        "V2-FB-0187",
+        "V2-FB-0247",
+        "V2-FB-0259",
+        "V2-FB-0271",
+        "V2-SUP-0010",
+        "V2-SUP-0062",
+        "V2-SUP-0082",
+        "V2-SUP-0102",
+        "release-08"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0102",
+        "V2-FB-0126",
+        "V2-FB-0318"
+      ],
+      "expected_answer_or_abstention": "The late-urgent-alert reports found are all dated after the September 5 release (release-08), which says later delay reports are under investigation. Timing alone does not show the controls caused the delays.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-017",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Do customers agree that the new template gallery is easy to find?",
+      "evidence_groups": [
+        [
+          "V2-FB-0048",
+          "V2-FB-0072",
+          "V2-FB-0312",
+          "V2-FB-0348",
+          "V2-FB-0360",
+          "V2-SUP-0115"
+        ],
+        [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038",
+          "V2-FB-0071",
+          "V2-FB-0095",
+          "V2-FB-0215",
+          "V2-FB-0275",
+          "V2-SUP-0006"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0048",
+        "V2-FB-0071",
+        "V2-FB-0072",
+        "V2-FB-0095",
+        "V2-FB-0143",
+        "V2-FB-0215",
+        "V2-FB-0239",
+        "V2-FB-0275",
+        "V2-FB-0312",
+        "V2-FB-0348",
+        "V2-FB-0360",
+        "V2-SUP-0006",
+        "V2-SUP-0038",
+        "V2-SUP-0115"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0060",
+        "V2-FB-0120",
+        "V2-FB-0156"
+      ],
+      "expected_answer_or_abstention": "No. Some say the gallery is easy to find now; others found the menu only after support sent a screenshot or say it helps once you know where it lives.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-018",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did the CRM connector stay unreliable after the June refresh?",
+      "evidence_groups": [
+        [
+          "V2-FB-0280",
+          "V2-SUP-0111"
+        ],
+        [
+          "V2-FB-0160",
+          "V2-FB-0292",
+          "V2-FB-0316",
+          "V2-SUP-0019",
+          "V2-FB-0004",
+          "V2-FB-0016",
+          "V2-FB-0177",
+          "V2-FB-0340",
+          "V2-SUP-0091",
+          "V2-SUP-0119"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0004",
+        "V2-FB-0016",
+        "V2-FB-0160",
+        "V2-FB-0177",
+        "V2-FB-0280",
+        "V2-FB-0292",
+        "V2-FB-0316",
+        "V2-FB-0340",
+        "V2-SUP-0019",
+        "V2-SUP-0091",
+        "V2-SUP-0111",
+        "V2-SUP-0119"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161"
+      ],
+      "expected_answer_or_abstention": "Mixed. One customer reconnected twice and the queue still had not caught up; others say it recovered overnight after support helped or is stable again this week.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-019",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did customers see the invoice breakdown as a clear improvement?",
+      "evidence_groups": [
+        [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ],
+        [
+          "V2-FB-0130",
+          "V2-FB-0346"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "V2-SUP-0053"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-FB-0382"
+      ],
+      "expected_answer_or_abstention": "Partly. Customers say the breakdown is easier to read, yet the mid-cycle change is still opaque and the adjustment line cannot be traced to actual people.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did the owner checklist settle onboarding for invited team members?",
+      "evidence_groups": [
+        [
+          "release-01"
+        ],
+        [
+          "V2-FB-0013",
+          "V2-FB-0320",
+          "V2-FB-0337",
+          "V2-FB-0364",
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0373"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0013",
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0320",
+        "V2-FB-0337",
+        "V2-FB-0364",
+        "V2-FB-0373",
+        "release-01"
+      ],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0242",
+        "V2-FB-0266"
+      ],
+      "expected_answer_or_abstention": "Not fully. Release-01 says invited users should not need to verify the owner again but later reports describe a repeat step. Customers say the checklist is clearer while the invited-user handoff is still awkward, and new hires still could not get in.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-021",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What percentage of enterprise customers use single sign-on?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0051",
+        "V2-FB-0087"
+      ],
+      "expected_answer_or_abstention": "Abstain. No source gives an SSO adoption rate; individual SSO reports are not a percentage.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-022",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many engineering hours did the August portfolio loading change take?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-07"
+      ],
+      "expected_answer_or_abstention": "Abstain. The release describes the change but no source states engineering effort.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-023",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Which customer cancelled their subscription because of the digest change?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0198",
+        "V2-FB-0309"
+      ],
+      "expected_answer_or_abstention": "Abstain. Reports describe frustration and muting, but no source records a cancellation.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    },
+    {
+      "id": "B4-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "On what date is the next Pulse release scheduled?",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-08"
+      ],
+      "expected_answer_or_abstention": "Abstain. The documents describe past releases only; no future release date is stated.",
+      "judgment_completeness": "phrase_defined_groups_pending_owner_review",
+      "review_status": "human_review_required"
+    }
+  ]
+}

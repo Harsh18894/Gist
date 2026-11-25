@@ -46,3 +46,23 @@ def test_run_refuses_rerun_and_keeps_answers_on_provider_error(tmp_path, monkeyp
     result = runner.run()
     assert len(result["answers"]) == 2 and result["summary"]["stopped_early"]
     assert result["errors"][0]["error"] == "ProviderError" and (tmp_path / "review.csv").exists()
+
+
+def test_labelled_rerun_is_development_only(tmp_path, monkeypatch):
+    monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
+    monkeypatch.setattr(runner, "RESULTS", tmp_path)
+    with pytest.raises(ValueError, match="development-only"):
+        runner.run(label="x")
+    asked = []
+    def fake(db, request, audit_generated=None):
+        asked.append(request.question)
+        audit_generated("Status: partial\nPart [a].\nLimitation: more needed.")
+        return _response("partial", ["a"])
+    monkeypatch.setattr(runner, "answer", fake)
+    result = runner.run(development_only=True, label="dev-check")
+    assert len(result["answers"]) == 18 and {r["split"] for r in result["answers"]} == {"development"}
+    assert result["summary"]["answerable_partial_by_gist"] == "15/15"
+    assert not any(r["abstained"] for r in result["answers"])
+    assert (tmp_path / "benchmark3-answers-dev-check.json").exists()
+    with pytest.raises(FileExistsError):
+        runner.run(development_only=True, label="dev-check")

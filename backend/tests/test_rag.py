@@ -227,4 +227,6 @@ def test_grouped_citation_ids_are_parsed_and_numeric_check_ignores_ids():
     answer = "Experiences varied [V2-FB-0367, V2-FB-0198]."
     assert cited_source_ids(answer) == {"V2-FB-0367", "V2-FB-0198"}
     assert not unsupported_numbers(answer, ["Some liked it; others muted summaries."])
-    assert cited_source_ids("Claim [V2-FB-0367; fake-id].") is None
+    # Semicolons separate IDs too (Phase 2.2); unknown IDs are rejected later against the sent sources.
+    assert cited_source_ids("Claim [V2-FB-0367; fake-id].") == {"V2-FB-0367", "fake-id"}
+    assert cited_source_ids("Claim [V2-FB-0367; not valid!].") is None

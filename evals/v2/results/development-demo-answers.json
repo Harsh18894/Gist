@@ -59,7 +59,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-007",
@@ -110,7 +110,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-013",
@@ -127,7 +127,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-014",
@@ -161,7 +161,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-016",
@@ -195,7 +195,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-018",
@@ -450,7 +450,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-045",
@@ -467,7 +467,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-047",
@@ -484,7 +484,7 @@
       "generated_citations_empty": true,
       "expected_abstention": true,
       "abstention_correct": true,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-048",
@@ -518,7 +518,7 @@
       "generated_citations_empty": true,
       "expected_abstention": true,
       "abstention_correct": true,
-      "latency_ms": 3
+      "latency_ms": 2
     }
   ]
 }

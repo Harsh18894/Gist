@@ -1,0 +1,185 @@
+{
+  "mode": "calibrate",
+  "sheet": "evals/phase21/results/benchmark3-answer-claim-review-completed.csv",
+  "judge_model": "gpt-6-luna",
+  "date": "2026-11-25",
+  "rows": 6,
+  "errors": [
+    {
+      "question_id": "P21-Q-007",
+      "error": "ProviderError",
+      "message": "OpenAI returned an incomplete answer."
+    }
+  ],
+  "estimated_cost_usd": 0.001498,
+  "status": "AI-assisted pre-review; not a human review.",
+  "judged": [
+    {
+      "question_id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source states that admins can filter portfolio views by project and date, and that the control appears above the chart."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source states that admins can filter portfolio views by project and date, and that the control appears above the chart.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 622,
+      "output_tokens": 94
+    },
+    {
+      "question_id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The cited release note explicitly says seats archived mid-cycle remain counted until the billing cycle closes. The answer directly addresses the question without adding unsupported claims."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited release note explicitly says seats archived mid-cycle remain counted until the billing cycle closes. The answer directly addresses the question without adding unsupported claims.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 628,
+      "output_tokens": 206
+    },
+    {
+      "question_id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "reason": "The sources report that one customer was told duplication was restricted to editors, but they do not establish all roles that can duplicate a shared starter. The answer accurately presents that report and notes the documentation does not specify the roles."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"acceptable\",\"reason\":\"The sources report that one customer was told duplication was restricted to editors, but they do not establish all roles that can duplicate a shared starter. The answer accurately presents that report and notes the documentation does not specify the roles.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 699,
+      "output_tokens": 562
+    },
+    {
+      "question_id": "P21-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source states that critical and direct-mention alerts are intended to remain timely while admins tune routine project alerts. The answer directly addresses the question."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source states that critical and direct-mention alerts are intended to remain timely while admins tune routine project alerts. The answer directly addresses the question.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 615,
+      "output_tokens": 82
+    },
+    {
+      "question_id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "The question asks for a customer, and the reference indicates several matching customer reports. The answer abstains instead of providing one."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"The question asks for a customer, and the reference indicates several matching customer reports. The answer abstains instead of providing one.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 558,
+      "output_tokens": 97
+    },
+    {
+      "question_id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The cited reports mention incomplete identity configuration and domain mapping, but neither reports a redirect setting preventing entry. The answer appropriately identifies that the specific claim is not established by these sources."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited reports mention incomplete identity configuration and domain mapping, but neither reports a redirect setting preventing entry. The answer appropriately identifies that the specific claim is not established by these sources.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 676,
+      "output_tokens": 420
+    }
+  ],
+  "agreement": {
+    "all_rows": {
+      "claims_supported": {
+        "agree": 6,
+        "of": 6,
+        "rate": 1.0
+      },
+      "correct_abstention": {
+        "agree": 5,
+        "of": 6,
+        "rate": 0.8333
+      },
+      "overall": {
+        "agree": 5,
+        "of": 6,
+        "rate": 0.8333
+      }
+    },
+    "rows_with_claims": {
+      "claims_supported": {
+        "agree": 5,
+        "of": 5,
+        "rate": 1.0
+      },
+      "correct_abstention": {
+        "agree": 4,
+        "of": 5,
+        "rate": 0.8
+      },
+      "overall": {
+        "agree": 4,
+        "of": 5,
+        "rate": 0.8
+      }
+    },
+    "poor_recall": "1/2",
+    "poor_precision": "1/1",
+    "judge_more_lenient": 1,
+    "judge_stricter": 0,
+    "parse_errors": 0
+  }
+}

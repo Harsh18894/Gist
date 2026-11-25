@@ -52,10 +52,11 @@ FACT_RULES: tuple[FactRule, ...] = (
         re.compile(r"\b(?:which|what|who)\s+(?:engineer|developer|person|teammate|employee|contractor|"
                    r"team member|staff member)s?\b|"
                    r"\bwho\b.*\b(?:caused|causes|broke|introduced|shipped|wrote|merged|is responsible|"
-                   r"was responsible)\b|\b(?:responsible for|to blame|at fault)\b"),
+                   r"was responsible|approved|approves|signed off|authorized|decided)\b|"
+                   r"\b(?:responsible for|to blame|at fault)\b"),
         # A named individual in a role, or a capitalized name (not sentence-initial) as the actor.
         re.compile(r"\b(?i:engineer|developer|teammate|employee|contractor)\s+[A-Z][a-z]+|"
-                   r"(?<=[a-z,;:] )[A-Z][a-z]+\s+(?:introduced|caused|broke|shipped|wrote|merged|owns|owned)\b"),
+                   r"(?<=[a-z,;:] )[A-Z][a-z]+\s+(?:introduced|caused|broke|shipped|wrote|merged|owns|owned|approved|authorized|decided|signed off)\b"),
         "No source identifies the responsible person.",
         case_sensitive_evidence=True),
     FactRule(
@@ -112,7 +113,13 @@ def _covered(terms: set[str], words: set[str]) -> int:
                if term in words or (term in _PROCESS_OF and PROCESS_SYNONYMS[_PROCESS_OF[term]] & words))
 
 
-def assess(question: str, hits: list[Hit]) -> EvidenceAssessment:
+def assess(question: str, hits: list[Hit], *, fact_rules_only: bool = False) -> EvidenceAssessment:
+    """Gate retrieved evidence before an answer.
+
+    `fact_rules_only` (paid mode) applies only the fact-type rules. A model then
+    judges topical fit and must declare a status and cite sources; the lexical
+    process and coverage rules stay for the no-model demo.
+    """
     if not hits:
         return EvidenceAssessment(False, "No sources matched the query and filters.", "no_hits")
     query = question.lower()
@@ -122,7 +129,7 @@ def assess(question: str, hits: list[Hit]) -> EvidenceAssessment:
     terms = {term for term in re.findall(r"[a-z0-9]+", query)
              if len(term) >= 3 and term not in STOPWORDS and term not in GENERIC}
 
-    for group in sorted({_PROCESS_OF[term] for term in terms if term in _PROCESS_OF}):
+    for group in (() if fact_rules_only else sorted({_PROCESS_OF[term] for term in terms if term in _PROCESS_OF})):
         if not any(PROCESS_SYNONYMS[group] & words for words in hit_words):
             return EvidenceAssessment(False, f"No source is about the requested {group} process.", "process")
 
@@ -132,6 +139,8 @@ def assess(question: str, hits: list[Hit]) -> EvidenceAssessment:
             if not any(rule.evidence.search(text) for text in texts):
                 return EvidenceAssessment(False, rule.reason, rule.name)
 
+    if fact_rules_only:
+        return EvidenceAssessment(True, "No fact-type rule blocks this question; the model must cite supporting sources.")
     if not terms:
         return EvidenceAssessment(False, "The question does not identify a checkable fact.", "no_terms")
     # A loose OR-term retrieval match can be a hard negative. Require at least

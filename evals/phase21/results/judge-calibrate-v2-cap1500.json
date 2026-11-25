@@ -1,0 +1,570 @@
+{
+  "mode": "calibrate",
+  "sheet": "evals/phase21/results/benchmark3-answer-claim-review-completed.csv",
+  "judge_model": "gpt-6-luna",
+  "date": "2026-11-25",
+  "rows": 24,
+  "errors": [],
+  "estimated_cost_usd": 0.0055759,
+  "status": "AI-assisted pre-review; not a human review.",
+  "judged": [
+    {
+      "question_id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "good",
+        "reason": "The cited release states that admins can filter portfolio views by project and date, and that the control appears above the chart."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"good\",\"reason\":\"The cited release states that admins can filter portfolio views by project and date, and that the control appears above the chart.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 622,
+      "output_tokens": 77
+    },
+    {
+      "question_id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source explicitly says seats archived mid-cycle remain counted until the billing cycle closes, supporting both claims in the answer."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source explicitly says seats archived mid-cycle remain counted until the billing cycle closes, supporting both claims in the answer.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 628,
+      "output_tokens": 100
+    },
+    {
+      "question_id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "reason": "The cited ticket supports the report that duplication was restricted to editors, while the PRD does not name specific roles. The answer appropriately notes that the sources do not establish all eligible roles, though it does not give a complete role list."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"acceptable\",\"reason\":\"The cited ticket supports the report that duplication was restricted to editors, while the PRD does not name specific roles. The answer appropriately notes that the sources do not establish all eligible roles, though it does not give a complete role list.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 699,
+      "output_tokens": 756
+    },
+    {
+      "question_id": "P21-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source states that critical and direct-mention alerts are intended to remain timely while admins tune routine project alerts. The answer accurately conveys this."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source states that critical and direct-mention alerts are intended to remain timely while admins tune routine project alerts. The answer accurately conveys this.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 615,
+      "output_tokens": 84
+    },
+    {
+      "question_id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "The question is answerable: the reference identifies customers whose reset link expired during a call. The response abstains instead of naming one."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"The question is answerable: the reference identifies customers whose reset link expired during a call. The response abstains instead of naming one.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 558,
+      "output_tokens": 104
+    },
+    {
+      "question_id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The cited reports mention incomplete identity configuration and a domain-mapping question, but neither mentions a redirect setting preventing entry. The answer accurately limits its conclusion to the evidence provided."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited reports mention incomplete identity configuration and a domain-mapping question, but neither mentions a redirect setting preventing entry. The answer accurately limits its conclusion to the evidence provided.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 676,
+      "output_tokens": 265
+    },
+    {
+      "question_id": "P21-Q-007",
+      "split": "development",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The cited sources only describe chart controls being buried and do not identify an empty-looking chart caused by a view setting. The answer accurately reports that the cited evidence is insufficient."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited sources only describe chart controls being buried and do not identify an empty-looking chart caused by a view setting. The answer accurately reports that the cited evidence is insufficient.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 877,
+      "output_tokens": 396
+    },
+    {
+      "question_id": "P21-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "good",
+        "reason": "The cited feedback says the import report showed success even though two columns were swapped, supporting the answer’s identification. The source provides no customer name, and the answer does not claim that the upload was one-time."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"good\",\"reason\":\"The cited feedback says the import report showed success even though two columns were swapped, supporting the answer’s identification. The source provides no customer name, and the answer does not claim that the upload was one-time.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 604,
+      "output_tokens": 362
+    },
+    {
+      "question_id": "P21-Q-009",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "Variation across users and browsers: Do another browser or teammate get the same result? [V2-SUP-0097]"
+        ],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "The cited browser-and-teammate comparison is from a source about a different issue, so it does not support applying that check to these sign-in failures. The other checks are supported, but the answer also omits the invitation-handoff distinction needed for a complete response."
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"Variation across users and browsers: Do another browser or teammate get the same result? [V2-SUP-0097]\"],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"The cited browser-and-teammate comparison is from a source about a different issue, so it does not support applying that check to these sign-in failures. The other checks are supported, but the answer also omits the invitation-handoff distinction needed for a complete response.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "poor",
+        "unsupported_claims": "Do another browser or teammate get the same result?"
+      },
+      "input_tokens": 960,
+      "output_tokens": 1365
+    },
+    {
+      "question_id": "P21-Q-010",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "First identify the ingestion path: a one-time spreadsheet upload points to a file-mapping issue, while a live CRM connection points to a sync issue.",
+          "Then compare the CRM with the Pulse project view: a record present in CRM but absent from the project view is evidence of a possible live-record gap."
+        ],
+        "correct_abstention": "yes",
+        "overall": "poor",
+        "reason": "The sources distinguish the spreadsheet-upload workflow from live CRM sync, but the cited example of a CRM record missing from the project view explicitly attributes the issue to a one-time spreadsheet upload, not a live-sync gap. The answer also omits that a successful sync indicator does not establish record completeness."
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"First identify the ingestion path: a one-time spreadsheet upload points to a file-mapping issue, while a live CRM connection points to a sync issue.\",\"Then compare the CRM with the Pulse project view: a record present in CRM but absent from the project view is evidence of a possible live-record gap.\"],\"correct_abstention\":\"yes\",\"overall\":\"poor\",\"reason\":\"The sources distinguish the spreadsheet-upload workflow from live CRM sync, but the cited example of a CRM record missing from the project view explicitly attributes the issue to a one-time spreadsheet upload, not a live-sync gap. The answer also omits that a successful sync indicator does not establish record completeness.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 838,
+      "output_tokens": 582
+    },
+    {
+      "question_id": "P21-Q-011",
+      "split": "development",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "good",
+        "reason": "The cited sources support that copying is governed by editor or workspace/department role restrictions. They provide no evidence about how users find or discover templates, and the answer appropriately says so."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"good\",\"reason\":\"The cited sources support that copying is governed by editor or workspace/department role restrictions. They provide no evidence about how users find or discover templates, and the answer appropriately says so.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": "duplication is restricted to editors"
+      },
+      "input_tokens": 806,
+      "output_tokens": 232
+    },
+    {
+      "question_id": "P21-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "acceptable",
+        "reason": "The sources support distinguishing slow behavior during a full-year view switch from a fast view with buried chart controls. The answer is slightly incomplete because it does not explicitly recommend checking whether a filter remains active."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"acceptable\",\"reason\":\"The sources support distinguishing slow behavior during a full-year view switch from a fast view with buried chart controls. The answer is slightly incomplete because it does not explicitly recommend checking whether a filter remains active.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 875,
+      "output_tokens": 559
+    },
+    {
+      "question_id": "P21-Q-013",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "reason": "The cited sources support the faster aggregation path, a customer’s relief about the large-workspace update, and that some customers still reported slow views. They do not describe reports from before the August change, and the answer appropriately identifies that gap."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"acceptable\",\"reason\":\"The cited sources support the faster aggregation path, a customer’s relief about the large-workspace update, and that some customers still reported slow views. They do not describe reports from before the August change, and the answer appropriately identifies that gap.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 712,
+      "output_tokens": 435
+    },
+    {
+      "question_id": "P21-Q-014",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source supports the reported scanning tradeoff and that two colleagues had different results, but does not identify them as separate workspaces or describe their outcomes. The answer appropriately states that the requested comparison cannot be established."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source supports the reported scanning tradeoff and that two colleagues had different results, but does not identify them as separate workspaces or describe their outcomes. The answer appropriately states that the requested comparison cannot be established.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 647,
+      "output_tokens": 435
+    },
+    {
+      "question_id": "P21-Q-015",
+      "split": "development",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "The question asks for a specific update promise and a later customer-described gap, and the reference indicates these are answerable. The answer abstains instead of addressing them."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"The question asks for a specific update promise and a later customer-described gap, and the reference indicates these are answerable. The answer abstains instead of addressing them.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 555,
+      "output_tokens": 157
+    },
+    {
+      "question_id": "P21-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "good",
+        "reason": "The release says admins can tune routine project alerts while critical and direct-mention alerts are intended to remain timely. The reports describe urgent alerts delayed after routine alerts were disabled, and support records mixed reproduction and follow-up results."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"good\",\"reason\":\"The release says admins can tune routine project alerts while critical and direct-mention alerts are intended to remain timely. The reports describe urgent alerts delayed after routine alerts were disabled, and support records mixed reproduction and follow-up results.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 957,
+      "output_tokens": 285
+    },
+    {
+      "question_id": "P21-Q-017",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "some",
+        "unsupported_claims": [
+          "customers have also reported ... stale sales tasks despite the connector appearing connected"
+        ],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "The release note explicitly says a successful connector status does not prove every record arrived, and V2-FB-0028 reports missing tasks while the connector looks connected. V2-FB-0220 reports a stale task but does not say the connector appeared connected, so that linkage is unsupported."
+      },
+      "raw": "{\"claims_supported\":\"some\",\"unsupported_claims\":[\"customers have also reported ... stale sales tasks despite the connector appearing connected\"],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"The release note explicitly says a successful connector status does not prove every record arrived, and V2-FB-0028 reports missing tasks while the connector looks connected. V2-FB-0220 reports a stale task but does not say the connector appeared connected, so that linkage is unsupported.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "acceptable",
+        "unsupported_claims": "customers have also reported missing or stale sales tasks despite the connector appearing connected"
+      },
+      "input_tokens": 745,
+      "output_tokens": 290
+    },
+    {
+      "question_id": "P21-Q-018",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "none",
+        "unsupported_claims": [
+          "“feedback was mixed”",
+          "“One customer liked the calmer inbox”",
+          "“[the customer] disliked finding out about an escalation in the next day’s digest”",
+          "“Other feedback complained of receiving 38 project emails”",
+          "“[the 38 emails were] contrary to the expectation of fewer messages”"
+        ],
+        "correct_abstention": "no",
+        "overall": "poor",
+        "reason": "No cited source texts were provided, so none of the factual claims can be verified. The answer gives a substantive conclusion rather than abstaining despite the lack of evidence."
+      },
+      "raw": "{\"claims_supported\":\"none\",\"unsupported_claims\":[\"“feedback was mixed”\",\"“One customer liked the calmer inbox”\",\"“[the customer] disliked finding out about an escalation in the next day’s digest”\",\"“Other feedback complained of receiving 38 project emails”\",\"“[the 38 emails were] contrary to the expectation of fewer messages”\"],\"correct_abstention\":\"no\",\"overall\":\"poor\",\"reason\":\"No cited source texts were provided, so none of the factual claims can be verified. The answer gives a substantive conclusion rather than abstaining despite the lack of evidence.\"}",
+      "human": {
+        "claims_supported": "none",
+        "correct_abstention": "yes",
+        "overall": "poor",
+        "unsupported_claims": "No—feedback was mixed. | One customer liked the calmer inbox, but also disliked finding out about an escalation in the next day’s digest | Other feedback complained of receiving 38 project emails, contrary to the expectation of fewer messages"
+      },
+      "input_tokens": 622,
+      "output_tokens": 268
+    },
+    {
+      "question_id": "P21-Q-019",
+      "split": "development",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The source says the update targeted faster large-workspace aggregations and that smaller workspaces may see little difference, but it does not establish how slow either group was beforehand. The answer appropriately identifies that limitation."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The source says the update targeted faster large-workspace aggregations and that smaller workspaces may see little difference, but it does not establish how slow either group was beforehand. The answer appropriately identifies that limitation.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "no",
+        "overall": "poor",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 672,
+      "output_tokens": 335
+    },
+    {
+      "question_id": "P21-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "no",
+        "overall": "good",
+        "reason": "The source says the customer could find the gallery while their teammate lacked permission to use it, directly supporting the answer. It also says only one of their multiple workspaces seemed affected."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"no\",\"overall\":\"good\",\"reason\":\"The source says the customer could find the gallery while their teammate lacked permission to use it, directly supporting the answer. It also says only one of their multiple workspaces seemed affected.\"}",
+      "human": {
+        "claims_supported": "some",
+        "correct_abstention": "yes",
+        "overall": "poor",
+        "unsupported_claims": "Yes."
+      },
+      "input_tokens": 642,
+      "output_tokens": 239
+    },
+    {
+      "question_id": "P21-Q-021",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The question asks for an exact revenue increase, and the reference indicates that no available evidence establishes one. The answer appropriately abstains."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The question asks for an exact revenue increase, and the reference indicates that no available evidence establishes one. The answer appropriately abstains.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 539,
+      "output_tokens": 127
+    },
+    {
+      "question_id": "P21-Q-022",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The cited sources provide no evidence identifying an engineer, and the answer appropriately abstains."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The cited sources provide no evidence identifying an engineer, and the answer appropriately abstains.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 538,
+      "output_tokens": 73
+    },
+    {
+      "question_id": "P21-Q-023",
+      "split": "development",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "n_a",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The answer appropriately abstains because the complete count across all Pulse customers is not available from the cited sources."
+      },
+      "raw": "{\"claims_supported\":\"n_a\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The answer appropriately abstains because the complete count across all Pulse customers is not available from the cited sources.\"}",
+      "human": {
+        "claims_supported": "n_a",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 543,
+      "output_tokens": 89
+    },
+    {
+      "question_id": "P21-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "judge": {
+        "claims_supported": "all",
+        "unsupported_claims": [],
+        "correct_abstention": "yes",
+        "overall": "good",
+        "reason": "The answer correctly declines to identify an approver; the cited sources mention feedback about digest defaults and an April change but name no approver."
+      },
+      "raw": "{\"claims_supported\":\"all\",\"unsupported_claims\":[],\"correct_abstention\":\"yes\",\"overall\":\"good\",\"reason\":\"The answer correctly declines to identify an approver; the cited sources mention feedback about digest defaults and an April change but name no approver.\"}",
+      "human": {
+        "claims_supported": "all",
+        "correct_abstention": "yes",
+        "overall": "good",
+        "unsupported_claims": ""
+      },
+      "input_tokens": 749,
+      "output_tokens": 201
+    }
+  ],
+  "agreement": {
+    "all_rows": {
+      "claims_supported": {
+        "agree": 21,
+        "of": 24,
+        "rate": 0.875
+      },
+      "correct_abstention": {
+        "agree": 12,
+        "of": 24,
+        "rate": 0.5
+      },
+      "overall": {
+        "agree": 16,
+        "of": 24,
+        "rate": 0.6667
+      }
+    },
+    "rows_with_claims": {
+      "claims_supported": {
+        "agree": 16,
+        "of": 19,
+        "rate": 0.8421
+      },
+      "correct_abstention": {
+        "agree": 7,
+        "of": 19,
+        "rate": 0.3684
+      },
+      "overall": {
+        "agree": 11,
+        "of": 19,
+        "rate": 0.5789
+      }
+    },
+    "poor_recall": "4/8",
+    "poor_precision": "4/6",
+    "judge_more_lenient": 6,
+    "judge_stricter": 2,
+    "parse_errors": 0
+  }
+}

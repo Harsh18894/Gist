@@ -90,7 +90,7 @@ class AskRequest(RagFilters):
 
 class AskResponse(BaseModel):
     answer: str
-    status: Literal["answered", "sources_only", "insufficient_evidence"]
+    status: Literal["answered", "partial", "sources_only", "insufficient_evidence"]
     mode: Literal["demo", "openai"]
     citations: list[SearchHit]
     retrieved_sources: list[SearchHit] = Field(default_factory=list)

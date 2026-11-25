@@ -1,0 +1,963 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-3-reviewed",
+  "split": "development",
+  "questions_sha256": "ba414f22890c0c8b01fcee3c56a2c1876d845bc17e0fbe80fdf36ae57784312c",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "embedding_model": null,
+  "candidate_config": {
+    "max_subqueries": 3,
+    "retrieval_depth": 40,
+    "keyword_weight": 1.0,
+    "vector_weight": 0.35,
+    "subquery_weight": 0.55,
+    "document_boost": 0.75,
+    "diversity_penalty": 0.0,
+    "focused_subqueries": true,
+    "evidence_quota": true,
+    "max_results": 20
+  },
+  "strategies": {
+    "keyword": {
+      "questions": 18,
+      "answerable_questions": 15,
+      "judged_hit_rate_at_5": 0.6667,
+      "mrr_at_5": 0.4967,
+      "reviewed_coverage_at_20": 0.4546,
+      "evidence_group_coverage_at_20": 0.6444,
+      "questions_with_no_relevant_in_top20": 3,
+      "questions_with_incomplete_groups_at_20": 8,
+      "hard_negative_in_top5_questions": 3,
+      "duplicate_source_results": 0,
+      "subqueries_total": 0,
+      "retrieval_latency_p50_ms": 0.909,
+      "retrieval_latency_p95_ms": 1.108,
+      "by_category": {
+        "contradictory": {
+          "questions": 3,
+          "hit_at_5": 0.6667,
+          "evidence_group_coverage_at_20": 0.5
+        },
+        "direct": {
+          "questions": 3,
+          "hit_at_5": 1,
+          "evidence_group_coverage_at_20": 1.0
+        },
+        "multi_source": {
+          "questions": 3,
+          "hit_at_5": 0.3333,
+          "evidence_group_coverage_at_20": 0.7222
+        },
+        "semantic": {
+          "questions": 3,
+          "hit_at_5": 0.3333,
+          "evidence_group_coverage_at_20": 0.3333
+        },
+        "temporal": {
+          "questions": 3,
+          "hit_at_5": 1,
+          "evidence_group_coverage_at_20": 0.6667
+        }
+      }
+    }
+  },
+  "query_embeddings": [],
+  "per_question": {
+    "keyword": [
+      {
+        "question_id": "P21-Q-001",
+        "category": "direct",
+        "latency_ms": 1.322,
+        "retrieved_source_ids": [
+          "release-02",
+          "V2-FB-0381",
+          "release-08",
+          "V2-FB-0153",
+          "V2-FB-0375",
+          "V2-SUP-0080",
+          "V2-FB-0057",
+          "V2-FB-0095",
+          "V2-SUP-0006",
+          "V2-FB-0141",
+          "V2-FB-0312",
+          "V2-FB-0189",
+          "prd-06",
+          "V2-SUP-0087",
+          "V2-FB-0272",
+          "V2-SUP-0046",
+          "V2-FB-0139",
+          "V2-FB-0071",
+          "V2-FB-0031",
+          "V2-FB-0165"
+        ],
+        "top5_kinds": [
+          "release_note",
+          "feedback",
+          "release_note",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 1.0,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "release-02"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-02"
+        ]
+      },
+      {
+        "question_id": "P21-Q-002",
+        "category": "direct",
+        "latency_ms": 0.607,
+        "retrieved_source_ids": [
+          "release-04",
+          "V2-FB-0250",
+          "V2-SUP-0105",
+          "prd-04",
+          "V2-FB-0370",
+          "V2-FB-0178",
+          "V2-FB-0316",
+          "V2-FB-0310",
+          "V2-FB-0322",
+          "V2-FB-0394",
+          "V2-FB-0070",
+          "V2-FB-0121",
+          "V2-FB-0130",
+          "V2-FB-0253",
+          "V2-FB-0046",
+          "V2-FB-0382",
+          "V2-FB-0292",
+          "V2-FB-0202",
+          "V2-SUP-0019",
+          "V2-FB-0058"
+        ],
+        "top5_kinds": [
+          "release_note",
+          "feedback",
+          "support_ticket",
+          "prd",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 0.5,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "release-04"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-04"
+        ]
+      },
+      {
+        "question_id": "P21-Q-003",
+        "category": "direct",
+        "latency_ms": 1.048,
+        "retrieved_source_ids": [
+          "prd-06",
+          "release-06",
+          "V2-FB-0228",
+          "V2-FB-0012",
+          "V2-FB-0168",
+          "V2-FB-0240",
+          "V2-FB-0396",
+          "V2-SUP-0018",
+          "V2-SUP-0017",
+          "V2-FB-0108",
+          "V2-FB-0311",
+          "V2-FB-0366",
+          "V2-SUP-0069",
+          "V2-SUP-0058",
+          "V2-SUP-0023",
+          "V2-SUP-0116",
+          "V2-SUP-0107",
+          "V2-SUP-0014",
+          "release-03",
+          "V2-FB-0232"
+        ],
+        "top5_kinds": [
+          "prd",
+          "release_note",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 0.5,
+        "first_relevant_rank_at_20": 2,
+        "reviewed_coverage_at_20": 1.0,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "release-06"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-06"
+        ]
+      },
+      {
+        "question_id": "P21-Q-005",
+        "category": "semantic",
+        "latency_ms": 0.88,
+        "retrieved_source_ids": [
+          "V2-FB-0089",
+          "prd-06",
+          "V2-FB-0185",
+          "V2-SUP-0012",
+          "V2-SUP-0115",
+          "V2-FB-0197",
+          "V2-FB-0080",
+          "V2-SUP-0047",
+          "V2-FB-0357",
+          "V2-FB-0115",
+          "V2-FB-0296",
+          "V2-FB-0392",
+          "V2-SUP-0042",
+          "V2-FB-0212",
+          "V2-FB-0048",
+          "V2-FB-0056",
+          "V2-SUP-0092",
+          "V2-FB-0308",
+          "V2-FB-0182",
+          "V2-FB-0343"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "prd",
+          "feedback",
+          "support_ticket",
+          "support_ticket"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 0.5,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [],
+        "documents_relevant_retrieved_at_20": []
+      },
+      {
+        "question_id": "P21-Q-006",
+        "category": "semantic",
+        "latency_ms": 0.892,
+        "retrieved_source_ids": [
+          "V2-FB-0243",
+          "V2-FB-0385",
+          "V2-FB-0395",
+          "V2-SUP-0018",
+          "V2-FB-0023",
+          "V2-FB-0041",
+          "V2-FB-0150",
+          "V2-FB-0299",
+          "V2-FB-0179",
+          "V2-SUP-0090",
+          "V2-FB-0311",
+          "V2-SUP-0058",
+          "V2-FB-0159",
+          "V2-FB-0323",
+          "V2-SUP-0002",
+          "V2-FB-0006",
+          "V2-FB-0056",
+          "V2-FB-0003",
+          "V2-FB-0027",
+          "V2-FB-0309"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "support_ticket",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 0,
+        "mrr_at_5": 0.0,
+        "first_relevant_rank_at_20": null,
+        "reviewed_coverage_at_20": 0.0,
+        "evidence_group_coverage_at_20": 0.0,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [],
+        "documents_relevant_retrieved_at_20": []
+      },
+      {
+        "question_id": "P21-Q-007",
+        "category": "semantic",
+        "latency_ms": 0.863,
+        "retrieved_source_ids": [
+          "V2-FB-0381",
+          "V2-FB-0357",
+          "V2-FB-0153",
+          "V2-FB-0201",
+          "V2-FB-0375",
+          "V2-FB-0129",
+          "V2-SUP-0080",
+          "V2-FB-0141",
+          "V2-FB-0057",
+          "V2-FB-0071",
+          "V2-SUP-0092",
+          "V2-FB-0165",
+          "V2-SUP-0008",
+          "V2-SUP-0006",
+          "V2-SUP-0046",
+          "V2-FB-0091",
+          "V2-FB-0055",
+          "V2-FB-0275",
+          "V2-FB-0223",
+          "V2-FB-0048"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 0,
+        "mrr_at_5": 0.0,
+        "first_relevant_rank_at_20": null,
+        "reviewed_coverage_at_20": 0.0,
+        "evidence_group_coverage_at_20": 0.0,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [],
+        "documents_relevant_retrieved_at_20": []
+      },
+      {
+        "question_id": "P21-Q-009",
+        "category": "multi_source",
+        "latency_ms": 1.04,
+        "retrieved_source_ids": [
+          "V2-FB-0042",
+          "V2-FB-0054",
+          "V2-FB-0210",
+          "V2-FB-0390",
+          "V2-FB-0114",
+          "V2-SUP-0097",
+          "prd-05",
+          "V2-SUP-0086",
+          "V2-SUP-0024",
+          "V2-SUP-0101",
+          "prd-02",
+          "release-01",
+          "V2-SUP-0009",
+          "V2-SUP-0099",
+          "V2-FB-0082",
+          "V2-FB-0233",
+          "V2-FB-0245",
+          "V2-FB-0253",
+          "V2-FB-0001",
+          "V2-FB-0110"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 0,
+        "mrr_at_5": 0.0,
+        "first_relevant_rank_at_20": 12,
+        "reviewed_coverage_at_20": 0.1429,
+        "evidence_group_coverage_at_20": 0.6667,
+        "missed_evidence_groups": [
+          3
+        ],
+        "documents_relevant": [
+          "prd-01",
+          "release-01"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-01"
+        ]
+      },
+      {
+        "question_id": "P21-Q-010",
+        "category": "multi_source",
+        "latency_ms": 0.983,
+        "retrieved_source_ids": [
+          "V2-FB-0005",
+          "prd-03",
+          "V2-FB-0100",
+          "V2-FB-0281",
+          "V2-FB-0244",
+          "V2-FB-0268",
+          "V2-FB-0052",
+          "V2-SUP-0027",
+          "V2-SUP-0064",
+          "V2-FB-0342",
+          "V2-FB-0257",
+          "release-05",
+          "V2-FB-0018",
+          "V2-FB-0233",
+          "V2-FB-0245",
+          "V2-SUP-0025",
+          "V2-FB-0304",
+          "V2-FB-0317",
+          "V2-FB-0389",
+          "V2-FB-0328"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "prd",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 0.4444,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "prd-03"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "prd-03"
+        ]
+      },
+      {
+        "question_id": "P21-Q-011",
+        "category": "multi_source",
+        "latency_ms": 0.992,
+        "retrieved_source_ids": [
+          "V2-FB-0180",
+          "V2-SUP-0011",
+          "V2-FB-0291",
+          "V2-FB-0045",
+          "V2-SUP-0051",
+          "V2-FB-0315",
+          "V2-SUP-0066",
+          "prd-04",
+          "V2-FB-0265",
+          "release-06",
+          "V2-SUP-0054",
+          "V2-FB-0136",
+          "V2-FB-0363",
+          "V2-FB-0060",
+          "V2-SUP-0023",
+          "V2-FB-0228",
+          "V2-SUP-0016",
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0156"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "support_ticket",
+          "feedback",
+          "feedback",
+          "support_ticket"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 0,
+        "mrr_at_5": 0.0,
+        "first_relevant_rank_at_20": 10,
+        "reviewed_coverage_at_20": 0.2222,
+        "evidence_group_coverage_at_20": 0.5,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [
+          "release-06"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-06"
+        ]
+      },
+      {
+        "question_id": "P21-Q-013",
+        "category": "temporal",
+        "latency_ms": 1.058,
+        "retrieved_source_ids": [
+          "V2-SUP-0003",
+          "V2-FB-0044",
+          "V2-FB-0368",
+          "release-07",
+          "prd-02",
+          "release-02",
+          "V2-SUP-0095",
+          "V2-FB-0113",
+          "V2-SUP-0053",
+          "V2-FB-0008",
+          "V2-FB-0075",
+          "release-01",
+          "V2-FB-0094",
+          "V2-FB-0059",
+          "V2-FB-0162",
+          "V2-FB-0104",
+          "V2-SUP-0019",
+          "V2-SUP-0111",
+          "V2-SUP-0057",
+          "V2-FB-0279"
+        ],
+        "top5_kinds": [
+          "support_ticket",
+          "feedback",
+          "feedback",
+          "release_note",
+          "prd"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 0.5,
+        "first_relevant_rank_at_20": 2,
+        "reviewed_coverage_at_20": 0.6,
+        "evidence_group_coverage_at_20": 0.6667,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [
+          "release-07"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-07"
+        ]
+      },
+      {
+        "question_id": "P21-Q-014",
+        "category": "temporal",
+        "latency_ms": 1.07,
+        "retrieved_source_ids": [
+          "V2-FB-0087",
+          "V2-FB-0183",
+          "V2-FB-0270",
+          "release-03",
+          "V2-FB-0003",
+          "V2-FB-0162",
+          "V2-FB-0014",
+          "V2-SUP-0074",
+          "V2-FB-0261",
+          "V2-FB-0267",
+          "V2-FB-0051",
+          "V2-SUP-0046",
+          "V2-FB-0222",
+          "V2-FB-0053",
+          "V2-FB-0079",
+          "V2-FB-0375",
+          "V2-SUP-0021",
+          "V2-FB-0365",
+          "V2-FB-0350",
+          "release-01"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "release_note",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 0.25,
+        "first_relevant_rank_at_20": 4,
+        "reviewed_coverage_at_20": 0.1429,
+        "evidence_group_coverage_at_20": 0.3333,
+        "missed_evidence_groups": [
+          2,
+          3
+        ],
+        "documents_relevant": [
+          "release-03"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-03"
+        ]
+      },
+      {
+        "question_id": "P21-Q-015",
+        "category": "temporal",
+        "latency_ms": 0.707,
+        "retrieved_source_ids": [
+          "V2-FB-0148",
+          "V2-FB-0088",
+          "V2-FB-0067",
+          "V2-FB-0064",
+          "release-05",
+          "V2-FB-0376",
+          "release-01",
+          "V2-SUP-0003",
+          "V2-FB-0028",
+          "V2-SUP-0111",
+          "V2-FB-0059",
+          "V2-FB-0280",
+          "V2-FB-0221",
+          "V2-FB-0044",
+          "release-07",
+          "V2-FB-0115",
+          "V2-FB-0107",
+          "V2-FB-0014",
+          "release-03",
+          "V2-SUP-0116"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback",
+          "release_note"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 1.0,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "release-05"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-05"
+        ]
+      },
+      {
+        "question_id": "P21-Q-017",
+        "category": "contradictory",
+        "latency_ms": 0.891,
+        "retrieved_source_ids": [
+          "release-05",
+          "V2-FB-0233",
+          "V2-FB-0245",
+          "V2-FB-0317",
+          "V2-FB-0389",
+          "V2-FB-0342",
+          "V2-FB-0353",
+          "V2-FB-0220",
+          "V2-FB-0257",
+          "V2-FB-0276",
+          "V2-FB-0388",
+          "V2-FB-0319",
+          "V2-FB-0253",
+          "V2-FB-0379",
+          "V2-FB-0232",
+          "V2-FB-0100",
+          "V2-FB-0028",
+          "V2-FB-0390",
+          "V2-SUP-0111",
+          "V2-FB-0076"
+        ],
+        "top5_kinds": [
+          "release_note",
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 1.0,
+        "first_relevant_rank_at_20": 1,
+        "reviewed_coverage_at_20": 0.6667,
+        "evidence_group_coverage_at_20": 1.0,
+        "missed_evidence_groups": [],
+        "documents_relevant": [
+          "prd-03",
+          "release-05"
+        ],
+        "documents_relevant_retrieved_at_20": [
+          "release-05"
+        ]
+      },
+      {
+        "question_id": "P21-Q-018",
+        "category": "contradictory",
+        "latency_ms": 0.927,
+        "retrieved_source_ids": [
+          "V2-FB-0103",
+          "V2-FB-0355",
+          "V2-FB-0367",
+          "release-03",
+          "V2-FB-0318",
+          "V2-SUP-0030",
+          "V2-FB-0234",
+          "V2-FB-0102",
+          "V2-FB-0354",
+          "V2-FB-0330",
+          "V2-FB-0162",
+          "V2-FB-0126",
+          "V2-FB-0331",
+          "V2-SUP-0077",
+          "V2-FB-0024",
+          "V2-FB-0270",
+          "V2-SUP-0022",
+          "V2-SUP-0069",
+          "V2-SUP-0057",
+          "V2-FB-0132"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "release_note",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 1,
+        "mrr_at_5": 0.2,
+        "first_relevant_rank_at_20": 5,
+        "reviewed_coverage_at_20": 0.6,
+        "evidence_group_coverage_at_20": 0.5,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [],
+        "documents_relevant_retrieved_at_20": []
+      },
+      {
+        "question_id": "P21-Q-019",
+        "category": "contradictory",
+        "latency_ms": 1.011,
+        "retrieved_source_ids": [
+          "release-07",
+          "V2-FB-0044",
+          "V2-SUP-0003",
+          "V2-FB-0368",
+          "prd-02",
+          "V2-SUP-0095",
+          "V2-FB-0008",
+          "release-02",
+          "V2-FB-0104",
+          "V2-FB-0032",
+          "V2-SUP-0093",
+          "V2-SUP-0067",
+          "V2-SUP-0035",
+          "V2-FB-0002",
+          "V2-SUP-0092",
+          "V2-SUP-0049",
+          "V2-SUP-0008",
+          "V2-FB-0026",
+          "V2-FB-0357",
+          "V2-FB-0053"
+        ],
+        "top5_kinds": [
+          "release_note",
+          "feedback",
+          "support_ticket",
+          "feedback",
+          "prd"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [],
+        "hard_negatives_above_first_relevant": [],
+        "partial_sources_in_top5": [],
+        "answerable": true,
+        "hit_at_5": 0,
+        "mrr_at_5": 0.0,
+        "first_relevant_rank_at_20": null,
+        "reviewed_coverage_at_20": 0.0,
+        "evidence_group_coverage_at_20": 0.0,
+        "missed_evidence_groups": [
+          1
+        ],
+        "documents_relevant": [],
+        "documents_relevant_retrieved_at_20": []
+      },
+      {
+        "question_id": "P21-Q-021",
+        "category": "unanswerable",
+        "latency_ms": 0.8,
+        "retrieved_source_ids": [
+          "release-07",
+          "V2-FB-0333",
+          "V2-SUP-0020",
+          "prd-02",
+          "release-02",
+          "V2-SUP-0095",
+          "V2-FB-0008",
+          "V2-FB-0332",
+          "V2-FB-0117",
+          "V2-SUP-0067",
+          "V2-FB-0044",
+          "V2-FB-0115",
+          "V2-FB-0104",
+          "V2-FB-0014",
+          "release-03",
+          "V2-FB-0176",
+          "V2-FB-0225",
+          "V2-SUP-0003",
+          "V2-SUP-0116",
+          "V2-FB-0343"
+        ],
+        "top5_kinds": [
+          "release_note",
+          "feedback",
+          "support_ticket",
+          "prd",
+          "release_note"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [
+          "release-07"
+        ],
+        "hard_negatives_above_first_relevant": [
+          "V2-FB-0044",
+          "release-07"
+        ],
+        "partial_sources_in_top5": [],
+        "answerable": false
+      },
+      {
+        "question_id": "P21-Q-022",
+        "category": "unanswerable",
+        "latency_ms": 0.793,
+        "retrieved_source_ids": [
+          "V2-FB-0207",
+          "V2-FB-0305",
+          "V2-FB-0351",
+          "V2-FB-0063",
+          "V2-FB-0137",
+          "V2-FB-0003",
+          "V2-FB-0303",
+          "V2-SUP-0074",
+          "V2-FB-0267",
+          "V2-FB-0051",
+          "V2-FB-0087",
+          "V2-SUP-0046",
+          "V2-FB-0375",
+          "V2-SUP-0032",
+          "V2-FB-0386",
+          "V2-FB-0155",
+          "V2-FB-0357",
+          "V2-FB-0090",
+          "V2-SUP-0089",
+          "V2-SUP-0117"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback",
+          "feedback"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [
+          "V2-FB-0063"
+        ],
+        "hard_negatives_above_first_relevant": [
+          "V2-FB-0063"
+        ],
+        "partial_sources_in_top5": [],
+        "answerable": false
+      },
+      {
+        "question_id": "P21-Q-023",
+        "category": "unanswerable",
+        "latency_ms": 0.627,
+        "retrieved_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0127",
+          "V2-FB-0163",
+          "prd-05",
+          "V2-SUP-0010",
+          "V2-SUP-0102",
+          "V2-FB-0121",
+          "V2-SUP-0068",
+          "V2-FB-0200",
+          "V2-FB-0002",
+          "V2-SUP-0093",
+          "release-08",
+          "V2-FB-0349",
+          "V2-SUP-0049",
+          "V2-FB-0026",
+          "V2-FB-0256",
+          "V2-FB-0234",
+          "V2-FB-0374",
+          "V2-FB-0128",
+          "V2-FB-0364"
+        ],
+        "top5_kinds": [
+          "feedback",
+          "feedback",
+          "feedback",
+          "prd",
+          "support_ticket"
+        ],
+        "duplicate_source_ids": 0,
+        "hard_negatives_in_top5": [
+          "V2-FB-0019"
+        ],
+        "hard_negatives_above_first_relevant": [
+          "V2-FB-0019"
+        ],
+        "partial_sources_in_top5": [],
+        "answerable": false
+      }
+    ]
+  },
+  "limitations": "Development split only. Relevance labels are owner-reviewed, non-exhaustive subsets, so full Recall@K is not reported. Phase 2.1 subquery vocabulary was written while older v2 development questions were visible; candidate scores may be optimistic. Retrieval only; no answers were generated."
+}

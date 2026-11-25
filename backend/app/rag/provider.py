@@ -30,6 +30,13 @@ class ProviderError(Exception):
     pass
 
 
+class PaidRequestRejected(PaidApiDisabled, ValueError):
+    """A paid request refused locally before any spend (size limits, invalid cache).
+
+    Also a `ValueError` so existing callers that caught `ValueError` keep working.
+    """
+
+
 def usage_summary(db: sqlite3.Connection) -> dict:
     row = db.execute("""SELECT COUNT(*), COALESCE(SUM(input_tokens),0),
         COALESCE(SUM(output_tokens),0), COALESCE(SUM(estimated_cost_usd),0),
@@ -64,16 +71,16 @@ def _post(db: sqlite3.Connection, endpoint: str, model: str, body: dict,
           request_key: str | None = None) -> tuple[dict, dict]:
     key = _guard(db)
     if endpoint not in {"embeddings", "responses"}:
-        raise ValueError("Unsupported paid endpoint")
+        raise PaidRequestRejected("Unsupported paid endpoint")
     serialized = json.dumps(body, ensure_ascii=True)
     byte_limit = 25_000 if endpoint == "embeddings" else 12_000
     if len(serialized.encode()) > byte_limit:
-        raise ValueError(f"Paid request exceeds the {byte_limit}-byte limit")
+        raise PaidRequestRejected(f"Paid request exceeds the {byte_limit}-byte limit")
     if endpoint == "embeddings" and (not isinstance(body.get("input"), list) or len(body["input"]) > 16 or
                                       any(len(value.encode()) > 8000 for value in body["input"])):
-        raise ValueError("Embedding request exceeds the batch or per-text limit")
+        raise PaidRequestRejected("Embedding request exceeds the batch or per-text limit")
     if endpoint == "responses" and (not isinstance(body.get("max_output_tokens"), int) or body["max_output_tokens"] > 350):
-        raise ValueError("Generation is limited to 350 output tokens")
+        raise PaidRequestRejected("Generation is limited to 350 output tokens")
     # Byte count bounds token count for this JSON transport conservatively;
     # reserve the larger of that upper-cost estimate and five cents.
     output_limit = body.get("max_output_tokens", 0)
@@ -130,14 +137,18 @@ def _post(db: sqlite3.Connection, endpoint: str, model: str, body: dict,
 
 def embed(db: sqlite3.Connection, texts: list[str], *, request_key: str | None = None) -> tuple[list[np.ndarray], dict]:
     if not texts or len(texts) > 16:
-        raise ValueError("Embedding batches must contain 1–16 texts.")
+        raise PaidRequestRejected("Embedding batches must contain 1–16 texts.")
     payload, usage = _post(db, "embeddings", EMBED_MODEL,
                            {"model": EMBED_MODEL, "input": texts, "encoding_format": "float"},
                            EMBED_USD_PER_M, request_key=request_key)
-    items = sorted(payload.get("data", []), key=lambda item: item["index"])
-    if len(items) != len(texts):
-        raise ProviderError("Embedding response did not contain every input.")
-    vectors = [np.asarray(item["embedding"], dtype=np.float32) for item in items]
+    # The call is already billed and reconciled; a malformed body is a provider error.
+    try:
+        items = sorted(payload.get("data", []), key=lambda item: item["index"])
+        if len(items) != len(texts):
+            raise ProviderError("Embedding response did not contain every input.")
+        vectors = [np.asarray(item["embedding"], dtype=np.float32) for item in items]
+    except (KeyError, TypeError, AttributeError, ValueError) as exc:
+        raise ProviderError("OpenAI returned a malformed embedding response.") from exc
     if any(vector.ndim != 1 or len(vector) == 0 or not np.isfinite(vector).all() for vector in vectors) or len({len(vector) for vector in vectors}) != 1:
         raise ProviderError("Embedding response contained an invalid vector.")
     return vectors, usage
@@ -167,7 +178,7 @@ def embed_query_cached(db: sqlite3.Connection, question: str) -> tuple[np.ndarra
         if len(vector) == cached[0] and len(vector) > 0 and np.isfinite(vector).all():
             return vector.copy(), {"input_tokens": 0, "output_tokens": 0,
                                    "estimated_cost_usd": 0.0, "latency_ms": 0, "cache_hit": True}
-        raise ValueError("Cached query vector is invalid; refusing a duplicate paid request.")
+        raise PaidRequestRejected("Cached query vector is invalid; refusing a duplicate paid request.")
     vectors, usage = embed(db, [question], request_key=f"query:{cache_key}")
     vector = vectors[0]
     with db:
@@ -219,9 +230,12 @@ def complete(db: sqlite3.Connection, question: str, evidence: list[tuple[str, st
                             "max_output_tokens": 350, "store": False}, input_price, output_price)
     if payload.get("status", "completed") != "completed":
         raise ProviderError("OpenAI returned an incomplete answer.")
-    parts = [content.get("text", "") for item in payload.get("output", []) if item.get("type") == "message"
-             for content in item.get("content", []) if content.get("type") == "output_text"]
-    answer = "\n".join(parts).strip()
+    try:
+        parts = [content.get("text", "") for item in payload.get("output", []) if item.get("type") == "message"
+                 for content in item.get("content", []) if content.get("type") == "output_text"]
+        answer = "\n".join(parts).strip()
+    except (KeyError, TypeError, AttributeError) as exc:
+        raise ProviderError("OpenAI returned a malformed answer response.") from exc
     if not answer:
         raise ProviderError("OpenAI returned no text answer.")
     return answer, usage

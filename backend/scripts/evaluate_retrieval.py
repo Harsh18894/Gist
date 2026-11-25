@@ -8,13 +8,14 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.database import connection  # noqa: E402
+from app.dataset import default_db_path  # noqa: E402
 from app.rag.retrieval import Filters, hits_for_ids, hybrid_search, keyword_search  # noqa: E402
 
 
 def evaluate_v1() -> dict:
     questions = json.loads((ROOT / "evals/questions.json").read_text())["questions"]
     results: dict[str, dict] = {}
-    with connection(ROOT / "backend/gist.sqlite3") as db:
+    with connection(default_db_path("v1", ROOT)) as db:
         has_meta = db.execute("SELECT name FROM sqlite_master WHERE name='dataset_meta'").fetchone()
         version = db.execute("SELECT value FROM dataset_meta WHERE key='version'").fetchone() if has_meta else None
         if version and version[0] != "v1":

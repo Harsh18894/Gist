@@ -1,5 +1,6 @@
 """Gist Phase 1 read-only HTTP API."""
 from datetime import date
+import logging
 import os
 from typing import Literal
 
@@ -10,18 +11,47 @@ from fastapi.responses import JSONResponse
 
 from .config import cors_origin
 from .database import connection
+from .errors import GistError
 from .schemas import (Area, AskRequest, AskResponse, Category, ErrorResponse, Feedback,
                       Page, SearchHit, Segment, SourceDetail, Stats, UsageSummary)
 from .services import get_record, get_stats, list_records
 from .rag.ingest import DEMO_MODEL
-from .rag.provider import PaidApiDisabled, ProviderError, usage_summary
+from .rag.provider import PaidApiDisabled, PaidRequestRejected, ProviderError, usage_summary
 from .rag.provider import EMBED_MODEL, DEFAULT_LLM_MODEL
 from .rag.retrieval import Filters, hits_for_ids, hybrid_search, keyword_search, semantic_search
 from .rag.ingest import demo_vector
 from .rag.service import answer, citation
 
-app = FastAPI(title="Gist API", description="Synthetic Pulse product intelligence data", version="0.1.0")
+logger = logging.getLogger("gist.api")
+
+
+def _error(status: int, code: str, message: str) -> JSONResponse:
+    return JSONResponse(status_code=status, content={"error": {"code": code, "message": message}})
+
+
+app = FastAPI(title="Gist API", description="Synthetic Pulse product intelligence data", version="0.1.0",
+              responses={500: {"model": ErrorResponse}, 503: {"model": ErrorResponse}})
+
+
+# Registered BEFORE CORSMiddleware: the middleware added last is outermost, so
+# CORS wraps this and browsers can read the error body. An
+# exception_handler(Exception) would run outside CORS instead.
+@app.middleware("http")
+async def unexpected_errors(request: Request, call_next):
+    try:
+        return await call_next(request)
+    except Exception:  # noqa: BLE001 - last-resort boundary; details go to the log only
+        logger.exception("Unhandled error on %s %s", request.method, request.url.path)
+        return _error(500, "internal_error", "Gist hit an unexpected error. Check the API logs.")
+
+
 app.add_middleware(CORSMiddleware, allow_origins=[cors_origin()], allow_methods=["GET", "POST"], allow_headers=["*"])
+
+
+@app.exception_handler(GistError)
+async def gist_error(_request: Request, error: GistError) -> JSONResponse:
+    logger.warning("%s: %s", error.code, error)
+    return _error(error.status, error.code, error.public_message)
 
 
 @app.exception_handler(RequestValidationError)
@@ -86,6 +116,8 @@ def ask(request: AskRequest) -> AskResponse | JSONResponse:
     try:
         with connection() as db:
             return answer(db, request)
+    except PaidRequestRejected as exc:  # subclass of PaidApiDisabled: must come first
+        return _error(422, "paid_request_rejected", str(exc))
     except PaidApiDisabled as exc:
         return JSONResponse(status_code=403, content={"error": {"code": "paid_api_disabled", "message": str(exc)}})
     except ProviderError:

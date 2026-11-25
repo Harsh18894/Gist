@@ -8,9 +8,10 @@ from pathlib import Path
 
 from freeze_v2_split import ROOT, source_hash, verify
 from audit_v2 import audit
+from app.dataset import default_db_path, source_dir
 
-DATA = ROOT / "data/v2"
-DB = ROOT / "backend/gist-v2.sqlite3"
+DATA = source_dir("v2", ROOT)
+DB = default_db_path("v2", ROOT)
 REQUIRED_FEEDBACK = {"id", "timestamp", "customer_segment", "subscription_tier", "product_area",
                      "feedback_channel", "feedback_text", "sentiment", "issue_category", "related_feature"}
 REQUIRED_TICKET = {"id", "timestamp", "customer_segment", "subscription_tier", "product_area",
@@ -98,7 +99,7 @@ def preflight() -> dict:
     quality = audit()
     if quality["timeline_errors"]: issues.append("Dataset timeline errors detected.")
     approximate_tokens = max(index["approx_embedding_tokens_characters_divided_by_4"], index["approx_embedding_tokens_words_times_1_5"])
-    v1_db = ROOT / "backend/gist.sqlite3"
+    v1_db = default_db_path("v1", ROOT)
     v1_summary: dict = {"database_exists": v1_db.exists(), "feedback_source_exists": (ROOT / "data/feedback.jsonl").is_file()}
     if v1_db.exists():
         with sqlite3.connect(f"file:{v1_db}?mode=ro", uri=True) as old:

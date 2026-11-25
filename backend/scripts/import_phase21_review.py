@@ -14,13 +14,17 @@ import json
 import re
 import shutil
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "backend"))
+from app.dataset import fingerprint, source_dir, source_files  # noqa: E402
+
 DRAFT = ROOT / "evals/phase21/benchmark-v2-draft.json"
-DATA = ROOT / "data/v2"
+DATA = source_dir("v2", ROOT)
 OUT = ROOT / "evals/phase21/reviewed-v3"
 BENCHMARK_VERSION = "gist-phase2.1-benchmark-3-reviewed"
 
@@ -41,12 +45,11 @@ def sha256_bytes(value: bytes) -> str:
 
 def corpus(data: Path = DATA) -> tuple[set[str], str]:
     """Return v2 source IDs and the same fingerprint the seeder records."""
-    files = [data / "feedback.jsonl", data / "support-tickets.jsonl",
-             *sorted((data / "prds").glob("*.md")), *sorted((data / "release-notes").glob("*.md"))]
+    files = source_files(data)
     ids = {json.loads(line)["id"] for name in ("feedback.jsonl", "support-tickets.jsonl")
            for line in (data / name).read_text().splitlines() if line.strip()}
     ids |= {path.stem for path in files if path.suffix == ".md"}
-    return ids, sha256_bytes(b"".join(path.read_bytes() for path in files))
+    return ids, fingerprint(files)
 
 
 def _base(header: str) -> str:
@@ -86,8 +89,13 @@ def _ai_role(row: dict[str, str]) -> str:
         return "hard_negative"
     if row.get("was_ai_reviewed_supporting_source") == "yes":
         return "supports"
-    if "partial" in row.get("ai_source_classification", ""):
+    classification = row.get("ai_source_classification", "")
+    if "partial" in classification:
         return "partial"
+    if classification.startswith("not_individually_classified"):
+        return "unclassified"  # The AI offered no verdict, so there is nothing to disagree with.
+    if classification.startswith("ambiguous"):
+        return "unclear"
     return "unsupported"
 
 
@@ -242,7 +250,7 @@ def _question(row: dict[str, str], draft_question: dict, sources: list[dict[str,
                 groups.setdefault(number, []).append(sid)
         buckets[verdict].append(sid)
         ai_role = _ai_role(source) if source.get("was_ai_reviewed_supporting_source") else None
-        if ai_role and ai_role != verdict:
+        if ai_role and ai_role != "unclassified" and ai_role != verdict:
             review.disagreements.append({"question_id": qid, "split": draft_question["split"],
                                          "source_id": sid, "ai_proposal": ai_role, "human_final": verdict})
         if ai_role == "hard_negative" and verdict != "hard_negative":
@@ -300,6 +308,43 @@ def _question(row: dict[str, str], draft_question: dict, sources: list[dict[str,
                              "hard_negative_source_ids": draft_question["hard_negative_source_ids"]}}
 
 
+def apply_corrections(questions_csv: Path, sources_csv: Path, corrections_path: Path,
+                      out_dir: Path) -> tuple[Path, Path]:
+    """Write corrected CSV copies; originals are never modified.
+
+    Each correction names one cell and its expected current value, so a correction
+    can never silently overwrite a value the reviewer changed afterwards.
+    """
+    corrections = json.loads(corrections_path.read_text())
+    if not corrections.get("approved_by") or not corrections.get("approved_on"):
+        raise ValueError("Corrections need approved_by and approved_on.")
+    outputs = []
+    for kind, path in (("questions", questions_csv), ("sources", sources_csv)):
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            headers = list(reader.fieldnames or [])
+            rows = list(reader)
+        by_base = {_base(header): header for header in headers}
+        for entry in (item for item in corrections["changes"] if item["file"] == kind):
+            header = by_base.get(entry["field"])
+            if header is None:
+                raise ValueError(f"Unknown {kind} column '{entry['field']}'.")
+            matches = [row for row in rows if row["question_id"] == entry["question_id"] and
+                       (kind == "questions" or row["source_id"] == entry["source_id"])]
+            if len(matches) != 1:
+                raise ValueError(f"Correction target not unique: {entry}")
+            if (matches[0][header] or "").strip() != entry["old"]:
+                raise ValueError(f"Current value differs from expected 'old' value: {entry}")
+            matches[0][header] = entry["new"]
+        target = out_dir / f"{kind}-review.csv"
+        with target.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=headers)
+            writer.writeheader()
+            writer.writerows(rows)
+        outputs.append(target)
+    return outputs[0], outputs[1]
+
+
 def load(questions_csv: Path, sources_csv: Path, *, draft_path: Path = DRAFT,
          data: Path = DATA) -> tuple[Review, dict]:
     draft = json.loads(draft_path.read_text())
@@ -309,12 +354,28 @@ def load(questions_csv: Path, sources_csv: Path, *, draft_path: Path = DRAFT,
 
 
 def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
-           draft_path: Path = DRAFT, data: Path = DATA) -> dict:
+           draft_path: Path = DRAFT, data: Path = DATA, corrections: Path | None = None) -> dict:
     if out.exists():
         raise FileExistsError(f"{out} already exists. Reviewed benchmarks are immutable; create a new version.")
-    review, draft = load(questions_csv, sources_csv, draft_path=draft_path, data=data)
-    if review.blockers:
-        raise ValueError(f"Review has {len(review.blockers)} blockers; run 'check' and resolve them first.")
+    staging = out.with_name(out.name + ".staging")
+    if staging.exists():
+        shutil.rmtree(staging)
+    staging.mkdir(parents=True)
+    try:
+        originals = questions_csv, sources_csv
+        if corrections:
+            questions_csv, sources_csv = apply_corrections(questions_csv, sources_csv, corrections, staging)
+        review, draft = load(questions_csv, sources_csv, draft_path=draft_path, data=data)
+        if review.blockers:
+            raise ValueError(f"Review has {len(review.blockers)} blockers; run 'check' and resolve them first.")
+        return _write_frozen(review, draft, questions_csv, sources_csv, out=out, draft_path=draft_path,
+                             originals=originals if corrections else None, corrections=corrections)
+    finally:
+        shutil.rmtree(staging, ignore_errors=True)
+
+
+def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv: Path, *, out: Path,
+                  draft_path: Path, originals: tuple[Path, Path] | None, corrections: Path | None) -> dict:
     questions = sorted(review.questions, key=lambda question: question["id"])
     heldout = [question for question in questions if question["split"] == "heldout"]
     reviewers = sorted({question["review"]["reviewer"] for question in questions})
@@ -341,9 +402,21 @@ def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
         "heldout_policy": "Do not tune on held-out questions. Run them once, after the retrieval lock.",
         "caveats": review.warnings,
         "questions": questions}
+    files = ["benchmark.json", "review-report.json", "questions-review.csv", "sources-review.csv"]
+    if corrections:
+        record = json.loads(corrections.read_text())
+        benchmark["owner_approved_corrections"] = {
+            "approved_by": record["approved_by"], "approved_on": record["approved_on"],
+            "summary": record.get("summary", []), "changed_cells": len(record["changes"]),
+            "files": ["questions-review-original.csv", "sources-review-original.csv", "corrections.json"]}
+        files += benchmark["owner_approved_corrections"]["files"]
     out.mkdir(parents=True)
     shutil.copyfile(questions_csv, out / "questions-review.csv")
     shutil.copyfile(sources_csv, out / "sources-review.csv")
+    if corrections and originals:
+        shutil.copyfile(originals[0], out / "questions-review-original.csv")
+        shutil.copyfile(originals[1], out / "sources-review-original.csv")
+        shutil.copyfile(corrections, out / "corrections.json")
     (out / "benchmark.json").write_text(json.dumps(benchmark, indent=2, ensure_ascii=False) + "\n")
     (out / "review-report.json").write_text(json.dumps(review.report(), indent=2, ensure_ascii=False) + "\n")
     manifest = {"benchmark_version": BENCHMARK_VERSION, "frozen": True,
@@ -352,8 +425,7 @@ def freeze(questions_csv: Path, sources_csv: Path, *, out: Path = OUT,
                 "questions_sha256": benchmark["questions_sha256"], "heldout_sha256": benchmark["heldout_sha256"],
                 "development_ids": [q["id"] for q in questions if q["split"] == "development"],
                 "heldout_ids": [q["id"] for q in heldout],
-                "files_sha256": {name: sha256_bytes((out / name).read_bytes()) for name in
-                                 ("benchmark.json", "review-report.json", "questions-review.csv", "sources-review.csv")},
+                "files_sha256": {name: sha256_bytes((out / name).read_bytes()) for name in files},
                 "policy": benchmark["heldout_policy"]}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
@@ -380,6 +452,7 @@ def main() -> int:
         command = commands.add_parser(name)
         command.add_argument("--questions", type=Path, required=True)
         command.add_argument("--sources", type=Path, required=True)
+        command.add_argument("--corrections", type=Path, help="Owner-approved cell corrections (JSON)")
     commands.choices["check"].add_argument("--report", type=Path, help="Optional JSON report path outside evals/")
     commands.add_parser("verify")
     args = parser.parse_args()
@@ -387,9 +460,14 @@ def main() -> int:
         print(json.dumps(verify(), indent=2))
         return 0
     if args.command == "freeze":
-        print(json.dumps(freeze(args.questions, args.sources), indent=2))
+        print(json.dumps(freeze(args.questions, args.sources, corrections=args.corrections), indent=2))
         return 0
-    review, _draft = load(args.questions, args.sources)
+    if args.corrections:
+        with tempfile.TemporaryDirectory() as scratch:
+            corrected = apply_corrections(args.questions, args.sources, args.corrections, Path(scratch))
+            review, _draft = load(*corrected)
+    else:
+        review, _draft = load(args.questions, args.sources)
     report = review.report()
     if args.report:
         args.report.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")

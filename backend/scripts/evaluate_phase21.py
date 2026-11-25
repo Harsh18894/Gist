@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.database import connection  # noqa: E402
+from app.dataset import default_db_path  # noqa: E402
 from app.rag.phase21 import InvestigationConfig, investigate  # noqa: E402
 from app.rag.retrieval import Filters  # noqa: E402
 from scripts.freeze_v2_split import verify  # noqa: E402
@@ -77,7 +78,7 @@ def run() -> dict:
               "method": "Offline replay of saved original-query top-20 keyword/vector source IDs; additional subqueries use local FTS5. No query embedding or generation calls.",
               "limitations": "Judgments are non-exhaustive. Replay candidate pool is the saved top 20 for each original-query branch; measured trial latencies exclude paid query embedding and include Python/SQLite execution.",
               "experiments": {}}
-    with connection(ROOT / "backend/gist-v2.sqlite3") as db:
+    with connection(default_db_path("v2", ROOT)) as db:
         version = db.execute("SELECT value FROM dataset_meta WHERE key='version'").fetchone()[0]
         digest = db.execute("SELECT value FROM dataset_meta WHERE key='source_sha256'").fetchone()[0]
         if version != "v2" or digest != manifest["source_sha256"]:

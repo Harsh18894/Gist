@@ -11,6 +11,7 @@ import sqlite3
 from pathlib import Path
 
 from freeze_v2_split import ROOT, source_hash
+from app.dataset import default_db_path
 
 OUT = ROOT / "evals/phase21/benchmark-v2-draft.json"
 VERSION = "gist-phase2.1-benchmark-2-draft"
@@ -90,7 +91,7 @@ CASES = [
 def build() -> dict:
     if len(CASES) != 24:
         raise ValueError("Expected 24 draft questions")
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{default_db_path('v2', ROOT)}?mode=ro", uri=True) as db:
         ids = {row[0] for row in db.execute("SELECT id FROM sources")}
         meta = dict(db.execute("SELECT key,value FROM dataset_meta"))
     if meta.get("version") != "v2" or meta.get("source_sha256") != source_hash():

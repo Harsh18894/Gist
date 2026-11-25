@@ -9,6 +9,8 @@ import os
 import math
 import sqlite3
 import uuid
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -23,22 +25,31 @@ def _path() -> Path:
     return value if value.is_absolute() else ROOT / value
 
 
-def _connect() -> sqlite3.Connection:
+@contextmanager
+def _ledger() -> Iterator[sqlite3.Connection]:
+    """Open the autocommit ledger connection and always close it.
+
+    A plain `with sqlite3.connect(...)` only commits; it never closes. Callers
+    keep their whole transaction (and any `SELECT changes()`) inside one block.
+    """
     path = _path()
     path.parent.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(path, timeout=30, isolation_level=None)
-    db.execute("PRAGMA busy_timeout=30000")
-    db.execute("""CREATE TABLE IF NOT EXISTS spend_requests (
-        id TEXT PRIMARY KEY, request_key TEXT UNIQUE, created_at TEXT NOT NULL,
-        endpoint TEXT NOT NULL, model TEXT NOT NULL, state TEXT NOT NULL,
-        reserved_usd REAL NOT NULL, actual_estimated_usd REAL,
-        input_tokens INTEGER, output_tokens INTEGER, latency_ms INTEGER,
-        failure TEXT)""")
-    return db
+    try:
+        db.execute("PRAGMA busy_timeout=30000")
+        db.execute("""CREATE TABLE IF NOT EXISTS spend_requests (
+            id TEXT PRIMARY KEY, request_key TEXT UNIQUE, created_at TEXT NOT NULL,
+            endpoint TEXT NOT NULL, model TEXT NOT NULL, state TEXT NOT NULL,
+            reserved_usd REAL NOT NULL, actual_estimated_usd REAL,
+            input_tokens INTEGER, output_tokens INTEGER, latency_ms INTEGER,
+            failure TEXT)""")
+        yield db
+    finally:
+        db.close()
 
 
 def summary() -> dict:
-    with _connect() as db:
+    with _ledger() as db:
         row = db.execute("""SELECT COALESCE(SUM(CASE WHEN state IN ('completed','reconciled') THEN actual_estimated_usd
             ELSE reserved_usd END),0), COUNT(*), COALESCE(SUM(state='uncertain'),0),
             COALESCE(SUM(input_tokens),0), COALESCE(SUM(output_tokens),0)
@@ -56,7 +67,7 @@ def reserve(endpoint: str, model: str, worst_case_usd: float,
             request_key: str | None = None, limit_usd: float = MAX_VALIDATION_USD) -> str:
     amount = max(RESERVATION_FLOOR_USD, worst_case_usd)
     identifier = str(uuid.uuid4())
-    with _connect() as db:
+    with _ledger() as db:
         db.execute("BEGIN IMMEDIATE")
         try:
             if request_key and db.execute("SELECT 1 FROM spend_requests WHERE request_key=?", (request_key,)).fetchone():
@@ -83,7 +94,7 @@ def finish(identifier: str, *, state: str, actual: float | None = None,
            latency_ms: int | None = None, failure: str | None = None) -> None:
     if state not in {"completed", "uncertain"}:
         raise ValueError("Invalid spend state")
-    with _connect() as db:
+    with _ledger() as db:
         db.execute("""UPDATE spend_requests SET state=?,actual_estimated_usd=?,input_tokens=?,
             output_tokens=?,latency_ms=?,failure=? WHERE id=? AND state='reserved'""",
             (state, actual, input_tokens, output_tokens, latency_ms, failure, identifier))
@@ -95,7 +106,7 @@ def reconcile(identifier: str, actual_usd: float) -> None:
     """Manual action after checking provider billing; never guesses a failed call's cost."""
     if not math.isfinite(actual_usd) or actual_usd < 0:
         raise ValueError("Confirmed charge must be non-negative and finite.")
-    with _connect() as db:
+    with _ledger() as db:
         db.execute("BEGIN IMMEDIATE")
         try:
             db.execute("""UPDATE spend_requests SET state='reconciled',actual_estimated_usd=?,

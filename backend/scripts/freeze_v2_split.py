@@ -10,7 +10,13 @@ from collections import defaultdict
 from difflib import SequenceMatcher
 from pathlib import Path
 
+import sys
+
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "backend"))
+from app.dataset import fingerprint, require_complete, source_dir, source_files  # noqa: E402
+from app.errors import SourceFilesMissing  # noqa: E402
+
 BENCHMARK = ROOT / "evals/v2/questions.json"
 MANIFEST = ROOT / "evals/v2/split-manifest.json"
 SEED = 271027
@@ -23,12 +29,11 @@ def _sha(payload: bytes) -> str:
 
 
 def source_hash() -> str:
-    root = ROOT / "data/v2"
-    files = [root / "feedback.jsonl", root / "support-tickets.jsonl",
-             *sorted((root / "prds").glob("*.md")), *sorted((root / "release-notes").glob("*.md"))]
-    if len(files) != 16:
-        raise ValueError("Pulse v2 source set is incomplete.")
-    return _sha(b"".join(path.read_bytes() for path in files))
+    try:
+        files = require_complete(source_files(source_dir("v2", ROOT)), "v2")
+    except SourceFilesMissing as exc:
+        raise ValueError("Pulse v2 source set is incomplete.") from exc  # unchanged error for callers
+    return fingerprint(files)
 
 
 def _normalize(value: str) -> str:

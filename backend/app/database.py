@@ -1,12 +1,13 @@
 """SQLite connection and schema."""
 import sqlite3
-import hashlib
 import os
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Iterator
 
-from .config import database_path
+from .config import ROOT, database_path
+from .dataset import fingerprint, require_complete, source_dir, source_files
+from .errors import DatasetStateError
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS dataset_meta (
@@ -77,18 +78,29 @@ def connection(path: Path | None = None) -> Iterator[sqlite3.Connection]:
         if path is None:
             has_meta = db.execute("SELECT name FROM sqlite_master WHERE name = 'dataset_meta'").fetchone()
             if not has_meta and os.getenv("GIST_DATASET_VERSION", "v1") == "v2" and db.execute("SELECT name FROM sqlite_master WHERE name = 'sources'").fetchone():
-                raise RuntimeError(f"{target} is an unversioned legacy database. Refusing to read it as v2.")
+                raise DatasetStateError(
+                    f"{target} is an unversioned legacy database. Refusing to read it as v2.",
+                    code="legacy_database",
+                    public_message="GIST_DATASET_VERSION selects v2, but the database is an unversioned legacy v1 "
+                                   "database. Seed a v2 database and set GIST_DB_PATH to it, then restart the API.")
             version_row = db.execute("SELECT value FROM dataset_meta WHERE key = 'version'").fetchone() if has_meta else None
             if version_row:
                 selected = os.getenv("GIST_DATASET_VERSION", "v1")
                 if selected != version_row[0]:
-                    raise RuntimeError(f"Selected {selected}, but {target} contains {version_row[0]}. Set GIST_DATASET_VERSION and GIST_DB_PATH together.")
-                source_root = Path(__file__).resolve().parents[2] / "data" / ("v2" if selected == "v2" else "")
-                files = [source_root / "feedback.jsonl", source_root / "support-tickets.jsonl", *sorted((source_root / "prds").glob("*.md")), *sorted((source_root / "release-notes").glob("*.md"))]
-                digest = hashlib.sha256(b"".join(item.read_bytes() for item in files)).hexdigest()
+                    raise DatasetStateError(
+                        f"Selected {selected}, but {target} contains {version_row[0]}. Set GIST_DATASET_VERSION and GIST_DB_PATH together.",
+                        code="dataset_mismatch",
+                        public_message=f"The database contains {version_row[0]} data, but GIST_DATASET_VERSION selects "
+                                       f"{selected}. Set GIST_DATASET_VERSION and GIST_DB_PATH together, then restart the API.")
+                files = require_complete(source_files(source_dir(selected, ROOT)), selected)
+                digest = fingerprint(files)
                 recorded = db.execute("SELECT value FROM dataset_meta WHERE key = 'source_sha256'").fetchone()
                 if recorded and recorded[0] != digest:
-                    raise RuntimeError(f"{selected} source files changed since indexing. Reseed explicitly with --replace before retrieval.")
+                    raise DatasetStateError(
+                        f"{selected} source files changed since indexing. Reseed explicitly with --replace before retrieval.",
+                        code="index_stale",
+                        public_message=f"Pulse {selected} source files changed since this database was indexed. Reseed with "
+                                       f"`backend/scripts/seed.py --dataset {selected} --replace`, then restart the API.")
         yield db
     finally:
         db.close()

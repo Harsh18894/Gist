@@ -1,0 +1,46 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-3-reviewed",
+  "frozen": true,
+  "frozen_at": "2026-11-23T07:27:08+00:00",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "ba414f22890c0c8b01fcee3c56a2c1876d845bc17e0fbe80fdf36ae57784312c",
+  "heldout_sha256": "887a3f8b1351cfc973493d7b10b3f8df3a232d88b84acba436461b4577c180b9",
+  "development_ids": [
+    "P21-Q-001",
+    "P21-Q-002",
+    "P21-Q-003",
+    "P21-Q-005",
+    "P21-Q-006",
+    "P21-Q-007",
+    "P21-Q-009",
+    "P21-Q-010",
+    "P21-Q-011",
+    "P21-Q-013",
+    "P21-Q-014",
+    "P21-Q-015",
+    "P21-Q-017",
+    "P21-Q-018",
+    "P21-Q-019",
+    "P21-Q-021",
+    "P21-Q-022",
+    "P21-Q-023"
+  ],
+  "heldout_ids": [
+    "P21-Q-004",
+    "P21-Q-008",
+    "P21-Q-012",
+    "P21-Q-016",
+    "P21-Q-020",
+    "P21-Q-024"
+  ],
+  "files_sha256": {
+    "benchmark.json": "25356a488b9b37e998642b606518513b71fa4c19c9c2ed5bc9e440c81329ae88",
+    "review-report.json": "b6e462c34dd58b0e8db7d2580fa6b7573307ef6237a0d006d5a7b7c6b1e40569",
+    "questions-review.csv": "1dc3425fe5e1c006e973ac4566672b0dbb79646f18f1ca607056737f7050f963",
+    "sources-review.csv": "c735e602e96593a0e67d7b53e82ac9fd80bf634e841ce585f1ad2be544af3247",
+    "questions-review-original.csv": "969fe7d5169e8aae79b1d35c9f328746cc2fb9c702e3f2e53e8f399f9a132435",
+    "sources-review-original.csv": "82f2783489164c3f72541f85f7eae8deeaa8cc65db84639ac7d3122b1a6bffe4",
+    "corrections.json": "be8be52477515500cdd621ba938278fcfcb61f31e0abc6c35ff7d203022c2b1f"
+  },
+  "policy": "Do not tune on held-out questions. Run them once, after the retrieval lock."
+}

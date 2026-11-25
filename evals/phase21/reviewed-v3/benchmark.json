@@ -1,0 +1,3486 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-3-reviewed",
+  "dataset_version": "v2",
+  "synthetic": true,
+  "derived_from": {
+    "benchmark_version": "gist-phase2.1-benchmark-2-draft",
+    "file_sha256": "24997a0ff28830f9d8741c20bfbd2243a7a316ddb212c1218caccf9452bee449"
+  },
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "ba414f22890c0c8b01fcee3c56a2c1876d845bc17e0fbe80fdf36ae57784312c",
+  "heldout_sha256": "887a3f8b1351cfc973493d7b10b3f8df3a232d88b84acba436461b4577c180b9",
+  "split_counts": {
+    "development": 18,
+    "heldout": 6
+  },
+  "human_review": {
+    "reviewers": [
+      "Harsh"
+    ],
+    "review_dates": [
+      "2026-11-23"
+    ],
+    "second_reviewer_involved": false,
+    "independence": "Owner review of agent-proposed labels; not independent adjudication unless a second reviewer resolved disputes.",
+    "human_ai_disagreements": 12
+  },
+  "label_policy": "Human final verdicts are authoritative. evidence_groups are distinct evidence needs; members are alternative human-supported sources. Partial, unsupported and hard-negative sources are not relevant. Labels are a reviewed subset unless marked exhaustive.",
+  "heldout_policy": "Do not tune on held-out questions. Run them once, after the retrieval lock.",
+  "caveats": [
+    "P21-Q-009/V2-FB-0027: human removed an AI-proposed hard negative (unsupported).",
+    "P21-Q-019/V2-FB-0116: human added a hard negative.",
+    "P21-Q-019: proposed evidence group 2 has no human-supported source."
+  ],
+  "questions": [
+    {
+      "id": "P21-Q-001",
+      "split": "development",
+      "category": "direct",
+      "question": "Where does an admin find the date and project controls for a portfolio chart?",
+      "expected_answer_or_abstention": "The project/date portfolio filters appear above the chart (release-02). Customer feedback independently notes that controls are above the chart, but does not confirm both control types.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-02"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-02"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0057"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-02",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Admins can filter portfolio views by project and date. The control appears above the chart.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0057",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "the controls are buried above the chart.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The project/date portfolio filters appear above the chart (release-02). Customer feedback independently notes that controls are above the chart, but does not confirm both control types.",
+        "evidence_groups": [
+          [
+            "release-02"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-02"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "Release note supports the exact two-control location; feedback only partially corroborates placement."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-02"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-002",
+      "split": "development",
+      "category": "direct",
+      "question": "How does Pulse bill a seat archived partway through the month?",
+      "expected_answer_or_abstention": "A seat archived mid-cycle remains counted until the current billing cycle closes. The rule is explicit in release-04 and echoed by V2-FB-0082.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-04",
+          "V2-FB-0082"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0142"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-04",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Seats archived mid-cycle remain counted until the billing cycle closes.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0082",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "archived seats remain billable until the cycle closes",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0142",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We moved a contractor out on the 27th and got billed for the whole cycle.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "A seat archived mid-cycle remains counted until the current billing cycle closes. The rule is explicit in release-04 and echoed by V2-FB-0082.",
+        "evidence_groups": [
+          [
+            "release-04",
+            "V2-FB-0082"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0082",
+          "release-04"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "A full-cycle billing complaint corroborates observed impact but does not itself state the normative policy."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-04"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-003",
+      "split": "development",
+      "category": "direct",
+      "question": "Which workspace roles can duplicate a shared starter?",
+      "expected_answer_or_abstention": "Editors and admins can duplicate a shared starter. Only release-06 establishes both roles.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-06"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-06"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0060"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0011"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Copying a template follows workspace role permissions; editors and admins may duplicate it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0011",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "I searched for the launch plan inside projects, never thought to check the workspace menu.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0060",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Support said our workspace restricts template duplication to editors.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Editors and admins can duplicate a shared starter. Only release-06 establishes both roles.",
+        "evidence_groups": [
+          [
+            "release-06"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-06"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0011"
+        ],
+        "findings": "Feedback that editors can duplicate is partial evidence; it does not establish that admins can also do so."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-06"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0011"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Which alert classes are intended to remain timely after per-project tuning?",
+      "expected_answer_or_abstention": "Critical and direct-mention alerts are intended to remain timely after tuning routine project alerts, per release-08.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-08"
+      ],
+      "partial_source_ids": [
+        "prd-05"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0018"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-08",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Critical and direct-mention alerts are intended to remain timely",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0018",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "I'm getting separate mail for things that happened in the same hour.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "prd-05",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Readers need fewer routine digests without delaying urgent alerts.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Critical and direct-mention alerts are intended to remain timely after tuning routine project alerts, per release-08.",
+        "evidence_groups": [
+          [
+            "release-08"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-08"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0018"
+        ],
+        "findings": "PRD describes urgent alert priority but does not specify direct mentions. Pre-release mail-volume complaint does not establish post-tuning behavior."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-08"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0018"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-005",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a customer whose account recovery email became useless during a call.",
+      "expected_answer_or_abstention": "Several customers report a reset link expiring during a call, including V2-FB-0098, V2-FB-0182, V2-FB-0278 and V2-FB-0089.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0098",
+          "V2-FB-0182",
+          "V2-FB-0278",
+          "V2-FB-0089"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0089",
+        "V2-FB-0098",
+        "V2-FB-0182",
+        "V2-FB-0278"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0002"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The user expects to find a customer whose recovery email link has expired. The questions is ambiguous about a customer and the response should acknowledge that. Further, the AI should inform the user about how to find customers whose verification links had expired and were not able to recover their acconts. [2026-11-23 owner-approved: resolved as revise; guidance on finding affected customers is logged as a product requirement, not a benchmark label.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0098",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0182",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0278",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0089",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0002",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Does the reset link work across devices? I opened it on my phone and returned to desktop.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Multiple customers reported reset links expiring during a call, including V2-FB-0098, V2-FB-0182 and V2-FB-0278.",
+        "evidence_groups": [
+          [
+            "V2-FB-0098",
+            "V2-FB-0182",
+            "V2-FB-0278",
+            "V2-FB-0089"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0089",
+          "V2-FB-0098",
+          "V2-FB-0182",
+          "V2-FB-0278"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0002"
+        ],
+        "findings": "Original expectation was not unique; added alternative customers. V2-FB-0089 also mentions an expiry in a separate issue embedded within the feedback."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0098"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0002"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-006",
+      "split": "development",
+      "category": "semantic",
+      "question": "Is there a report of a company-side identity redirect setting preventing entry?",
+      "expected_answer_or_abstention": "Yes. Multiple customer records report that IT entered a wrong callback URL, including V2-FB-0063, V2-FB-0207 and V2-FB-0351.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0063",
+        "V2-FB-0207",
+        "V2-FB-0351"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0098"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0063",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0207",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0351",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0098",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Multiple customer records report that IT entered a wrong callback URL, including V2-FB-0063, V2-FB-0207 and V2-FB-0351.",
+        "evidence_groups": [
+          [
+            "V2-FB-0063",
+            "V2-FB-0207",
+            "V2-FB-0351"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0098"
+        ],
+        "findings": "This establishes a reported identity callback misconfiguration, not the sole cause of all login failures."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0063"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0098"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-007",
+      "split": "development",
+      "category": "semantic",
+      "question": "Find a case where an empty-looking chart was actually a view setting.",
+      "expected_answer_or_abstention": "Yes. Several users found that the chart data was present, but a previously applied filter made the view look empty: V2-FB-0009, V2-FB-0045, V2-FB-0285, V2-FB-0369, V2-FB-0393 and V2-SUP-0048.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0009",
+          "V2-FB-0045",
+          "V2-FB-0285",
+          "V2-FB-0369",
+          "V2-FB-0393",
+          "V2-SUP-0048"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0009",
+        "V2-FB-0045",
+        "V2-FB-0285",
+        "V2-FB-0369",
+        "V2-FB-0393",
+        "V2-SUP-0048"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0020"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The answer also needs to fetch and provide the list of users whose views were empty.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0009",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0045",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0285",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0369",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0393",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0048",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0020",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Several users found that the chart data was present, but a previously applied filter made the view look empty.",
+        "evidence_groups": [
+          [
+            "V2-FB-0009",
+            "V2-FB-0045",
+            "V2-FB-0285",
+            "V2-FB-0369",
+            "V2-FB-0393",
+            "V2-SUP-0048"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0009",
+          "V2-FB-0045",
+          "V2-FB-0285",
+          "V2-FB-0369",
+          "V2-FB-0393",
+          "V2-SUP-0048"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0020"
+        ],
+        "findings": "V2-FB-0045 also includes an unrelated IdP problem; only its chart clause supports this answer."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0009",
+            "V2-FB-0045"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0020"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Which customer says a successful one-time upload misassigned columns?",
+      "expected_answer_or_abstention": "V2-FB-0041 and V2-FB-0269 explicitly state that the import report showed success although columns were swapped. V2-FB-0005 describes a one-time upload scrambling labels but does not explicitly confirm a success status.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0041",
+          "V2-FB-0269"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0041",
+        "V2-FB-0269"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0281"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0028"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0041",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The import report said success even though two columns were swapped.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0005",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "It's the one-time spreadsheet upload that scrambled labels.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "partial"
+        },
+        {
+          "source_id": "V2-FB-0269",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The import report said success even though two columns were swapped.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0028",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The connector looks connected. Why are the tasks from the East region missing?",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0281",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "It's the one-time spreadsheet upload that scrambled labels.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "V2-FB-0041 and V2-FB-0269 explicitly state that the import report showed success although columns were swapped. V2-FB-0005 describes a one-time upload scrambling labels but does not explicitly confirm a success status.",
+        "evidence_groups": [
+          [
+            "V2-FB-0041",
+            "V2-FB-0269"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0041",
+          "V2-FB-0269"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0028"
+        ],
+        "findings": "Corrected overbroad original label: a one-time upload with scrambled labels is not proof the import reported success."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0041",
+            "V2-FB-0005"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0028"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-009",
+      "split": "development",
+      "category": "multi_source",
+      "question": "What distinct checks should support make before calling every sign-in failure the same defect?",
+      "expected_answer_or_abstention": "Treat invitation handoff, password recovery, and SSO/IdP configuration as three separate evidence needs. Do not infer a shared root cause merely from sign-in symptoms.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "prd-01",
+          "V2-FB-0049",
+          "release-01",
+          "V2-FB-0025",
+          "V2-FB-0301"
+        ],
+        [
+          "V2-FB-0098",
+          "V2-FB-0038",
+          "V2-FB-0182",
+          "V2-FB-0110"
+        ],
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0291"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0025",
+        "V2-FB-0038",
+        "V2-FB-0049",
+        "V2-FB-0051",
+        "V2-FB-0063",
+        "V2-FB-0098",
+        "V2-FB-0110",
+        "V2-FB-0182",
+        "V2-FB-0207",
+        "V2-FB-0291",
+        "V2-FB-0301",
+        "prd-01",
+        "release-01"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0145"
+      ],
+      "unsupported_source_ids": [
+        "V2-FB-0027"
+      ],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "prd-01",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A confusing handoff may block onboarding. Investigate repeat-step reports before assigning cause.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0049",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "I can get in. Nobody I invited yesterday can.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0145",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We assumed the admin had missed a step, but the checklist is marked complete on her side.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "partial"
+        },
+        {
+          "source_id": "V2-FB-0098",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0038",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "It landed in spam, so I thought I was locked out.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0003",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "Login stopped after we changed the SAML certificate in our identity provider.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0051",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "Login stopped after we changed the SAML certificate in our identity provider.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0063",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-01",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Invited users should not need to verify the owner again. Some later reports describe a repeat step; investigation remains open.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0025",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The join button just sends people in a circle. We're onboarding six folks this week.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0301",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "I can get in. Nobody I invited yesterday can.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0182",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The reset link expired while I was on a call.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0110",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The sign-in message says invalid credentials, which doesn't explain an expired reset token.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0207",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0291",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "Our IdP sends an assertion but Pulse says this domain isn't allowed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0027",
+          "human_verdict": "unsupported",
+          "final_verdict": "unsupported",
+          "evidence_groups": [],
+          "comments": "",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Treat invitation handoff, password recovery, and SSO/IdP configuration as three separate evidence needs. Do not infer a shared root cause merely from sign-in symptoms.",
+        "evidence_groups": [
+          [
+            "prd-01",
+            "V2-FB-0049",
+            "release-01",
+            "V2-FB-0025",
+            "V2-FB-0301"
+          ],
+          [
+            "V2-FB-0098",
+            "V2-FB-0038",
+            "V2-FB-0182",
+            "V2-FB-0110"
+          ],
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0063",
+            "V2-FB-0207",
+            "V2-FB-0291"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0003",
+          "V2-FB-0025",
+          "V2-FB-0038",
+          "V2-FB-0049",
+          "V2-FB-0051",
+          "V2-FB-0063",
+          "V2-FB-0098",
+          "V2-FB-0110",
+          "V2-FB-0182",
+          "V2-FB-0207",
+          "V2-FB-0291",
+          "V2-FB-0301",
+          "prd-01",
+          "release-01"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0027"
+        ],
+        "findings": "V2-FB-0145 refers to a completed checklist but does not explicitly identify invited users; reclassified as context-only, not full invitation evidence. Password and SSO cases have different causes."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "prd-01",
+            "V2-FB-0049",
+            "V2-FB-0145"
+          ],
+          [
+            "V2-FB-0098",
+            "V2-FB-0038"
+          ],
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0063"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0027"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-010",
+      "split": "development",
+      "category": "multi_source",
+      "question": "How can an analyst separate missing live CRM records from a bad file upload?",
+      "expected_answer_or_abstention": "Check missing records in the live connector separately from one-time CSV/spreadsheet mapping errors. A green sync indicator cannot establish record completeness.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "prd-03",
+          "V2-FB-0028",
+          "V2-FB-0112",
+          "V2-FB-0076",
+          "V2-FB-0100"
+        ],
+        [
+          "V2-FB-0005",
+          "V2-FB-0041",
+          "V2-FB-0100",
+          "V2-FB-0269",
+          "V2-FB-0281"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0028",
+        "V2-FB-0041",
+        "V2-FB-0076",
+        "V2-FB-0100",
+        "V2-FB-0112",
+        "V2-FB-0269",
+        "V2-FB-0281",
+        "prd-03"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0017"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "prd-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Teams need to know when records are missing even if the connector reports success. CSV import mapping is a separate workflow.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0028",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The connector looks connected. Why are the tasks from the East region missing?",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0112",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The CRM tile is green, but the newest accounts never showed up in our board.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0005",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This isn't a live CRM sync. It's the one-time spreadsheet upload that scrambled labels.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0041",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The import report said success even though two columns were swapped.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0076",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The same sales account appears in CRM but not in our project view.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0100",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1,
+            2
+          ],
+          "comments": "in CRM but not in our project view. Also: This isn't a live CRM sync. It's the one-time spreadsheet upload that scrambled labels.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0269",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The import report said success even though two columns were swapped.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0281",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This isn't a live CRM sync. It's the one-time spreadsheet upload that scrambled labels.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0017",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "I need a way to undo yesterday's spreadsheet import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Check missing records in the live connector separately from one-time CSV/spreadsheet mapping errors. A green sync indicator cannot establish record completeness.",
+        "evidence_groups": [
+          [
+            "prd-03",
+            "V2-FB-0028",
+            "V2-FB-0112",
+            "V2-FB-0076",
+            "V2-FB-0100"
+          ],
+          [
+            "V2-FB-0005",
+            "V2-FB-0041",
+            "V2-FB-0269",
+            "V2-FB-0281",
+            "V2-FB-0100"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0005",
+          "V2-FB-0028",
+          "V2-FB-0041",
+          "V2-FB-0076",
+          "V2-FB-0100",
+          "V2-FB-0112",
+          "V2-FB-0269",
+          "V2-FB-0281",
+          "prd-03"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017"
+        ],
+        "findings": "V2-FB-0100 mentions both a missing live account and spreadsheet scrambling; one mixed source alone should not be used to assert the issues are causally linked."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "prd-03",
+            "V2-FB-0028",
+            "V2-FB-0112"
+          ],
+          [
+            "V2-FB-0005",
+            "V2-FB-0041"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-011",
+      "split": "development",
+      "category": "multi_source",
+      "question": "Which evidence separates finding a team template from being allowed to copy it?",
+      "expected_answer_or_abstention": "Finding templates is a navigation/discoverability issue; copying them is a permissions issue governed by workspace role. A visible gallery may still have a disabled duplicate action.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0011",
+          "V2-FB-0047",
+          "V2-FB-0143"
+        ],
+        [
+          "V2-FB-0048",
+          "V2-FB-0060",
+          "release-06",
+          "V2-FB-0084",
+          "V2-FB-0396",
+          "V2-FB-0072"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0011",
+        "V2-FB-0047",
+        "V2-FB-0048",
+        "V2-FB-0060",
+        "V2-FB-0072",
+        "V2-FB-0084",
+        "V2-FB-0143",
+        "V2-FB-0396",
+        "release-06"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0179"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0011",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "I searched for the launch plan inside projects, never thought to check the workspace menu.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0047",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The gallery exists? We rebuilt the same kickoff board by hand.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0048",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The gallery is easy to find now; my teammate doesn't have permission to use it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0060",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "Support said our workspace restricts template duplication to editors.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The gallery is in the workspace menu. Copying a template follows workspace role permissions; editors and admins may duplicate it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0143",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "I only found the template menu after support sent a screenshot.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0179",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Our new PM assumed there were no shared starters in Pulse.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0084",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The menu isn't missing. The role policy seems to block copying.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0396",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "I can see the kickoff template, but the duplicate button is greyed out.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0072",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The gallery is easy to find now; my teammate doesn't have permission to use it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Finding templates is a navigation/discoverability issue; copying them is a permissions issue governed by workspace role. A visible gallery may still have a disabled duplicate action.",
+        "evidence_groups": [
+          [
+            "V2-FB-0011",
+            "V2-FB-0047",
+            "V2-FB-0143",
+            "V2-FB-0179"
+          ],
+          [
+            "V2-FB-0048",
+            "V2-FB-0060",
+            "release-06",
+            "V2-FB-0084",
+            "V2-FB-0396",
+            "V2-FB-0072"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0011",
+          "V2-FB-0047",
+          "V2-FB-0048",
+          "V2-FB-0060",
+          "V2-FB-0072",
+          "V2-FB-0084",
+          "V2-FB-0143",
+          "V2-FB-0179",
+          "V2-FB-0396",
+          "release-06"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "V2-FB-0048 is mixed evidence that one user can find the gallery while a teammate lacks permissions; distinguish observed behavior from release-06 policy."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0011",
+            "V2-FB-0047"
+          ],
+          [
+            "V2-FB-0048",
+            "V2-FB-0060",
+            "release-06"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "How should an analyst distinguish a slow portfolio page from a hidden chart selection?",
+      "expected_answer_or_abstention": "Differentiate slow aggregation/loading from a chart apparently missing data because a persistent filter remains applied. Compare loading behavior and active view filters.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0032",
+          "prd-02",
+          "V2-FB-0104",
+          "V2-FB-0224"
+        ],
+        [
+          "V2-FB-0009",
+          "V2-FB-0045",
+          "V2-FB-0285",
+          "V2-FB-0369",
+          "V2-FB-0033"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0009",
+        "V2-FB-0020",
+        "V2-FB-0032",
+        "V2-FB-0033",
+        "V2-FB-0045",
+        "V2-FB-0104",
+        "V2-FB-0224",
+        "V2-FB-0285",
+        "V2-FB-0369",
+        "prd-02"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[2026-11-23 owner-approved: added V2-FB-0033 to group 2; kept the reviewed answer.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0020",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0032",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "prd-02",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Managers also need clear filter state; a hidden filter is distinct from a slow query.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0009",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0045",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0104",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0224",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0285",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0369",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The chart wasn't missing data; we'd left a previous filter applied.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0033",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The numbers are fine. I just can't work out where the region selector went.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclear"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Differentiate slow aggregation/loading from a chart apparently missing data because a persistent filter remains applied. Compare loading behavior and active view filters.",
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0032",
+            "prd-02",
+            "V2-FB-0104",
+            "V2-FB-0224"
+          ],
+          [
+            "V2-FB-0009",
+            "V2-FB-0045",
+            "V2-FB-0285",
+            "V2-FB-0369"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0009",
+          "V2-FB-0020",
+          "V2-FB-0032",
+          "V2-FB-0045",
+          "V2-FB-0104",
+          "V2-FB-0224",
+          "V2-FB-0285",
+          "V2-FB-0369",
+          "prd-02"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "The original hard negative V2-FB-0033 concerns the location of a region selector. It is topical but could be relevant to control discoverability; it is too ambiguous to use as a clean hard negative."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0032",
+            "prd-02"
+          ],
+          [
+            "V2-FB-0009",
+            "V2-FB-0045"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0033"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-013",
+      "split": "development",
+      "category": "temporal",
+      "question": "What was reported about large workspaces before the August loading change, and what later improved?",
+      "expected_answer_or_abstention": "Before the August 5 update, users reported slow large-workspace and regional roll-up views. The release introduced a faster aggregation path, and later customer reports welcomed improved performance.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0224"
+        ],
+        [
+          "release-07"
+        ],
+        [
+          "V2-FB-0044",
+          "V2-FB-0368"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0020",
+        "V2-FB-0044",
+        "V2-FB-0224",
+        "V2-FB-0368",
+        "release-07"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0032",
+        "V2-FB-0104"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0020",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0032",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-07",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "Large workspace aggregations use a faster path. Smaller workspaces may see little difference.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0044",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The August loading update was a relief for our large workspace.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0104",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0224",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0368",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The August loading update was a relief for our large workspace.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Before the August 5 update, users reported slow large-workspace and regional roll-up views. The release introduced a faster aggregation path, and later customer reports welcomed improved performance; temporal association is not causal proof.",
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0032",
+            "V2-FB-0104",
+            "V2-FB-0224"
+          ],
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0044",
+            "V2-FB-0368"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0020",
+          "V2-FB-0032",
+          "V2-FB-0044",
+          "V2-FB-0104",
+          "V2-FB-0224",
+          "V2-FB-0368",
+          "release-07"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "Check 2025-01 through July reports versus Aug 5 release and later Nov/Sep positive reports. Post-release slow reports also exist, so not universal."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0032"
+          ],
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0044"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-014",
+      "split": "development",
+      "category": "temporal",
+      "question": "After the April digest default changed, how did two workspaces describe the outcome?",
+      "expected_answer_or_abstention": "After the April 5 digest change, one customer reported the digest worked well for a one-board setup while another reported excessive project emails. Both are subsequent individual reports; distinct workspace identities cannot be proven from the available fields.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-03"
+        ],
+        [
+          "V2-FB-0030",
+          "V2-FB-0258"
+        ],
+        [
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0318",
+          "V2-FB-0354"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "V2-FB-0126",
+        "V2-FB-0258",
+        "V2-FB-0318",
+        "V2-FB-0354",
+        "release-03"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Project summaries are grouped by board. Shared boards are selected by default; teams can opt out.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0030",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The digest works well for my one-board workspace, honestly.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0102",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0258",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The digest works well for my one-board workspace, honestly.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0126",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0318",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0354",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "After the April 5 digest change, one customer reported the digest worked well for a one-board setup while another reported excessive project emails. Both are subsequent individual reports; distinct workspace identities cannot be proven from the available fields.",
+        "evidence_groups": [
+          [
+            "release-03"
+          ],
+          [
+            "V2-FB-0030",
+            "V2-FB-0258"
+          ],
+          [
+            "V2-FB-0102",
+            "V2-FB-0126",
+            "V2-FB-0318",
+            "V2-FB-0354"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0030",
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0258",
+          "V2-FB-0318",
+          "V2-FB-0354",
+          "release-03"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "Both selected reactions occur after April 5; the records do not establish distinct workspace IDs, and the release is not proven causal. Question wording “two workspaces” should be reviewed before final freeze."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-03"
+          ],
+          [
+            "V2-FB-0030"
+          ],
+          [
+            "V2-FB-0102"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-015",
+      "split": "development",
+      "category": "temporal",
+      "question": "What did the June connector update promise, and what later gap did a customer describe?",
+      "expected_answer_or_abstention": "The June 5 release introduced reconnect flow and status changes while warning that success status does not guarantee delivery; later customers described record gaps and eventual backfill, with no established causation.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-05"
+        ],
+        [
+          "V2-FB-0064",
+          "V2-FB-0088",
+          "V2-FB-0148",
+          "V2-FB-0376"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0064",
+        "V2-FB-0088",
+        "V2-FB-0148",
+        "V2-FB-0376",
+        "release-05"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-05",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The connector has a new reconnect flow and sync status. A successful status does not prove every record arrived.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0064",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We saw a gap after the June refresh, then a backfill on Friday.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0088",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We saw a gap after the June refresh, then a backfill on Friday.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0148",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We saw a gap after the June refresh, then a backfill on Friday.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0376",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We saw a gap after the June refresh, then a backfill on Friday.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The June 5 release introduced reconnect flow and status changes while warning that success status does not guarantee delivery; later customers described record gaps and eventual backfill, with no established causation.",
+        "evidence_groups": [
+          [
+            "release-05"
+          ],
+          [
+            "V2-FB-0064",
+            "V2-FB-0088",
+            "V2-FB-0148",
+            "V2-FB-0376"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0064",
+          "V2-FB-0088",
+          "V2-FB-0148",
+          "V2-FB-0376",
+          "release-05"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "Customer V2-FB-0064 is dated June 16; added later gap/backfill alternatives. A mixed urgent-alert source V2-FB-0067 also contains a CRM backfill reference but is not needed."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-05"
+          ],
+          [
+            "V2-FB-0064"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "How do September's alert-control intent and later delayed-urgent reports relate?",
+      "expected_answer_or_abstention": "The September 5 release intended urgent and direct-mention alerts to remain timely despite routine project tuning. Customers subsequently described late or missed urgent alerts; the cause remains unresolved.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-08"
+        ],
+        [
+          "V2-FB-0019",
+          "V2-FB-0067",
+          "V2-FB-0127"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "release-08"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0007",
+        "V2-FB-0115"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-08",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Critical and direct-mention alerts are intended to remain timely; later delay reports are being investigated.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0019",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We disabled a board's routine alerts, and now even urgent ones are delayed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0067",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "A task was marked urgent at noon; nobody was notified until evening.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0007",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Our on-call person missed a critical update. The routine summaries were fine.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0115",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Our on-call person missed a critical update. The routine summaries were fine.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0127",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "We disabled a board's routine alerts, and now even urgent ones are delayed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The September 5 release intended urgent and direct-mention alerts to remain timely despite routine project tuning. Customers subsequently described late or missed urgent alerts; the cause remains unresolved.",
+        "evidence_groups": [
+          [
+            "release-08"
+          ],
+          [
+            "V2-FB-0019",
+            "V2-FB-0067",
+            "V2-FB-0007",
+            "V2-FB-0115",
+            "V2-FB-0127"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0007",
+          "V2-FB-0019",
+          "V2-FB-0067",
+          "V2-FB-0115",
+          "V2-FB-0127",
+          "release-08"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "September 8, September 18, and November reports postdate the release. A customer assertion of delayed notification does not establish a product regression mechanism."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-08"
+          ],
+          [
+            "V2-FB-0019",
+            "V2-FB-0067"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-017",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Does a healthy connector indicator establish that every sales task arrived?",
+      "expected_answer_or_abstention": "No. The product documentation explicitly limits what a green/connected status proves. Users report missing CRM tasks or accounts despite healthy status.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "release-05",
+          "prd-03"
+        ],
+        [
+          "V2-FB-0028"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0028",
+        "prd-03",
+        "release-05"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0076",
+        "V2-FB-0112"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-05",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A successful status does not prove every record arrived.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "prd-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Teams need to know when records are missing even if the connector reports success.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0028",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The connector looks connected. Why are the tasks from the East region missing?",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0112",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The CRM tile is green, but the newest accounts never showed up in our board.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0076",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The same sales account appears in CRM but not in our project view.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. The product documentation explicitly limits what a green/connected status proves; users report missing CRM tasks or accounts despite healthy status.",
+        "evidence_groups": [
+          [
+            "release-05",
+            "prd-03"
+          ],
+          [
+            "V2-FB-0028",
+            "V2-FB-0112"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0028",
+          "V2-FB-0112",
+          "prd-03",
+          "release-05"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "V2-FB-0112 is a strong additional contrasting case. A green tile is not proof of complete sync."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-05",
+            "prd-03"
+          ],
+          [
+            "V2-FB-0028"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-018",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Did customers agree that the project digest made their inbox better?",
+      "expected_answer_or_abstention": "No. There is no prevailing sentiment across users. At least one one-board user liked the digest, while another reported excessive messages. These examples establish disagreement but not the sentiment. More data is required.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0030",
+          "V2-FB-0258"
+        ],
+        [
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0318"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0102",
+        "V2-FB-0126",
+        "V2-FB-0258",
+        "V2-FB-0318"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0030",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The digest works well for my one-board workspace, honestly.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0102",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0258",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The digest works well for my one-board workspace, honestly.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0126",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0318",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "I woke up to 38 project emails; I thought the point of a digest was fewer messages.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. At least one one-board user liked the digest, while another reported excessive messages. These examples establish disagreement, not the prevalence of sentiment across users.",
+        "evidence_groups": [
+          [
+            "V2-FB-0030",
+            "V2-FB-0258"
+          ],
+          [
+            "V2-FB-0102",
+            "V2-FB-0126",
+            "V2-FB-0318"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0030",
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0258",
+          "V2-FB-0318"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "Additional distinct reports confirm mixed sentiment; some feedback praises calmer inbox but also worries about delayed escalation."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0030"
+          ],
+          [
+            "V2-FB-0102"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-019",
+      "split": "development",
+      "category": "contradictory",
+      "question": "Was portfolio loading uniformly slow across workspace sizes before the August update?",
+      "expected_answer_or_abstention": "No. Customers report small workspaces load quickly while regional roll-ups were slow (V2-FB-0020, V2-FB-0224). These are a few reports, not a measured comparison.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0020",
+          "V2-FB-0224"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0020",
+        "V2-FB-0224"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0032",
+        "V2-FB-0068",
+        "V2-FB-0104"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0116"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[2026-11-23 owner-approved: group 2 dropped because all its sources were judged partial; group 1 answers the question.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0020",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0068",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "A chart loads fast for me, but my colleague has a much larger workspace.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0032",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0224",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "A small workspace loads quickly; our regional roll-up does not.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0104",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "We ended up exporting data because the portfolio screen kept loading.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0116",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "It only feels slow when I switch to the full-year view.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "unclassified"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. Before August, smaller views could load quickly while larger regional/portfolio roll-ups were reported slow.",
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0068",
+            "V2-FB-0224"
+          ],
+          [
+            "V2-FB-0032",
+            "V2-FB-0104"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0020",
+          "V2-FB-0032",
+          "V2-FB-0068",
+          "V2-FB-0104",
+          "V2-FB-0224"
+        ],
+        "hard_negative_source_ids": [],
+        "findings": "V2-FB-0020 independently contains the size-based comparison; V2-FB-0032 is consistent with slow portfolio load. Time-filtered alternatives are pre-August."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0020",
+            "V2-FB-0068"
+          ],
+          [
+            "V2-FB-0032"
+          ]
+        ],
+        "hard_negative_source_ids": []
+      }
+    },
+    {
+      "id": "P21-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Can a visible starter still be unavailable to a teammate?",
+      "expected_answer_or_abstention": "Yes. Seeing a template does not imply permission to duplicate it; the July release lists editors/admins as permitted roles and customers report disabled actions.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0048",
+          "V2-FB-0072",
+          "V2-FB-0396"
+        ],
+        [
+          "release-06",
+          "V2-FB-0084"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0048",
+        "V2-FB-0072",
+        "V2-FB-0084",
+        "V2-FB-0396",
+        "release-06"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0060"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0047"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The question does not make sense without additional information. [2026-11-23 owner-approved: 'starter' means shared template; approved.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0048",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The gallery is easy to find now; my teammate doesn't have permission to use it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The gallery is in the workspace menu. Copying a template follows workspace role permissions; editors and admins may duplicate it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0072",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The gallery is easy to find now; my teammate doesn't have permission to use it.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0396",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "I can see the kickoff template, but the duplicate button is greyed out.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0060",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "Support said our workspace restricts template duplication to editors.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0084",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The menu isn't missing. The role policy seems to block copying.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0047",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The gallery exists? We rebuilt the same kickoff board by hand.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Seeing a template does not imply permission to duplicate it; the July release lists editors/admins as permitted roles and customers report disabled actions.",
+        "evidence_groups": [
+          [
+            "V2-FB-0048",
+            "V2-FB-0072",
+            "V2-FB-0396"
+          ],
+          [
+            "release-06",
+            "V2-FB-0060",
+            "V2-FB-0084"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0048",
+          "V2-FB-0060",
+          "V2-FB-0072",
+          "V2-FB-0084",
+          "V2-FB-0396",
+          "release-06"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0047"
+        ],
+        "findings": "V2-FB-0047 concerns discoverability, not access permission, and remains a defensible hard negative."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0048"
+          ],
+          [
+            "release-06"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0047"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-021",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "What exact revenue increase came from the portfolio speed update?",
+      "expected_answer_or_abstention": "Abstain. None of the available product change notes or customer feedback establishes an exact revenue uplift attributable to the August portfolio update.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0044",
+        "release-07"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-07",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Large workspace aggregations use a faster path.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0044",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The August loading update was a relief for our large workspace.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. None of the available product change notes or customer feedback establishes an exact revenue uplift attributable to the August portfolio update.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "release-07",
+          "V2-FB-0044"
+        ],
+        "findings": "Corpus contains no revenue impact measurement or causal experiment. Positive customer sentiment is not a revenue amount."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "release-07",
+          "V2-FB-0044"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-022",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "Name the engineer who approved the customer's SAML callback setting.",
+      "expected_answer_or_abstention": "Abstain. The source reports an IT callback misconfiguration but identifies no individual engineer who approved the SAML callback.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0063"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0063",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "We discovered our IT team had entered the wrong callback URL.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. The source reports an IT callback misconfiguration but identifies no individual engineer who approved the SAML callback.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0063"
+        ],
+        "findings": "Corpus-wide text check found no specific engineer approval record. “IT team” does not identify an approver."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0063"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-023",
+      "split": "development",
+      "category": "unanswerable",
+      "question": "What is the complete count of urgent alerts lost across all Pulse customers?",
+      "expected_answer_or_abstention": "Abstain. Several reports concern delayed or missed urgent notifications, but the dataset cannot provide a complete event-level count across all customers.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0019",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "We disabled a board's routine alerts, and now even urgent ones are delayed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0067",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "A task was marked urgent at noon; nobody was notified until evening.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. Several reports concern delayed or missed urgent notifications, but the dataset cannot provide a complete event-level count across all customers.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0067"
+        ],
+        "findings": "Individual anecdotes and numbers of emails must not be confused with exhaustive lost-alert telemetry."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0067"
+        ]
+      }
+    },
+    {
+      "id": "P21-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Who approved the April digest default for every workspace?",
+      "expected_answer_or_abstention": "Abstain. The April digest release describes product behavior but does not identify who approved its default or verify universal workspace approval.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-03"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-23",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-03",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Shared boards are selected by default; teams can opt out.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-23",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. The April digest release describes product behavior but does not identify who approved its default or verify universal workspace approval.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "release-03"
+        ],
+        "findings": "No approval/approver record exists in the product documents or customer reports; “shared boards selected by default” is not an approval fact."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "release-03"
+        ]
+      }
+    }
+  ],
+  "owner_approved_corrections": {
+    "approved_by": "Harsh (project owner, in chat)",
+    "approved_on": "2026-11-23",
+    "summary": [
+      "All dates reformatted to ISO",
+      "All judgments_are set to reviewed_subset",
+      "Q-005 revise with multi-customer answer",
+      "Q-006 three callback-URL sources upgraded to supports",
+      "Q-007 placeholder replaced with source IDs",
+      "Q-012 V2-FB-0033 in group 2, original answer kept",
+      "Q-019 answer fixed; group 2 dropped",
+      "Q-020 approved ('starter' = shared template)"
+    ],
+    "changed_cells": 194,
+    "files": [
+      "questions-review-original.csv",
+      "sources-review-original.csv",
+      "corrections.json"
+    ]
+  }
+}

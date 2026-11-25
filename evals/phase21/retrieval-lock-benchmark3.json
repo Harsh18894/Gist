@@ -1,0 +1,39 @@
+{
+  "benchmark_version": "gist-phase2.1-benchmark-3-reviewed",
+  "benchmark_manifest_sha256": "53564b26eced4364b169eb03bed2fe86e1faaa37a3c7cd49451bde8d69a00a5e",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "ba414f22890c0c8b01fcee3c56a2c1876d845bc17e0fbe80fdf36ae57784312c",
+  "heldout_sha256": "887a3f8b1351cfc973493d7b10b3f8df3a232d88b84acba436461b4577c180b9",
+  "embedding_model": "text-embedding-3-small",
+  "locked_config": {
+    "keyword_weight": 1.0,
+    "vector_weight": 1.0,
+    "rrf_k": 60,
+    "depth": 50,
+    "vector_only_min_similarity": 0.3,
+    "document_slot": false,
+    "document_depth": 15,
+    "decompose": false,
+    "subquery_weight": 0.5,
+    "max_subqueries": 3,
+    "mmr_lambda": 0.7,
+    "results": 20
+  },
+  "files_sha256": {
+    "backend/app/rag/candidate_v3.py": "3bc0552db65dd11dd2974dc40da08b9d067703ac0172652b370b6f9ec4949cfc",
+    "backend/app/rag/retrieval.py": "f62234c6a72695fd51e5f96deebb8ae626bfd8deee664c5c137cc0ff656c3207",
+    "backend/app/rag/ingest.py": "eef51b1677d4b354ab54a5603df50e25e54302f608fe24e16ea1bf3fe428a4b8",
+    "backend/app/rag/evidence.py": "c62fbd395fa40cf42de7cf0031489bae047a09877e5e6b8d52ea604760cc73b0",
+    "backend/app/rag/provider.py": "0e92e4298849dcbd784598864d8f88fb5d80b2a0a4c9c46fe1914307958aad2f",
+    "backend/scripts/evaluate_benchmark3_dev.py": "3bfa4b386810a7033b947a459f2ad40c4a256660bad9557e1a97fe37482037f1",
+    "backend/scripts/evaluate_benchmark3_heldout.py": "dc6c43ed6350447264dd26e6d51586656ff2d83579cefdb7fadc62d16c4b9f11"
+  },
+  "locked_at": "2026-11-23T07:40:03+00:00",
+  "selection": "MMR lambda 0.7 chosen on 15 answerable development questions: best balance of Hit@5, MRR@5 and evidence-group coverage, with neighbouring lambdas also above baseline.",
+  "development_results": [
+    "evals/phase21/results/benchmark3-development-baseline.json",
+    "evals/phase21/results/benchmark3-development-trials-round1.json",
+    "evals/phase21/results/benchmark3-development-trials-round2.json"
+  ],
+  "policy": "Run the six held-out questions once. Do not tune or rerun against them."
+}

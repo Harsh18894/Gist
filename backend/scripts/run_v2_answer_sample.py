@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.config import database_path  # noqa: E402
+from app.dataset import default_db_path  # noqa: E402
 from app.database import connection  # noqa: E402
 from app.rag.budget import summary as spend_summary  # noqa: E402
 from app.rag.evidence import unsupported_numbers  # noqa: E402
@@ -20,7 +21,7 @@ from app.rag.service import answer  # noqa: E402
 from app.schemas import AskRequest  # noqa: E402
 from freeze_v2_split import verify  # noqa: E402
 
-DB = ROOT / "backend/gist-v2.sqlite3"
+DB = default_db_path("v2", ROOT)
 RESULT = ROOT / "evals/v2/results/development-paid-answers.jsonl"
 QUESTION_IDS = ["V2-Q-005", "V2-Q-018", "V2-Q-020", "V2-Q-031", "V2-Q-041",
                 "V2-Q-045", "V2-Q-047", "V2-Q-048", "V2-Q-049"]

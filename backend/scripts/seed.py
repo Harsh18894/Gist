@@ -1,40 +1,41 @@
 """Initialize and replace local SQLite data from synthetic files."""
 import argparse
-import hashlib
 import json
 import os
 import sqlite3
 import sys
+from contextlib import closing
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.database import connection, initialize  # noqa: E402
+from app.dataset import default_db_path, fingerprint as source_fingerprint, require_complete, source_dir, source_files  # noqa: E402
 from app.rag.ingest import index_seed_data  # noqa: E402
 
 
 def seed(dataset: str = "v1", *, path: Path | None = None, replace: bool = False) -> None:
     if dataset not in {"v1", "v2"}:
         raise ValueError("Dataset must be v1 or v2.")
-    data = ROOT / "data" / ("v2" if dataset == "v2" else "")
-    target = path or (Path(os.environ["GIST_DB_PATH"]) if "GIST_DB_PATH" in os.environ else ROOT / "backend" / f"gist{'-v2' if dataset == 'v2' else ''}.sqlite3")
+    # Uses this module's ROOT (tests redirect it) and the dataset argument, not
+    # GIST_DATASET_VERSION, to pick the default database.
+    data = source_dir(dataset, ROOT)
+    target = path or (Path(os.environ["GIST_DB_PATH"]) if "GIST_DB_PATH" in os.environ else default_db_path(dataset, ROOT))
     if not target.is_absolute():
         target = ROOT / target
     if target.exists() and not replace:
         raise FileExistsError(f"{target} already exists. Choose a new path or pass --replace explicitly.")
     if target.exists():
-        with sqlite3.connect(target) as existing_db:
+        with closing(sqlite3.connect(target)) as existing_db:
             names = {row[0] for row in existing_db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
             prior = existing_db.execute("SELECT value FROM dataset_meta WHERE key='version'").fetchone() if "dataset_meta" in names else None
             if prior and prior[0] != dataset:
                 raise ValueError(f"Refusing to replace {prior[0]} database with {dataset} data.")
             if not prior and dataset == "v2" and "feedback" in names and existing_db.execute("SELECT COUNT(*) FROM feedback").fetchone()[0]:
                 raise ValueError("Refusing to replace an unversioned existing corpus with v2 data.")
-    files = [data / "feedback.jsonl", data / "support-tickets.jsonl", *sorted((data / "prds").glob("*.md")), *sorted((data / "release-notes").glob("*.md"))]
-    if not all(item.is_file() for item in files) or len(files) != 16:
-        raise FileNotFoundError(f"Incomplete {dataset} source dataset in {data}.")
-    fingerprint = hashlib.sha256(b"".join(item.read_bytes() for item in files)).hexdigest()
+    files = require_complete(source_files(data), dataset)
+    fingerprint = source_fingerprint(files)
     with connection(target) as db:
         initialize(db)
         with db:

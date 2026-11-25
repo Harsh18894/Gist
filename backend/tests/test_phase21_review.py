@@ -206,3 +206,34 @@ def test_invalid_enums_and_dates_block(tmp_path):
     assert any("must be YYYY-MM-DD" in b for b in blockers)
     assert any("judgments_are must be" in b for b in blockers)
     assert any("unknown verdict 'relevant'" in b for b in blockers)
+
+
+def test_owner_corrections_apply_to_copies_and_are_hashed(tmp_path):
+    questions, sources = _pack()
+    target = questions[0]["question_id"]
+    _row(questions, target)["review_date"] = "11/20/2026"
+    paths = _write(tmp_path, questions, sources)
+    original = paths[0].read_bytes()
+    corrections = tmp_path / "corrections.json"
+    change = {"file": "questions", "question_id": target, "field": "review_date",
+              "old": "11/20/2026", "new": "2026-11-20", "reason": "ISO date"}
+    corrections.write_text(json.dumps({"approved_by": "Owner", "approved_on": "2026-11-20", "changes": [change]}))
+    manifest = importer.freeze(*paths, out=tmp_path / "frozen", corrections=corrections)
+    assert paths[0].read_bytes() == original
+    assert (tmp_path / "frozen/questions-review-original.csv").read_bytes() == original
+    assert {"corrections.json", "questions-review-original.csv"} <= set(manifest["files_sha256"])
+    benchmark = json.loads((tmp_path / "frozen/benchmark.json").read_text())
+    assert benchmark["owner_approved_corrections"]["changed_cells"] == 1
+    assert importer.verify(tmp_path / "frozen")
+    assert not (tmp_path / "frozen.staging").exists()
+
+
+def test_stale_correction_is_rejected_without_writing(tmp_path):
+    paths = _write(tmp_path, *_pack())
+    corrections = tmp_path / "corrections.json"
+    qid = DRAFT["questions"][0]["id"]
+    corrections.write_text(json.dumps({"approved_by": "Owner", "approved_on": "2026-11-20", "changes": [
+        {"file": "questions", "question_id": qid, "field": "reviewer_name", "old": "Someone Else", "new": "X"}]}))
+    with pytest.raises(ValueError, match="differs"):
+        importer.freeze(*paths, out=tmp_path / "frozen", corrections=corrections)
+    assert not (tmp_path / "frozen").exists() and not (tmp_path / "frozen.staging").exists()

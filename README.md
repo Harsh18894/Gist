@@ -113,6 +113,8 @@ The authorized validation indexed **536/536** learned v2 vectors. The retrieval 
 
 Phase 2.1 has an **experimental offline retriever** with bounded local subqueries and a separate [retrieval improvement report](docs/phase2-retrieval-improvements.md). It is not the Ask Gist default. Its draft 24-question benchmark under `evals/phase21/` needs independent human relevance review; do not run its held-out questions for tuning. After the owner completes the review CSVs, `backend/scripts/import_phase21_review.py check` validates them and `freeze` writes an immutable reviewed benchmark; see [the review guide](evals/phase21/human-review.md). Exact paid-mode query embeddings are now cached by model and dataset fingerprint, while source embeddings and the frozen v2 baseline remain intact.
 
+Phase 2.1 final validation is complete: see [the report](docs/phase21-final-validation.md). Held-out retrieval Hit@5 was 0.80 on five questions, but only 5 of 20 answerable answers were rated good in the owner's claim review. Proposed release readiness: **FAIL**.
+
 ## API
 
 Phase 1: `GET /api/health`, `GET /api/stats`, `GET /api/records`, and `GET /api/records/{id}`. Phase 2: `GET /api/search` (`keyword`, `semantic`, or `hybrid`), `POST /api/ask`, `GET /api/sources/{id}`, `GET /api/rag/status`, and `GET /api/usage`. Search and Ask support segment, product-area, and inclusive date filters. Ask defaults to `mode: "demo"`; `mode: "openai"` is guarded. Invalid input returns structured 422 errors. Retrieval-only results use `retrieved_sources`; generated answers use `citations`. The source endpoint returns the indexed original text for verification.

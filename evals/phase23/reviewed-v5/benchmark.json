@@ -1,0 +1,4543 @@
+{
+  "benchmark_version": "gist-phase2.3-benchmark-5-reviewed",
+  "dataset_version": "v2",
+  "synthetic": true,
+  "derived_from": {
+    "benchmark_version": "gist-phase2.3-benchmark-5-draft",
+    "file_sha256": "af829c3d0ab1e8305d89fc7d457b0534d2e43df1ce0e332eecf753cc4266c16d"
+  },
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "ac562f9a63f6ff1520f9fc48e468cb0879d430586df63000c779d90ee6f5ae82",
+  "heldout_sha256": "ac562f9a63f6ff1520f9fc48e468cb0879d430586df63000c779d90ee6f5ae82",
+  "split_counts": {
+    "development": 0,
+    "heldout": 24
+  },
+  "human_review": {
+    "reviewers": [
+      "Harsh"
+    ],
+    "review_dates": [
+      "2026-11-26"
+    ],
+    "second_reviewer_involved": false,
+    "independence": "Owner-written labels on an agent-drafted benchmark (single reviewer; no second reviewer).",
+    "human_ai_disagreements": 25,
+    "assisted_by_ai_prereview": null,
+    "label_provenance": "Owner-written labels on an agent-drafted benchmark (single reviewer; no second reviewer).",
+    "owner_statement": "Keep Q-011/Q-012/Q-017 and score supported groups only; the your_* columns were written by the owner."
+  },
+  "label_policy": "Owner-adopted final verdicts are authoritative. evidence_groups are distinct evidence needs; members are alternative human-supported sources. Partial, unsupported and hard-negative sources are not relevant. Labels are a reviewed subset unless marked exhaustive.",
+  "heldout_policy": "Do not tune on held-out questions. Run them once, after the retrieval lock.",
+  "caveats": [
+    "B5-Q-003/release-01: human removed an AI-proposed hard negative (partial).",
+    "B5-Q-011: proposed evidence group 2 has no human-supported source.",
+    "B5-Q-011: proposed evidence group 3 has no human-supported source.",
+    "B5-Q-012: proposed evidence group 3 has no human-supported source.",
+    "B5-Q-012: proposed evidence group 4 has no human-supported source.",
+    "B5-Q-017: proposed evidence group 1 has no human-supported source."
+  ],
+  "questions": [
+    {
+      "id": "B5-Q-001",
+      "split": "heldout",
+      "category": "direct",
+      "question": "How does the April digest update organize project summaries?",
+      "expected_answer_or_abstention": "Project summaries are grouped by board (release-03).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-03"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-03"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-08"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The April release explicitly says project summaries are grouped by board. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The April release states the grouping unit: one board.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-08",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "September alert tuning does not describe April digest grouping.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Project summaries are grouped by board (release-03).",
+        "evidence_groups": [
+          [
+            "release-03"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-03"
+        ],
+        "hard_negative_source_ids": [
+          "release-08"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-03"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-08"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-002",
+      "split": "heldout",
+      "category": "direct",
+      "question": "According to the shared-templates spec, at what point should teams find standard templates?",
+      "expected_answer_or_abstention": "During project creation (prd-06).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "prd-06"
+        ]
+      ],
+      "relevant_source_ids": [
+        "prd-06"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-06"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The PRD identifies project creation as the intended discovery point; the release note describes a menu location instead. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "prd-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The spec names the point in the workflow when templates should be discoverable.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-06",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The release gives a menu location and copy permissions, not the point in project creation specified by the PRD.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "During project creation (prd-06).",
+        "evidence_groups": [
+          [
+            "prd-06"
+          ]
+        ],
+        "supporting_source_ids": [
+          "prd-06"
+        ],
+        "hard_negative_source_ids": [
+          "release-06"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "prd-06"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-06"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-003",
+      "split": "heldout",
+      "category": "direct",
+      "question": "What does the team-invitation spec say to do before blaming a cause for repeat-step reports?",
+      "expected_answer_or_abstention": "Investigate the repeat-step reports before assigning a cause (prd-01).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "prd-01"
+        ]
+      ],
+      "relevant_source_ids": [
+        "prd-01"
+      ],
+      "partial_source_ids": [
+        "release-01"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Keep the answer. The release note is partial context for the ongoing investigation, while the PRD supplies the explicit instruction about assigning cause. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "prd-01",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The spec explicitly orders investigation before causal attribution.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-01",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The release confirms an investigation of the same reports but never gives the spec’s instruction about assigning cause.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Investigate the repeat-step reports before assigning a cause (prd-01).",
+        "evidence_groups": [
+          [
+            "prd-01"
+          ]
+        ],
+        "supporting_source_ids": [
+          "prd-01"
+        ],
+        "hard_negative_source_ids": [
+          "release-01"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "prd-01"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-01"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Which customer segments reported the executive board taking 18 seconds to load?",
+      "expected_answer_or_abstention": "Enterprise and Mid-market customers (from the report metadata).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0056",
+          "V2-FB-0080",
+          "V2-FB-0212",
+          "V2-FB-0296",
+          "V2-FB-0308",
+          "V2-FB-0392",
+          "V2-SUP-0047",
+          "V2-SUP-0107"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0056",
+        "V2-FB-0080",
+        "V2-FB-0212",
+        "V2-FB-0296",
+        "V2-FB-0308",
+        "V2-FB-0392",
+        "V2-SUP-0047",
+        "V2-SUP-0107"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0128",
+        "V2-FB-0200",
+        "V2-FB-0272"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Two matching records are Enterprise and six are Mid-market. A complete answer needs both segment labels, even though the current key pools them in one group. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0056",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0080",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Enterprise.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0212",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0296",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0308",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Enterprise.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0392",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0047",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0107",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The executive-board report gives the exact 18-second duration. Segment: Mid-market.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0128",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The segment is eligible, but the symptom is a date-range hang across 40 projects; there is no 18-second executive-board measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0200",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The segment is eligible, but the symptom is a date-range hang across 40 projects; there is no 18-second executive-board measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0272",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The segment is eligible, but the symptom is a date-range hang across 40 projects; there is no 18-second executive-board measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Enterprise and Mid-market customers (from the report metadata).",
+        "evidence_groups": [
+          [
+            "V2-FB-0056",
+            "V2-FB-0080",
+            "V2-FB-0212",
+            "V2-FB-0296",
+            "V2-FB-0308",
+            "V2-FB-0392",
+            "V2-SUP-0047",
+            "V2-SUP-0107"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0056",
+          "V2-FB-0080",
+          "V2-FB-0212",
+          "V2-FB-0296",
+          "V2-FB-0308",
+          "V2-FB-0392",
+          "V2-SUP-0047",
+          "V2-SUP-0107"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0128",
+          "V2-FB-0200",
+          "V2-FB-0272"
+        ],
+        "findings": "Answer depends on segment metadata sent with each source."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0056",
+            "V2-FB-0080",
+            "V2-FB-0212",
+            "V2-FB-0296",
+            "V2-FB-0308",
+            "V2-FB-0392",
+            "V2-SUP-0047",
+            "V2-SUP-0107"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0128",
+          "V2-FB-0200",
+          "V2-FB-0272"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-005",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find someone whose colleague entered the previous password where the new one belonged.",
+      "expected_answer_or_abstention": "Yes. A report says their designer could not log in because she typed her old password into the new-password field.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0194",
+          "V2-FB-0230",
+          "V2-FB-0314",
+          "V2-FB-0386",
+          "V2-SUP-0061",
+          "V2-SUP-0113"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0194",
+        "V2-FB-0230",
+        "V2-FB-0314",
+        "V2-FB-0386",
+        "V2-SUP-0061",
+        "V2-SUP-0113"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0122",
+        "V2-FB-0242"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The customer identifies both the colleague and the password-field mistake; the nearby SAML sentence in one record is a separate issue. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0194",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0230",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0314",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0386",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0061",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0113",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer describes the designer entering her old password in the new-password field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0074",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The old password still working after a reset is a different failure from typing it in the wrong field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The old password still working after a reset is a different failure from typing it in the wrong field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0242",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The old password still working after a reset is a different failure from typing it in the wrong field.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. A report says their designer could not log in because she typed her old password into the new-password field.",
+        "evidence_groups": [
+          [
+            "V2-FB-0194",
+            "V2-FB-0230",
+            "V2-FB-0314",
+            "V2-FB-0386",
+            "V2-SUP-0061",
+            "V2-SUP-0113"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0194",
+          "V2-FB-0230",
+          "V2-FB-0314",
+          "V2-FB-0386",
+          "V2-SUP-0061",
+          "V2-SUP-0113"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0194",
+            "V2-FB-0230",
+            "V2-FB-0314",
+            "V2-FB-0386",
+            "V2-SUP-0061",
+            "V2-SUP-0113"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-006",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Did anyone see an invitation marked as taken up while the person still showed as waiting?",
+      "expected_answer_or_abstention": "Yes. Reports say the invite shows accepted while the member list says pending.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0193",
+          "V2-FB-0205",
+          "V2-SUP-0036"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0193",
+        "V2-FB-0205",
+        "V2-SUP-0036"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The invitation and the member list give conflicting labels in the same report. None of these records establishes which label was correct. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0193",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Both conflicting status labels are explicit.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0205",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Both conflicting status labels are explicit.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0036",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "Both conflicting status labels are explicit.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0037",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The new hire lacks access, but the report does not describe conflicting invitation and member-list statuses.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0097",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The new hire lacks access, but the report does not describe conflicting invitation and member-list statuses.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The new hire lacks access, but the report does not describe conflicting invitation and member-list statuses.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Reports say the invite shows accepted while the member list says pending.",
+        "evidence_groups": [
+          [
+            "V2-FB-0193",
+            "V2-FB-0205",
+            "V2-SUP-0036"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0193",
+          "V2-FB-0205",
+          "V2-SUP-0036"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0193",
+            "V2-FB-0205",
+            "V2-SUP-0036"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-007",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Is there a customer who wants to check a few rows before running a large file upload?",
+      "expected_answer_or_abstention": "Yes. Customers asked to preview a sample before importing 2,000 rows.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0029",
+          "V2-FB-0065",
+          "V2-FB-0113",
+          "V2-FB-0377"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0029",
+        "V2-FB-0065",
+        "V2-FB-0113",
+        "V2-FB-0377"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The customer explicitly requests a preview before importing 2,000 rows; the key makes no claim that preview was available. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0029",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer asks to preview a sample before a 2,000-row import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0065",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer asks to preview a sample before a 2,000-row import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0113",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer asks to preview a sample before a 2,000-row import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0377",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer asks to preview a sample before a 2,000-row import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0017",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Undoing a completed import is a different request from previewing rows before upload.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0149",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Undoing a completed import is a different request from previewing rows before upload.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0161",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Undoing a completed import is a different request from previewing rows before upload.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Customers asked to preview a sample before importing 2,000 rows.",
+        "evidence_groups": [
+          [
+            "V2-FB-0029",
+            "V2-FB-0065",
+            "V2-FB-0113",
+            "V2-FB-0377"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0029",
+          "V2-FB-0065",
+          "V2-FB-0113",
+          "V2-FB-0377"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0029",
+            "V2-FB-0065",
+            "V2-FB-0113",
+            "V2-FB-0377"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find a report of phone notifications for mentions stopping after someone adjusted alert settings.",
+      "expected_answer_or_abstention": "Yes. A report says mentions stopped arriving on mobile after the notification sliders were changed.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0211"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0211"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0127",
+        "V2-FB-0163"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The mobile report establishes event order and identifies mentions as the affected notification. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0211",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The report names mobile mentions and places their loss after a slider change.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0019",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Delayed urgent alerts are a different alert class and symptom; mobile mentions are never identified.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0127",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Delayed urgent alerts are a different alert class and symptom; mobile mentions are never identified.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0163",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Delayed urgent alerts are a different alert class and symptom; mobile mentions are never identified.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. A report says mentions stopped arriving on mobile after the notification sliders were changed.",
+        "evidence_groups": [
+          [
+            "V2-FB-0211"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0211"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0127",
+          "V2-FB-0163"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0211"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0127",
+          "V2-FB-0163"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-009",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What different seat-billing mismatches did customers report?",
+      "expected_answer_or_abstention": "Customers reported a renewal estimate that differed from the charge and an invoice whose seat total differed from the admin page on the same day. Separately, support explained that archived seats stay billable until cycle close, and the customer wanted that rule shown in the UI.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0022",
+          "V2-FB-0058",
+          "V2-FB-0202",
+          "V2-FB-0334",
+          "V2-FB-0394"
+        ],
+        [
+          "V2-FB-0034",
+          "V2-FB-0070",
+          "V2-FB-0154",
+          "V2-FB-0199",
+          "V2-SUP-0033",
+          "V2-SUP-0073"
+        ],
+        [
+          "V2-FB-0082"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0022",
+        "V2-FB-0034",
+        "V2-FB-0058",
+        "V2-FB-0070",
+        "V2-FB-0082",
+        "V2-FB-0154",
+        "V2-FB-0199",
+        "V2-FB-0202",
+        "V2-FB-0334",
+        "V2-FB-0394",
+        "V2-SUP-0033",
+        "V2-SUP-0073"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Group 3 describes a billing rule and a UI clarity request, not a third demonstrated mismatch. The estimate discrepancy also has no confirmed seat-count cause. If all three points must be scored, broaden the question to billing discrepancies and sources of confusion. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0022",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The estimate and the charge differ; the report does not trace this discrepancy to seats.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0034",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0058",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The estimate and the charge differ; the report does not trace this discrepancy to seats.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0070",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0082",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "Support explained the billing rule, and the customer wanted it shown in the UI; no incorrect charge is alleged.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0154",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0199",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0202",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The estimate and the charge differ; the report does not trace this discrepancy to seats.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0334",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The estimate and the charge differ; the report does not trace this discrepancy to seats.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0394",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The estimate and the charge differ; the report does not trace this discrepancy to seats.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0033",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0073",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The same-day invoice and admin-page totals explicitly disagree.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0023",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The feedback concerns readability and unclear mid-cycle detail, without specifying a conflicting amount, seat total or archived-seat rule.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0094",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The feedback concerns readability and unclear mid-cycle detail, without specifying a conflicting amount, seat total or archived-seat rule.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0053",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The feedback concerns readability and unclear mid-cycle detail, without specifying a conflicting amount, seat total or archived-seat rule.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Three kinds: a renewal estimate that did not match the amount charged; the invoice and admin page showing different seat totals on the same day; and archived seats remaining billable until the cycle closes, which support explained and the customer wanted the UI to state.",
+        "evidence_groups": [
+          [
+            "V2-FB-0022",
+            "V2-FB-0058",
+            "V2-FB-0202",
+            "V2-FB-0334",
+            "V2-FB-0394"
+          ],
+          [
+            "V2-FB-0034",
+            "V2-FB-0070",
+            "V2-FB-0154",
+            "V2-FB-0199",
+            "V2-SUP-0033",
+            "V2-SUP-0073"
+          ],
+          [
+            "V2-FB-0082"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0022",
+          "V2-FB-0034",
+          "V2-FB-0058",
+          "V2-FB-0070",
+          "V2-FB-0082",
+          "V2-FB-0154",
+          "V2-FB-0199",
+          "V2-FB-0202",
+          "V2-FB-0334",
+          "V2-FB-0394",
+          "V2-SUP-0033",
+          "V2-SUP-0073"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0022",
+            "V2-FB-0058",
+            "V2-FB-0202",
+            "V2-FB-0334",
+            "V2-FB-0394"
+          ],
+          [
+            "V2-FB-0034",
+            "V2-FB-0070",
+            "V2-FB-0154",
+            "V2-FB-0199",
+            "V2-SUP-0033",
+            "V2-SUP-0073"
+          ],
+          [
+            "V2-FB-0082"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-010",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "Besides missing records, what other CRM connector problems or requests did customers raise?",
+      "expected_answer_or_abstention": "Stale tasks (an opportunity moved in the CRM while the Pulse task kept yesterday's version), a launch handoff falling back to spreadsheets, and a request for a failed-record count instead of only the last successful timestamp.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0220",
+          "V2-FB-0232",
+          "V2-FB-0353",
+          "V2-FB-0388"
+        ],
+        [
+          "V2-FB-0136",
+          "V2-SUP-0079"
+        ],
+        [
+          "V2-FB-0256",
+          "V2-FB-0364",
+          "V2-SUP-0039"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0136",
+        "V2-FB-0220",
+        "V2-FB-0232",
+        "V2-FB-0256",
+        "V2-FB-0353",
+        "V2-FB-0364",
+        "V2-FB-0388",
+        "V2-SUP-0039",
+        "V2-SUP-0079"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0078",
+        "V2-SUP-0005"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0052",
+        "V2-FB-0244",
+        "V2-FB-0268"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "All three points have support in the Integrations records. The two Notifications records request a failed-record count but do not identify the connector. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0078",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The request is explicit, but neither this Notifications record nor its second issue identifies the CRM connector.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0136",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer connects the spreadsheet workaround to a launch handoff that depended on CRM updates.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0220",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The sales opportunity changed while the corresponding Pulse task remained stale.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0232",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The sales opportunity changed while the corresponding Pulse task remained stale.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0256",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The Integrations record identifies the requested count and the existing timestamp.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0353",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The sales opportunity changed while the corresponding Pulse task remained stale.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0364",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The Integrations record identifies the requested count and the existing timestamp.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0388",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The sales opportunity changed while the corresponding Pulse task remained stale.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0005",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The request is explicit, but neither this Notifications record nor its second issue identifies the CRM connector.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0039",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The Integrations record identifies the requested count and the existing timestamp.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0079",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer connects the spreadsheet workaround to a launch handoff that depended on CRM updates.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0052",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is the missing-record problem the question explicitly excludes.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0244",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is the missing-record problem the question explicitly excludes.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0268",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is the missing-record problem the question explicitly excludes.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Stale tasks (an opportunity moved in the CRM while the Pulse task kept yesterday's version), a launch handoff falling back to spreadsheets, and a request for a failed-record count instead of only the last successful timestamp.",
+        "evidence_groups": [
+          [
+            "V2-FB-0220",
+            "V2-FB-0232",
+            "V2-FB-0353",
+            "V2-FB-0388"
+          ],
+          [
+            "V2-FB-0136",
+            "V2-SUP-0079"
+          ],
+          [
+            "V2-FB-0078",
+            "V2-FB-0256",
+            "V2-FB-0364",
+            "V2-SUP-0005",
+            "V2-SUP-0039"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0078",
+          "V2-FB-0136",
+          "V2-FB-0220",
+          "V2-FB-0232",
+          "V2-FB-0256",
+          "V2-FB-0353",
+          "V2-FB-0364",
+          "V2-FB-0388",
+          "V2-SUP-0005",
+          "V2-SUP-0039",
+          "V2-SUP-0079"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0052",
+          "V2-FB-0244",
+          "V2-FB-0268"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0220",
+            "V2-FB-0232",
+            "V2-FB-0353",
+            "V2-FB-0388"
+          ],
+          [
+            "V2-FB-0136",
+            "V2-SUP-0079"
+          ],
+          [
+            "V2-FB-0078",
+            "V2-FB-0256",
+            "V2-FB-0364",
+            "V2-SUP-0005",
+            "V2-SUP-0039"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0052",
+          "V2-FB-0244",
+          "V2-FB-0268"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-011",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What template permission problems did customers describe, and what resolved one of them?",
+      "expected_answer_or_abstention": "A guest reported seeing a shared plan but being unable to create a board from it. Separate reports describe admin access working where contributor access did not, and a member-role change fixing an unspecified issue. The supplied records do not identify which template problem, if any, that change resolved.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0108"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0108"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0024",
+        "V2-FB-0036",
+        "V2-FB-0132",
+        "V2-FB-0216",
+        "V2-FB-0252",
+        "V2-FB-0264",
+        "V2-FB-0276",
+        "V2-FB-0288",
+        "V2-FB-0336",
+        "V2-SUP-0063"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0143",
+        "V2-FB-0239",
+        "V2-SUP-0038"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The guest example is explicit. Groups 2 and 3 describe roles but never identify the affected feature, and the “fixed it” reports do not connect the fix to the guest’s case. Supply an explicit template-permission record for each missing group or narrow the expected answer. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments. [2026-11-26 owner-approved: unsupported groups are dropped from scoring; coverage refers to the remaining groups.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0024",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0036",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The roles are explicit, but the record never identifies the feature or action on which their access differed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0108",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The report links the guest’s shared-plan visibility to the blocked board action.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0132",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0216",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The roles are explicit, but the record never identifies the feature or action on which their access differed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0252",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0264",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0276",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0288",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The roles are explicit, but the record never identifies the feature or action on which their access differed.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0336",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0063",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The role change and request for a better error are explicit, but “it” is never identified as a template issue.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0143",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The screenshot resolved a discovery issue; it says nothing about permission to use or copy a template.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0239",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The screenshot resolved a discovery issue; it says nothing about permission to use or copy a template.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0038",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The screenshot resolved a discovery issue; it says nothing about permission to use or copy a template.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "A guest could see the shared plan but not create a board from it, and admin access worked while contributor access did not. Changing the member role fixed one case, though the customer wanted a better error message.",
+        "evidence_groups": [
+          [
+            "V2-FB-0108"
+          ],
+          [
+            "V2-FB-0036",
+            "V2-FB-0216",
+            "V2-FB-0288"
+          ],
+          [
+            "V2-FB-0024",
+            "V2-FB-0132",
+            "V2-FB-0252",
+            "V2-FB-0264",
+            "V2-FB-0276",
+            "V2-FB-0336",
+            "V2-SUP-0063"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0024",
+          "V2-FB-0036",
+          "V2-FB-0108",
+          "V2-FB-0132",
+          "V2-FB-0216",
+          "V2-FB-0252",
+          "V2-FB-0264",
+          "V2-FB-0276",
+          "V2-FB-0288",
+          "V2-FB-0336",
+          "V2-SUP-0063"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0108"
+          ],
+          [
+            "V2-FB-0036",
+            "V2-FB-0216",
+            "V2-FB-0288"
+          ],
+          [
+            "V2-FB-0024",
+            "V2-FB-0132",
+            "V2-FB-0252",
+            "V2-FB-0264",
+            "V2-FB-0276",
+            "V2-FB-0336",
+            "V2-SUP-0063"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "In what different ways did the project digest send more email than customers expected?",
+      "expected_answer_or_abstention": "Customers described an inbox filling with separate board summaries and a digest enabled for one project that produced messages from six. Other reports mention separate emails about events in the same hour and too many routine card-edit pings; neither identifies the digest as the source.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0138",
+          "V2-FB-0174",
+          "V2-FB-0232",
+          "V2-FB-0282",
+          "V2-FB-0366",
+          "V2-SUP-0017",
+          "V2-SUP-0069"
+        ],
+        [
+          "V2-FB-0234",
+          "V2-FB-0330"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0138",
+        "V2-FB-0174",
+        "V2-FB-0232",
+        "V2-FB-0234",
+        "V2-FB-0282",
+        "V2-FB-0330",
+        "V2-FB-0366",
+        "V2-SUP-0017",
+        "V2-SUP-0069"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0006",
+        "V2-FB-0018",
+        "V2-FB-0150",
+        "V2-SUP-0025"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0151",
+        "V2-FB-0187",
+        "V2-FB-0259"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Groups 1 and 2 describe summaries or the digest. Group 3 identifies email but not its sender, and group 4 does not identify email at all. Broaden the wording to project notifications if all four observations are intended. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments. [2026-11-26 owner-approved: unsupported groups are dropped from scoring; coverage refers to the remaining groups.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0006",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The report identifies card-edit pings but specifies neither email delivery nor the digest.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0018",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The separate emails are explicit; the customer does not identify the digest as their sender.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0138",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0150",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The report identifies card-edit pings but specifies neither email delivery nor the digest.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0174",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0232",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0234",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer enabled one project and heard from six.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0282",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0330",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer enabled one project and heard from six.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0366",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0017",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0025",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The separate emails are explicit; the customer does not identify the digest as their sender.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0069",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly connects per-board summaries to a crowded inbox; this is a reported experience.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0151",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The complaint concerns a late high-priority message alongside fewer emails.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0187",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The complaint concerns a late high-priority message alongside fewer emails.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0259",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The complaint concerns a late high-priority message alongside fewer emails.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Each shared board sent its own summary; turning the digest on for one project produced mail from all six; separate emails arrived for things in the same hour; and routine card edits triggered too many pings.",
+        "evidence_groups": [
+          [
+            "V2-FB-0138",
+            "V2-FB-0174",
+            "V2-FB-0232",
+            "V2-FB-0282",
+            "V2-FB-0366",
+            "V2-SUP-0017",
+            "V2-SUP-0069"
+          ],
+          [
+            "V2-FB-0234",
+            "V2-FB-0330"
+          ],
+          [
+            "V2-FB-0018",
+            "V2-SUP-0025"
+          ],
+          [
+            "V2-FB-0006",
+            "V2-FB-0150"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0006",
+          "V2-FB-0018",
+          "V2-FB-0138",
+          "V2-FB-0150",
+          "V2-FB-0174",
+          "V2-FB-0232",
+          "V2-FB-0234",
+          "V2-FB-0282",
+          "V2-FB-0330",
+          "V2-FB-0366",
+          "V2-SUP-0017",
+          "V2-SUP-0025",
+          "V2-SUP-0069"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0151",
+          "V2-FB-0187",
+          "V2-FB-0259"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0138",
+            "V2-FB-0174",
+            "V2-FB-0232",
+            "V2-FB-0282",
+            "V2-FB-0366",
+            "V2-SUP-0017",
+            "V2-SUP-0069"
+          ],
+          [
+            "V2-FB-0234",
+            "V2-FB-0330"
+          ],
+          [
+            "V2-FB-0018",
+            "V2-SUP-0025"
+          ],
+          [
+            "V2-FB-0006",
+            "V2-FB-0150"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0151",
+          "V2-FB-0187",
+          "V2-FB-0259"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-013",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were date-range hangs with all 40 projects reported both before and after the August loading update?",
+      "expected_answer_or_abstention": "Yes. Reports of the date range hanging with all 40 projects appear before the August 5 update (release-07) and again afterwards. Timing alone does not show whether the update helped.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-07"
+        ],
+        [
+          "V2-FB-0128",
+          "V2-FB-0272",
+          "V2-SUP-0055",
+          "V2-SUP-0087"
+        ],
+        [
+          "V2-FB-0200"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0128",
+        "V2-FB-0200",
+        "V2-FB-0272",
+        "V2-SUP-0055",
+        "V2-SUP-0087",
+        "release-07"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0116",
+        "V2-FB-0164",
+        "V2-FB-0188"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Four matching records precede August 5 and one follows on September 7. This establishes reports on both sides of the release, without measuring improvement. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0128",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The 40-project date-range hang was reported before August 5. Source date: 2025-01-08.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0200",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "The same 40-project date-range hang was reported after August 5. Source date: 2025-09-07.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0272",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The 40-project date-range hang was reported before August 5. Source date: 2025-07-20.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0055",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The 40-project date-range hang was reported before August 5. Source date: 2025-01-11.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0087",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The 40-project date-range hang was reported before August 5. Source date: 2025-07-20.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-07",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The August 5 loading release establishes the comparison date. Source date: 2025-08-05.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0116",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Full-year slowness does not establish a hang with all 40 projects selected.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0164",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Full-year slowness does not establish a hang with all 40 projects selected.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0188",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Full-year slowness does not establish a hang with all 40 projects selected.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Reports of the date range hanging with all 40 projects appear before the August 5 update (release-07) and again afterwards. Timing alone does not show whether the update helped.",
+        "evidence_groups": [
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0128",
+            "V2-FB-0272",
+            "V2-SUP-0055",
+            "V2-SUP-0087"
+          ],
+          [
+            "V2-FB-0200"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0128",
+          "V2-FB-0200",
+          "V2-FB-0272",
+          "V2-SUP-0055",
+          "V2-SUP-0087",
+          "release-07"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0116",
+          "V2-FB-0164",
+          "V2-FB-0188"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0128",
+            "V2-FB-0272",
+            "V2-SUP-0055",
+            "V2-SUP-0087"
+          ],
+          [
+            "V2-FB-0200"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0116",
+          "V2-FB-0164",
+          "V2-FB-0188"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-014",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Relative to the February owner-checklist release, when were invites reported as accepted but still pending?",
+      "expected_answer_or_abstention": "After it: the reports date from March to May 2025, after the February 5 release (release-01). The dates do not show that the release caused the problem.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-01"
+        ],
+        [
+          "V2-FB-0193",
+          "V2-FB-0205",
+          "V2-SUP-0036"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0193",
+        "V2-FB-0205",
+        "V2-SUP-0036",
+        "release-01"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0122",
+        "V2-FB-0242"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The February 5 release predates all three matching reports: March 20, March 21 and May 3. The answer correctly avoids assigning cause. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0193",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The report explicitly names both statuses and is dated after February 5. Source date: 2025-05-03.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0205",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The report explicitly names both statuses and is dated after February 5. Source date: 2025-03-20.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0036",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The report explicitly names both statuses and is dated after February 5. Source date: 2025-03-21.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-01",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The February 5 release is the date anchor for the owner checklist. Source date: 2025-02-05.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0074",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The password-reset complaint does not date an accepted/pending status conflict.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The password-reset complaint does not date an accepted/pending status conflict.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0242",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The password-reset complaint does not date an accepted/pending status conflict.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "After it: the reports date from March to May 2025, after the February 5 release (release-01). The dates do not show that the release caused the problem.",
+        "evidence_groups": [
+          [
+            "release-01"
+          ],
+          [
+            "V2-FB-0193",
+            "V2-FB-0205",
+            "V2-SUP-0036"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0193",
+          "V2-FB-0205",
+          "V2-SUP-0036",
+          "release-01"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-01"
+          ],
+          [
+            "V2-FB-0193",
+            "V2-FB-0205",
+            "V2-SUP-0036"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-015",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were greyed-out duplicate buttons on shared templates reported only after the July gallery release?",
+      "expected_answer_or_abstention": "All five supplied reports of a greyed-out duplicate button are dated after the July 5 gallery release, from July 25 through October 31, 2025. This dates the reports; it does not show the release caused the disabled button or rule out earlier reports.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "release-06"
+        ],
+        [
+          "V2-FB-0012",
+          "V2-FB-0168",
+          "V2-FB-0228",
+          "V2-FB-0240",
+          "V2-FB-0396"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0012",
+        "V2-FB-0168",
+        "V2-FB-0228",
+        "V2-FB-0240",
+        "V2-FB-0396",
+        "release-06"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0143",
+        "V2-FB-0239",
+        "V2-SUP-0038"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The chronology and scope are correct. Make the distinction between report timing and causation explicit, as required for temporal questions. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0012",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer describes the disabled duplicate button on a visible template after July 5. Source date: 2025-10-31.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0168",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer describes the disabled duplicate button on a visible template after July 5. Source date: 2025-07-31.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0228",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer describes the disabled duplicate button on a visible template after July 5. Source date: 2025-07-25.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0240",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer describes the disabled duplicate button on a visible template after July 5. Source date: 2025-09-30.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0396",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer describes the disabled duplicate button on a visible template after July 5. Source date: 2025-09-20.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The July 5 gallery release establishes the cutoff. Source date: 2025-07-05.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0143",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The dated report is about locating the menu, not a disabled duplicate button.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0239",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The dated report is about locating the menu, not a disabled duplicate button.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0038",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The dated report is about locating the menu, not a disabled duplicate button.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "In the reports found, yes: they date from late July 2025 onward, after the July 5 gallery release (release-06). This does not rule out differently worded earlier reports.",
+        "evidence_groups": [
+          [
+            "release-06"
+          ],
+          [
+            "V2-FB-0012",
+            "V2-FB-0168",
+            "V2-FB-0228",
+            "V2-FB-0240",
+            "V2-FB-0396"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0012",
+          "V2-FB-0168",
+          "V2-FB-0228",
+          "V2-FB-0240",
+          "V2-FB-0396",
+          "release-06"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-06"
+          ],
+          [
+            "V2-FB-0012",
+            "V2-FB-0168",
+            "V2-FB-0228",
+            "V2-FB-0240",
+            "V2-FB-0396"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "How does the report about an executive finally opening the overview relate in time to the August loading change?",
+      "expected_answer_or_abstention": "The COO’s report is dated November 25, 2025, after the August 5 loading update. It says the COO could finally open the overview before the meeting; it does not identify what enabled that improvement.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "release-07"
+        ],
+        [
+          "V2-FB-0344"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0344",
+        "release-07"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0056",
+        "V2-FB-0080",
+        "V2-FB-0212"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The November report names the COO and the overview, but contains no link to the August change. The phrase “suggests ... the change helped” goes beyond the dated observation. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0344",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The November 25 report establishes the later experience but never attributes it to the August release. Source date: 2025-11-25.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-07",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The dated release establishes the August 5 loading change. Source date: 2025-08-05.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0056",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "A measured wait on the executive board does not report a COO opening the overview before a meeting.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0080",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "A measured wait on the executive board does not report a COO opening the overview before a meeting.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0212",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "A measured wait on the executive board does not report a COO opening the overview before a meeting.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The report that the COO can finally open the overview before the meeting is dated November 2025, after the August 5 loading change (release-07). Timing suggests but does not prove the change helped.",
+        "evidence_groups": [
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0344"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0344",
+          "release-07"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0056",
+          "V2-FB-0080",
+          "V2-FB-0212"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-07"
+          ],
+          [
+            "V2-FB-0344"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0056",
+          "V2-FB-0080",
+          "V2-FB-0212"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-017",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did the template gallery save customers time?",
+      "expected_answer_or_abstention": "Several Collaboration records say setup fell from an hour to ten minutes once the customer found what they needed, but they do not name the gallery. Other customers say new users encounter a blank board before the standard templates. These records do not establish the gallery’s effect on setup time.",
+      "answer_provenance": "human_corrected",
+      "evidence_groups": [
+        [
+          "V2-FB-0035",
+          "V2-FB-0227",
+          "V2-FB-0263",
+          "V2-FB-0371",
+          "V2-SUP-0026",
+          "V2-SUP-0110"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0035",
+        "V2-FB-0227",
+        "V2-FB-0263",
+        "V2-FB-0371",
+        "V2-SUP-0026",
+        "V2-SUP-0110"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0119",
+        "V2-FB-0203",
+        "V2-FB-0335",
+        "V2-FB-0383",
+        "V2-SUP-0070",
+        "V2-SUP-0078"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0060",
+        "V2-FB-0120",
+        "V2-FB-0156"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "Group 1 quantifies a saving without naming the gallery. Group 2 establishes a discovery problem without measuring time, so it cannot establish a contrary time outcome. A gallery-specific timing record would close the gap. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments. [2026-11-26 owner-approved: unsupported groups are dropped from scoring; coverage refers to the remaining groups.]",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0035",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0119",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0203",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0227",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0263",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0335",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0371",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0383",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0026",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0070",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0078",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The time saving is explicit, but the thing the customer found is named only as “it”; the Collaboration tag does not identify the gallery.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0110",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "This establishes the order in which users see the board and templates, not a loss of time or a contrary timing measurement.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0060",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The record describes a permission rule and gives no setup-time or blank-board observation.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0120",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The record describes a permission rule and gives no setup-time or blank-board observation.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0156",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The record describes a permission rule and gives no setup-time or blank-board observation.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Mixed. Once found, it cut setup from an hour to ten minutes for some customers, while others said new users see a blank board before the team's standard templates.",
+        "evidence_groups": [
+          [
+            "V2-FB-0119",
+            "V2-FB-0203",
+            "V2-FB-0335",
+            "V2-FB-0383",
+            "V2-SUP-0070",
+            "V2-SUP-0078"
+          ],
+          [
+            "V2-FB-0035",
+            "V2-FB-0227",
+            "V2-FB-0263",
+            "V2-FB-0371",
+            "V2-SUP-0026",
+            "V2-SUP-0110"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0035",
+          "V2-FB-0119",
+          "V2-FB-0203",
+          "V2-FB-0227",
+          "V2-FB-0263",
+          "V2-FB-0335",
+          "V2-FB-0371",
+          "V2-FB-0383",
+          "V2-SUP-0026",
+          "V2-SUP-0070",
+          "V2-SUP-0078",
+          "V2-SUP-0110"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0060",
+          "V2-FB-0120",
+          "V2-FB-0156"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0119",
+            "V2-FB-0203",
+            "V2-FB-0335",
+            "V2-FB-0383",
+            "V2-SUP-0070",
+            "V2-SUP-0078"
+          ],
+          [
+            "V2-FB-0035",
+            "V2-FB-0227",
+            "V2-FB-0263",
+            "V2-FB-0371",
+            "V2-SUP-0026",
+            "V2-SUP-0110"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0060",
+          "V2-FB-0120",
+          "V2-FB-0156"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-018",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Does changing a SAML certificate always break single sign-on for good?",
+      "expected_answer_or_abstention": "No. Some customers' login stopped after a certificate change, but in other reports the SSO change worked once the team corrected the certificate.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0087",
+          "V2-FB-0267",
+          "V2-FB-0375",
+          "V2-SUP-0046",
+          "V2-SUP-0074"
+        ],
+        [
+          "V2-FB-0075",
+          "V2-FB-0135",
+          "V2-FB-0279"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0051",
+        "V2-FB-0075",
+        "V2-FB-0087",
+        "V2-FB-0135",
+        "V2-FB-0267",
+        "V2-FB-0279",
+        "V2-FB-0375",
+        "V2-SUP-0046",
+        "V2-SUP-0074"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0063",
+        "V2-FB-0207",
+        "V2-FB-0351"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The reported recovery is enough to reject “always ... for good.” The two groups describe separate accounts and need not be the same incident. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0003",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0051",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0075",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "Success after correcting the certificate supplies a counterexample to permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0087",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0135",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "Success after correcting the certificate supplies a counterexample to permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0267",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0279",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "Success after correcting the certificate supplies a counterexample to permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0375",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0046",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0074",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The customer explicitly reports the sequence without claiming all changes cause permanent failure.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0063",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is a callback configuration issue, not a certificate-change outcome.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0207",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is a callback configuration issue, not a certificate-change outcome.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0351",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "This is a callback configuration issue, not a certificate-change outcome.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. Some customers' login stopped after a certificate change, but in other reports the SSO change worked once the team corrected the certificate.",
+        "evidence_groups": [
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0087",
+            "V2-FB-0267",
+            "V2-FB-0375",
+            "V2-SUP-0046",
+            "V2-SUP-0074"
+          ],
+          [
+            "V2-FB-0075",
+            "V2-FB-0135",
+            "V2-FB-0279"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0075",
+          "V2-FB-0087",
+          "V2-FB-0135",
+          "V2-FB-0267",
+          "V2-FB-0279",
+          "V2-FB-0375",
+          "V2-SUP-0046",
+          "V2-SUP-0074"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0087",
+            "V2-FB-0267",
+            "V2-FB-0375",
+            "V2-SUP-0046",
+            "V2-SUP-0074"
+          ],
+          [
+            "V2-FB-0075",
+            "V2-FB-0135",
+            "V2-FB-0279"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-019",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did one-time spreadsheet imports always fail for customers?",
+      "expected_answer_or_abstention": "No. Some imports put the wrong people on every task, but at least one customer fixed the header names and the second import looked right.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0233",
+          "V2-FB-0245",
+          "V2-FB-0257",
+          "V2-FB-0317",
+          "V2-FB-0389"
+        ],
+        [
+          "V2-FB-0077",
+          "V2-FB-0101",
+          "V2-SUP-0052"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0077",
+        "V2-FB-0101",
+        "V2-FB-0233",
+        "V2-FB-0245",
+        "V2-FB-0257",
+        "V2-FB-0317",
+        "V2-FB-0389",
+        "V2-SUP-0052"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0276",
+        "V2-FB-0342"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0280",
+        "V2-SUP-0111"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The corrected-header retry directly answers “always,” and the answer preserves the customer’s qualification that the second import looked right. Two cross-topic uploads are only partial for the spreadsheet-specific example. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0077",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer corrected the headers and judged the second import to look right.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0101",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer corrected the headers and judged the second import to look right.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0233",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The Integrations report describes a completed file upload with incorrect task assignments.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0245",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The Integrations report describes a completed file upload with incorrect task assignments.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0257",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The Integrations report describes a completed file upload with incorrect task assignments.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0276",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The secondary issue identifies an upload and wrong assignees but never identifies a spreadsheet import, and its primary product area is unrelated.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0317",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The Integrations report describes a completed file upload with incorrect task assignments.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0342",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "The secondary issue identifies an upload and wrong assignees but never identifies a spreadsheet import, and its primary product area is unrelated.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0389",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "The Integrations report describes a completed file upload with incorrect task assignments.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0052",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer corrected the headers and judged the second import to look right.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0280",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The lag follows connector reconnection rather than a one-time file import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0111",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The lag follows connector reconnection rather than a one-time file import.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. Some imports put the wrong people on every task, but at least one customer fixed the header names and the second import looked right.",
+        "evidence_groups": [
+          [
+            "V2-FB-0233",
+            "V2-FB-0245",
+            "V2-FB-0257",
+            "V2-FB-0276",
+            "V2-FB-0317",
+            "V2-FB-0342",
+            "V2-FB-0389"
+          ],
+          [
+            "V2-FB-0077",
+            "V2-FB-0101",
+            "V2-SUP-0052"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0077",
+          "V2-FB-0101",
+          "V2-FB-0233",
+          "V2-FB-0245",
+          "V2-FB-0257",
+          "V2-FB-0276",
+          "V2-FB-0317",
+          "V2-FB-0342",
+          "V2-FB-0389",
+          "V2-SUP-0052"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0280",
+          "V2-SUP-0111"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0233",
+            "V2-FB-0245",
+            "V2-FB-0257",
+            "V2-FB-0276",
+            "V2-FB-0317",
+            "V2-FB-0342",
+            "V2-FB-0389"
+          ],
+          [
+            "V2-FB-0077",
+            "V2-FB-0101",
+            "V2-SUP-0052"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0280",
+          "V2-SUP-0111"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did customers treat every seat-total mismatch as Pulse's fault?",
+      "expected_answer_or_abstention": "No. Some reported the invoice and admin page disagreeing on the same day, while another admitted part of the mismatch came from comparing last month's roster with this month's invoice.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0034",
+          "V2-FB-0070",
+          "V2-FB-0154",
+          "V2-FB-0199",
+          "V2-SUP-0033",
+          "V2-SUP-0073"
+        ],
+        [
+          "V2-FB-0178",
+          "V2-FB-0250",
+          "V2-FB-0310",
+          "V2-FB-0322",
+          "V2-SUP-0105"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0034",
+        "V2-FB-0070",
+        "V2-FB-0154",
+        "V2-FB-0178",
+        "V2-FB-0199",
+        "V2-FB-0250",
+        "V2-FB-0310",
+        "V2-FB-0322",
+        "V2-SUP-0033",
+        "V2-SUP-0073",
+        "V2-SUP-0105"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "The customer explicitly assigns part of the mismatch to comparing different months. The same-day discrepancy reports establish the discrepancy without assigning fault. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0034",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0070",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0154",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0178",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer explicitly takes partial responsibility for comparing different periods.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0199",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0250",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer explicitly takes partial responsibility for comparing different periods.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0310",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer explicitly takes partial responsibility for comparing different periods.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0322",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer explicitly takes partial responsibility for comparing different periods.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0033",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0073",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "This establishes a same-day discrepancy without assigning blame.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0105",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "The customer explicitly takes partial responsibility for comparing different periods.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0023",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "An unclear invoice breakdown does not describe who caused a seat-total mismatch.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0094",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "An unclear invoice breakdown does not describe who caused a seat-total mismatch.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0053",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "An unclear invoice breakdown does not describe who caused a seat-total mismatch.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. Some reported the invoice and admin page disagreeing on the same day, while another admitted part of the mismatch came from comparing last month's roster with this month's invoice.",
+        "evidence_groups": [
+          [
+            "V2-FB-0034",
+            "V2-FB-0070",
+            "V2-FB-0154",
+            "V2-FB-0199",
+            "V2-SUP-0033",
+            "V2-SUP-0073"
+          ],
+          [
+            "V2-FB-0178",
+            "V2-FB-0250",
+            "V2-FB-0310",
+            "V2-FB-0322",
+            "V2-SUP-0105"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0034",
+          "V2-FB-0070",
+          "V2-FB-0154",
+          "V2-FB-0178",
+          "V2-FB-0199",
+          "V2-FB-0250",
+          "V2-FB-0310",
+          "V2-FB-0322",
+          "V2-SUP-0033",
+          "V2-SUP-0073",
+          "V2-SUP-0105"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0034",
+            "V2-FB-0070",
+            "V2-FB-0154",
+            "V2-FB-0199",
+            "V2-SUP-0033",
+            "V2-SUP-0073"
+          ],
+          [
+            "V2-FB-0178",
+            "V2-FB-0250",
+            "V2-FB-0310",
+            "V2-FB-0322",
+            "V2-SUP-0105"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-021",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What is the average time support takes to resolve a single sign-on ticket?",
+      "expected_answer_or_abstention": "Abstain. No source states ticket resolution times.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0063",
+        "V2-FB-0207",
+        "V2-FB-0351"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "The supplied callback reports give neither elapsed resolution times nor an average. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0063",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The configuration problem is identified, but the record gives no resolution interval or average.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0207",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The configuration problem is identified, but the record gives no resolution interval or average.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0351",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The configuration problem is identified, but the record gives no resolution interval or average.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. No source states ticket resolution times.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0063",
+          "V2-FB-0207",
+          "V2-FB-0351"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-022",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many seats does the largest Enterprise customer pay for?",
+      "expected_answer_or_abstention": "Abstain. No source states any customer's seat count.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-04"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "The seat-billing release gives rules, with no counts or ranking of Enterprise customers. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-04",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "The release describes a billing rule without giving a customer’s paid seat count or identifying the largest account.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. No source states any customer's seat count.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "release-04"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "release-04"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-023",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Which competitor's digest do customers compare Pulse with?",
+      "expected_answer_or_abstention": "Abstain. No source names a competitor; Okta appears only as an identity provider.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0111",
+        "V2-FB-0123",
+        "V2-FB-0265"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "The reviewed records mention Okta in an identity-routing context and identify no competitor’s digest. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0111",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Okta appears in a workspace-routing report, with no comparison to a competing digest.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0123",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Okta appears in a workspace-routing report, with no comparison to a competing digest.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0265",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Okta appears in a workspace-routing report, with no comparison to a competing digest.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. No source names a competitor; Okta appears only as an identity provider.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0265"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0265"
+        ]
+      }
+    },
+    {
+      "id": "B5-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What NPS score did Pulse receive after the template gallery launched?",
+      "expected_answer_or_abstention": "Abstain. No source reports an NPS or satisfaction score.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0119",
+        "V2-FB-0203",
+        "V2-FB-0335"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "The quantitative feedback measures setup time. It gives no NPS score. [Owner confirmation] Harsh reviewed the source evidence and confirmed the final judgments.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0119",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Setup duration is a time measurement, not an NPS result.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0203",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Setup duration is a time measurement, not an NPS result.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0335",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "Setup duration is a time measurement, not an NPS result.",
+          "reviewer": "Harsh",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. No source reports an NPS or satisfaction score.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0119",
+          "V2-FB-0203",
+          "V2-FB-0335"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0119",
+          "V2-FB-0203",
+          "V2-FB-0335"
+        ]
+      }
+    }
+  ],
+  "owner_approved_corrections": {
+    "approved_by": "Harsh (project owner, in chat 2026-11-26)",
+    "approved_on": "2026-11-26",
+    "summary": [
+      "Q-011/012/017: unsupported groups dropped from scoring; coverage set to yes for remaining groups",
+      "Confirmation note moved from second_reviewer_comments to the owner's comments"
+    ],
+    "changed_cells": 51,
+    "files": [
+      "questions-review-original.csv",
+      "sources-review-original.csv",
+      "corrections.json"
+    ]
+  }
+}

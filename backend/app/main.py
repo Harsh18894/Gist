@@ -9,11 +9,13 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from . import analytics
 from .config import cors_origin
 from .database import connection
-from .errors import GistError
-from .schemas import (Area, AskRequest, AskResponse, Category, ErrorResponse, Feedback,
-                      Page, SearchHit, Segment, SourceDetail, Stats, UsageSummary)
+from .errors import GistError, InvalidRequest
+from .schemas import (AnalyticsReleases, AnalyticsRepeated, AnalyticsSummary, AnalyticsTrends, Area, AskRequest,
+                      AskResponse, Category, ErrorResponse, Feedback, Page, SearchHit, Segment, Sentiment,
+                      SourceDetail, Stats, TicketPage, UsageSummary)
 from .services import get_record, get_stats, list_records
 from .rag.ingest import DEMO_MODEL
 from .rag.provider import PaidApiDisabled, PaidRequestRejected, ProviderError, usage_summary
@@ -67,9 +69,71 @@ def health() -> dict[str, str]:
 @app.get("/api/records", response_model=Page, responses={422: {"model": ErrorResponse}})
 def records(page: int = Query(1, ge=1), page_size: int = Query(20, ge=1, le=100),
             category: Category | None = None, segment: Segment | None = None,
-            query: str | None = Query(None, max_length=200)) -> Page:
+            query: str | None = Query(None, max_length=200), product_area: Area | None = None,
+            sentiment: Sentiment | None = None, feature: str | None = Query(None, max_length=100),
+            channel: str | None = Query(None, max_length=50),
+            from_date: date | None = None, to_date: date | None = None) -> Page | JSONResponse:
+    if from_date and to_date and from_date > to_date:
+        return _error(422, "invalid_request", "from_date must be on or before to_date.")
     with connection() as db:
-        return list_records(db, page, page_size, category, segment, query.strip() if query else None)
+        return list_records(db, page, page_size, category, segment, query.strip() if query else None,
+                            product_area=product_area, sentiment=sentiment, feature=feature, channel=channel,
+                            from_date=from_date.isoformat() if from_date else None,
+                            to_date=to_date.isoformat() if to_date else None)
+
+
+def _scope(from_date: date | None, to_date: date | None, segment: str | None, product_area: str | None) -> analytics.Scope:
+    if from_date and to_date and from_date > to_date:
+        raise InvalidRequest("from_date must be on or before to_date.",
+                             public_message="from_date must be on or before to_date.")
+    return analytics.Scope(from_date.isoformat() if from_date else None, to_date.isoformat() if to_date else None,
+                           segment, product_area)
+
+
+@app.get("/api/analytics/summary", response_model=AnalyticsSummary, responses={422: {"model": ErrorResponse}})
+def analytics_summary(from_date: date | None = None, to_date: date | None = None,
+                      segment: Segment | None = None, product_area: Area | None = None) -> dict:
+    scope = _scope(from_date, to_date, segment, product_area)
+    with connection() as db:
+        return analytics.summary(db, scope)
+
+
+@app.get("/api/analytics/trends", response_model=AnalyticsTrends, responses={422: {"model": ErrorResponse}})
+def analytics_trends(metric: Literal["feedback", "negative_feedback", "tickets"] = "feedback",
+                     group_by: Literal["category", "area", "segment"] | None = None,
+                     from_date: date | None = None, to_date: date | None = None,
+                     segment: Segment | None = None, product_area: Area | None = None) -> dict:
+    scope = _scope(from_date, to_date, segment, product_area)
+    with connection() as db:
+        return analytics.trends(db, scope, metric, group_by)
+
+
+@app.get("/api/analytics/releases", response_model=AnalyticsReleases, responses={422: {"model": ErrorResponse}})
+def analytics_releases(window_days: int = Query(30, ge=1, le=180), from_date: date | None = None,
+                       to_date: date | None = None, segment: Segment | None = None,
+                       product_area: Area | None = None) -> dict:
+    scope = _scope(from_date, to_date, segment, product_area)
+    with connection() as db:
+        return analytics.releases(db, scope, window_days)
+
+
+@app.get("/api/analytics/repeated", response_model=AnalyticsRepeated, responses={422: {"model": ErrorResponse}})
+def analytics_repeated(min_count: int = Query(2, ge=2, le=50), limit: int = Query(10, ge=1, le=50),
+                       from_date: date | None = None, to_date: date | None = None,
+                       segment: Segment | None = None, product_area: Area | None = None) -> dict:
+    scope = _scope(from_date, to_date, segment, product_area)
+    with connection() as db:
+        return analytics.repeated(db, scope, min_count, limit)
+
+
+@app.get("/api/tickets", response_model=TicketPage, responses={422: {"model": ErrorResponse}})
+def tickets(page: int = Query(1, ge=1), page_size: int = Query(20, ge=1, le=100),
+            severity: str | None = Query(None, max_length=20), status: str | None = Query(None, max_length=30),
+            category: str | None = Query(None, max_length=60), from_date: date | None = None,
+            to_date: date | None = None, segment: Segment | None = None, product_area: Area | None = None) -> dict:
+    scope = _scope(from_date, to_date, segment, product_area)
+    with connection() as db:
+        return analytics.list_tickets(db, scope, page, page_size, severity=severity, status=status, category=category)
 
 
 @app.get("/api/records/{record_id}", response_model=Feedback,

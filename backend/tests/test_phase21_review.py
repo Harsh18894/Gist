@@ -237,3 +237,21 @@ def test_stale_correction_is_rejected_without_writing(tmp_path):
     with pytest.raises(ValueError, match="differs"):
         importer.freeze(*paths, out=tmp_path / "frozen", corrections=corrections)
     assert not (tmp_path / "frozen").exists() and not (tmp_path / "frozen.staging").exists()
+
+
+def test_label_provenance_from_corrections_is_recorded(tmp_path):
+    questions, sources = _pack()
+    target = questions[0]["question_id"]
+    _row(questions, target)["review_date"] = "11/20/2026"
+    paths = _write(tmp_path, questions, sources)
+    corrections = tmp_path / "corrections.json"
+    corrections.write_text(json.dumps({"approved_by": "Owner", "approved_on": "2026-11-20",
+                                       "label_provenance": "Labels produced by an AI judge and adopted by the owner.",
+                                       "owner_statement": "Use these.",
+                                       "changes": [{"file": "questions", "question_id": target, "field": "review_date",
+                                                    "old": "11/20/2026", "new": "2026-11-20"}]}))
+    importer.freeze(*paths, out=tmp_path / "frozen", corrections=corrections)
+    frozen = json.loads((tmp_path / "frozen/benchmark.json").read_text())
+    assert frozen["human_review"]["label_provenance"].startswith("Labels produced by an AI judge")
+    assert frozen["human_review"]["independence"] == frozen["human_review"]["label_provenance"]
+    assert frozen["label_policy"].startswith("Owner-adopted final verdicts")

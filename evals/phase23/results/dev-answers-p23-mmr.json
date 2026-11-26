@@ -1,0 +1,1930 @@
+{
+  "label": "p23-mmr",
+  "retriever": "mmr",
+  "data": "development only (benchmark-3 dev + consumed v4)",
+  "estimated_cost_usd": 0.0083686,
+  "errors": [],
+  "summary": {
+    "all": {
+      "questions": 42,
+      "answerable": 35,
+      "full": 20,
+      "partial": 12,
+      "wrong_refusals": 3,
+      "unanswerable_declined": "7/7",
+      "evidence_groups_in_context": 0.6232,
+      "evidence_groups_cited": 0.5652,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "set:benchmark3-dev": {
+      "questions": 18,
+      "answerable": 15,
+      "full": 6,
+      "partial": 8,
+      "wrong_refusals": 1,
+      "unanswerable_declined": "3/3",
+      "evidence_groups_in_context": 0.6154,
+      "evidence_groups_cited": 0.5769,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "set:benchmark4-consumed": {
+      "questions": 24,
+      "answerable": 20,
+      "full": 14,
+      "partial": 4,
+      "wrong_refusals": 2,
+      "unanswerable_declined": "4/4",
+      "evidence_groups_in_context": 0.6279,
+      "evidence_groups_cited": 0.5581,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:contradictory": {
+      "questions": 7,
+      "answerable": 7,
+      "full": 2,
+      "partial": 5,
+      "wrong_refusals": 0,
+      "unanswerable_declined": "0/0",
+      "evidence_groups_in_context": 0.6,
+      "evidence_groups_cited": 0.5333,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:direct": {
+      "questions": 7,
+      "answerable": 7,
+      "full": 6,
+      "partial": 1,
+      "wrong_refusals": 0,
+      "unanswerable_declined": "0/0",
+      "evidence_groups_in_context": 0.875,
+      "evidence_groups_cited": 0.875,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:multi_source": {
+      "questions": 7,
+      "answerable": 7,
+      "full": 5,
+      "partial": 2,
+      "wrong_refusals": 0,
+      "unanswerable_declined": "0/0",
+      "evidence_groups_in_context": 0.381,
+      "evidence_groups_cited": 0.381,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:semantic": {
+      "questions": 7,
+      "answerable": 7,
+      "full": 4,
+      "partial": 2,
+      "wrong_refusals": 1,
+      "unanswerable_declined": "0/0",
+      "evidence_groups_in_context": 1.0,
+      "evidence_groups_cited": 1.0,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:temporal": {
+      "questions": 7,
+      "answerable": 7,
+      "full": 3,
+      "partial": 2,
+      "wrong_refusals": 2,
+      "unanswerable_declined": "0/0",
+      "evidence_groups_in_context": 0.6667,
+      "evidence_groups_cited": 0.5,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    },
+    "category:unanswerable": {
+      "questions": 7,
+      "answerable": 0,
+      "full": 0,
+      "partial": 0,
+      "wrong_refusals": 0,
+      "unanswerable_declined": "7/7",
+      "evidence_groups_in_context": null,
+      "evidence_groups_cited": null,
+      "answers_citing_hard_negative": 0,
+      "answers_citing_outside_context": 0
+    }
+  },
+  "answers": [
+    {
+      "question_id": "P21-Q-001",
+      "set": "benchmark3-dev",
+      "category": "direct",
+      "question": "Where does an admin find the date and project controls for a portfolio chart?",
+      "expected_answer": "The project/date portfolio filters appear above the chart (release-02). Customer feedback independently notes that controls are above the chart, but does not confirm both control types.",
+      "raw_model_answer": "Status: answered\n\nThe date and project controls are above the portfolio chart. [release-02]",
+      "gist_answer": "The date and project controls are above the portfolio chart. [release-02]",
+      "context_source_ids": [
+        "release-02",
+        "V2-FB-0153",
+        "V2-FB-0189",
+        "V2-SUP-0080",
+        "V2-SUP-0087",
+        "V2-FB-0332",
+        "V2-FB-0095",
+        "V2-FB-0381"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 24,
+      "latency_ms": 1291,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-02"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-02"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "P21-Q-002",
+      "set": "benchmark3-dev",
+      "category": "direct",
+      "question": "How does Pulse bill a seat archived partway through the month?",
+      "expected_answer": "A seat archived mid-cycle remains counted until the current billing cycle closes. The rule is explicit in release-04 and echoed by V2-FB-0082.",
+      "raw_model_answer": "Status: answered\n\nSeats archived mid-cycle remain counted as billable until the billing cycle closes. [release-04] [V2-FB-0082]",
+      "gist_answer": "Seats archived mid-cycle remain counted as billable until the billing cycle closes. [release-04] [V2-FB-0082]",
+      "context_source_ids": [
+        "release-04",
+        "V2-FB-0178",
+        "prd-04",
+        "V2-FB-0082",
+        "V2-FB-0370",
+        "V2-FB-0070",
+        "V2-FB-0394",
+        "V2-SUP-0105"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 37,
+      "latency_ms": 1247,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0082",
+        "release-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0082",
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "P21-Q-003",
+      "set": "benchmark3-dev",
+      "category": "direct",
+      "question": "Which workspace roles can duplicate a shared starter?",
+      "expected_answer": "Editors and admins can duplicate a shared starter. Only release-06 establishes both roles.",
+      "raw_model_answer": "Status: partial\n\nOne support ticket reports that a workspace restricts shared-template duplication to editors [V2-SUP-0023]. The PRD says duplication depends on role permissions but does not specify them [prd-06].\n\nLimitation: The evidence does not establish the complete role matrix or whether other roles, such as owners or admins, can duplicate a shared starter.",
+      "gist_answer": "One support ticket reports that a workspace restricts shared-template duplication to editors [V2-SUP-0023]. The PRD says duplication depends on role permissions but does not specify them [prd-06].\n\nLimitation: The evidence does not establish the complete role matrix or whether other roles, such as owners or admins, can duplicate a shared starter.",
+      "context_source_ids": [
+        "prd-06",
+        "V2-FB-0012",
+        "V2-SUP-0018",
+        "V2-SUP-0058",
+        "V2-SUP-0107",
+        "V2-SUP-0023",
+        "V2-SUP-0011",
+        "V2-FB-0396"
+      ],
+      "groups_in_context": "0/1",
+      "output_tokens": 291,
+      "latency_ms": 2773,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-SUP-0023",
+        "prd-06"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-SUP-0023",
+        "prd-06"
+      ],
+      "evidence_groups_cited": "0/1",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-005",
+      "set": "benchmark3-dev",
+      "category": "semantic",
+      "question": "Find a customer whose account recovery email became useless during a call.",
+      "expected_answer": "Several customers report a reset link expiring during a call, including V2-FB-0098, V2-FB-0182, V2-FB-0278 and V2-FB-0089.",
+      "raw_model_answer": "Status: partial\n\nA customer reported that their password-reset link expired while they were on a call [V2-FB-0098].\n\nLimitation: The report does not identify the customer by name or say the recovery email itself became useless.",
+      "gist_answer": "A customer reported that their password-reset link expired while they were on a call [V2-FB-0098].\n\nLimitation: The report does not identify the customer by name or say the recovery email itself became useless.",
+      "context_source_ids": [
+        "V2-SUP-0021",
+        "V2-FB-0098",
+        "V2-FB-0242",
+        "V2-FB-0134",
+        "V2-FB-0350",
+        "V2-FB-0038",
+        "prd-06",
+        "V2-FB-0074"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 147,
+      "latency_ms": 2176,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0098"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0098"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0098"
+      ]
+    },
+    {
+      "question_id": "P21-Q-006",
+      "set": "benchmark3-dev",
+      "category": "semantic",
+      "question": "Is there a report of a company-side identity redirect setting preventing entry?",
+      "expected_answer": "Yes. Multiple customer records report that IT entered a wrong callback URL, including V2-FB-0063, V2-FB-0207 and V2-FB-0351.",
+      "raw_model_answer": "Status: partial\n\nA report says the customer’s IT team had entered the wrong callback URL, a company-side identity setting [V2-FB-0063].\n\nLimitation: The report does not explicitly say that the wrong URL prevented entry.",
+      "gist_answer": "A report says the customer’s IT team had entered the wrong callback URL, a company-side identity setting [V2-FB-0063].\n\nLimitation: The report does not explicitly say that the wrong URL prevented entry.",
+      "context_source_ids": [
+        "V2-FB-0243",
+        "V2-SUP-0002",
+        "V2-FB-0159",
+        "V2-FB-0099",
+        "V2-FB-0003",
+        "V2-FB-0063",
+        "V2-FB-0231",
+        "V2-FB-0253"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 301,
+      "latency_ms": 3008,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0063"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0063"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0063"
+      ]
+    },
+    {
+      "question_id": "P21-Q-007",
+      "set": "benchmark3-dev",
+      "category": "semantic",
+      "question": "Find a case where an empty-looking chart was actually a view setting.",
+      "expected_answer": "Yes. Several users found that the chart data was present, but a previously applied filter made the view look empty: V2-FB-0009, V2-FB-0045, V2-FB-0285, V2-FB-0369, V2-FB-0393 and V2-SUP-0048.",
+      "raw_model_answer": "Status: answered\n\nAn Enterprise Dashboard support ticket recorded May 5, 2025, says the chart wasn’t missing data; a previous filter had been left applied. [V2-SUP-0048]",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-FB-0381",
+        "V2-SUP-0048",
+        "V2-SUP-0080",
+        "V2-FB-0153",
+        "V2-FB-0375",
+        "V2-FB-0369",
+        "V2-SUP-0008",
+        "V2-FB-0057"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 148,
+      "latency_ms": 2263,
+      "expected_abstention": false,
+      "abstained": true,
+      "abstention_correct": false,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-SUP-0048"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-SUP-0048"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0369",
+        "V2-SUP-0048"
+      ]
+    },
+    {
+      "question_id": "P21-Q-009",
+      "set": "benchmark3-dev",
+      "category": "multi_source",
+      "question": "What distinct checks should support make before calling every sign-in failure the same defect?",
+      "expected_answer": "Treat invitation handoff, password recovery, and SSO/IdP configuration as three separate evidence needs. Do not infer a shared root cause merely from sign-in symptoms.",
+      "raw_model_answer": "Status: answered\n\nBefore treating sign-in failures as one defect, support should:\n\n- Check whether identity configuration is incomplete; an error that looks like a failed sign-in may have that explanation. [V2-FB-0099, V2-SUP-0086]\n- Clarify the credential or reset flow: distinguish invalid credentials from an expired reset token, and check whether the wrong value was copied after a password reset. [V2-SUP-0101, V2-SUP-0041]\n- Compare scope across workspaces: the reports describe failures limited to one workspace and behavior not reproduced in a smaller test workspace. [V2-SUP-0086, V2-SUP-0101]\n- Gather logs and reproduce the behavior before attributing it to a recent release. [V2-SUP-0086]",
+      "gist_answer": "Before treating sign-in failures as one defect, support should:\n\n- Check whether identity configuration is incomplete; an error that looks like a failed sign-in may have that explanation. [V2-FB-0099, V2-SUP-0086]\n- Clarify the credential or reset flow: distinguish invalid credentials from an expired reset token, and check whether the wrong value was copied after a password reset. [V2-SUP-0101, V2-SUP-0041]\n- Compare scope across workspaces: the reports describe failures limited to one workspace and behavior not reproduced in a smaller test workspace. [V2-SUP-0086, V2-SUP-0101]\n- Gather logs and reproduce the behavior before attributing it to a recent release. [V2-SUP-0086]",
+      "context_source_ids": [
+        "V2-SUP-0086",
+        "V2-FB-0253",
+        "V2-SUP-0097",
+        "V2-SUP-0101",
+        "V2-FB-0099",
+        "V2-SUP-0024",
+        "V2-SUP-0099",
+        "V2-SUP-0041"
+      ],
+      "groups_in_context": "0/3",
+      "output_tokens": 498,
+      "latency_ms": 4072,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0099",
+        "V2-SUP-0041",
+        "V2-SUP-0086",
+        "V2-SUP-0101"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0099",
+        "V2-SUP-0041",
+        "V2-SUP-0086",
+        "V2-SUP-0101"
+      ],
+      "evidence_groups_cited": "0/3",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-010",
+      "set": "benchmark3-dev",
+      "category": "multi_source",
+      "question": "How can an analyst separate missing live CRM records from a bad file upload?",
+      "expected_answer": "Check missing records in the live connector separately from one-time CSV/spreadsheet mapping errors. A green sync indicator cannot establish record completeness.",
+      "raw_model_answer": "Status: partial\n\nFirst identify the workflow: a live CRM sync or a one-time spreadsheet/CSV upload; the PRD treats CSV import mapping as separate from CRM integration reliability [prd-03]. Reports explicitly describe a one-time upload that scrambled labels, while other reports describe uncertainty over whether records were skipped by Pulse or never sent by the CRM [V2-FB-0005] [V2-FB-0244] [V2-SUP-0027]. For a live-sync report, the evidence says records may be missing even when the connector reports success, but it does not provide a diagnostic procedure [prd-03].\n\nLimitation: The evidence does not show how to verify the cause or distinguish a sync failure from a file-mapping problem beyond first identifying which workflow was used.",
+      "gist_answer": "First identify the workflow: a live CRM sync or a one-time spreadsheet/CSV upload; the PRD treats CSV import mapping as separate from CRM integration reliability [prd-03]. Reports explicitly describe a one-time upload that scrambled labels, while other reports describe uncertainty over whether records were skipped by Pulse or never sent by the CRM [V2-FB-0005] [V2-FB-0244] [V2-SUP-0027]. For a live-sync report, the evidence says records may be missing even when the connector reports success, but it does not provide a diagnostic procedure [prd-03].\n\nLimitation: The evidence does not show how to verify the cause or distinguish a sync failure from a file-mapping problem beyond first identifying which workflow was used.",
+      "context_source_ids": [
+        "V2-FB-0005",
+        "prd-03",
+        "V2-SUP-0027",
+        "V2-SUP-0064",
+        "V2-FB-0244",
+        "V2-FB-0100",
+        "V2-FB-0281",
+        "V2-FB-0268"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 530,
+      "latency_ms": 4600,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0244",
+        "V2-SUP-0027",
+        "prd-03"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0005",
+        "prd-03"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0244",
+        "V2-SUP-0027"
+      ],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0005",
+        "V2-FB-0100",
+        "V2-FB-0281",
+        "prd-03"
+      ]
+    },
+    {
+      "question_id": "P21-Q-011",
+      "set": "benchmark3-dev",
+      "category": "multi_source",
+      "question": "Which evidence separates finding a team template from being allowed to copy it?",
+      "expected_answer": "Finding templates is a navigation/discoverability issue; copying them is a permissions issue governed by workspace role. A visible gallery may still have a disabled duplicate action.",
+      "raw_model_answer": "Status: answered\n\nThe clearest evidence is the release note: templates are found in the workspace menu, while copying follows workspace role permissions; editors and admins may duplicate them. [release-06] A customer report illustrates the distinction: they could see the kickoff template, but its duplicate button was greyed out. [V2-FB-0228] Support reports also describe duplication as restricted to editors. [V2-SUP-0051]",
+      "gist_answer": "The clearest evidence is the release note: templates are found in the workspace menu, while copying follows workspace role permissions; editors and admins may duplicate them. [release-06] A customer report illustrates the distinction: they could see the kickoff template, but its duplicate button was greyed out. [V2-FB-0228] Support reports also describe duplication as restricted to editors. [V2-SUP-0051]",
+      "context_source_ids": [
+        "V2-FB-0180",
+        "V2-SUP-0051",
+        "V2-FB-0060",
+        "release-06",
+        "V2-SUP-0011",
+        "V2-FB-0228",
+        "V2-SUP-0023",
+        "V2-FB-0156"
+      ],
+      "groups_in_context": "1/2",
+      "output_tokens": 250,
+      "latency_ms": 2480,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0228",
+        "V2-SUP-0051",
+        "release-06"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-06"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0228",
+        "V2-SUP-0051"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0060",
+        "release-06"
+      ]
+    },
+    {
+      "question_id": "P21-Q-013",
+      "set": "benchmark3-dev",
+      "category": "temporal",
+      "question": "What was reported about large workspaces before the August loading change, and what later improved?",
+      "expected_answer": "Before the August 5 update, users reported slow large-workspace and regional roll-up views. The release introduced a faster aggregation path, and later customer reports welcomed improved performance.",
+      "raw_model_answer": "Status: partial\n\nLater, one Enterprise customer said the August loading update was a relief for their large workspace, and a support case recorded that the customer’s immediate problem had cleared [V2-FB-0368] [V2-SUP-0003]. The release note says large-workspace aggregations got a faster path, though some customers still reported slow views [release-07].\n\nLimitation: The evidence does not show what was reported about large workspaces before the August change.",
+      "gist_answer": "Later, one Enterprise customer said the August loading update was a relief for their large workspace, and a support case recorded that the customer’s immediate problem had cleared [V2-FB-0368] [V2-SUP-0003]. The release note says large-workspace aggregations got a faster path, though some customers still reported slow views [release-07].\n\nLimitation: The evidence does not show what was reported about large workspaces before the August change.",
+      "context_source_ids": [
+        "V2-FB-0044",
+        "V2-SUP-0003",
+        "release-07",
+        "V2-FB-0113",
+        "V2-FB-0368",
+        "V2-SUP-0057",
+        "V2-FB-0183",
+        "V2-FB-0356"
+      ],
+      "groups_in_context": "2/3",
+      "output_tokens": 404,
+      "latency_ms": 3628,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0368",
+        "V2-SUP-0003",
+        "release-07"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0368",
+        "release-07"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-SUP-0003"
+      ],
+      "evidence_groups_cited": "2/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0044",
+        "V2-FB-0368",
+        "release-07"
+      ]
+    },
+    {
+      "question_id": "P21-Q-014",
+      "set": "benchmark3-dev",
+      "category": "temporal",
+      "question": "After the April digest default changed, how did two workspaces describe the outcome?",
+      "expected_answer": "After the April 5 digest change, one customer reported the digest worked well for a one-board setup while another reported excessive project emails. Both are subsequent individual reports; distinct workspace identities cannot be proven from the available fields.",
+      "raw_model_answer": "Status: partial\n\nOne report said the April change made updates easier to scan but low-priority projects harder to ignore; two colleagues reported different results [V2-FB-0270]. Support also noted a workspace-setting difference from a smaller test account, but called it only a clue, not a confirmed cause [V2-SUP-0057].\n\nLimitation: The evidence does not describe outcomes from two specific workspaces.",
+      "gist_answer": "One report said the April change made updates easier to scan but low-priority projects harder to ignore; two colleagues reported different results [V2-FB-0270]. Support also noted a workspace-setting difference from a smaller test account, but called it only a clue, not a confirmed cause [V2-SUP-0057].\n\nLimitation: The evidence does not describe outcomes from two specific workspaces.",
+      "context_source_ids": [
+        "V2-FB-0183",
+        "V2-FB-0087",
+        "V2-FB-0258",
+        "V2-FB-0270",
+        "V2-SUP-0057",
+        "V2-FB-0210",
+        "V2-FB-0053",
+        "V2-SUP-0059"
+      ],
+      "groups_in_context": "1/3",
+      "output_tokens": 275,
+      "latency_ms": 2713,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0270",
+        "V2-SUP-0057"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0270",
+        "V2-SUP-0057"
+      ],
+      "evidence_groups_cited": "0/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0258"
+      ]
+    },
+    {
+      "question_id": "P21-Q-015",
+      "set": "benchmark3-dev",
+      "category": "temporal",
+      "question": "What did the June connector update promise, and what later gap did a customer describe?",
+      "expected_answer": "The June 5 release introduced reconnect flow and status changes while warning that success status does not guarantee delivery; later customers described record gaps and eventual backfill, with no established causation.",
+      "raw_model_answer": "Status: answered\n\nThe June connector update introduced a new reconnect flow and sync status; it cautioned that a successful status did not prove every record had arrived [release-05]. Later, a customer described a gap after the June refresh, followed by a backfill on Friday [V2-FB-0088].",
+      "gist_answer": "The June connector update introduced a new reconnect flow and sync status; it cautioned that a successful status did not prove every record had arrived [release-05]. Later, a customer described a gap after the June refresh, followed by a backfill on Friday [V2-FB-0088].",
+      "context_source_ids": [
+        "V2-FB-0148",
+        "release-05",
+        "V2-SUP-0003",
+        "V2-SUP-0111",
+        "V2-FB-0028",
+        "V2-FB-0067",
+        "V2-FB-0064",
+        "V2-FB-0088"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 262,
+      "latency_ms": 2633,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0088",
+        "release-05"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0088",
+        "release-05"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0064",
+        "V2-FB-0088",
+        "V2-FB-0148",
+        "release-05"
+      ]
+    },
+    {
+      "question_id": "P21-Q-017",
+      "set": "benchmark3-dev",
+      "category": "contradictory",
+      "question": "Does a healthy connector indicator establish that every sales task arrived?",
+      "expected_answer": "No. The product documentation explicitly limits what a green/connected status proves. Users report missing CRM tasks or accounts despite healthy status.",
+      "raw_model_answer": "Status: answered\n\nNo. A successful connector status does not prove every record arrived [release-05]. One customer reported missing East-region tasks despite the connector appearing connected [V2-FB-0028].",
+      "gist_answer": "No. A successful connector status does not prove every record arrived [release-05]. One customer reported missing East-region tasks despite the connector appearing connected [V2-FB-0028].",
+      "context_source_ids": [
+        "release-05",
+        "V2-FB-0028",
+        "V2-FB-0220",
+        "V2-SUP-0111",
+        "V2-FB-0319",
+        "V2-FB-0353",
+        "V2-FB-0221",
+        "V2-FB-0280"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 159,
+      "latency_ms": 1960,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0028",
+        "release-05"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0028",
+        "release-05"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0028",
+        "release-05"
+      ]
+    },
+    {
+      "question_id": "P21-Q-018",
+      "set": "benchmark3-dev",
+      "category": "contradictory",
+      "question": "Did customers agree that the project digest made their inbox better?",
+      "expected_answer": "No. There is no prevailing sentiment across users. At least one one-board user liked the digest, while another reported excessive messages. These examples establish disagreement but not the sentiment. More data is required.",
+      "raw_model_answer": "Status: partial\n\nFeedback was mixed: some customers liked the calmer inbox [V2-FB-0355], while others said they received too many project emails [V2-FB-0318] or summaries for more projects than intended [V2-FB-0234]. The evidence does not show that customers agreed overall.\n\nLimitation: The reports do not establish how representative these views are across customers.",
+      "gist_answer": "Feedback was mixed: some customers liked the calmer inbox [V2-FB-0355], while others said they received too many project emails [V2-FB-0318] or summaries for more projects than intended [V2-FB-0234]. The evidence does not show that customers agreed overall.\n\nLimitation: The reports do not establish how representative these views are across customers.",
+      "context_source_ids": [
+        "V2-FB-0318",
+        "V2-SUP-0030",
+        "release-03",
+        "V2-FB-0355",
+        "V2-SUP-0077",
+        "V2-FB-0103",
+        "V2-FB-0234",
+        "V2-SUP-0069"
+      ],
+      "groups_in_context": "1/2",
+      "output_tokens": 229,
+      "latency_ms": 2601,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0234",
+        "V2-FB-0318",
+        "V2-FB-0355"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0318"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0234",
+        "V2-FB-0355"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0318"
+      ]
+    },
+    {
+      "question_id": "P21-Q-019",
+      "set": "benchmark3-dev",
+      "category": "contradictory",
+      "question": "Was portfolio loading uniformly slow across workspace sizes before the August update?",
+      "expected_answer": "No. Customers report small workspaces load quickly while regional roll-ups were slow (V2-FB-0020, V2-FB-0224). These are a few reports, not a measured comparison.",
+      "raw_model_answer": "Status: partial\n\nA pre-August report described slowness only in the full-year view; support reproduced it in one workspace but not a smaller test workspace, so that case was not uniform across the tested sizes [V2-SUP-0035].\n\nLimitation: The evidence does not establish whether portfolio loading was uniformly slow across workspace sizes overall before the August update.",
+      "gist_answer": "A pre-August report described slowness only in the full-year view; support reproduced it in one workspace but not a smaller test workspace, so that case was not uniform across the tested sizes [V2-SUP-0035].\n\nLimitation: The evidence does not establish whether portfolio loading was uniformly slow across workspace sizes overall before the August update.",
+      "context_source_ids": [
+        "release-07",
+        "V2-FB-0044",
+        "V2-SUP-0067",
+        "V2-FB-0008",
+        "V2-SUP-0035",
+        "V2-SUP-0003",
+        "V2-FB-0368",
+        "V2-SUP-0095"
+      ],
+      "groups_in_context": "0/1",
+      "output_tokens": 292,
+      "latency_ms": 3142,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-SUP-0035"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-SUP-0035"
+      ],
+      "evidence_groups_cited": "0/1",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-021",
+      "set": "benchmark3-dev",
+      "category": "unanswerable",
+      "question": "What exact revenue increase came from the portfolio speed update?",
+      "expected_answer": "Abstain. None of the available product change notes or customer feedback establishes an exact revenue uplift attributable to the August portfolio update.",
+      "raw_model_answer": null,
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "release-07",
+        "V2-FB-0008",
+        "V2-SUP-0067",
+        "V2-FB-0044",
+        "V2-SUP-0095",
+        "release-02",
+        "V2-FB-0332",
+        "V2-FB-0333"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 0,
+      "latency_ms": 17,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": false,
+      "raw_cited_source_ids": [],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-022",
+      "set": "benchmark3-dev",
+      "category": "unanswerable",
+      "question": "Name the engineer who approved the customer's SAML callback setting.",
+      "expected_answer": "Abstain. The source reports an IT callback misconfiguration but identifies no individual engineer who approved the SAML callback.",
+      "raw_model_answer": null,
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0063",
+        "V2-FB-0303",
+        "V2-SUP-0074",
+        "V2-SUP-0046",
+        "V2-FB-0207",
+        "V2-FB-0051",
+        "V2-FB-0137"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 0,
+      "latency_ms": 14,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": false,
+      "raw_cited_source_ids": [],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "P21-Q-023",
+      "set": "benchmark3-dev",
+      "category": "unanswerable",
+      "question": "What is the complete count of urgent alerts lost across all Pulse customers?",
+      "expected_answer": "Abstain. Several reports concern delayed or missed urgent notifications, but the dataset cannot provide a complete event-level count across all customers.",
+      "raw_model_answer": null,
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "prd-05",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "release-08",
+        "V2-FB-0019",
+        "V2-FB-0127",
+        "V2-FB-0067",
+        "V2-SUP-0102"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 0,
+      "latency_ms": 11,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": false,
+      "raw_cited_source_ids": [],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-001",
+      "set": "benchmark4-consumed",
+      "category": "direct",
+      "question": "Can a team keep shared boards out of the project digest?",
+      "expected_answer": "Yes. Since the April 5 digest update, shared boards are selected by default and teams can opt out (release-03).",
+      "raw_model_answer": "Status: answered\n\nYes. Project summaries are grouped by board, and teams can opt out of shared boards, which are selected by default. [release-03]",
+      "gist_answer": "Yes. Project summaries are grouped by board, and teams can opt out of shared boards, which are selected by default. [release-03]",
+      "context_source_ids": [
+        "V2-FB-0342",
+        "release-03",
+        "V2-SUP-0069",
+        "V2-FB-0258",
+        "V2-FB-0311",
+        "V2-FB-0318",
+        "V2-FB-0108",
+        "V2-FB-0234"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 88,
+      "latency_ms": 1750,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-03"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-03"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-03"
+      ]
+    },
+    {
+      "question_id": "B4-Q-002",
+      "set": "benchmark4-consumed",
+      "category": "direct",
+      "question": "Did the March portfolio filter release change how fast portfolio views load?",
+      "expected_answer": "No. The March 5 portfolio-filter release (release-02) states it did not change loading performance.",
+      "raw_model_answer": "Status: answered\n\nNo. The March portfolio filter release explicitly did not change loading performance. [release-02]",
+      "gist_answer": "No. The March portfolio filter release explicitly did not change loading performance. [release-02]",
+      "context_source_ids": [
+        "release-02",
+        "V2-SUP-0067",
+        "V2-FB-0117",
+        "release-07",
+        "V2-FB-0381",
+        "V2-FB-0008",
+        "V2-FB-0177",
+        "prd-02"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 77,
+      "latency_ms": 2437,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-02"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-02"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-003",
+      "set": "benchmark4-consumed",
+      "category": "direct",
+      "question": "Who can tune routine project alerts after the September release?",
+      "expected_answer": "Admins can tune routine project alerts (release-08).",
+      "raw_model_answer": "Status: answered\n\nAdmins can tune routine project alerts using the per-project notification controls introduced in the September release. [release-08]",
+      "gist_answer": "Admins can tune routine project alerts using the per-project notification controls introduced in the September release. [release-08]",
+      "context_source_ids": [
+        "release-08",
+        "V2-FB-0019",
+        "V2-SUP-0042",
+        "V2-FB-0283",
+        "V2-FB-0007",
+        "V2-SUP-0010",
+        "V2-SUP-0077",
+        "V2-FB-0163"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 92,
+      "latency_ms": 1659,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-08"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-004",
+      "set": "benchmark4-consumed",
+      "category": "direct",
+      "question": "Does the invoice seat-adjustment line identify which people were billed?",
+      "expected_answer": "No. The PRD says the May line item does not identify people by itself, and customers say they cannot trace the line to actual people.",
+      "raw_model_answer": "Status: answered\n\nNo. The invoice seat-adjustment line does not identify the people billed. [prd-04] One customer also reported they couldn’t trace the line to actual people. [V2-FB-0346]",
+      "gist_answer": "No. The invoice seat-adjustment line does not identify the people billed. [prd-04] One customer also reported they couldn’t trace the line to actual people. [V2-FB-0346]",
+      "context_source_ids": [
+        "V2-FB-0346",
+        "prd-04",
+        "V2-FB-0070",
+        "V2-SUP-0033",
+        "release-04",
+        "V2-FB-0142",
+        "V2-FB-0154",
+        "V2-FB-0199"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 92,
+      "latency_ms": 1726,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0346",
+        "prd-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-005",
+      "set": "benchmark4-consumed",
+      "category": "semantic",
+      "question": "Find someone who was told to wipe their browser data but saw the problem on several computers.",
+      "expected_answer": "Yes. Customers say they were told to clear the cache but the problem happens on three machines; the reports do not always name the symptom.",
+      "raw_model_answer": "Status: answered\n\nA customer reported being told to clear their cache, but the problem occurred on three machines. [V2-FB-0140]",
+      "gist_answer": "A customer reported being told to clear their cache, but the problem occurred on three machines. [V2-FB-0140]",
+      "context_source_ids": [
+        "V2-FB-0140",
+        "V2-SUP-0052",
+        "V2-SUP-0118",
+        "V2-SUP-0115",
+        "V2-SUP-0019",
+        "V2-FB-0152",
+        "V2-SUP-0070",
+        "V2-SUP-0088"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 112,
+      "latency_ms": 2382,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0140"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0140"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0140",
+        "V2-FB-0152"
+      ]
+    },
+    {
+      "question_id": "B4-Q-006",
+      "set": "benchmark4-consumed",
+      "category": "semantic",
+      "question": "Is there a newcomer who completed the joining form twice and still could not get in?",
+      "expected_answer": "Yes. Several reports say a new hire finished the form twice and still is not in the workspace.",
+      "raw_model_answer": "Status: answered\n\nYes. A report says a new hire completed the form twice and still wasn’t in the workspace [V2-FB-0037].",
+      "gist_answer": "Yes. A report says a new hire completed the form twice and still wasn’t in the workspace [V2-FB-0037].",
+      "context_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0049",
+        "V2-FB-0338",
+        "V2-FB-0097",
+        "V2-FB-0373",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0280"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 101,
+      "latency_ms": 1821,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0037"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0037"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0373"
+      ]
+    },
+    {
+      "question_id": "B4-Q-007",
+      "set": "benchmark4-consumed",
+      "category": "semantic",
+      "question": "Did anyone ask for a way to reverse a file import they ran the previous day?",
+      "expected_answer": "Yes. Customers asked for a way to undo yesterday's spreadsheet import. This is a request; no source says an undo exists.",
+      "raw_model_answer": "Status: answered\n\nYes—customers asked for a way to undo a spreadsheet import from the previous day. [V2-SUP-0044] [V2-FB-0341]",
+      "gist_answer": "Yes—customers asked for a way to undo a spreadsheet import from the previous day. [V2-SUP-0044] [V2-FB-0341]",
+      "context_source_ids": [
+        "V2-SUP-0044",
+        "V2-FB-0341",
+        "V2-SUP-0072",
+        "V2-FB-0149",
+        "V2-FB-0293",
+        "V2-FB-0017",
+        "V2-SUP-0104",
+        "V2-SUP-0048"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 72,
+      "latency_ms": 1470,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0341",
+        "V2-SUP-0044"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0341",
+        "V2-SUP-0044"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0293",
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-SUP-0072",
+        "V2-SUP-0104"
+      ]
+    },
+    {
+      "question_id": "B4-Q-008",
+      "set": "benchmark4-consumed",
+      "category": "semantic",
+      "question": "Find a report of someone outside the company's email domain being unable to use the corporate login.",
+      "expected_answer": "Customers report that a contractor on a different domain cannot use the company login.",
+      "raw_model_answer": "Status: answered\n\nV2-FB-0231 reports that a contractor on a different domain can’t use the company login. [V2-FB-0231]",
+      "gist_answer": "V2-FB-0231 reports that a contractor on a different domain can’t use the company login. [V2-FB-0231]",
+      "context_source_ids": [
+        "V2-FB-0231",
+        "V2-SUP-0014",
+        "V2-FB-0159",
+        "V2-FB-0243",
+        "V2-FB-0038",
+        "V2-SUP-0118",
+        "V2-FB-0265",
+        "V2-SUP-0046"
+      ],
+      "groups_in_context": "1/1",
+      "output_tokens": 98,
+      "latency_ms": 1490,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0231"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0231"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0231",
+        "V2-FB-0243",
+        "V2-SUP-0014"
+      ]
+    },
+    {
+      "question_id": "B4-Q-009",
+      "set": "benchmark4-consumed",
+      "category": "multi_source",
+      "question": "What different identity-provider problems, besides a wrong callback URL, did customers report?",
+      "expected_answer": "Three distinct SSO problems: login stopping after a SAML certificate change, the IdP assertion rejected because the domain is not allowed, and one region routed to the wrong workspace. Password-reset reports are a different problem; timing does not establish that the certificate change caused an outage.",
+      "raw_model_answer": "Status: answered\n\nBesides a wrong callback URL, customers reported login stopping after an identity-provider SAML certificate change [V2-FB-0003, V2-FB-0267, V2-FB-0087] and a failed-sign-in error when an admin said the identity configuration was incomplete [V2-FB-0327].",
+      "gist_answer": "Besides a wrong callback URL, customers reported login stopping after an identity-provider SAML certificate change [V2-FB-0003, V2-FB-0267, V2-FB-0087] and a failed-sign-in error when an admin said the identity configuration was incomplete [V2-FB-0327].",
+      "context_source_ids": [
+        "V2-FB-0207",
+        "V2-SUP-0046",
+        "V2-FB-0003",
+        "V2-FB-0327",
+        "V2-FB-0063",
+        "V2-FB-0267",
+        "V2-FB-0351",
+        "V2-FB-0087"
+      ],
+      "groups_in_context": "1/3",
+      "output_tokens": 178,
+      "latency_ms": 2218,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-FB-0267",
+        "V2-FB-0327"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-FB-0267"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0327"
+      ],
+      "evidence_groups_cited": "1/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-FB-0267",
+        "V2-SUP-0046"
+      ]
+    },
+    {
+      "question_id": "B4-Q-010",
+      "set": "benchmark4-consumed",
+      "category": "multi_source",
+      "question": "What mapping or parsing problems did customers report after one-time spreadsheet imports?",
+      "expected_answer": "Owner names landed in the due-date column; an Account ID mapped to a custom field was treated as a name; date cells became blank; and a semicolon-delimited CSV was read as one column. These are import problems, not live CRM sync.",
+      "raw_model_answer": "Status: answered\n\nOne customer said the import report showed success even though two columns were swapped [V2-FB-0269]. Another said a one-time spreadsheet upload scrambled labels [V2-FB-0005].",
+      "gist_answer": "One customer said the import report showed success even though two columns were swapped [V2-FB-0269]. Another said a one-time spreadsheet upload scrambled labels [V2-FB-0005].",
+      "context_source_ids": [
+        "V2-FB-0149",
+        "V2-FB-0269",
+        "V2-FB-0005",
+        "V2-SUP-0044",
+        "V2-SUP-0104",
+        "V2-SUP-0034",
+        "V2-FB-0293",
+        "V2-SUP-0064"
+      ],
+      "groups_in_context": "0/4",
+      "output_tokens": 186,
+      "latency_ms": 2406,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0269"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0005",
+        "V2-FB-0269"
+      ],
+      "evidence_groups_cited": "0/4",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-011",
+      "set": "benchmark4-consumed",
+      "category": "multi_source",
+      "question": "What did customers ask to control about project emails, and what controls did Pulse ship?",
+      "expected_answer": "Customers asked for a quiet setting for projects they only observe and to choose which boards feed the morning email. Pulse shipped an opt-out for shared boards in the April digest (release-03) and admin tuning of routine project alerts in September (release-08). Whether these met every request is not established.",
+      "raw_model_answer": "Status: answered\n\nCustomers wanted fewer project emails, saying the digest should mean fewer messages; one later customer specifically asked whether the new controls also suppress direct mentions. [V2-FB-0354] [V2-FB-0175]\n\nPulse shipped project summaries grouped by board, with shared boards selected by default and an opt-out for teams. [release-03] It later added admin controls for routine project alerts, while critical and direct-mention alerts were intended to remain timely. [release-08]",
+      "gist_answer": "Customers wanted fewer project emails, saying the digest should mean fewer messages; one later customer specifically asked whether the new controls also suppress direct mentions. [V2-FB-0354] [V2-FB-0175]\n\nPulse shipped project summaries grouped by board, with shared boards selected by default and an opt-out for teams. [release-03] It later added admin controls for routine project alerts, while critical and direct-mention alerts were intended to remain timely. [release-08]",
+      "context_source_ids": [
+        "release-08",
+        "V2-FB-0354",
+        "V2-FB-0175",
+        "release-02",
+        "V2-SUP-0077",
+        "release-03",
+        "V2-FB-0318",
+        "V2-FB-0126"
+      ],
+      "groups_in_context": "2/4",
+      "output_tokens": 458,
+      "latency_ms": 3700,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0175",
+        "V2-FB-0354",
+        "release-03",
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-03",
+        "release-08"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0175",
+        "V2-FB-0354"
+      ],
+      "evidence_groups_cited": "2/4",
+      "retrieved_relevant_in_context": [
+        "release-03",
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-012",
+      "set": "benchmark4-consumed",
+      "category": "multi_source",
+      "question": "Why did finance see a whole-cycle seat charge for someone removed late in the month, and what would help them trace it?",
+      "expected_answer": "Release-04 says seats archived mid-cycle remain counted until the cycle closes, matching a customer billed for a contractor moved out on the 27th. Invoice-time seat evidence would help trace it: PRD-04 calls for it and customers request a downloadable list of seats counted. No source says that list is available.",
+      "raw_model_answer": "Status: partial\n\nA customer reported removing a contractor on the 27th and still being billed for the whole cycle, but the evidence does not establish the billing rule or why that charge occurred [V2-FB-0142]. To trace it, finance would need invoice-time seat evidence linked to specific people; the PRD identifies both as needs, and a customer says the seat adjustment line is not traceable to actual people [prd-04] [V2-FB-0130].\n\nLimitation: The evidence does not show the specific billing rule or transaction details behind the charge.",
+      "gist_answer": "A customer reported removing a contractor on the 27th and still being billed for the whole cycle, but the evidence does not establish the billing rule or why that charge occurred [V2-FB-0142]. To trace it, finance would need invoice-time seat evidence linked to specific people; the PRD identifies both as needs, and a customer says the seat adjustment line is not traceable to actual people [prd-04] [V2-FB-0130].\n\nLimitation: The evidence does not show the specific billing rule or transaction details behind the charge.",
+      "context_source_ids": [
+        "V2-FB-0358",
+        "prd-04",
+        "V2-FB-0142",
+        "V2-FB-0130",
+        "V2-SUP-0045",
+        "V2-FB-0166",
+        "V2-FB-0262",
+        "V2-FB-0070"
+      ],
+      "groups_in_context": "2/3",
+      "output_tokens": 285,
+      "latency_ms": 2777,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0130",
+        "V2-FB-0142",
+        "prd-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0142",
+        "prd-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0130"
+      ],
+      "evidence_groups_cited": "2/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0142",
+        "prd-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-013",
+      "set": "benchmark4-consumed",
+      "category": "temporal",
+      "question": "When did the shared template gallery ship, and did customers still struggle to find templates afterwards?",
+      "expected_answer": "The gallery shipped on 2025-07-05 in the workspace menu (release-06). Later reports say customers found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu. Timing does not show the release caused the difficulty.",
+      "raw_model_answer": "Status: answered\n\nThe shared template gallery was published on July 5, 2025, in the workspace menu. [release-06] Yes—afterward, an SMB report said its entry point was easy to miss, and an Individual customer later asked for templates to appear during project creation instead of several clicks later. [V2-FB-0395] [V2-FB-0059]",
+      "gist_answer": "The shared template gallery was published on July 5, 2025, in the workspace menu. [release-06] Yes—afterward, an SMB report said its entry point was easy to miss, and an Individual customer later asked for templates to appear during project creation instead of several clicks later. [V2-FB-0395] [V2-FB-0059]",
+      "context_source_ids": [
+        "release-06",
+        "V2-SUP-0098",
+        "V2-FB-0395",
+        "V2-SUP-0018",
+        "V2-SUP-0023",
+        "V2-FB-0360",
+        "V2-FB-0059",
+        "prd-06"
+      ],
+      "groups_in_context": "1/2",
+      "output_tokens": 256,
+      "latency_ms": 3043,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0059",
+        "V2-FB-0395",
+        "release-06"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-06"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0059",
+        "V2-FB-0395"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "release-06"
+      ]
+    },
+    {
+      "question_id": "B4-Q-014",
+      "set": "benchmark4-consumed",
+      "category": "temporal",
+      "question": "Were archived-seat billing complaints reported before the May invoice breakdown?",
+      "expected_answer": "Yes. January to March 2025 reports say archived collaborators were still counted on invoices, before the May 5 invoice breakdown (release-04).",
+      "raw_model_answer": "Status: answered\n\nYes. Archived-seat billing complaints were reported on January 29 and March 12, before the May 5 invoice breakdown release. [V2-SUP-0117] [V2-FB-0370] [release-04]",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "release-04",
+        "V2-FB-0070",
+        "V2-SUP-0117",
+        "V2-FB-0082",
+        "V2-FB-0370",
+        "V2-SUP-0033",
+        "prd-04",
+        "V2-FB-0199"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 129,
+      "latency_ms": 1852,
+      "expected_abstention": false,
+      "abstained": true,
+      "abstention_correct": false,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-015",
+      "set": "benchmark4-consumed",
+      "category": "temporal",
+      "question": "What did customers say about the portfolio filter controls after the March filter release?",
+      "expected_answer": "After the March 5 release (release-02), customers liked the new options but found the active state hard to notice, missed the small funnel icon, and said the controls are buried above the chart.",
+      "raw_model_answer": "Status: answered\n\nPost-release reports said they thought the portfolio had no filter until someone showed them the “little funnel” [V2-SUP-0020] [V2-FB-0225] [V2-FB-0177] [V2-FB-0117].",
+      "gist_answer": "Post-release reports said they thought the portfolio had no filter until someone showed them the “little funnel” [V2-SUP-0020] [V2-FB-0225] [V2-FB-0177] [V2-FB-0117].",
+      "context_source_ids": [
+        "release-02",
+        "V2-FB-0225",
+        "V2-SUP-0095",
+        "V2-FB-0117",
+        "V2-SUP-0020",
+        "V2-FB-0177",
+        "V2-SUP-0067",
+        "prd-02"
+      ],
+      "groups_in_context": "2/4",
+      "output_tokens": 299,
+      "latency_ms": 3731,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-SUP-0020"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-SUP-0020"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/4",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-SUP-0020",
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-016",
+      "set": "benchmark4-consumed",
+      "category": "temporal",
+      "question": "Were urgent alerts reported as late before the September per-project controls, or only afterwards?",
+      "expected_answer": "The reports that describe late urgent alerts are dated after the September 5 release (release-08), which says later delay reports are under investigation. These dates do not establish causation or rule out earlier reports worded differently.",
+      "raw_model_answer": "Status: partial\n\nThe supplied reports explicitly describing urgent or high-priority alerts arriving late are dated after the September 5 per-project-controls release: September 18, September 28, and October 10. [V2-FB-0067] [V2-FB-0127] [V2-FB-0259] The September 18 report separately mentions a gap after the June refresh, but does not say that urgent alerts were late then. [V2-FB-0067]\n\nLimitation: The evidence does not show whether urgent alerts were reported as late before September 5, so it cannot establish that reports occurred only afterwards.",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-FB-0019",
+        "release-08",
+        "V2-FB-0259",
+        "V2-SUP-0010",
+        "V2-FB-0127",
+        "V2-FB-0091",
+        "V2-FB-0067",
+        "V2-FB-0163"
+      ],
+      "groups_in_context": "2/2",
+      "output_tokens": 586,
+      "latency_ms": 4614,
+      "expected_abstention": false,
+      "abstained": true,
+      "abstention_correct": false,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0259"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0067",
+        "V2-FB-0127"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-017",
+      "set": "benchmark4-consumed",
+      "category": "contradictory",
+      "question": "Do customers agree that the new template gallery is easy to find?",
+      "expected_answer": "No. Some say the gallery is easy to find now; others found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu.",
+      "raw_model_answer": "Status: answered\n\nNo—feedback is mixed. Some customers say the gallery is easy to find [V2-SUP-0115] [V2-FB-0360], while others say the entry point is easy to miss or discoverability remains a rough edge [V2-FB-0395] [V2-FB-0083].",
+      "gist_answer": "No—feedback is mixed. Some customers say the gallery is easy to find [V2-SUP-0115] [V2-FB-0360], while others say the entry point is easy to miss or discoverability remains a rough edge [V2-FB-0395] [V2-FB-0083].",
+      "context_source_ids": [
+        "V2-FB-0071",
+        "release-06",
+        "V2-SUP-0115",
+        "V2-FB-0395",
+        "V2-FB-0360",
+        "V2-SUP-0006",
+        "V2-FB-0083",
+        "V2-FB-0048"
+      ],
+      "groups_in_context": "1/2",
+      "output_tokens": 233,
+      "latency_ms": 2290,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0083",
+        "V2-FB-0360",
+        "V2-FB-0395",
+        "V2-SUP-0115"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0360",
+        "V2-SUP-0115"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0083",
+        "V2-FB-0395"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0048",
+        "V2-FB-0360",
+        "V2-SUP-0115"
+      ]
+    },
+    {
+      "question_id": "B4-Q-018",
+      "set": "benchmark4-consumed",
+      "category": "contradictory",
+      "question": "Did the CRM connector stay unreliable after the June refresh?",
+      "expected_answer": "Mixed. After the June 5 refresh (release-05), one customer's queue was still behind after two reconnections, while others described overnight recovery or stability that week. These reports do not establish lasting reliability.",
+      "raw_model_answer": "Status: partial\n\nReports after the June refresh describe differing results, a queue that had not caught up, and missing CRM records; a later report says there was a gap after the refresh followed by a backfill. [V2-FB-0136] [V2-SUP-0111] [V2-FB-0112] [V2-FB-0148]\n\nLimitation: The evidence does not establish whether the connector was generally or continuously unreliable, or whether the refresh caused these issues.",
+      "gist_answer": "Reports after the June refresh describe differing results, a queue that had not caught up, and missing CRM records; a later report says there was a gap after the refresh followed by a backfill. [V2-FB-0136] [V2-SUP-0111] [V2-FB-0112] [V2-FB-0148]\n\nLimitation: The evidence does not establish whether the connector was generally or continuously unreliable, or whether the refresh caused these issues.",
+      "context_source_ids": [
+        "release-05",
+        "V2-SUP-0111",
+        "V2-FB-0148",
+        "V2-FB-0112",
+        "V2-FB-0136",
+        "prd-03",
+        "V2-FB-0221",
+        "V2-SUP-0027"
+      ],
+      "groups_in_context": "2/3",
+      "output_tokens": 280,
+      "latency_ms": 2804,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0112",
+        "V2-FB-0136",
+        "V2-FB-0148",
+        "V2-SUP-0111"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-SUP-0111"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0112",
+        "V2-FB-0136",
+        "V2-FB-0148"
+      ],
+      "evidence_groups_cited": "1/3",
+      "retrieved_relevant_in_context": [
+        "V2-SUP-0111",
+        "release-05"
+      ]
+    },
+    {
+      "question_id": "B4-Q-019",
+      "set": "benchmark4-consumed",
+      "category": "contradictory",
+      "question": "Did customers see the invoice breakdown as a clear improvement?",
+      "expected_answer": "Partly. Customers say the breakdown is easier to read, yet the mid-cycle change is still opaque and the adjustment line cannot be traced to actual people.",
+      "raw_model_answer": "Status: partial\n\nAt least one SMB customer said the invoice breakdown was easier to read, while noting that mid-cycle changes remained opaque [V2-FB-0094]. A support ticket recorded the same feedback [V2-SUP-0053].\n\nLimitation: The evidence does not show whether customers broadly saw the breakdown as a clear improvement.",
+      "gist_answer": "At least one SMB customer said the invoice breakdown was easier to read, while noting that mid-cycle changes remained opaque [V2-FB-0094]. A support ticket recorded the same feedback [V2-SUP-0053].\n\nLimitation: The evidence does not show whether customers broadly saw the breakdown as a clear improvement.",
+      "context_source_ids": [
+        "V2-SUP-0053",
+        "release-04",
+        "V2-FB-0070",
+        "V2-SUP-0105",
+        "V2-FB-0214",
+        "V2-FB-0094",
+        "prd-04",
+        "V2-SUP-0033"
+      ],
+      "groups_in_context": "1/2",
+      "output_tokens": 146,
+      "latency_ms": 2082,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ]
+    },
+    {
+      "question_id": "B4-Q-020",
+      "set": "benchmark4-consumed",
+      "category": "contradictory",
+      "question": "Did the owner checklist settle onboarding for invited team members?",
+      "expected_answer": "Not fully. Release-01 says invited users should not need to verify the owner again, but later reports describe a repeat step. Customers say the checklist is clearer while the invited-user handoff is still awkward, and new hires who finished the form twice still could not get in; those reports do not attribute it to the checklist.",
+      "raw_model_answer": "Status: partial\n\nThe checklist was intended to clarify owner verification, but a later report says the invited-user handoff is still awkward; another report says the same without knowing whether others were affected. [release-01] [V2-FB-0013] [V2-FB-0337]\n\nLimitation: The evidence does not establish whether the checklist settled onboarding for invited team members overall.",
+      "gist_answer": "The checklist was intended to clarify owner verification, but a later report says the invited-user handoff is still awkward; another report says the same without knowing whether others were affected. [release-01] [V2-FB-0013] [V2-FB-0337]\n\nLimitation: The evidence does not establish whether the checklist settled onboarding for invited team members overall.",
+      "context_source_ids": [
+        "V2-FB-0013",
+        "release-01",
+        "V2-FB-0025",
+        "prd-01",
+        "V2-SUP-0107",
+        "V2-FB-0337",
+        "V2-FB-0263",
+        "V2-FB-0212"
+      ],
+      "groups_in_context": "2/3",
+      "output_tokens": 239,
+      "latency_ms": 2625,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "release-01"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "release-01"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "release-01"
+      ]
+    },
+    {
+      "question_id": "B4-Q-021",
+      "set": "benchmark4-consumed",
+      "category": "unanswerable",
+      "question": "What percentage of enterprise customers use single sign-on?",
+      "expected_answer": "Abstain. No source gives an SSO adoption rate; individual SSO reports are not a percentage.",
+      "raw_model_answer": "Status: insufficient\n\nThe evidence includes enterprise reports mentioning Okta, company login, or identity configuration, but provides neither an enterprise-customer total nor an SSO usage count [V2-SUP-0054] [V2-SUP-0014] [V2-FB-0099].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-SUP-0101",
+        "V2-FB-0099",
+        "V2-SUP-0014",
+        "V2-SUP-0086",
+        "V2-SUP-0054",
+        "V2-FB-0231",
+        "V2-SUP-0009",
+        "V2-FB-0255"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 221,
+      "latency_ms": 2355,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0099",
+        "V2-SUP-0014",
+        "V2-SUP-0054"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0099",
+        "V2-SUP-0014",
+        "V2-SUP-0054"
+      ],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-022",
+      "set": "benchmark4-consumed",
+      "category": "unanswerable",
+      "question": "How many engineering hours did the August portfolio loading change take?",
+      "expected_answer": "Abstain. The release describes the change but no source states engineering effort.",
+      "raw_model_answer": "Status: insufficient\n\nThe release note describes a portfolio loading update but does not state how many engineering hours it took [release-07].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-FB-0044",
+        "release-07",
+        "V2-FB-0008",
+        "V2-SUP-0003",
+        "V2-FB-0198",
+        "V2-SUP-0067",
+        "V2-FB-0368",
+        "V2-FB-0332"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 69,
+      "latency_ms": 1589,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-07"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [
+        "release-07"
+      ],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-023",
+      "set": "benchmark4-consumed",
+      "category": "unanswerable",
+      "question": "Which customer cancelled their subscription because of the digest change?",
+      "expected_answer": "Abstain. Reports describe frustration and muting, but no source records a cancellation.",
+      "raw_model_answer": "Status: insufficient\n\nThe reports include reactions to the digest change, but none says a customer cancelled or identifies one who did [V2-FB-0318] [V2-FB-0367] [V2-FB-0162] [V2-FB-0030] [V2-FB-0234] [V2-SUP-0077] [V2-SUP-0030].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "release-03",
+        "V2-FB-0162",
+        "V2-FB-0030",
+        "V2-FB-0234",
+        "V2-SUP-0077",
+        "V2-SUP-0030"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 208,
+      "latency_ms": 2765,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0030",
+        "V2-FB-0162",
+        "V2-FB-0234",
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "V2-SUP-0030",
+        "V2-SUP-0077"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0030",
+        "V2-FB-0162",
+        "V2-FB-0234",
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "V2-SUP-0030",
+        "V2-SUP-0077"
+      ],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-024",
+      "set": "benchmark4-consumed",
+      "category": "unanswerable",
+      "question": "On what date is the next Pulse release scheduled?",
+      "expected_answer": "Abstain. The documents describe past releases only; no future release date is stated.",
+      "raw_model_answer": "Status: insufficient\n\nThe latest release note is dated 2025-09-05, but the evidence does not state when the next release is scheduled. [release-08]",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "context_source_ids": [
+        "release-02",
+        "release-04",
+        "release-03",
+        "release-06",
+        "release-05",
+        "release-01",
+        "V2-FB-0272",
+        "release-08"
+      ],
+      "groups_in_context": null,
+      "output_tokens": 104,
+      "latency_ms": 1693,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [
+        "release-08"
+      ],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    }
+  ]
+}

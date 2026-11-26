@@ -1,0 +1,5263 @@
+{
+  "benchmark_version": "gist-phase2.2-benchmark-4-reviewed",
+  "dataset_version": "v2",
+  "synthetic": true,
+  "derived_from": {
+    "benchmark_version": "gist-phase2.2-benchmark-4-draft-2",
+    "file_sha256": "d6cd4b8d4a8f2b6c00f50fc29f37d82e3236dd4f706b7f29cabefceb3411cc0c"
+  },
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "7821c54678737479491e367df7032145a7962b267256da6fe71dbc909178b623",
+  "heldout_sha256": "7821c54678737479491e367df7032145a7962b267256da6fe71dbc909178b623",
+  "split_counts": {
+    "development": 0,
+    "heldout": 24
+  },
+  "human_review": {
+    "reviewers": [
+      "Harsh (owner; adopted Codex AI judge labels after own check)"
+    ],
+    "review_dates": [
+      "2026-11-26"
+    ],
+    "second_reviewer_involved": false,
+    "independence": "Labels were produced by an AI judge (Codex) and adopted by the owner after the owner's own check of the records. The owner columns were filled from the AI columns by this correction file; they are not independently written human labels.",
+    "human_ai_disagreements": 22,
+    "assisted_by_ai_prereview": "Superseded by label_provenance.",
+    "label_provenance": "Labels were produced by an AI judge (Codex) and adopted by the owner after the owner's own check of the records. The owner columns were filled from the AI columns by this correction file; they are not independently written human labels.",
+    "owner_statement": "I got these reviewed using an LLM as a judge and have myself checked the records. Consider this review as the human review done and proceed with the project."
+  },
+  "label_policy": "Owner-adopted final verdicts are authoritative. evidence_groups are distinct evidence needs; members are alternative human-supported sources. Partial, unsupported and hard-negative sources are not relevant. Labels are a reviewed subset unless marked exhaustive.",
+  "heldout_policy": "Do not tune on held-out questions. Run them once, after the retrieval lock.",
+  "caveats": [
+    "B4-Q-004/release-04: human removed an AI-proposed hard negative (partial).",
+    "B4-Q-008/V2-FB-0045: human removed an AI-proposed hard negative (partial).",
+    "B4-Q-008/V2-FB-0291: human removed an AI-proposed hard negative (partial).",
+    "B4-Q-008/V2-FB-0315: human removed an AI-proposed hard negative (partial)."
+  ],
+  "questions": [
+    {
+      "id": "B4-Q-001",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Can a team keep shared boards out of the project digest?",
+      "expected_answer_or_abstention": "Yes. Since the April 5 digest update, shared boards are selected by default and teams can opt out (release-03).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-03"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-03"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0078",
+        "V2-FB-0090",
+        "V2-FB-0111"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The April release explicitly gives teams a shared-board opt-out.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The release explicitly gives teams the choice to opt out.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0078",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] A request to quiet observed projects does not establish a shared-board opt-out.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0090",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] A request to quiet observed projects does not establish a shared-board opt-out.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0111",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] A request to quiet observed projects does not establish a shared-board opt-out.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Since the April 5 digest update, shared boards are selected by default and teams can opt out (release-03).",
+        "evidence_groups": [
+          [
+            "release-03"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-03"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0078",
+          "V2-FB-0090",
+          "V2-FB-0111"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-03"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0078",
+          "V2-FB-0090",
+          "V2-FB-0111"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-002",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Did the March portfolio filter release change how fast portfolio views load?",
+      "expected_answer_or_abstention": "No. The March 5 portfolio-filter release (release-02) states it did not change loading performance.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-02"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-02"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-07"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The March release answers the performance question directly. The draft now omits the August comparison.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-02",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The March release directly answers the performance question.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-07",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The faster path belongs to the August release. It does not establish what happened in March, and the revised answer no longer requires the August comparison.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. The March 5 portfolio-filter release (release-02) states it did not change loading performance.",
+        "evidence_groups": [
+          [
+            "release-02"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-02"
+        ],
+        "hard_negative_source_ids": [
+          "release-07"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-02"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-07"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-003",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Who can tune routine project alerts after the September release?",
+      "expected_answer_or_abstention": "Admins can tune routine project alerts (release-08).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "release-08"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-03"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The September release identifies admins as the role that can tune routine alerts.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-08",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The September release names the role and the alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-03",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] A team digest opt-out concerns a different control and does not identify who can tune routine alerts.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Admins can tune routine project alerts (release-08).",
+        "evidence_groups": [
+          [
+            "release-08"
+          ]
+        ],
+        "supporting_source_ids": [
+          "release-08"
+        ],
+        "hard_negative_source_ids": [
+          "release-03"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-08"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-03"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-004",
+      "split": "heldout",
+      "category": "direct",
+      "question": "Does the invoice seat-adjustment line identify which people were billed?",
+      "expected_answer_or_abstention": "No. The PRD says the May line item does not identify people by itself, and customers say they cannot trace the line to actual people.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "prd-04"
+        ],
+        [
+          "V2-FB-0130",
+          "V2-FB-0346"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "partial_source_ids": [
+        "release-04"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The answer is supported. Reclassify release-04 as partial context: it confirms a seat-adjustment line exists but does not say whether it identifies people.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0130",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly describes the missing link between the adjustment and individual people.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0346",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly describes the missing link between the adjustment and individual people.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "prd-04",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The PRD directly states the limitation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-04",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The release confirms the line exists but gives no information about names.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. The PRD says the May line item does not identify people by itself, and customers say they cannot trace the line to actual people.",
+        "evidence_groups": [
+          [
+            "prd-04"
+          ],
+          [
+            "V2-FB-0130",
+            "V2-FB-0346"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0130",
+          "V2-FB-0346",
+          "prd-04"
+        ],
+        "hard_negative_source_ids": [
+          "release-04"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "prd-04"
+          ],
+          [
+            "V2-FB-0130",
+            "V2-FB-0346"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-04"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-005",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find someone who was told to wipe their browser data but saw the problem on several computers.",
+      "expected_answer_or_abstention": "Yes. Customers say they were told to clear the cache but the problem happens on three machines; the reports do not always name the symptom.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0140",
+          "V2-FB-0152",
+          "V2-FB-0210"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-FB-0210"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0116",
+        "V2-FB-0164",
+        "V2-FB-0188"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The answer now reports the cache advice and three-machine recurrence without assigning a specific symptom.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0140",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The sentence supplies both facts requested. It leaves the symptom unspecified.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0152",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The sentence supplies both facts requested. It leaves the symptom unspecified.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0210",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The sentence supplies both facts requested. It leaves the symptom unspecified.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0116",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The symptom depends on the selected view and supplies neither the cache advice nor cross-machine recurrence.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0164",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The symptom depends on the selected view and supplies neither the cache advice nor cross-machine recurrence.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0188",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The symptom depends on the selected view and supplies neither the cache advice nor cross-machine recurrence.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Customers say they were told to clear the cache but the problem happens on three machines; the reports do not always name the symptom.",
+        "evidence_groups": [
+          [
+            "V2-FB-0140",
+            "V2-FB-0152",
+            "V2-FB-0210"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0140",
+          "V2-FB-0152",
+          "V2-FB-0210"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0116",
+          "V2-FB-0164",
+          "V2-FB-0188"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0140",
+            "V2-FB-0152",
+            "V2-FB-0210"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0116",
+          "V2-FB-0164",
+          "V2-FB-0188"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-006",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Is there a newcomer who completed the joining form twice and still could not get in?",
+      "expected_answer_or_abstention": "Yes. Several reports say a new hire finished the form twice and still is not in the workspace.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0373"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0373"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0242",
+        "V2-FB-0266"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The sources explicitly say a new hire completed the form twice and still lacked workspace access.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0037",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The same sentence identifies the newcomer, two attempts and the continuing access problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0097",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The same sentence identifies the newcomer, two attempts and the continuing access problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The same sentence identifies the newcomer, two attempts and the continuing access problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0181",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The same sentence identifies the newcomer, two attempts and the continuing access problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0373",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The same sentence identifies the newcomer, two attempts and the continuing access problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0074",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The failed password change concerns an existing login rather than a newcomer repeating the form.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0242",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The failed password change concerns an existing login rather than a newcomer repeating the form.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0266",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The failed password change concerns an existing login rather than a newcomer repeating the form.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Several reports say a new hire finished the form twice and still is not in the workspace.",
+        "evidence_groups": [
+          [
+            "V2-FB-0037",
+            "V2-FB-0097",
+            "V2-FB-0122",
+            "V2-FB-0181",
+            "V2-FB-0373"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0373"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0242",
+          "V2-FB-0266"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0037",
+            "V2-FB-0097",
+            "V2-FB-0122",
+            "V2-FB-0181",
+            "V2-FB-0373"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0242",
+          "V2-FB-0266"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-007",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Did anyone ask for a way to reverse a file import they ran the previous day?",
+      "expected_answer_or_abstention": "Yes. Customers asked for a way to undo yesterday's spreadsheet import. This is a request; no source says an undo exists.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161",
+          "V2-FB-0293",
+          "V2-FB-0341",
+          "V2-SUP-0044",
+          "V2-SUP-0072",
+          "V2-SUP-0104"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-SUP-0072",
+        "V2-SUP-0104"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0160",
+        "V2-FB-0292",
+        "V2-FB-0316"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The sources explicitly request undoing the previous day’s import. They do not establish that Pulse provides this capability.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0017",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0149",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0161",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0293",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0341",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0044",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0072",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0104",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly asks to undo a spreadsheet import from the previous day.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0160",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Recovery after reconnecting is a different operation from undoing a file import.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0292",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Recovery after reconnecting is a different operation from undoing a file import.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0316",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Recovery after reconnecting is a different operation from undoing a file import.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. Customers asked for a way to undo yesterday's spreadsheet import. This is a request; no source says an undo exists.",
+        "evidence_groups": [
+          [
+            "V2-FB-0017",
+            "V2-FB-0149",
+            "V2-FB-0161",
+            "V2-FB-0293",
+            "V2-FB-0341",
+            "V2-SUP-0044",
+            "V2-SUP-0072",
+            "V2-SUP-0104"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161",
+          "V2-FB-0293",
+          "V2-FB-0341",
+          "V2-SUP-0044",
+          "V2-SUP-0072",
+          "V2-SUP-0104"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0160",
+          "V2-FB-0292",
+          "V2-FB-0316"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0017",
+            "V2-FB-0149",
+            "V2-FB-0161",
+            "V2-FB-0293",
+            "V2-FB-0341",
+            "V2-SUP-0044",
+            "V2-SUP-0072",
+            "V2-SUP-0104"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0160",
+          "V2-FB-0292",
+          "V2-FB-0316"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-008",
+      "split": "heldout",
+      "category": "semantic",
+      "question": "Find a report of someone outside the company's email domain being unable to use the corporate login.",
+      "expected_answer_or_abstention": "Customers report that a contractor on a different domain cannot use the company login.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0231",
+          "V2-FB-0243",
+          "V2-SUP-0014"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0231",
+        "V2-FB-0243",
+        "V2-SUP-0014"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0045",
+        "V2-FB-0291",
+        "V2-FB-0315"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The contractor evidence answers the question. The three domain-rejection reports are partial matches: they document a rejected domain without identifying an external-domain user.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0231",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The source identifies both the external domain and the login failure.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0243",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The source identifies both the external domain and the login failure.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0014",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The source identifies both the external domain and the login failure.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0045",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Domain rejection is relevant, but the source never says the user was outside the company’s email domain.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0291",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Domain rejection is relevant, but the source never says the user was outside the company’s email domain.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0315",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Domain rejection is relevant, but the source never says the user was outside the company’s email domain.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Customers report that a contractor on a different domain cannot use the company login.",
+        "evidence_groups": [
+          [
+            "V2-FB-0231",
+            "V2-FB-0243",
+            "V2-SUP-0014"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0231",
+          "V2-FB-0243",
+          "V2-SUP-0014"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0045",
+          "V2-FB-0291",
+          "V2-FB-0315"
+        ],
+        "findings": "Domain-allowlist reports are close but do not say the blocked person used an outside domain."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0231",
+            "V2-FB-0243",
+            "V2-SUP-0014"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0045",
+          "V2-FB-0291",
+          "V2-FB-0315"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-009",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What different identity-provider problems, besides a wrong callback URL, did customers report?",
+      "expected_answer_or_abstention": "Three distinct SSO problems: login stopping after a SAML certificate change, the IdP assertion rejected because the domain is not allowed, and one region routed to the wrong workspace. Password-reset reports are a different problem; timing does not establish that the certificate change caused an outage.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0087",
+          "V2-FB-0267",
+          "V2-FB-0375",
+          "V2-SUP-0046",
+          "V2-SUP-0074"
+        ],
+        [
+          "V2-FB-0045",
+          "V2-FB-0291",
+          "V2-FB-0315",
+          "V2-SUP-0066"
+        ],
+        [
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0265",
+          "V2-FB-0363",
+          "V2-SUP-0016",
+          "V2-SUP-0054"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0045",
+        "V2-FB-0051",
+        "V2-FB-0087",
+        "V2-FB-0111",
+        "V2-FB-0123",
+        "V2-FB-0265",
+        "V2-FB-0267",
+        "V2-FB-0291",
+        "V2-FB-0315",
+        "V2-FB-0363",
+        "V2-FB-0375",
+        "V2-SUP-0016",
+        "V2-SUP-0046",
+        "V2-SUP-0054",
+        "V2-SUP-0066",
+        "V2-SUP-0074"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0122",
+        "V2-FB-0242"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] Each identity-provider symptom has direct evidence. The reference appropriately distinguishes event order from a proven cause.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0003",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0045",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The source explicitly reports domain rejection after an IdP assertion.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0051",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0087",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0111",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0123",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0265",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0267",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0291",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The source explicitly reports domain rejection after an IdP assertion.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0315",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The source explicitly reports domain rejection after an IdP assertion.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0363",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0375",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0016",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0046",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0054",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The Okta report describes a regional workspace routing problem.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0066",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The source explicitly reports domain rejection after an IdP assertion.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0074",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports a login failure following a certificate change, without proving causation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0074",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This concerns password recovery and supplies none of the requested IdP failures.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This concerns password recovery and supplies none of the requested IdP failures.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0242",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This concerns password recovery and supplies none of the requested IdP failures.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Three distinct SSO problems: login stopping after a SAML certificate change, the IdP assertion rejected because the domain is not allowed, and one region routed to the wrong workspace. Password-reset reports are a different problem; timing does not establish that the certificate change caused an outage.",
+        "evidence_groups": [
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0087",
+            "V2-FB-0267",
+            "V2-FB-0375",
+            "V2-SUP-0046",
+            "V2-SUP-0074"
+          ],
+          [
+            "V2-FB-0045",
+            "V2-FB-0291",
+            "V2-FB-0315",
+            "V2-SUP-0066"
+          ],
+          [
+            "V2-FB-0111",
+            "V2-FB-0123",
+            "V2-FB-0265",
+            "V2-FB-0363",
+            "V2-SUP-0016",
+            "V2-SUP-0054"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0003",
+          "V2-FB-0045",
+          "V2-FB-0051",
+          "V2-FB-0087",
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0265",
+          "V2-FB-0267",
+          "V2-FB-0291",
+          "V2-FB-0315",
+          "V2-FB-0363",
+          "V2-FB-0375",
+          "V2-SUP-0016",
+          "V2-SUP-0046",
+          "V2-SUP-0054",
+          "V2-SUP-0066",
+          "V2-SUP-0074"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0003",
+            "V2-FB-0051",
+            "V2-FB-0087",
+            "V2-FB-0267",
+            "V2-FB-0375",
+            "V2-SUP-0046",
+            "V2-SUP-0074"
+          ],
+          [
+            "V2-FB-0045",
+            "V2-FB-0291",
+            "V2-FB-0315",
+            "V2-SUP-0066"
+          ],
+          [
+            "V2-FB-0111",
+            "V2-FB-0123",
+            "V2-FB-0265",
+            "V2-FB-0363",
+            "V2-SUP-0016",
+            "V2-SUP-0054"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0122",
+          "V2-FB-0242"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-010",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What mapping or parsing problems did customers report after one-time spreadsheet imports?",
+      "expected_answer_or_abstention": "Owner names landed in the due-date column; an Account ID mapped to a custom field was treated as a name; date cells became blank; and a semicolon-delimited CSV was read as one column. These are import problems, not live CRM sync.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0173",
+          "V2-FB-0221",
+          "V2-FB-0329",
+          "V2-SUP-0084"
+        ],
+        [
+          "V2-FB-0137",
+          "V2-FB-0305",
+          "V2-SUP-0032"
+        ],
+        [
+          "V2-FB-0089",
+          "V2-FB-0185",
+          "V2-FB-0197",
+          "V2-SUP-0012"
+        ],
+        [
+          "V2-FB-0125",
+          "V2-FB-0353"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0089",
+        "V2-FB-0125",
+        "V2-FB-0137",
+        "V2-FB-0173",
+        "V2-FB-0185",
+        "V2-FB-0197",
+        "V2-FB-0221",
+        "V2-FB-0305",
+        "V2-FB-0329",
+        "V2-FB-0353",
+        "V2-SUP-0012",
+        "V2-SUP-0032",
+        "V2-SUP-0084"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-05"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The revised wording covers all four outcomes, including blank dates and delimiter parsing.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0089",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This is evidence of missing imported dates, a distinct outcome from a wrong destination.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0125",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The semicolon-delimited file was read as a single column.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0137",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The text describes how the mapped identifier was misinterpreted.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0173",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The import placed owner names in a date field.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0185",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This is evidence of missing imported dates, a distinct outcome from a wrong destination.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0197",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This is evidence of missing imported dates, a distinct outcome from a wrong destination.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0221",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The import placed owner names in a date field.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0305",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The text describes how the mapped identifier was misinterpreted.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0329",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The import placed owner names in a date field.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0353",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The semicolon-delimited file was read as a single column.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0012",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This is evidence of missing imported dates, a distinct outcome from a wrong destination.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0032",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The text describes how the mapped identifier was misinterpreted.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0084",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The import placed owner names in a date field.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-05",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The release addresses the live connector, not spreadsheet field mapping.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Owner names landed in the due-date column; an Account ID mapped to a custom field was treated as a name; date cells became blank; and a semicolon-delimited CSV was read as one column. These are import problems, not live CRM sync.",
+        "evidence_groups": [
+          [
+            "V2-FB-0173",
+            "V2-FB-0221",
+            "V2-FB-0329",
+            "V2-SUP-0084"
+          ],
+          [
+            "V2-FB-0137",
+            "V2-FB-0305",
+            "V2-SUP-0032"
+          ],
+          [
+            "V2-FB-0089",
+            "V2-FB-0185",
+            "V2-FB-0197",
+            "V2-SUP-0012"
+          ],
+          [
+            "V2-FB-0125",
+            "V2-FB-0353"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0089",
+          "V2-FB-0125",
+          "V2-FB-0137",
+          "V2-FB-0173",
+          "V2-FB-0185",
+          "V2-FB-0197",
+          "V2-FB-0221",
+          "V2-FB-0305",
+          "V2-FB-0329",
+          "V2-FB-0353",
+          "V2-SUP-0012",
+          "V2-SUP-0032",
+          "V2-SUP-0084"
+        ],
+        "hard_negative_source_ids": [
+          "release-05"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0173",
+            "V2-FB-0221",
+            "V2-FB-0329",
+            "V2-SUP-0084"
+          ],
+          [
+            "V2-FB-0137",
+            "V2-FB-0305",
+            "V2-SUP-0032"
+          ],
+          [
+            "V2-FB-0089",
+            "V2-FB-0185",
+            "V2-FB-0197",
+            "V2-SUP-0012"
+          ],
+          [
+            "V2-FB-0125",
+            "V2-FB-0353"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "release-05"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-011",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "What did customers ask to control about project emails, and what controls did Pulse ship?",
+      "expected_answer_or_abstention": "Customers asked for a quiet setting for projects they only observe and to choose which boards feed the morning email. Pulse shipped an opt-out for shared boards in the April digest (release-03) and admin tuning of routine project alerts in September (release-08). Whether these met every request is not established.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0078",
+          "V2-FB-0090",
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0186",
+          "V2-FB-0246",
+          "V2-FB-0294",
+          "V2-FB-0306",
+          "V2-SUP-0005",
+          "V2-SUP-0054",
+          "V2-SUP-0089",
+          "V2-SUP-0109"
+        ],
+        [
+          "V2-FB-0342"
+        ],
+        [
+          "release-03"
+        ],
+        [
+          "release-08"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0078",
+        "V2-FB-0090",
+        "V2-FB-0111",
+        "V2-FB-0123",
+        "V2-FB-0186",
+        "V2-FB-0246",
+        "V2-FB-0294",
+        "V2-FB-0306",
+        "V2-FB-0342",
+        "V2-SUP-0005",
+        "V2-SUP-0054",
+        "V2-SUP-0089",
+        "V2-SUP-0109",
+        "release-03",
+        "release-08"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0151",
+        "V2-FB-0187",
+        "V2-FB-0259"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The two customer requests and the two shipped controls now have four distinct evidence groups.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0078",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0090",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0111",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0123",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0186",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0246",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0294",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0306",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0342",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This asks to choose contributing boards, a distinct request from quieting observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0005",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0054",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0089",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0109",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] This asks for quieter notifications on observed projects.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-03",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This documents the April digest opt-out.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-08",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] This documents September admin controls.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0151",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This is an alert-delay report, not a control request or a shipped feature.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0187",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This is an alert-delay report, not a control request or a shipped feature.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0259",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This is an alert-delay report, not a control request or a shipped feature.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Customers asked for a quiet setting for projects they only observe and to choose which boards feed the morning email. Pulse shipped an opt-out for shared boards in the April digest (release-03) and admin tuning of routine project alerts in September (release-08). Whether these met every request is not established.",
+        "evidence_groups": [
+          [
+            "V2-FB-0078",
+            "V2-FB-0090",
+            "V2-FB-0111",
+            "V2-FB-0123",
+            "V2-FB-0186",
+            "V2-FB-0246",
+            "V2-FB-0294",
+            "V2-FB-0306",
+            "V2-SUP-0005",
+            "V2-SUP-0054",
+            "V2-SUP-0089",
+            "V2-SUP-0109"
+          ],
+          [
+            "V2-FB-0342"
+          ],
+          [
+            "release-03"
+          ],
+          [
+            "release-08"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0078",
+          "V2-FB-0090",
+          "V2-FB-0111",
+          "V2-FB-0123",
+          "V2-FB-0186",
+          "V2-FB-0246",
+          "V2-FB-0294",
+          "V2-FB-0306",
+          "V2-FB-0342",
+          "V2-SUP-0005",
+          "V2-SUP-0054",
+          "V2-SUP-0089",
+          "V2-SUP-0109",
+          "release-03",
+          "release-08"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0151",
+          "V2-FB-0187",
+          "V2-FB-0259"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0078",
+            "V2-FB-0090",
+            "V2-FB-0111",
+            "V2-FB-0123",
+            "V2-FB-0186",
+            "V2-FB-0246",
+            "V2-FB-0294",
+            "V2-FB-0306",
+            "V2-SUP-0005",
+            "V2-SUP-0054",
+            "V2-SUP-0089",
+            "V2-SUP-0109"
+          ],
+          [
+            "V2-FB-0342"
+          ],
+          [
+            "release-03"
+          ],
+          [
+            "release-08"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0151",
+          "V2-FB-0187",
+          "V2-FB-0259"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-012",
+      "split": "heldout",
+      "category": "multi_source",
+      "question": "Why did finance see a whole-cycle seat charge for someone removed late in the month, and what would help them trace it?",
+      "expected_answer_or_abstention": "Release-04 says seats archived mid-cycle remain counted until the cycle closes, matching a customer billed for a contractor moved out on the 27th. Invoice-time seat evidence would help trace it: PRD-04 calls for it and customers request a downloadable list of seats counted. No source says that list is available.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-04"
+        ],
+        [
+          "V2-FB-0106",
+          "V2-FB-0142",
+          "V2-FB-0190",
+          "V2-FB-0226",
+          "V2-FB-0238",
+          "V2-FB-0286",
+          "V2-FB-0298",
+          "V2-SUP-0065",
+          "V2-SUP-0085"
+        ],
+        [
+          "V2-FB-0010",
+          "V2-FB-0214",
+          "V2-SUP-0001",
+          "V2-SUP-0013",
+          "prd-04"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0010",
+        "V2-FB-0106",
+        "V2-FB-0142",
+        "V2-FB-0190",
+        "V2-FB-0214",
+        "V2-FB-0226",
+        "V2-FB-0238",
+        "V2-FB-0286",
+        "V2-FB-0298",
+        "V2-SUP-0001",
+        "V2-SUP-0013",
+        "V2-SUP-0065",
+        "V2-SUP-0085",
+        "prd-04",
+        "release-04"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0022",
+        "V2-FB-0058",
+        "V2-FB-0202"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The release supplies the billing rule, the customer supplies the real-world example, and the request for invoice-time seat evidence is distinct from feature availability.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0010",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer names the specific evidence that would let finance reconcile the bill.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0106",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0142",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0190",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0214",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer names the specific evidence that would let finance reconcile the bill.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0226",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0238",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0286",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0298",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0001",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer names the specific evidence that would let finance reconcile the bill.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0013",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer names the specific evidence that would let finance reconcile the bill.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0065",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0085",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This establishes the observed charge and removal date; the billing rule is supplied separately.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "prd-04",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The PRD identifies invoice-time evidence as a need without promising a downloadable list.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-04",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The release explains why archiving leaves the seat counted.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0022",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An estimate mismatch does not identify an archived seat, a whole-cycle charge or an invoice-time seat list.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0058",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An estimate mismatch does not identify an archived seat, a whole-cycle charge or an invoice-time seat list.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0202",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An estimate mismatch does not identify an archived seat, a whole-cycle charge or an invoice-time seat list.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Release-04 says seats archived mid-cycle remain counted until the cycle closes, matching a customer billed for a contractor moved out on the 27th. Invoice-time seat evidence would help trace it: PRD-04 calls for it and customers request a downloadable list of seats counted. No source says that list is available.",
+        "evidence_groups": [
+          [
+            "release-04"
+          ],
+          [
+            "V2-FB-0106",
+            "V2-FB-0142",
+            "V2-FB-0190",
+            "V2-FB-0226",
+            "V2-FB-0238",
+            "V2-FB-0286",
+            "V2-FB-0298",
+            "V2-SUP-0065",
+            "V2-SUP-0085"
+          ],
+          [
+            "prd-04",
+            "V2-FB-0010",
+            "V2-FB-0214",
+            "V2-SUP-0001",
+            "V2-SUP-0013"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0010",
+          "V2-FB-0106",
+          "V2-FB-0142",
+          "V2-FB-0190",
+          "V2-FB-0214",
+          "V2-FB-0226",
+          "V2-FB-0238",
+          "V2-FB-0286",
+          "V2-FB-0298",
+          "V2-SUP-0001",
+          "V2-SUP-0013",
+          "V2-SUP-0065",
+          "V2-SUP-0085",
+          "prd-04",
+          "release-04"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0022",
+          "V2-FB-0058",
+          "V2-FB-0202"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-04"
+          ],
+          [
+            "V2-FB-0106",
+            "V2-FB-0142",
+            "V2-FB-0190",
+            "V2-FB-0226",
+            "V2-FB-0238",
+            "V2-FB-0286",
+            "V2-FB-0298",
+            "V2-SUP-0065",
+            "V2-SUP-0085"
+          ],
+          [
+            "prd-04",
+            "V2-FB-0010",
+            "V2-FB-0214",
+            "V2-SUP-0001",
+            "V2-SUP-0013"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0022",
+          "V2-FB-0058",
+          "V2-FB-0202"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-013",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "When did the shared template gallery ship, and did customers still struggle to find templates afterwards?",
+      "expected_answer_or_abstention": "The gallery shipped on 2025-07-05 in the workspace menu (release-06). Later reports say customers found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu. Timing does not show the release caused the difficulty.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-06"
+        ],
+        [
+          "V2-FB-0012",
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0012",
+        "V2-FB-0143",
+        "V2-FB-0239",
+        "V2-SUP-0038",
+        "release-06"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0071",
+        "V2-FB-0095",
+        "V2-FB-0215",
+        "V2-FB-0275",
+        "V2-SUP-0006"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0168",
+        "V2-FB-0228",
+        "V2-FB-0240"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] Keep the revised answer and both new assignments. Five group-2 records praise usefulness once the gallery is known; that wording alone does not establish a discovery failure. Retain those as partial context.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0012",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The October report describes looking inside projects and missing the workspace menu. This independently supports Draft 2 group 2, even though the same report also describes a disabled duplicate button.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0071",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This dated comment qualifies the gallery’s usefulness but does not explicitly report struggling to locate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0095",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This dated comment qualifies the gallery’s usefulness but does not explicitly report struggling to locate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0143",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release report explicitly says finding the menu required help.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0215",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This dated comment qualifies the gallery’s usefulness but does not explicitly report struggling to locate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0239",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release report explicitly says finding the menu required help.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0275",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This dated comment qualifies the gallery’s usefulness but does not explicitly report struggling to locate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0006",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This dated comment qualifies the gallery’s usefulness but does not explicitly report struggling to locate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0038",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release report explicitly says finding the menu required help.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-06",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The July 5 release dates the gallery and specifies its location.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0168",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The template was visible; the disabled action concerns copying.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0228",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The template was visible; the disabled action concerns copying.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0240",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The customer found the template but could not duplicate it. This report gives no discovery difficulty.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The gallery shipped on 2025-07-05 in the workspace menu (release-06). Later reports say customers found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu. Timing does not show the release caused the difficulty.",
+        "evidence_groups": [
+          [
+            "release-06"
+          ],
+          [
+            "V2-FB-0143",
+            "V2-FB-0239",
+            "V2-SUP-0038",
+            "V2-FB-0071",
+            "V2-FB-0095",
+            "V2-FB-0215",
+            "V2-FB-0275",
+            "V2-SUP-0006",
+            "V2-FB-0012"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0012",
+          "V2-FB-0071",
+          "V2-FB-0095",
+          "V2-FB-0143",
+          "V2-FB-0215",
+          "V2-FB-0239",
+          "V2-FB-0275",
+          "V2-SUP-0006",
+          "V2-SUP-0038",
+          "release-06"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0168",
+          "V2-FB-0228",
+          "V2-FB-0240"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-06"
+          ],
+          [
+            "V2-FB-0143",
+            "V2-FB-0239",
+            "V2-SUP-0038",
+            "V2-FB-0071",
+            "V2-FB-0095",
+            "V2-FB-0215",
+            "V2-FB-0275",
+            "V2-SUP-0006",
+            "V2-FB-0012"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0168",
+          "V2-FB-0228",
+          "V2-FB-0240"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-014",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were archived-seat billing complaints reported before the May invoice breakdown?",
+      "expected_answer_or_abstention": "Yes. January to March 2025 reports say archived collaborators were still counted on invoices, before the May 5 invoice breakdown (release-04).",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-04"
+        ],
+        [
+          "V2-FB-0046",
+          "V2-FB-0370",
+          "V2-FB-0382",
+          "V2-SUP-0117"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-FB-0382",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The January–March complaints explicitly mention continued billing for archived collaborators; the May release supplies the cutoff.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0046",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The dated complaint predates the May release and explicitly concerns continued billing after archiving.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0370",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The dated complaint predates the May release and explicitly concerns continued billing after archiving.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0382",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The dated complaint predates the May release and explicitly concerns continued billing after archiving.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0117",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The dated complaint predates the May release and explicitly concerns continued billing after archiving.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-04",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The May 5 release provides the comparison date for the breakdown.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0023",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This later reaction does not establish a pre-release archived-seat complaint.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0094",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This later reaction does not establish a pre-release archived-seat complaint.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-SUP-0053",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This later reaction does not establish a pre-release archived-seat complaint.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Yes. January to March 2025 reports say archived collaborators were still counted on invoices, before the May 5 invoice breakdown (release-04).",
+        "evidence_groups": [
+          [
+            "release-04"
+          ],
+          [
+            "V2-FB-0046",
+            "V2-FB-0370",
+            "V2-FB-0382",
+            "V2-SUP-0117"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0046",
+          "V2-FB-0370",
+          "V2-FB-0382",
+          "V2-SUP-0117",
+          "release-04"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-04"
+          ],
+          [
+            "V2-FB-0046",
+            "V2-FB-0370",
+            "V2-FB-0382",
+            "V2-SUP-0117"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-015",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "What did customers say about the portfolio filter controls after the March filter release?",
+      "expected_answer_or_abstention": "After the March 5 release (release-02), customers liked the new options but found the active state hard to notice, missed the small funnel icon, and said the controls are buried above the chart.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-02"
+        ],
+        [
+          "V2-FB-0081",
+          "V2-FB-0249",
+          "V2-FB-0321",
+          "V2-FB-0345"
+        ],
+        [
+          "V2-FB-0117",
+          "V2-FB-0177",
+          "V2-FB-0225",
+          "V2-FB-0333",
+          "V2-SUP-0020"
+        ],
+        [
+          "V2-FB-0057",
+          "V2-FB-0153",
+          "V2-FB-0381",
+          "V2-SUP-0080"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0057",
+        "V2-FB-0081",
+        "V2-FB-0117",
+        "V2-FB-0153",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0249",
+        "V2-FB-0321",
+        "V2-FB-0333",
+        "V2-FB-0345",
+        "V2-FB-0381",
+        "V2-SUP-0020",
+        "V2-SUP-0080",
+        "release-02"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0375",
+        "V2-SUP-0046"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-FB-0210"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The three customer observations are now separated correctly. Two Onboarding records mention buried chart controls but never identify the portfolio filter. Treat these as partial for group 4, which still has four Dashboard records.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0057",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The dated customer passage describes controls that were difficult to find above the chart.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0081",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release feedback praises the options and describes an unclear active state.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0117",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer missed the funnel icon.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0153",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The dated customer passage describes controls that were difficult to find above the chart.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0177",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer missed the funnel icon.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0225",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer missed the funnel icon.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0249",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release feedback praises the options and describes an unclear active state.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0321",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release feedback praises the options and describes an unclear active state.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0333",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer missed the funnel icon.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0345",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release feedback praises the options and describes an unclear active state.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0375",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The second issue explicitly mentions buried chart controls. This Onboarding record does not identify that chart as the portfolio view or specify that the controls are filters.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0381",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The dated customer passage describes controls that were difficult to find above the chart.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0020",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The customer missed the funnel icon.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0046",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The second issue explicitly mentions buried chart controls. This Onboarding record does not identify that chart as the portfolio view or specify that the controls are filters.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0080",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            4
+          ],
+          "comments": "[AI judge] The dated customer passage describes controls that were difficult to find above the chart.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-02",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The March 5 release establishes the date and feature.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0140",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Cache advice and cross-machine recurrence supply no observation about the controls.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0152",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Cache advice and cross-machine recurrence supply no observation about the controls.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0210",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Cache advice and cross-machine recurrence supply no observation about the controls.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "After the March 5 release (release-02), customers liked the new options but found the active state hard to notice, missed the small funnel icon, and said the controls are buried above the chart.",
+        "evidence_groups": [
+          [
+            "release-02"
+          ],
+          [
+            "V2-FB-0081",
+            "V2-FB-0249",
+            "V2-FB-0321",
+            "V2-FB-0345"
+          ],
+          [
+            "V2-FB-0117",
+            "V2-FB-0177",
+            "V2-FB-0225",
+            "V2-FB-0333",
+            "V2-SUP-0020"
+          ],
+          [
+            "V2-FB-0057",
+            "V2-FB-0153",
+            "V2-FB-0375",
+            "V2-FB-0381",
+            "V2-SUP-0046",
+            "V2-SUP-0080"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0057",
+          "V2-FB-0081",
+          "V2-FB-0117",
+          "V2-FB-0153",
+          "V2-FB-0177",
+          "V2-FB-0225",
+          "V2-FB-0249",
+          "V2-FB-0321",
+          "V2-FB-0333",
+          "V2-FB-0345",
+          "V2-FB-0375",
+          "V2-FB-0381",
+          "V2-SUP-0020",
+          "V2-SUP-0046",
+          "V2-SUP-0080",
+          "release-02"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0140",
+          "V2-FB-0152",
+          "V2-FB-0210"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-02"
+          ],
+          [
+            "V2-FB-0081",
+            "V2-FB-0249",
+            "V2-FB-0321",
+            "V2-FB-0345"
+          ],
+          [
+            "V2-FB-0117",
+            "V2-FB-0177",
+            "V2-FB-0225",
+            "V2-FB-0333",
+            "V2-SUP-0020"
+          ],
+          [
+            "V2-FB-0057",
+            "V2-FB-0153",
+            "V2-FB-0375",
+            "V2-FB-0381",
+            "V2-SUP-0046",
+            "V2-SUP-0080"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0140",
+          "V2-FB-0152",
+          "V2-FB-0210"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-016",
+      "split": "heldout",
+      "category": "temporal",
+      "question": "Were urgent alerts reported as late before the September per-project controls, or only afterwards?",
+      "expected_answer_or_abstention": "The reports that describe late urgent alerts are dated after the September 5 release (release-08), which says later delay reports are under investigation. These dates do not establish causation or rule out earlier reports worded differently.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-08"
+        ],
+        [
+          "V2-FB-0019",
+          "V2-FB-0067",
+          "V2-FB-0127",
+          "V2-FB-0163",
+          "V2-FB-0247",
+          "V2-SUP-0010",
+          "V2-SUP-0062",
+          "V2-SUP-0102"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0163",
+        "V2-FB-0247",
+        "V2-SUP-0010",
+        "V2-SUP-0062",
+        "V2-SUP-0102",
+        "release-08"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0151",
+        "V2-FB-0187",
+        "V2-FB-0259",
+        "V2-FB-0271",
+        "V2-SUP-0082"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0102",
+        "V2-FB-0126",
+        "V2-FB-0318"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] Keep the revised temporal and causation limits. Five group-2 records say “high-priority” without identifying an urgent alert; eight other group-2 records explicitly identify urgent delays.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0019",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record explicitly reports an urgent delay without establishing its cause.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0067",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record gives a concrete delay for an urgent task.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0127",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record explicitly reports an urgent delay without establishing its cause.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0151",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The report is dated after release, but the text does not equate “high-priority” with the specific urgent alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0163",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record explicitly reports an urgent delay without establishing its cause.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0187",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The report is dated after release, but the text does not equate “high-priority” with the specific urgent alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0247",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record gives a concrete delay for an urgent task.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0259",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The report is dated after release, but the text does not equate “high-priority” with the specific urgent alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0271",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The report is dated after release, but the text does not equate “high-priority” with the specific urgent alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0010",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record explicitly reports an urgent delay without establishing its cause.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0062",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record gives a concrete delay for an urgent task.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0082",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] The report is dated after release, but the text does not equate “high-priority” with the specific urgent alert class.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0102",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-release record explicitly reports an urgent delay without establishing its cause.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-08",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The September 5 release dates the controls and mentions a delay investigation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0102",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These pre-release reports concern message volume without mentioning late urgent alerts.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0126",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These pre-release reports concern message volume without mentioning late urgent alerts.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0318",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These pre-release reports concern message volume without mentioning late urgent alerts.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "The reports that describe late urgent alerts are dated after the September 5 release (release-08), which says later delay reports are under investigation. These dates do not establish causation or rule out earlier reports worded differently.",
+        "evidence_groups": [
+          [
+            "release-08"
+          ],
+          [
+            "V2-FB-0067",
+            "V2-FB-0247",
+            "V2-SUP-0062",
+            "V2-FB-0019",
+            "V2-FB-0127",
+            "V2-FB-0163",
+            "V2-SUP-0010",
+            "V2-SUP-0102",
+            "V2-FB-0151",
+            "V2-FB-0187",
+            "V2-FB-0259",
+            "V2-FB-0271",
+            "V2-SUP-0082"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0019",
+          "V2-FB-0067",
+          "V2-FB-0127",
+          "V2-FB-0151",
+          "V2-FB-0163",
+          "V2-FB-0187",
+          "V2-FB-0247",
+          "V2-FB-0259",
+          "V2-FB-0271",
+          "V2-SUP-0010",
+          "V2-SUP-0062",
+          "V2-SUP-0082",
+          "V2-SUP-0102",
+          "release-08"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0318"
+        ],
+        "findings": "Absence of earlier reports is checked only for these phrases."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-08"
+          ],
+          [
+            "V2-FB-0067",
+            "V2-FB-0247",
+            "V2-SUP-0062",
+            "V2-FB-0019",
+            "V2-FB-0127",
+            "V2-FB-0163",
+            "V2-SUP-0010",
+            "V2-SUP-0102",
+            "V2-FB-0151",
+            "V2-FB-0187",
+            "V2-FB-0259",
+            "V2-FB-0271",
+            "V2-SUP-0082"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0102",
+          "V2-FB-0126",
+          "V2-FB-0318"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-017",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Do customers agree that the new template gallery is easy to find?",
+      "expected_answer_or_abstention": "No. Some say the gallery is easy to find now; others found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0048",
+          "V2-FB-0072",
+          "V2-FB-0312",
+          "V2-FB-0348",
+          "V2-FB-0360",
+          "V2-SUP-0115"
+        ],
+        [
+          "V2-FB-0012",
+          "V2-FB-0143",
+          "V2-FB-0239",
+          "V2-SUP-0038"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0012",
+        "V2-FB-0048",
+        "V2-FB-0072",
+        "V2-FB-0143",
+        "V2-FB-0239",
+        "V2-FB-0312",
+        "V2-FB-0348",
+        "V2-FB-0360",
+        "V2-SUP-0038",
+        "V2-SUP-0115"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0071",
+        "V2-FB-0095",
+        "V2-FB-0215",
+        "V2-FB-0275",
+        "V2-SUP-0006"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0060",
+        "V2-FB-0120",
+        "V2-FB-0156"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The new source supports the difficult-discovery viewpoint. Five other group-2 records praise usefulness once the gallery is known, which alone does not establish difficulty. Direct examples cover both viewpoints.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0012",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The missed workspace menu directly illustrates difficulty finding templates. The separate copy-permission issue does not negate it.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0048",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0071",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Conditional praise is weaker than a direct report of difficulty finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0072",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0095",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Conditional praise is weaker than a direct report of difficulty finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0143",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] Needing a screenshot provides an explicit contrasting discovery experience.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0215",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Conditional praise is weaker than a direct report of difficulty finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0239",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] Needing a screenshot provides an explicit contrasting discovery experience.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0275",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Conditional praise is weaker than a direct report of difficulty finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0312",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0348",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0360",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0006",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] Conditional praise is weaker than a direct report of difficulty finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0038",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] Needing a screenshot provides an explicit contrasting discovery experience.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0115",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer explicitly describes easy discovery, independently of the teammate’s permissions.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0060",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports concern who can copy templates and do not describe finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0120",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports concern who can copy templates and do not describe finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0156",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports concern who can copy templates and do not describe finding the gallery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "No. Some say the gallery is easy to find now; others found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu.",
+        "evidence_groups": [
+          [
+            "V2-FB-0048",
+            "V2-FB-0072",
+            "V2-FB-0312",
+            "V2-FB-0348",
+            "V2-FB-0360",
+            "V2-SUP-0115"
+          ],
+          [
+            "V2-FB-0143",
+            "V2-FB-0239",
+            "V2-SUP-0038",
+            "V2-FB-0071",
+            "V2-FB-0095",
+            "V2-FB-0215",
+            "V2-FB-0275",
+            "V2-SUP-0006",
+            "V2-FB-0012"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0012",
+          "V2-FB-0048",
+          "V2-FB-0071",
+          "V2-FB-0072",
+          "V2-FB-0095",
+          "V2-FB-0143",
+          "V2-FB-0215",
+          "V2-FB-0239",
+          "V2-FB-0275",
+          "V2-FB-0312",
+          "V2-FB-0348",
+          "V2-FB-0360",
+          "V2-SUP-0006",
+          "V2-SUP-0038",
+          "V2-SUP-0115"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0060",
+          "V2-FB-0120",
+          "V2-FB-0156"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0048",
+            "V2-FB-0072",
+            "V2-FB-0312",
+            "V2-FB-0348",
+            "V2-FB-0360",
+            "V2-SUP-0115"
+          ],
+          [
+            "V2-FB-0143",
+            "V2-FB-0239",
+            "V2-SUP-0038",
+            "V2-FB-0071",
+            "V2-FB-0095",
+            "V2-FB-0215",
+            "V2-FB-0275",
+            "V2-SUP-0006",
+            "V2-FB-0012"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0060",
+          "V2-FB-0120",
+          "V2-FB-0156"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-018",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did the CRM connector stay unreliable after the June refresh?",
+      "expected_answer_or_abstention": "Mixed. After the June 5 refresh (release-05), one customer's queue was still behind after two reconnections, while others described overnight recovery or stability that week. These reports do not establish lasting reliability.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0280",
+          "V2-SUP-0111"
+        ],
+        [
+          "V2-FB-0004",
+          "V2-FB-0016",
+          "V2-FB-0160",
+          "V2-FB-0292",
+          "V2-FB-0316",
+          "V2-FB-0340",
+          "V2-SUP-0019",
+          "V2-SUP-0091",
+          "V2-SUP-0119"
+        ],
+        [
+          "release-05"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0004",
+        "V2-FB-0016",
+        "V2-FB-0160",
+        "V2-FB-0280",
+        "V2-FB-0292",
+        "V2-FB-0316",
+        "V2-FB-0340",
+        "V2-SUP-0019",
+        "V2-SUP-0091",
+        "V2-SUP-0111",
+        "V2-SUP-0119",
+        "release-05"
+      ],
+      "partial_source_ids": [
+        "V2-FB-0177"
+      ],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "revise",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The June 5 release now anchors the timeline. V2-FB-0177 is partial for group 2 because its Dashboard record does not name the integration in the stability aside; other records describe post-refresh recovery.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0004",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports a period of stability, without establishing lasting recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0016",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports a period of stability, without establishing lasting recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0160",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports recovery after reconnection.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0177",
+          "human_verdict": "partial",
+          "final_verdict": "partial",
+          "evidence_groups": [],
+          "comments": "[AI judge] This Dashboard record includes an integration observation but never identifies which integration it concerns.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0280",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The report explicitly connects the period after the connector change with a queue still behind.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0292",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports recovery after reconnection.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0316",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports recovery after reconnection.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0340",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports a period of stability, without establishing lasting recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0019",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports recovery after reconnection.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0091",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports a period of stability, without establishing lasting recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0111",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The report explicitly connects the period after the connector change with a queue still behind.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0119",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The post-refresh integration record reports a period of stability, without establishing lasting recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-05",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] The dated CRM connector refresh establishes the boundary for the before-and-after comparison. The release does not by itself establish customer recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0017",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Undoing a one-time import is a different workflow from connector recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0149",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Undoing a one-time import is a different workflow from connector recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0161",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Undoing a one-time import is a different workflow from connector recovery.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Mixed. After the June 5 refresh (release-05), one customer's queue was still behind after two reconnections, while others described overnight recovery or stability that week. These reports do not establish lasting reliability.",
+        "evidence_groups": [
+          [
+            "V2-FB-0280",
+            "V2-SUP-0111"
+          ],
+          [
+            "V2-FB-0160",
+            "V2-FB-0292",
+            "V2-FB-0316",
+            "V2-SUP-0019",
+            "V2-FB-0004",
+            "V2-FB-0016",
+            "V2-FB-0177",
+            "V2-FB-0340",
+            "V2-SUP-0091",
+            "V2-SUP-0119"
+          ],
+          [
+            "release-05"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0004",
+          "V2-FB-0016",
+          "V2-FB-0160",
+          "V2-FB-0177",
+          "V2-FB-0280",
+          "V2-FB-0292",
+          "V2-FB-0316",
+          "V2-FB-0340",
+          "V2-SUP-0019",
+          "V2-SUP-0091",
+          "V2-SUP-0111",
+          "V2-SUP-0119",
+          "release-05"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0280",
+            "V2-SUP-0111"
+          ],
+          [
+            "V2-FB-0160",
+            "V2-FB-0292",
+            "V2-FB-0316",
+            "V2-SUP-0019",
+            "V2-FB-0004",
+            "V2-FB-0016",
+            "V2-FB-0177",
+            "V2-FB-0340",
+            "V2-SUP-0091",
+            "V2-SUP-0119"
+          ],
+          [
+            "release-05"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0017",
+          "V2-FB-0149",
+          "V2-FB-0161"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-019",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did customers see the invoice breakdown as a clear improvement?",
+      "expected_answer_or_abstention": "Partly. Customers say the breakdown is easier to read, yet the mid-cycle change is still opaque and the adjustment line cannot be traced to actual people.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-SUP-0053"
+        ],
+        [
+          "V2-FB-0130",
+          "V2-FB-0346"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0023",
+        "V2-FB-0094",
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "V2-SUP-0053"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-FB-0382"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The records explicitly describe easier reading alongside unresolved mid-cycle or person-level traceability.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0023",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports both improved readability and continued uncertainty.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0094",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports both improved readability and continued uncertainty.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0130",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This is explicit evidence of a benefit with a traceability limitation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0346",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] This is explicit evidence of a benefit with a traceability limitation.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-SUP-0053",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The customer reports both improved readability and continued uncertainty.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0046",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports predate the breakdown and describe charges rather than reactions to the breakdown.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0370",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports predate the breakdown and describe charges rather than reactions to the breakdown.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0382",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] These reports predate the breakdown and describe charges rather than reactions to the breakdown.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Partly. Customers say the breakdown is easier to read, yet the mid-cycle change is still opaque and the adjustment line cannot be traced to actual people.",
+        "evidence_groups": [
+          [
+            "V2-FB-0023",
+            "V2-FB-0094",
+            "V2-SUP-0053"
+          ],
+          [
+            "V2-FB-0130",
+            "V2-FB-0346"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0023",
+          "V2-FB-0094",
+          "V2-FB-0130",
+          "V2-FB-0346",
+          "V2-SUP-0053"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0046",
+          "V2-FB-0370",
+          "V2-FB-0382"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "V2-FB-0023",
+            "V2-FB-0094",
+            "V2-SUP-0053"
+          ],
+          [
+            "V2-FB-0130",
+            "V2-FB-0346"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0046",
+          "V2-FB-0370",
+          "V2-FB-0382"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-020",
+      "split": "heldout",
+      "category": "contradictory",
+      "question": "Did the owner checklist settle onboarding for invited team members?",
+      "expected_answer_or_abstention": "Not fully. Release-01 says invited users should not need to verify the owner again, but later reports describe a repeat step. Customers say the checklist is clearer while the invited-user handoff is still awkward, and new hires who finished the form twice still could not get in; those reports do not attribute it to the checklist.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [
+        [
+          "release-01"
+        ],
+        [
+          "V2-FB-0013",
+          "V2-FB-0320",
+          "V2-FB-0337",
+          "V2-FB-0364"
+        ],
+        [
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0373"
+        ]
+      ],
+      "relevant_source_ids": [
+        "V2-FB-0013",
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0320",
+        "V2-FB-0337",
+        "V2-FB-0364",
+        "V2-FB-0373",
+        "release-01"
+      ],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0074",
+        "V2-FB-0242",
+        "V2-FB-0266"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": "yes",
+        "comments": "[AI judge] The revised groups distinguish the checklist’s intended behavior, awkward handoff and new-hire failures. The answer avoids attributing those failures to the checklist.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0013",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly assesses both the checklist and the invite handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0037",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This supports the separate new-hire access example; it does not attribute the failure to the owner checklist.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0097",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This supports the separate new-hire access example; it does not attribute the failure to the owner checklist.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0122",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This supports the separate new-hire access example; it does not attribute the failure to the owner checklist.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0181",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This supports the separate new-hire access example; it does not attribute the failure to the owner checklist.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0320",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly assesses both the checklist and the invite handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0337",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly assesses both the checklist and the invite handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0364",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            2
+          ],
+          "comments": "[AI judge] The customer explicitly assesses both the checklist and the invite handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0373",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            3
+          ],
+          "comments": "[AI judge] This supports the separate new-hire access example; it does not attribute the failure to the owner checklist.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "release-01",
+          "human_verdict": "supports",
+          "final_verdict": "supports",
+          "evidence_groups": [
+            1
+          ],
+          "comments": "[AI judge] The release describes intended behavior and acknowledges reports of repetition.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "supports"
+        },
+        {
+          "source_id": "V2-FB-0074",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The old password working is a recovery issue without evidence of an invited-user handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0242",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The old password working is a recovery issue without evidence of an invited-user handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0266",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The old password working is a recovery issue without evidence of an invited-user handoff.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Not fully. Release-01 says invited users should not need to verify the owner again, but later reports describe a repeat step. Customers say the checklist is clearer while the invited-user handoff is still awkward, and new hires who finished the form twice still could not get in; those reports do not attribute it to the checklist.",
+        "evidence_groups": [
+          [
+            "release-01"
+          ],
+          [
+            "V2-FB-0013",
+            "V2-FB-0320",
+            "V2-FB-0337",
+            "V2-FB-0364"
+          ],
+          [
+            "V2-FB-0037",
+            "V2-FB-0097",
+            "V2-FB-0122",
+            "V2-FB-0181",
+            "V2-FB-0373"
+          ]
+        ],
+        "supporting_source_ids": [
+          "V2-FB-0013",
+          "V2-FB-0037",
+          "V2-FB-0097",
+          "V2-FB-0122",
+          "V2-FB-0181",
+          "V2-FB-0320",
+          "V2-FB-0337",
+          "V2-FB-0364",
+          "V2-FB-0373",
+          "release-01"
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0242",
+          "V2-FB-0266"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [
+          [
+            "release-01"
+          ],
+          [
+            "V2-FB-0013",
+            "V2-FB-0320",
+            "V2-FB-0337",
+            "V2-FB-0364"
+          ],
+          [
+            "V2-FB-0037",
+            "V2-FB-0097",
+            "V2-FB-0122",
+            "V2-FB-0181",
+            "V2-FB-0373"
+          ]
+        ],
+        "hard_negative_source_ids": [
+          "V2-FB-0074",
+          "V2-FB-0242",
+          "V2-FB-0266"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-021",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "What percentage of enterprise customers use single sign-on?",
+      "expected_answer_or_abstention": "Abstain. No source gives an SSO adoption rate; individual SSO reports are not a percentage.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0051",
+        "V2-FB-0087"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "[AI judge] The reviewed incident reports do not give an enterprise SSO adoption rate.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0003",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An individual incident supplies neither an enterprise adoption numerator nor a denominator.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0051",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An individual incident supplies neither an enterprise adoption numerator nor a denominator.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0087",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] An individual incident supplies neither an enterprise adoption numerator nor a denominator.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. No source gives an SSO adoption rate; individual SSO reports are not a percentage.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0087"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0003",
+          "V2-FB-0051",
+          "V2-FB-0087"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-022",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "How many engineering hours did the August portfolio loading change take?",
+      "expected_answer_or_abstention": "Abstain. The release describes the change but no source states engineering effort.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-07"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "[AI judge] The reviewed release note gives no engineering hours.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-07",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] The release describes technical behavior but gives no engineering hours.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. The release describes the change but no source states engineering effort.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "release-07"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "release-07"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-023",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "Which customer cancelled their subscription because of the digest change?",
+      "expected_answer_or_abstention": "Abstain. Reports describe frustration and muting, but no source records a cancellation.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "V2-FB-0198",
+        "V2-FB-0309"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "[AI judge] The reviewed feedback describes muting notifications and gives no subscription cancellation or customer identity for one.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "V2-FB-0198",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Muting notifications does not establish subscription cancellation or name a customer who cancelled.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        },
+        {
+          "source_id": "V2-FB-0309",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] Muting notifications does not establish subscription cancellation or name a customer who cancelled.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. Reports describe frustration and muting, but no source records a cancellation.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0198",
+          "V2-FB-0309"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "V2-FB-0198",
+          "V2-FB-0309"
+        ]
+      }
+    },
+    {
+      "id": "B4-Q-024",
+      "split": "heldout",
+      "category": "unanswerable",
+      "question": "On what date is the next Pulse release scheduled?",
+      "expected_answer_or_abstention": "Abstain. The documents describe past releases only; no future release date is stated.",
+      "answer_provenance": "ai_proposal_approved_by_human",
+      "evidence_groups": [],
+      "relevant_source_ids": [],
+      "partial_source_ids": [],
+      "unsupported_source_ids": [],
+      "hard_negative_source_ids": [
+        "release-08"
+      ],
+      "judgment_completeness": "reviewed_subset",
+      "review": {
+        "decision": "approve",
+        "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+        "review_date": "2026-11-26",
+        "sign_off": "yes",
+        "all_evidence_groups_covered": null,
+        "comments": "[AI judge] The reviewed release note gives a past publication date and no future release date.",
+        "missing_source_ids": [],
+        "second_reviewer_comments": ""
+      },
+      "source_judgments": [
+        {
+          "source_id": "release-08",
+          "human_verdict": "hard_negative",
+          "final_verdict": "hard_negative",
+          "evidence_groups": [],
+          "comments": "[AI judge] This is a publication date for a past release, with no next-release schedule.",
+          "reviewer": "Harsh (owner; adopted Codex AI judge labels after own check)",
+          "review_date": "2026-11-26",
+          "second_reviewer_resolution": "",
+          "ai_proposal": "hard_negative"
+        }
+      ],
+      "ai_proposal": {
+        "answer": "Abstain. The documents describe past releases only; no future release date is stated.",
+        "evidence_groups": [],
+        "supporting_source_ids": [],
+        "hard_negative_source_ids": [
+          "release-08"
+        ],
+        "findings": "Groups list every source containing the stated phrase."
+      },
+      "draft_labels": {
+        "evidence_groups": [],
+        "hard_negative_source_ids": [
+          "release-08"
+        ]
+      }
+    }
+  ],
+  "owner_approved_corrections": {
+    "approved_by": "Harsh (project owner, in chat 2026-11-26)",
+    "approved_on": "2026-11-26",
+    "summary": [
+      "Owner columns filled from draft2_ai_* columns",
+      "Owner sign-off from chat statement"
+    ],
+    "changed_cells": 1092,
+    "files": [
+      "questions-review-original.csv",
+      "sources-review-original.csv",
+      "corrections.json"
+    ]
+  }
+}

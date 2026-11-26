@@ -38,3 +38,9 @@ class ConfigurationError(GistError, ValueError):
     """Server configuration (environment) is invalid."""
     code = "invalid_configuration"
     status = 503
+
+
+class InvalidRequest(GistError, ValueError):
+    """Client input that passed type validation but is inconsistent (for example, a reversed date range)."""
+    code = "invalid_request"
+    status = 422

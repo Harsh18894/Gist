@@ -5,9 +5,23 @@ from .schemas import Category, Page, Segment, Stats
 
 
 def list_records(db: sqlite3.Connection, page: int, page_size: int,
-                 category: Category | None, segment: Segment | None, query: str | None) -> Page:
+                 category: Category | None, segment: Segment | None, query: str | None, *,
+                 product_area: str | None = None, sentiment: str | None = None, feature: str | None = None,
+                 channel: str | None = None, from_date: str | None = None, to_date: str | None = None) -> Page:
+    """Feedback records; every filter matches the analytics filters so metrics drill down exactly."""
     clauses: list[str] = []
     values: list[str] = []
+    for column, value in (("product_area", product_area), ("sentiment", sentiment),
+                          ("related_feature", feature), ("feedback_channel", channel)):
+        if value is not None:
+            clauses.append(f"{column} = ?")  # column names are internal constants
+            values.append(value)
+    if from_date:
+        clauses.append("substr(timestamp, 1, 10) >= ?")
+        values.append(from_date)
+    if to_date:
+        clauses.append("substr(timestamp, 1, 10) <= ?")
+        values.append(to_date)
     if category:
         clauses.append("issue_category = ?")
         values.append(category)

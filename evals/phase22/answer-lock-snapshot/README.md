@@ -1,0 +1,1 @@
+Byte-exact copies of the 11 files fingerprinted by `answer-lock-benchmark4.json` at the time of the one-time v4 final exam. Their SHA-256 values match the lock. They were saved before Phase 2.3 edits. File names use `__` for `/`.

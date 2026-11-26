@@ -33,6 +33,8 @@ TARGETS = {
     # v4 reviews draft 2; draft 1 is kept unchanged as the pre-AI-review record.
     "v4": (ROOT / "evals/phase22/benchmark-v4-draft-2.json", ROOT / "evals/phase22/reviewed-v4",
            "gist-phase2.2-benchmark-4-reviewed"),
+    "v5": (ROOT / "evals/phase23/benchmark-v5-draft.json", ROOT / "evals/phase23/reviewed-v5",
+           "gist-phase2.3-benchmark-5-reviewed"),
 }
 
 VERDICTS = {"supports", "partial", "unsupported", "unclear", "hard_negative"}
@@ -429,6 +431,15 @@ def _write_frozen(review: Review, draft: dict, questions_csv: Path, sources_csv:
             "summary": record.get("summary", []), "changed_cells": len(record["changes"]),
             "files": ["questions-review-original.csv", "sources-review-original.csv", "corrections.json"]}
         files += benchmark["owner_approved_corrections"]["files"]
+        if record.get("label_provenance"):
+            # The correction file states where the labels came from; it overrides the generic wording.
+            benchmark["human_review"]["label_provenance"] = record["label_provenance"]
+            benchmark["human_review"]["independence"] = record["label_provenance"]
+            benchmark["human_review"]["owner_statement"] = record.get("owner_statement", "")
+            if benchmark["human_review"].get("assisted_by_ai_prereview"):
+                benchmark["human_review"]["assisted_by_ai_prereview"] = "Superseded by label_provenance."
+            benchmark["label_policy"] = benchmark["label_policy"].replace(
+                "Human final verdicts are authoritative.", "Owner-adopted final verdicts are authoritative.")
     out.mkdir(parents=True)
     shutil.copyfile(questions_csv, out / "questions-review.csv")
     shutil.copyfile(sources_csv, out / "sources-review.csv")

@@ -178,7 +178,8 @@ def _norm(text: str) -> str:
 
 
 def build(blueprints: list[dict] | None = None, version: str = VERSION,
-          ai: dict | None = None) -> tuple[dict, list[dict], list[dict]]:
+          ai: dict | None = None, extra_previous: tuple[str, ...] = (),
+          id_prefix: str = "B4-Q") -> tuple[dict, list[dict], list[dict]]:
     """`ai` optionally maps question and (question, source) keys to read-only AI pre-review notes."""
     Q = blueprints if blueprints is not None else globals()["Q"]
     if len(Q) != 24 or any(sum(x["category"] == c for x in Q) != 4 for c in
@@ -192,7 +193,7 @@ def build(blueprints: list[dict] | None = None, version: str = VERSION,
         sources = {row[0]: row[1:] for row in db.execute("SELECT id,kind,title,source_date,segment,product_area,path,content FROM sources")}
         questions, q_rows, s_rows = [], [], []
         for number, item in enumerate(Q, 1):
-            qid = f"B4-Q-{number:03d}"
+            qid = f"{id_prefix}-{number:03d}"
             groups, why = [], {}
             for index, group in enumerate(item["groups"], 1):
                 members = []
@@ -251,6 +252,7 @@ def build(blueprints: list[dict] | None = None, version: str = VERSION,
                                **{column: "" for column in SOURCE_HUMAN_COLUMNS}})
     previous = [x["question"] for x in json.loads((ROOT / "evals/v2/questions.json").read_text())["questions"]]
     previous += [x["question"] for x in json.loads((ROOT / "evals/phase21/reviewed-v3/benchmark.json").read_text())["questions"]]
+    previous += list(extra_previous)
     similarity = max((SequenceMatcher(None, _norm(a["question"]), _norm(b)).ratio(), a["id"], b)
                      for a in questions for b in previous)
     if similarity[0] >= SIMILARITY_LIMIT:

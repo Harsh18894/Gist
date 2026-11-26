@@ -73,3 +73,37 @@ export function apiPost<T>(path: string, body: unknown, signal?: AbortSignal): P
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal,
   });
 }
+
+// --- Phase 3.1 analytics (every number is computed in SQL by the API)
+export interface AnalyticsScope { from_date: string | null; to_date: string | null; segment: string | null; product_area: string | null }
+export interface DataQuality { unspecified_feature: number; unclear_category: number; multiple_issues: number; missing_segment: number; missing_area: number }
+export interface AnalyticsSummary {
+  scope: AnalyticsScope; feedback_count: number; ticket_count: number; negative_feedback_count: number;
+  negative_share: number | null; date_range: { first: string | null; last: string | null };
+  by_sentiment: Breakdown[]; by_category: Breakdown[]; by_segment: Breakdown[]; by_area: Breakdown[]; by_channel: Breakdown[];
+  tickets_by_severity: Breakdown[]; tickets_by_status: Breakdown[]; data_quality: DataQuality;
+}
+export type TrendMetric = "feedback" | "negative_feedback" | "tickets";
+export interface AnalyticsTrends { scope: AnalyticsScope; metric: TrendMetric; group_by: string | null; months: string[]; series: { name: string; counts: number[]; total: number }[]; total: number }
+export interface ReleaseWindow { from_date: string; to_date: string; feedback: number; negative_feedback: number; tickets: number }
+export interface ReleaseImpact { id: string; title: string; published: string; product_area: string | null; before: ReleaseWindow; after: ReleaseWindow }
+export interface AnalyticsReleases { scope: AnalyticsScope; window_days: number; releases: ReleaseImpact[]; interpretation: string }
+export interface AnalyticsRepeated {
+  scope: AnalyticsScope; note: string;
+  repeated_texts: { text: string; count: number; record_ids: string[] }[];
+  top_negative_features: { feature: string; category: string; count: number }[];
+}
+export interface Ticket {
+  id: string; timestamp: string; customer_segment: string; subscription_tier: string; product_area: string; subject: string;
+  description: string; severity: string; issue_category: string; related_feature: string; status: string;
+}
+export const segments: Segment[] = ["Individual", "SMB", "Mid-market", "Enterprise"];
+export const areas: Area[] = ["Onboarding", "Dashboard", "Integrations", "Billing", "Notifications", "Collaboration"];
+
+/** Build a query string from non-empty values, so links and fetches share one filter shape. */
+export function query(values: Record<string, string | number | null | undefined>): string {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(values)) if (value !== null && value !== undefined && value !== "") params.set(key, String(value));
+  const text = params.toString();
+  return text ? `?${text}` : "";
+}

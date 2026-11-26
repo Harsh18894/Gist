@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, Compass, Layers3, MessageCircleQuestion, Settings2, Sparkles } from "lucide-react";
+import { BarChart3, Compass, Layers3, LifeBuoy, MessageCircleQuestion, Settings2, Sparkles } from "lucide-react";
 
 const links = [
   { href: "/", name: "Overview", icon: BarChart3 },
   { href: "/feedback", name: "Feedback Explorer", icon: Layers3 },
+  { href: "/tickets", name: "Support Tickets", icon: LifeBuoy },
   { href: "/ask-gist", name: "Ask Gist", icon: MessageCircleQuestion },
   { href: "/opportunities", name: "Opportunities", icon: Compass },
   { href: "/settings", name: "Settings", icon: Settings2 },

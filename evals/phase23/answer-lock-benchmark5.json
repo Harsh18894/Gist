@@ -1,0 +1,45 @@
+{
+  "benchmark_version": "gist-phase2.3-benchmark-5-reviewed",
+  "benchmark_manifest_sha256": "8faf7e7ffa74a2c092fe0e0d8eafa842339714614f2953495b50411a53d2f69f",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "ac562f9a63f6ff1520f9fc48e468cb0879d430586df63000c779d90ee6f5ae82",
+  "answer_config": {
+    "paid_retriever": "hybrid",
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "gpt-6-luna",
+    "context_sources": 8,
+    "snippet_chars": 1200,
+    "generation_byte_limit": 12000,
+    "max_output_tokens": 600,
+    "source_metadata_sent": [
+      "kind",
+      "date",
+      "segment",
+      "product_area"
+    ],
+    "evidence_gate": "fact rules only in paid mode; explicit-cause rule",
+    "number_check": "trailing punctuation stripped; source dates count as evidence",
+    "statuses": [
+      "answered",
+      "partial",
+      "insufficient_evidence"
+    ]
+  },
+  "files_sha256": {
+    "backend/app/rag/service.py": "27276bc01967ecce225db0c4eaabc13022382a3eac41c24cdfa3446b71cebad1",
+    "backend/app/rag/provider.py": "559c1948c7a3595240533e4d9002ecde2665d478314464098a2b310859fc63d1",
+    "backend/app/rag/evidence.py": "d7546a031879b283c676b32ed019f3eceaa74a0f2745c10815b6eea8f11a1e38",
+    "backend/app/rag/retrieval.py": "f62234c6a72695fd51e5f96deebb8ae626bfd8deee664c5c137cc0ff656c3207",
+    "backend/app/rag/ingest.py": "eef51b1677d4b354ab54a5603df50e25e54302f608fe24e16ea1bf3fe428a4b8",
+    "backend/app/rag/budget.py": "cd2d8fb3720b84ce18e67b63f7f52d5c0693a21c2f85cfea09a48c08c9f266a9",
+    "backend/app/rag/candidate_v3.py": "3bc0552db65dd11dd2974dc40da08b9d067703ac0172652b370b6f9ec4949cfc",
+    "backend/app/schemas.py": "0619d5ccd3c67d474c4a9d6add7ddabab4e42fa0949ac2e4c1c8aef81399dd4a",
+    "backend/app/database.py": "274c5fb2831a4f640737d0145c7290eb1e0c930e536c23921a1f74d019ac937f",
+    "backend/scripts/run_benchmark5_final.py": "3b036d907f79c927e530278403322b6edd97fa8a81f86a04e04b9c4dfde2f5d9",
+    "backend/scripts/run_benchmark3_answers.py": "bc590f827afa9dd5dcf4c9f7a4c2ec0deb48af7e04fa7787df97a35a5d6a49ec",
+    "backend/scripts/evaluate_benchmark3_dev.py": "3bfa4b386810a7033b947a459f2ad40c4a256660bad9557e1a97fe37482037f1"
+  },
+  "locked_at": "2026-11-26T11:50:49+00:00",
+  "selection": "Phase 2.3 answer path developed on benchmark-3 development and consumed v4. The hybrid retriever was kept because MMR gave no context gain and cited fewer evidence groups.",
+  "policy": "Run the 24 v5 questions once. Do not tune or rerun against them."
+}

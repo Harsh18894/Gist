@@ -1,0 +1,2730 @@
+{
+  "benchmark_version": "gist-phase2.2-benchmark-4-reviewed",
+  "run": "one-time final",
+  "lock_sha256": "c2243f644bd770c97feb1ac15748510c869c1bc318f0493b2cf50e59dd007184",
+  "questions_sha256": "7821c54678737479491e367df7032145a7962b267256da6fe71dbc909178b623",
+  "label_provenance": "AI-judge labels (Codex) adopted by the owner; not independently written human labels.",
+  "retrieval": {
+    "questions": 24,
+    "answerable_questions": 20,
+    "judged_hit_rate_at_5": 0.95,
+    "mrr_at_5": 0.85,
+    "reviewed_coverage_at_20": 0.6898,
+    "evidence_group_coverage_at_20": 0.7875,
+    "questions_with_no_relevant_in_top20": 1,
+    "questions_with_incomplete_groups_at_20": 9,
+    "hard_negative_in_top5_questions": 3,
+    "duplicate_source_results": 0,
+    "subqueries_total": 0,
+    "retrieval_latency_p50_ms": 12.116,
+    "retrieval_latency_p95_ms": 20.516,
+    "by_category": {
+      "contradictory": {
+        "questions": 4,
+        "hit_at_5": 1,
+        "evidence_group_coverage_at_20": 0.5834
+      },
+      "direct": {
+        "questions": 4,
+        "hit_at_5": 1,
+        "evidence_group_coverage_at_20": 1.0
+      },
+      "multi_source": {
+        "questions": 4,
+        "hit_at_5": 0.75,
+        "evidence_group_coverage_at_20": 0.5417
+      },
+      "semantic": {
+        "questions": 4,
+        "hit_at_5": 1,
+        "evidence_group_coverage_at_20": 1.0
+      },
+      "temporal": {
+        "questions": 4,
+        "hit_at_5": 1,
+        "evidence_group_coverage_at_20": 0.8125
+      }
+    }
+  },
+  "answers_summary": {
+    "questions_answered": 24,
+    "stopped_early": false,
+    "unanswerable_declined": "4/4",
+    "answerable_full": 13,
+    "answerable_partial": 5,
+    "answerable_wrongly_refused": "2/20",
+    "answers_citing_hard_negative": 2,
+    "answers_citing_outside_context": 0,
+    "estimated_cost_usd": 0.00347868
+  },
+  "errors": [],
+  "per_question_retrieval": [
+    {
+      "question_id": "B4-Q-001",
+      "category": "direct",
+      "latency_ms": 20.975,
+      "context_ids": [
+        "V2-FB-0342",
+        "release-03",
+        "V2-SUP-0069",
+        "V2-FB-0258",
+        "V2-FB-0234",
+        "V2-FB-0366",
+        "V2-FB-0318",
+        "V2-FB-0108"
+      ],
+      "relevant_in_context": [
+        "release-03"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0342",
+        "release-03",
+        "V2-SUP-0069",
+        "V2-FB-0258",
+        "V2-FB-0234",
+        "V2-FB-0366",
+        "V2-FB-0318",
+        "V2-FB-0108",
+        "V2-FB-0354",
+        "V2-FB-0311",
+        "V2-FB-0330",
+        "V2-FB-0030",
+        "V2-FB-0328",
+        "V2-FB-0126",
+        "prd-06",
+        "V2-FB-0232",
+        "V2-SUP-0107",
+        "V2-FB-0283",
+        "V2-FB-0059",
+        "V2-SUP-0017"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "release_note",
+        "support_ticket",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 0.5,
+      "first_relevant_rank_at_20": 2,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "release-03"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-03"
+      ]
+    },
+    {
+      "question_id": "B4-Q-002",
+      "category": "direct",
+      "latency_ms": 12.603,
+      "context_ids": [
+        "release-02",
+        "release-07",
+        "V2-FB-0117",
+        "V2-SUP-0067",
+        "V2-FB-0225",
+        "V2-FB-0177",
+        "prd-02",
+        "V2-FB-0333"
+      ],
+      "relevant_in_context": [
+        "release-02"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-02",
+        "release-07",
+        "V2-FB-0117",
+        "V2-SUP-0067",
+        "V2-FB-0225",
+        "V2-FB-0177",
+        "prd-02",
+        "V2-FB-0333",
+        "V2-FB-0332",
+        "V2-FB-0008",
+        "V2-SUP-0095",
+        "V2-FB-0176",
+        "V2-FB-0381",
+        "V2-SUP-0020",
+        "V2-FB-0284",
+        "V2-SUP-0075",
+        "V2-FB-0380",
+        "V2-FB-0153",
+        "V2-FB-0104",
+        "V2-FB-0032"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "release_note",
+        "feedback",
+        "support_ticket",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [
+        "release-07"
+      ],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "release-02"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-003",
+      "category": "direct",
+      "latency_ms": 9.128,
+      "context_ids": [
+        "release-08",
+        "V2-FB-0019",
+        "V2-FB-0007",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "V2-FB-0127",
+        "V2-FB-0283",
+        "release-03"
+      ],
+      "relevant_in_context": [
+        "release-08"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-08",
+        "V2-FB-0019",
+        "V2-FB-0007",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "V2-FB-0127",
+        "V2-FB-0283",
+        "release-03",
+        "V2-SUP-0042",
+        "V2-FB-0115",
+        "V2-SUP-0077",
+        "prd-05",
+        "V2-FB-0343",
+        "V2-SUP-0102",
+        "V2-FB-0295",
+        "V2-FB-0307",
+        "V2-FB-0107",
+        "V2-FB-0162",
+        "V2-SUP-0057",
+        "V2-FB-0270"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "feedback",
+        "feedback",
+        "feedback",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "release-08"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-004",
+      "category": "direct",
+      "latency_ms": 11.233,
+      "context_ids": [
+        "V2-FB-0346",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0130",
+        "V2-FB-0154",
+        "release-04",
+        "V2-SUP-0033",
+        "V2-FB-0199"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0346",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0130",
+        "V2-FB-0154",
+        "release-04",
+        "V2-SUP-0033",
+        "V2-FB-0199",
+        "V2-FB-0034",
+        "V2-FB-0010",
+        "V2-SUP-0073",
+        "V2-FB-0214",
+        "V2-FB-0142",
+        "V2-FB-0370",
+        "V2-FB-0226",
+        "V2-FB-0106",
+        "V2-FB-0178",
+        "V2-FB-0382",
+        "V2-FB-0322",
+        "V2-FB-0046"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "prd",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "prd-04"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "prd-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-005",
+      "category": "semantic",
+      "latency_ms": 9.263,
+      "context_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-SUP-0052",
+        "V2-SUP-0118",
+        "V2-SUP-0070",
+        "V2-SUP-0034",
+        "V2-SUP-0019",
+        "V2-SUP-0115"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0140",
+        "V2-FB-0152"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-SUP-0052",
+        "V2-SUP-0118",
+        "V2-SUP-0070",
+        "V2-SUP-0034",
+        "V2-SUP-0019",
+        "V2-SUP-0115",
+        "V2-SUP-0088",
+        "V2-SUP-0097",
+        "V2-SUP-0037",
+        "V2-SUP-0013",
+        "V2-SUP-0055",
+        "V2-SUP-0103",
+        "prd-06",
+        "V2-SUP-0043",
+        "V2-FB-0210",
+        "V2-FB-0059",
+        "V2-SUP-0061",
+        "prd-05"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "support_ticket",
+        "support_ticket",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-006",
+      "category": "semantic",
+      "latency_ms": 15.998,
+      "context_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0373",
+        "V2-FB-0181",
+        "V2-FB-0122",
+        "V2-FB-0338",
+        "V2-FB-0049",
+        "V2-FB-0218"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0373"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0373",
+        "V2-FB-0181",
+        "V2-FB-0122",
+        "V2-FB-0338",
+        "V2-FB-0049",
+        "V2-FB-0218",
+        "V2-FB-0073",
+        "V2-FB-0301",
+        "V2-FB-0280",
+        "V2-FB-0166",
+        "V2-FB-0061",
+        "V2-SUP-0096",
+        "V2-SUP-0111",
+        "V2-SUP-0004",
+        "V2-FB-0023",
+        "V2-FB-0025",
+        "V2-SUP-0058",
+        "V2-FB-0150"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-007",
+      "category": "semantic",
+      "latency_ms": 13.777,
+      "context_ids": [
+        "V2-SUP-0044",
+        "V2-FB-0341",
+        "V2-FB-0149",
+        "V2-SUP-0072",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0017",
+        "V2-SUP-0104"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-SUP-0072",
+        "V2-SUP-0104"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-SUP-0044",
+        "V2-FB-0341",
+        "V2-FB-0149",
+        "V2-SUP-0072",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0017",
+        "V2-SUP-0104",
+        "V2-SUP-0048",
+        "V2-FB-0173",
+        "V2-FB-0041",
+        "V2-SUP-0068",
+        "V2-FB-0329",
+        "V2-SUP-0087",
+        "V2-FB-0101",
+        "V2-FB-0342",
+        "V2-FB-0317",
+        "V2-SUP-0084",
+        "V2-FB-0389",
+        "V2-FB-0077"
+      ],
+      "top5_kinds": [
+        "support_ticket",
+        "feedback",
+        "feedback",
+        "support_ticket",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-008",
+      "category": "semantic",
+      "latency_ms": 7.339,
+      "context_ids": [
+        "V2-FB-0231",
+        "V2-SUP-0014",
+        "V2-FB-0243",
+        "V2-FB-0159",
+        "V2-FB-0038",
+        "V2-SUP-0118",
+        "V2-SUP-0034",
+        "V2-FB-0147"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0231",
+        "V2-FB-0243",
+        "V2-SUP-0014"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0231",
+        "V2-SUP-0014",
+        "V2-FB-0243",
+        "V2-FB-0159",
+        "V2-FB-0038",
+        "V2-SUP-0118",
+        "V2-SUP-0034",
+        "V2-FB-0147",
+        "V2-FB-0399",
+        "V2-FB-0265",
+        "V2-FB-0171",
+        "V2-FB-0267",
+        "V2-SUP-0046",
+        "V2-FB-0218",
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-SUP-0016",
+        "V2-FB-0338",
+        "V2-SUP-0074",
+        "V2-FB-0051"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "support_ticket",
+        "feedback",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-009",
+      "category": "multi_source",
+      "latency_ms": 7.439,
+      "context_ids": [
+        "V2-FB-0207",
+        "V2-FB-0003",
+        "V2-FB-0267",
+        "V2-FB-0063",
+        "V2-FB-0351",
+        "V2-SUP-0046",
+        "V2-FB-0099",
+        "V2-FB-0087"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-FB-0267",
+        "V2-SUP-0046"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0207",
+        "V2-FB-0003",
+        "V2-FB-0267",
+        "V2-FB-0063",
+        "V2-FB-0351",
+        "V2-SUP-0046",
+        "V2-FB-0099",
+        "V2-FB-0087",
+        "V2-FB-0051",
+        "V2-FB-0327",
+        "V2-SUP-0074",
+        "V2-FB-0195",
+        "V2-FB-0375",
+        "V2-FB-0255",
+        "V2-FB-0387",
+        "V2-SUP-0086",
+        "V2-FB-0363",
+        "V2-FB-0231",
+        "V2-FB-0290",
+        "V2-FB-0158"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 0.5,
+      "first_relevant_rank_at_20": 2,
+      "reviewed_coverage_at_20": 0.4706,
+      "evidence_group_coverage_at_20": 0.6667,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-010",
+      "category": "multi_source",
+      "latency_ms": 12.415,
+      "context_ids": [
+        "V2-FB-0149",
+        "V2-SUP-0104",
+        "V2-FB-0269",
+        "V2-FB-0161",
+        "V2-SUP-0044",
+        "V2-FB-0005",
+        "V2-FB-0341",
+        "V2-FB-0293"
+      ],
+      "relevant_in_context": [],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0149",
+        "V2-SUP-0104",
+        "V2-FB-0269",
+        "V2-FB-0161",
+        "V2-SUP-0044",
+        "V2-FB-0005",
+        "V2-FB-0341",
+        "V2-FB-0293",
+        "V2-FB-0041",
+        "V2-FB-0281",
+        "V2-FB-0017",
+        "V2-FB-0100",
+        "V2-SUP-0072",
+        "V2-SUP-0064",
+        "V2-SUP-0034",
+        "prd-03",
+        "V2-SUP-0079",
+        "V2-SUP-0001",
+        "V2-SUP-0118",
+        "V2-FB-0309"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "support_ticket",
+        "feedback",
+        "feedback",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 0,
+      "mrr_at_5": 0.0,
+      "first_relevant_rank_at_20": null,
+      "reviewed_coverage_at_20": 0.0,
+      "evidence_group_coverage_at_20": 0.0,
+      "missed_evidence_groups": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-011",
+      "category": "multi_source",
+      "latency_ms": 11.829,
+      "context_ids": [
+        "release-08",
+        "V2-FB-0354",
+        "release-02",
+        "V2-FB-0318",
+        "release-03",
+        "V2-FB-0126",
+        "V2-SUP-0077",
+        "V2-FB-0175"
+      ],
+      "relevant_in_context": [
+        "release-03",
+        "release-08"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-08",
+        "V2-FB-0354",
+        "release-02",
+        "V2-FB-0318",
+        "release-03",
+        "V2-FB-0126",
+        "V2-SUP-0077",
+        "V2-FB-0175",
+        "V2-FB-0102",
+        "V2-FB-0187",
+        "V2-SUP-0082",
+        "V2-FB-0234",
+        "V2-SUP-0057",
+        "prd-06",
+        "V2-FB-0232",
+        "V2-FB-0353",
+        "V2-FB-0282",
+        "V2-FB-0220",
+        "V2-FB-0139",
+        "V2-FB-0381"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "feedback",
+        "release_note",
+        "feedback",
+        "release_note"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.1333,
+      "evidence_group_coverage_at_20": 0.5,
+      "missed_evidence_groups": [
+        1,
+        2
+      ],
+      "documents_relevant": [
+        "release-03",
+        "release-08"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-03",
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-012",
+      "category": "multi_source",
+      "latency_ms": 11.812,
+      "context_ids": [
+        "V2-FB-0358",
+        "prd-04",
+        "V2-SUP-0045",
+        "V2-FB-0142",
+        "V2-FB-0166",
+        "V2-FB-0262",
+        "V2-FB-0106",
+        "V2-FB-0190"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0106",
+        "V2-FB-0142",
+        "V2-FB-0190",
+        "prd-04"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0358",
+        "prd-04",
+        "V2-SUP-0045",
+        "V2-FB-0142",
+        "V2-FB-0166",
+        "V2-FB-0262",
+        "V2-FB-0106",
+        "V2-FB-0190",
+        "V2-FB-0130",
+        "V2-FB-0286",
+        "V2-FB-0346",
+        "V2-FB-0238",
+        "V2-FB-0298",
+        "V2-FB-0226",
+        "V2-FB-0322",
+        "V2-SUP-0105",
+        "V2-FB-0250",
+        "V2-FB-0070",
+        "V2-FB-0178",
+        "release-04"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "prd",
+        "support_ticket",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 0.5,
+      "first_relevant_rank_at_20": 2,
+      "reviewed_coverage_at_20": 0.6,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "prd-04",
+        "release-04"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "prd-04",
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-013",
+      "category": "temporal",
+      "latency_ms": 12.106,
+      "context_ids": [
+        "release-06",
+        "V2-SUP-0098",
+        "V2-SUP-0018",
+        "V2-FB-0395",
+        "V2-SUP-0023",
+        "V2-FB-0311",
+        "prd-06",
+        "V2-FB-0299"
+      ],
+      "relevant_in_context": [
+        "release-06"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-06",
+        "V2-SUP-0098",
+        "V2-SUP-0018",
+        "V2-FB-0395",
+        "V2-SUP-0023",
+        "V2-FB-0311",
+        "prd-06",
+        "V2-FB-0299",
+        "V2-FB-0059",
+        "V2-FB-0107",
+        "V2-SUP-0083",
+        "V2-SUP-0115",
+        "V2-FB-0360",
+        "V2-FB-0048",
+        "V2-FB-0035",
+        "V2-FB-0348",
+        "V2-FB-0060",
+        "V2-SUP-0051",
+        "V2-FB-0156",
+        "V2-FB-0072"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "support_ticket",
+        "support_ticket",
+        "feedback",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.2,
+      "evidence_group_coverage_at_20": 0.5,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [
+        "release-06"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-06"
+      ]
+    },
+    {
+      "question_id": "B4-Q-014",
+      "category": "temporal",
+      "latency_ms": 11.425,
+      "context_ids": [
+        "release-04",
+        "V2-FB-0070",
+        "V2-FB-0154",
+        "prd-04",
+        "V2-SUP-0033",
+        "V2-SUP-0117",
+        "V2-FB-0370",
+        "V2-FB-0046"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-04",
+        "V2-FB-0070",
+        "V2-FB-0154",
+        "prd-04",
+        "V2-SUP-0033",
+        "V2-SUP-0117",
+        "V2-FB-0370",
+        "V2-FB-0046",
+        "V2-FB-0382",
+        "V2-FB-0199",
+        "V2-FB-0082",
+        "V2-FB-0034",
+        "V2-FB-0010",
+        "V2-SUP-0105",
+        "V2-SUP-0073",
+        "V2-FB-0214",
+        "V2-FB-0322",
+        "V2-FB-0178",
+        "V2-FB-0250",
+        "V2-SUP-0053"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "feedback",
+        "feedback",
+        "prd",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "release-04"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-015",
+      "category": "temporal",
+      "latency_ms": 9.759,
+      "context_ids": [
+        "release-02",
+        "V2-FB-0225",
+        "V2-FB-0117",
+        "V2-FB-0333",
+        "prd-02",
+        "V2-FB-0177",
+        "release-07",
+        "V2-SUP-0020"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0333",
+        "V2-SUP-0020",
+        "release-02"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-02",
+        "V2-FB-0225",
+        "V2-FB-0117",
+        "V2-FB-0333",
+        "prd-02",
+        "V2-FB-0177",
+        "release-07",
+        "V2-SUP-0020",
+        "V2-FB-0104",
+        "V2-SUP-0067",
+        "V2-SUP-0095",
+        "V2-FB-0153",
+        "V2-FB-0008",
+        "V2-FB-0332",
+        "V2-FB-0176",
+        "V2-SUP-0080",
+        "V2-FB-0375",
+        "V2-FB-0381",
+        "V2-FB-0380",
+        "V2-FB-0032"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "feedback",
+        "feedback",
+        "feedback",
+        "prd"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.6429,
+      "evidence_group_coverage_at_20": 0.75,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [
+        "release-02"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-016",
+      "category": "temporal",
+      "latency_ms": 26.871,
+      "context_ids": [
+        "V2-FB-0019",
+        "V2-FB-0163",
+        "release-08",
+        "V2-FB-0127",
+        "V2-SUP-0010",
+        "V2-FB-0151",
+        "V2-FB-0259",
+        "V2-FB-0067"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "release-08"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0163",
+        "release-08",
+        "V2-FB-0127",
+        "V2-SUP-0010",
+        "V2-FB-0151",
+        "V2-FB-0259",
+        "V2-FB-0067",
+        "V2-FB-0031",
+        "V2-FB-0091",
+        "V2-FB-0055",
+        "V2-FB-0271",
+        "V2-FB-0247",
+        "V2-FB-0187",
+        "V2-SUP-0102",
+        "V2-FB-0283",
+        "V2-FB-0223",
+        "V2-SUP-0062",
+        "V2-SUP-0077",
+        "V2-SUP-0042"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "release_note",
+        "feedback",
+        "support_ticket"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 1.0,
+      "evidence_group_coverage_at_20": 1.0,
+      "missed_evidence_groups": [],
+      "documents_relevant": [
+        "release-08"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-017",
+      "category": "contradictory",
+      "latency_ms": 12.288,
+      "context_ids": [
+        "V2-FB-0071",
+        "V2-FB-0048",
+        "V2-FB-0360",
+        "V2-SUP-0006",
+        "V2-FB-0275",
+        "V2-FB-0083",
+        "release-06",
+        "V2-FB-0072"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0048",
+        "V2-FB-0072",
+        "V2-FB-0360"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0071",
+        "V2-FB-0048",
+        "V2-FB-0360",
+        "V2-SUP-0006",
+        "V2-FB-0275",
+        "V2-FB-0083",
+        "release-06",
+        "V2-FB-0072",
+        "V2-SUP-0115",
+        "V2-FB-0348",
+        "V2-FB-0312",
+        "V2-FB-0215",
+        "V2-FB-0395",
+        "V2-FB-0095",
+        "V2-FB-0191",
+        "V2-SUP-0018",
+        "V2-FB-0311",
+        "V2-FB-0299",
+        "V2-FB-0047",
+        "V2-FB-0096"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "feedback",
+        "support_ticket",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [
+        "V2-FB-0071",
+        "V2-FB-0275",
+        "V2-SUP-0006"
+      ],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 0.5,
+      "first_relevant_rank_at_20": 2,
+      "reviewed_coverage_at_20": 0.6,
+      "evidence_group_coverage_at_20": 0.5,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-018",
+      "category": "contradictory",
+      "latency_ms": 9.034,
+      "context_ids": [
+        "release-05",
+        "prd-03",
+        "V2-SUP-0111",
+        "V2-FB-0112",
+        "V2-FB-0376",
+        "V2-FB-0148",
+        "V2-FB-0064",
+        "V2-FB-0005"
+      ],
+      "relevant_in_context": [
+        "V2-SUP-0111",
+        "release-05"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-05",
+        "prd-03",
+        "V2-SUP-0111",
+        "V2-FB-0112",
+        "V2-FB-0376",
+        "V2-FB-0148",
+        "V2-FB-0064",
+        "V2-FB-0005",
+        "V2-FB-0067",
+        "V2-FB-0184",
+        "V2-FB-0136",
+        "V2-FB-0172",
+        "V2-FB-0100",
+        "V2-FB-0244",
+        "V2-SUP-0027",
+        "V2-FB-0088",
+        "V2-FB-0221",
+        "V2-FB-0052",
+        "V2-FB-0280",
+        "V2-SUP-0007"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "prd",
+        "support_ticket",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.25,
+      "evidence_group_coverage_at_20": 0.6667,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [
+        "release-05"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-05"
+      ]
+    },
+    {
+      "question_id": "B4-Q-019",
+      "category": "contradictory",
+      "latency_ms": 12.121,
+      "context_ids": [
+        "V2-SUP-0053",
+        "release-04",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0094",
+        "V2-FB-0214",
+        "V2-FB-0010",
+        "V2-SUP-0033"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-SUP-0053",
+        "release-04",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0094",
+        "V2-FB-0214",
+        "V2-FB-0010",
+        "V2-SUP-0033",
+        "V2-SUP-0105",
+        "V2-SUP-0013",
+        "V2-FB-0154",
+        "V2-FB-0370",
+        "V2-FB-0250",
+        "V2-SUP-0073",
+        "V2-FB-0199",
+        "V2-FB-0322",
+        "V2-SUP-0117",
+        "V2-FB-0178",
+        "V2-FB-0046",
+        "V2-SUP-0001"
+      ],
+      "top5_kinds": [
+        "support_ticket",
+        "release_note",
+        "feedback",
+        "prd",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.4,
+      "evidence_group_coverage_at_20": 0.5,
+      "missed_evidence_groups": [
+        2
+      ],
+      "documents_relevant": [],
+      "documents_relevant_retrieved_at_20": []
+    },
+    {
+      "question_id": "B4-Q-020",
+      "category": "contradictory",
+      "latency_ms": 17.917,
+      "context_ids": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "prd-01",
+        "release-01",
+        "V2-FB-0025",
+        "V2-FB-0263",
+        "V2-FB-0212",
+        "V2-SUP-0107"
+      ],
+      "relevant_in_context": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "release-01"
+      ],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "prd-01",
+        "release-01",
+        "V2-FB-0025",
+        "V2-FB-0263",
+        "V2-FB-0212",
+        "V2-SUP-0107",
+        "V2-FB-0320",
+        "V2-FB-0265",
+        "V2-FB-0061",
+        "V2-SUP-0016",
+        "V2-FB-0364",
+        "V2-FB-0145",
+        "V2-FB-0085",
+        "V2-FB-0310",
+        "V2-SUP-0110",
+        "V2-SUP-0096",
+        "V2-FB-0136",
+        "V2-FB-0050"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "prd",
+        "release_note",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": true,
+      "hit_at_5": 1,
+      "mrr_at_5": 1.0,
+      "first_relevant_rank_at_20": 1,
+      "reviewed_coverage_at_20": 0.5,
+      "evidence_group_coverage_at_20": 0.6667,
+      "missed_evidence_groups": [
+        3
+      ],
+      "documents_relevant": [
+        "release-01"
+      ],
+      "documents_relevant_retrieved_at_20": [
+        "release-01"
+      ]
+    },
+    {
+      "question_id": "B4-Q-021",
+      "category": "unanswerable",
+      "latency_ms": 12.415,
+      "context_ids": [
+        "V2-SUP-0101",
+        "V2-FB-0099",
+        "V2-SUP-0009",
+        "V2-SUP-0014",
+        "V2-FB-0255",
+        "V2-SUP-0086",
+        "V2-FB-0327",
+        "V2-FB-0195"
+      ],
+      "relevant_in_context": [],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-SUP-0101",
+        "V2-FB-0099",
+        "V2-SUP-0009",
+        "V2-SUP-0014",
+        "V2-FB-0255",
+        "V2-SUP-0086",
+        "V2-FB-0327",
+        "V2-FB-0195",
+        "V2-FB-0231",
+        "V2-SUP-0054",
+        "V2-FB-0363",
+        "V2-FB-0387",
+        "V2-SUP-0106",
+        "V2-SUP-0016",
+        "V2-FB-0110",
+        "V2-FB-0265",
+        "V2-FB-0243",
+        "V2-FB-0158",
+        "V2-SUP-0041",
+        "V2-SUP-0115"
+      ],
+      "top5_kinds": [
+        "support_ticket",
+        "feedback",
+        "support_ticket",
+        "support_ticket",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": false
+    },
+    {
+      "question_id": "B4-Q-022",
+      "category": "unanswerable",
+      "latency_ms": 12.278,
+      "context_ids": [
+        "V2-FB-0044",
+        "V2-FB-0368",
+        "V2-FB-0008",
+        "V2-SUP-0003",
+        "release-07",
+        "V2-FB-0104",
+        "V2-FB-0032",
+        "V2-FB-0332"
+      ],
+      "relevant_in_context": [],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0044",
+        "V2-FB-0368",
+        "V2-FB-0008",
+        "V2-SUP-0003",
+        "release-07",
+        "V2-FB-0104",
+        "V2-FB-0032",
+        "V2-FB-0332",
+        "V2-FB-0198",
+        "V2-FB-0176",
+        "V2-SUP-0095",
+        "release-02",
+        "V2-SUP-0067",
+        "prd-02",
+        "V2-FB-0380",
+        "V2-FB-0225",
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0333",
+        "V2-FB-0270"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "feedback",
+        "support_ticket",
+        "release_note"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [
+        "release-07"
+      ],
+      "hard_negatives_above_first_relevant": [
+        "release-07"
+      ],
+      "partial_sources_in_top5": [],
+      "answerable": false
+    },
+    {
+      "question_id": "B4-Q-023",
+      "category": "unanswerable",
+      "latency_ms": 12.11,
+      "context_ids": [
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "V2-FB-0355",
+        "V2-FB-0354",
+        "V2-FB-0102",
+        "V2-FB-0162",
+        "V2-FB-0234",
+        "V2-FB-0030"
+      ],
+      "relevant_in_context": [],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "V2-FB-0355",
+        "V2-FB-0354",
+        "V2-FB-0102",
+        "V2-FB-0162",
+        "V2-FB-0234",
+        "V2-FB-0030",
+        "release-03",
+        "V2-SUP-0077",
+        "V2-FB-0258",
+        "V2-SUP-0030",
+        "V2-FB-0126",
+        "V2-FB-0330",
+        "V2-FB-0103",
+        "V2-FB-0331",
+        "V2-FB-0270",
+        "V2-SUP-0057",
+        "V2-SUP-0114",
+        "V2-SUP-0069"
+      ],
+      "top5_kinds": [
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback",
+        "feedback"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [],
+      "hard_negatives_above_first_relevant": [],
+      "partial_sources_in_top5": [],
+      "answerable": false
+    },
+    {
+      "question_id": "B4-Q-024",
+      "category": "unanswerable",
+      "latency_ms": 14.546,
+      "context_ids": [
+        "release-02",
+        "release-04",
+        "release-03",
+        "release-08",
+        "release-07",
+        "release-06",
+        "release-05",
+        "release-01"
+      ],
+      "relevant_in_context": [],
+      "query_embedding_cache_hit": false,
+      "retrieved_source_ids": [
+        "release-02",
+        "release-04",
+        "release-03",
+        "release-08",
+        "release-07",
+        "release-06",
+        "release-05",
+        "release-01",
+        "V2-FB-0272",
+        "V2-SUP-0090",
+        "V2-SUP-0057",
+        "V2-SUP-0066",
+        "V2-SUP-0012",
+        "V2-SUP-0087",
+        "V2-SUP-0100",
+        "V2-SUP-0055",
+        "V2-SUP-0084",
+        "V2-SUP-0028",
+        "V2-SUP-0060",
+        "V2-FB-0185"
+      ],
+      "top5_kinds": [
+        "release_note",
+        "release_note",
+        "release_note",
+        "release_note",
+        "release_note"
+      ],
+      "duplicate_source_ids": 0,
+      "hard_negatives_in_top5": [
+        "release-08"
+      ],
+      "hard_negatives_above_first_relevant": [
+        "release-08"
+      ],
+      "partial_sources_in_top5": [],
+      "answerable": false
+    }
+  ],
+  "per_question_answers": [
+    {
+      "question_id": "B4-Q-001",
+      "category": "direct",
+      "question": "Can a team keep shared boards out of the project digest?",
+      "expected_answer": "Yes. Since the April 5 digest update, shared boards are selected by default and teams can opt out (release-03).",
+      "raw_model_answer": "Status: answered\n\nYes. Shared boards are included by default, but teams can opt out of them in the project digest. [release-03]",
+      "gist_answer": "Yes. Shared boards are included by default, but teams can opt out of them in the project digest. [release-03]",
+      "citations": [
+        "release-03"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0342",
+        "release-03",
+        "V2-SUP-0069",
+        "V2-FB-0258",
+        "V2-FB-0234",
+        "V2-FB-0366",
+        "V2-FB-0318",
+        "V2-FB-0108"
+      ],
+      "input_tokens": 700,
+      "output_tokens": 80,
+      "latency_ms": 5447,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-03"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-03"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-03"
+      ]
+    },
+    {
+      "question_id": "B4-Q-002",
+      "category": "direct",
+      "question": "Did the March portfolio filter release change how fast portfolio views load?",
+      "expected_answer": "No. The March 5 portfolio-filter release (release-02) states it did not change loading performance.",
+      "raw_model_answer": "Status: answered\n\nNo. The March portfolio filter release did not change loading performance. [release-02]",
+      "gist_answer": "No. The March portfolio filter release did not change loading performance. [release-02]",
+      "citations": [
+        "release-02"
+      ],
+      "retrieved_source_ids": [
+        "release-02",
+        "release-07",
+        "V2-FB-0117",
+        "V2-SUP-0067",
+        "V2-FB-0225",
+        "V2-FB-0177",
+        "prd-02",
+        "V2-FB-0333"
+      ],
+      "input_tokens": 770,
+      "output_tokens": 62,
+      "latency_ms": 1699,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-02"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-02"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-003",
+      "category": "direct",
+      "question": "Who can tune routine project alerts after the September release?",
+      "expected_answer": "Admins can tune routine project alerts (release-08).",
+      "raw_model_answer": "Status: answered\n\nAdmins can tune routine project alerts after the September release. [release-08]",
+      "gist_answer": "Admins can tune routine project alerts after the September release. [release-08]",
+      "citations": [
+        "release-08"
+      ],
+      "retrieved_source_ids": [
+        "release-08",
+        "V2-FB-0019",
+        "V2-FB-0007",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "V2-FB-0127",
+        "V2-FB-0283",
+        "release-03"
+      ],
+      "input_tokens": 792,
+      "output_tokens": 56,
+      "latency_ms": 1340,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-08"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-004",
+      "category": "direct",
+      "question": "Does the invoice seat-adjustment line identify which people were billed?",
+      "expected_answer": "No. The PRD says the May line item does not identify people by itself, and customers say they cannot trace the line to actual people.",
+      "raw_model_answer": "Status: answered\n\nNo. The seat-adjustment line does not identify the people billed [prd-04]; a customer also reported being unable to trace it to actual people [V2-FB-0346].",
+      "gist_answer": "No. The seat-adjustment line does not identify the people billed [prd-04]; a customer also reported being unable to trace it to actual people [V2-FB-0346].",
+      "citations": [
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0346",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0130",
+        "V2-FB-0154",
+        "release-04",
+        "V2-SUP-0033",
+        "V2-FB-0199"
+      ],
+      "input_tokens": 735,
+      "output_tokens": 105,
+      "latency_ms": 1739,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0346",
+        "prd-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0130",
+        "V2-FB-0346",
+        "prd-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-005",
+      "category": "semantic",
+      "question": "Find someone who was told to wipe their browser data but saw the problem on several computers.",
+      "expected_answer": "Yes. Customers say they were told to clear the cache but the problem happens on three machines; the reports do not always name the symptom.",
+      "raw_model_answer": "Status: answered\n\nV2-FB-0140 reported being told to clear the cache, but the problem happened on three machines. [V2-FB-0140]",
+      "gist_answer": "V2-FB-0140 reported being told to clear the cache, but the problem happened on three machines. [V2-FB-0140]",
+      "citations": [
+        "V2-FB-0140"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0140",
+        "V2-FB-0152",
+        "V2-SUP-0052",
+        "V2-SUP-0118",
+        "V2-SUP-0070",
+        "V2-SUP-0034",
+        "V2-SUP-0019",
+        "V2-SUP-0115"
+      ],
+      "input_tokens": 931,
+      "output_tokens": 73,
+      "latency_ms": 1679,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0140"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0140"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0140",
+        "V2-FB-0152"
+      ]
+    },
+    {
+      "question_id": "B4-Q-006",
+      "category": "semantic",
+      "question": "Is there a newcomer who completed the joining form twice and still could not get in?",
+      "expected_answer": "Yes. Several reports say a new hire finished the form twice and still is not in the workspace.",
+      "raw_model_answer": "Status: answered\n\nYes. A new hire completed the form twice and still wasn’t in the workspace. [V2-FB-0037]",
+      "gist_answer": "Yes. A new hire completed the form twice and still wasn’t in the workspace. [V2-FB-0037]",
+      "citations": [
+        "V2-FB-0037"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0373",
+        "V2-FB-0181",
+        "V2-FB-0122",
+        "V2-FB-0338",
+        "V2-FB-0049",
+        "V2-FB-0218"
+      ],
+      "input_tokens": 630,
+      "output_tokens": 78,
+      "latency_ms": 1540,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0037"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0037"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0037",
+        "V2-FB-0097",
+        "V2-FB-0122",
+        "V2-FB-0181",
+        "V2-FB-0373"
+      ]
+    },
+    {
+      "question_id": "B4-Q-007",
+      "category": "semantic",
+      "question": "Did anyone ask for a way to reverse a file import they ran the previous day?",
+      "expected_answer": "Yes. Customers asked for a way to undo yesterday's spreadsheet import. This is a request; no source says an undo exists.",
+      "raw_model_answer": "Status: answered\n\nYes. Customers asked for a way to undo a spreadsheet import from the previous day [V2-SUP-0044] [V2-FB-0341].",
+      "gist_answer": "Yes. Customers asked for a way to undo a spreadsheet import from the previous day [V2-SUP-0044] [V2-FB-0341].",
+      "citations": [
+        "V2-SUP-0044",
+        "V2-FB-0341"
+      ],
+      "retrieved_source_ids": [
+        "V2-SUP-0044",
+        "V2-FB-0341",
+        "V2-FB-0149",
+        "V2-SUP-0072",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0017",
+        "V2-SUP-0104"
+      ],
+      "input_tokens": 663,
+      "output_tokens": 64,
+      "latency_ms": 1726,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0341",
+        "V2-SUP-0044"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0341",
+        "V2-SUP-0044"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0017",
+        "V2-FB-0149",
+        "V2-FB-0161",
+        "V2-FB-0293",
+        "V2-FB-0341",
+        "V2-SUP-0044",
+        "V2-SUP-0072",
+        "V2-SUP-0104"
+      ]
+    },
+    {
+      "question_id": "B4-Q-008",
+      "category": "semantic",
+      "question": "Find a report of someone outside the company's email domain being unable to use the corporate login.",
+      "expected_answer": "Customers report that a contractor on a different domain cannot use the company login.",
+      "raw_model_answer": "Status: answered\n\nA report says a contractor on a different domain can’t use the company login. [V2-FB-0231]",
+      "gist_answer": "A report says a contractor on a different domain can’t use the company login. [V2-FB-0231]",
+      "citations": [
+        "V2-FB-0231"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0231",
+        "V2-SUP-0014",
+        "V2-FB-0243",
+        "V2-FB-0159",
+        "V2-FB-0038",
+        "V2-SUP-0118",
+        "V2-SUP-0034",
+        "V2-FB-0147"
+      ],
+      "input_tokens": 756,
+      "output_tokens": 108,
+      "latency_ms": 2181,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0231"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0231"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/1",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0231",
+        "V2-FB-0243",
+        "V2-SUP-0014"
+      ]
+    },
+    {
+      "question_id": "B4-Q-009",
+      "category": "multi_source",
+      "question": "What different identity-provider problems, besides a wrong callback URL, did customers report?",
+      "expected_answer": "Three distinct SSO problems: login stopping after a SAML certificate change, the IdP assertion rejected because the domain is not allowed, and one region routed to the wrong workspace. Password-reset reports are a different problem; timing does not establish that the certificate change caused an outage.",
+      "raw_model_answer": "Status: answered\n\nBesides a wrong callback URL, customers reported login stopping after a SAML certificate change [V2-FB-0003] and an identity configuration their admin considered incomplete [V2-FB-0099].",
+      "gist_answer": "Besides a wrong callback URL, customers reported login stopping after a SAML certificate change [V2-FB-0003] and an identity configuration their admin considered incomplete [V2-FB-0099].",
+      "citations": [
+        "V2-FB-0003",
+        "V2-FB-0099"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0207",
+        "V2-FB-0003",
+        "V2-FB-0267",
+        "V2-FB-0063",
+        "V2-FB-0351",
+        "V2-SUP-0046",
+        "V2-FB-0099",
+        "V2-FB-0087"
+      ],
+      "input_tokens": 643,
+      "output_tokens": 142,
+      "latency_ms": 2068,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0003",
+        "V2-FB-0099"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0003"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0099"
+      ],
+      "evidence_groups_cited": "1/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0003",
+        "V2-FB-0087",
+        "V2-FB-0267",
+        "V2-SUP-0046"
+      ]
+    },
+    {
+      "question_id": "B4-Q-010",
+      "category": "multi_source",
+      "question": "What mapping or parsing problems did customers report after one-time spreadsheet imports?",
+      "expected_answer": "Owner names landed in the due-date column; an Account ID mapped to a custom field was treated as a name; date cells became blank; and a semicolon-delimited CSV was read as one column. These are import problems, not live CRM sync.",
+      "raw_model_answer": "Status: answered\n\nCustomers reported that a one-time spreadsheet upload scrambled labels [V2-FB-0005]. Another customer said the import report showed success even though two columns had been swapped [V2-FB-0269].",
+      "gist_answer": "Customers reported that a one-time spreadsheet upload scrambled labels [V2-FB-0005]. Another customer said the import report showed success even though two columns had been swapped [V2-FB-0269].",
+      "citations": [
+        "V2-FB-0269",
+        "V2-FB-0005"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0149",
+        "V2-SUP-0104",
+        "V2-FB-0269",
+        "V2-FB-0161",
+        "V2-SUP-0044",
+        "V2-FB-0005",
+        "V2-FB-0341",
+        "V2-FB-0293"
+      ],
+      "input_tokens": 627,
+      "output_tokens": 150,
+      "latency_ms": 2019,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0005",
+        "V2-FB-0269"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0005",
+        "V2-FB-0269"
+      ],
+      "evidence_groups_cited": "0/4",
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-011",
+      "category": "multi_source",
+      "question": "What did customers ask to control about project emails, and what controls did Pulse ship?",
+      "expected_answer": "Customers asked for a quiet setting for projects they only observe and to choose which boards feed the morning email. Pulse shipped an opt-out for shared boards in the April digest (release-03) and admin tuning of routine project alerts in September (release-08). Whether these met every request is not established.",
+      "raw_model_answer": "Status: answered\n\nA customer asked for fewer project emails, saying the digest should mean fewer messages; another asked whether the new controls would also suppress direct mentions. [V2-FB-0354] [V2-FB-0175]\n\nPulse shipped admin controls to tune routine project alerts, while critical and direct-mention alerts are intended to remain timely. [release-08] It also grouped project summaries by board, with shared boards selected by default and an option for teams to opt out. [release-03]",
+      "gist_answer": "A customer asked for fewer project emails, saying the digest should mean fewer messages; another asked whether the new controls would also suppress direct mentions. [V2-FB-0354] [V2-FB-0175]\n\nPulse shipped admin controls to tune routine project alerts, while critical and direct-mention alerts are intended to remain timely. [release-08] It also grouped project summaries by board, with shared boards selected by default and an option for teams to opt out. [release-03]",
+      "citations": [
+        "release-08",
+        "V2-FB-0354",
+        "release-03",
+        "V2-FB-0175"
+      ],
+      "retrieved_source_ids": [
+        "release-08",
+        "V2-FB-0354",
+        "release-02",
+        "V2-FB-0318",
+        "release-03",
+        "V2-FB-0126",
+        "V2-SUP-0077",
+        "V2-FB-0175"
+      ],
+      "input_tokens": 784,
+      "output_tokens": 327,
+      "latency_ms": 3236,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0175",
+        "V2-FB-0354",
+        "release-03",
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-03",
+        "release-08"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0175",
+        "V2-FB-0354"
+      ],
+      "evidence_groups_cited": "2/4",
+      "retrieved_relevant_in_context": [
+        "release-03",
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-012",
+      "category": "multi_source",
+      "question": "Why did finance see a whole-cycle seat charge for someone removed late in the month, and what would help them trace it?",
+      "expected_answer": "Release-04 says seats archived mid-cycle remain counted until the cycle closes, matching a customer billed for a contractor moved out on the 27th. Invoice-time seat evidence would help trace it: PRD-04 calls for it and customers request a downloadable list of seats counted. No source says that list is available.",
+      "raw_model_answer": null,
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "V2-FB-0358",
+        "prd-04",
+        "V2-SUP-0045",
+        "V2-FB-0142",
+        "V2-FB-0166",
+        "V2-FB-0262",
+        "V2-FB-0106",
+        "V2-FB-0190"
+      ],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 10,
+      "expected_abstention": false,
+      "abstained": true,
+      "abstention_correct": false,
+      "gist_status": "insufficient_evidence",
+      "model_called": false,
+      "raw_cited_source_ids": [],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "0/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0106",
+        "V2-FB-0142",
+        "V2-FB-0190",
+        "prd-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-013",
+      "category": "temporal",
+      "question": "When did the shared template gallery ship, and did customers still struggle to find templates afterwards?",
+      "expected_answer": "The gallery shipped on 2025-07-05 in the workspace menu (release-06). Later reports say customers found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu. Timing does not show the release caused the difficulty.",
+      "raw_model_answer": "Status: partial\n\nThe shared template gallery shipped on 2025-07-05. [release-06] Customers reported that the template entry point was easy to miss. [V2-SUP-0018] [V2-FB-0395] [V2-FB-0311] [V2-FB-0299]\n\nLimitation: The evidence does not date those reports, so it can’t establish whether customers still struggled after the gallery shipped.",
+      "gist_answer": "The shared template gallery shipped on 2025-07-05. [release-06] Customers reported that the template entry point was easy to miss. [V2-SUP-0018] [V2-FB-0395] [V2-FB-0311] [V2-FB-0299]\n\nLimitation: The evidence does not date those reports, so it can’t establish whether customers still struggled after the gallery shipped.",
+      "citations": [
+        "release-06",
+        "V2-SUP-0018",
+        "V2-FB-0395",
+        "V2-FB-0311",
+        "V2-FB-0299"
+      ],
+      "retrieved_source_ids": [
+        "release-06",
+        "V2-SUP-0098",
+        "V2-SUP-0018",
+        "V2-FB-0395",
+        "V2-SUP-0023",
+        "V2-FB-0311",
+        "prd-06",
+        "V2-FB-0299"
+      ],
+      "input_tokens": 768,
+      "output_tokens": 176,
+      "latency_ms": 2173,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0299",
+        "V2-FB-0311",
+        "V2-FB-0395",
+        "V2-SUP-0018",
+        "release-06"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "release-06"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0299",
+        "V2-FB-0311",
+        "V2-FB-0395",
+        "V2-SUP-0018"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "release-06"
+      ]
+    },
+    {
+      "question_id": "B4-Q-014",
+      "category": "temporal",
+      "question": "Were archived-seat billing complaints reported before the May invoice breakdown?",
+      "expected_answer": "Yes. January to March 2025 reports say archived collaborators were still counted on invoices, before the May 5 invoice breakdown (release-04).",
+      "raw_model_answer": "Status: partial\n\nArchived-seat billing complaints were reported: customers said archived collaborators were still counted on invoices [V2-SUP-0117] [V2-FB-0370] [V2-FB-0046]. The invoice breakdown was published May 5, 2025 [release-04].\n\nLimitation: The complaint sources do not show when they were reported, so the evidence cannot establish whether they preceded the May breakdown.",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "release-04",
+        "V2-FB-0070",
+        "V2-FB-0154",
+        "prd-04",
+        "V2-SUP-0033",
+        "V2-SUP-0117",
+        "V2-FB-0370",
+        "V2-FB-0046"
+      ],
+      "input_tokens": 753,
+      "output_tokens": 195,
+      "latency_ms": 2407,
+      "expected_abstention": false,
+      "abstained": true,
+      "abstention_correct": false,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0046",
+        "V2-FB-0370",
+        "V2-SUP-0117",
+        "release-04"
+      ]
+    },
+    {
+      "question_id": "B4-Q-015",
+      "category": "temporal",
+      "question": "What did customers say about the portfolio filter controls after the March filter release?",
+      "expected_answer": "After the March 5 release (release-02), customers liked the new options but found the active state hard to notice, missed the small funnel icon, and said the controls are buried above the chart.",
+      "raw_model_answer": "Status: answered\n\nFeedback described the portfolio filter as hard to discover: people thought there was no filter until someone showed them the “little funnel.” [V2-FB-0225] [V2-FB-0117] [V2-FB-0333] [V2-FB-0177] [V2-SUP-0020]",
+      "gist_answer": "Feedback described the portfolio filter as hard to discover: people thought there was no filter until someone showed them the “little funnel.” [V2-FB-0225] [V2-FB-0117] [V2-FB-0333] [V2-FB-0177] [V2-SUP-0020]",
+      "citations": [
+        "V2-FB-0225",
+        "V2-FB-0117",
+        "V2-FB-0333",
+        "V2-FB-0177",
+        "V2-SUP-0020"
+      ],
+      "retrieved_source_ids": [
+        "release-02",
+        "V2-FB-0225",
+        "V2-FB-0117",
+        "V2-FB-0333",
+        "prd-02",
+        "V2-FB-0177",
+        "release-07",
+        "V2-SUP-0020"
+      ],
+      "input_tokens": 767,
+      "output_tokens": 173,
+      "latency_ms": 2507,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0333",
+        "V2-SUP-0020"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0333",
+        "V2-SUP-0020"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/4",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0117",
+        "V2-FB-0177",
+        "V2-FB-0225",
+        "V2-FB-0333",
+        "V2-SUP-0020",
+        "release-02"
+      ]
+    },
+    {
+      "question_id": "B4-Q-016",
+      "category": "temporal",
+      "question": "Were urgent alerts reported as late before the September per-project controls, or only afterwards?",
+      "expected_answer": "The reports that describe late urgent alerts are dated after the September 5 release (release-08), which says later delay reports are under investigation. These dates do not establish causation or rule out earlier reports worded differently.",
+      "raw_model_answer": "Status: answered\n\nUrgent-alert delays were reported before the September controls: one report describes an urgent task marked at noon with notification arriving in the evening, and says the issue followed the June refresh. [V2-FB-0067] They were also reported afterward: the September 5 release says later delay reports were being investigated, and feedback describes delays after routine alerts were disabled. [release-08] [V2-FB-0019]",
+      "gist_answer": "Urgent-alert delays were reported before the September controls: one report describes an urgent task marked at noon with notification arriving in the evening, and says the issue followed the June refresh. [V2-FB-0067] They were also reported afterward: the September 5 release says later delay reports were being investigated, and feedback describes delays after routine alerts were disabled. [release-08] [V2-FB-0019]",
+      "citations": [
+        "V2-FB-0019",
+        "release-08",
+        "V2-FB-0067"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0163",
+        "release-08",
+        "V2-FB-0127",
+        "V2-SUP-0010",
+        "V2-FB-0151",
+        "V2-FB-0259",
+        "V2-FB-0067"
+      ],
+      "input_tokens": 722,
+      "output_tokens": 360,
+      "latency_ms": 3302,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "answered",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "release-08"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0019",
+        "V2-FB-0067",
+        "V2-FB-0127",
+        "V2-FB-0163",
+        "V2-SUP-0010",
+        "release-08"
+      ]
+    },
+    {
+      "question_id": "B4-Q-017",
+      "category": "contradictory",
+      "question": "Do customers agree that the new template gallery is easy to find?",
+      "expected_answer": "No. Some say the gallery is easy to find now; others found the menu only after support sent a screenshot or searched inside projects without checking the workspace menu.",
+      "raw_model_answer": "Status: partial\n\nNo—the feedback is mixed: some say the gallery is easy to find [V2-FB-0048], while others say it’s useful only once you know where it is [V2-FB-0071] or that discoverability remains a rough edge [V2-FB-0083].\n\nLimitation: The evidence does not show whether this reflects customers overall.",
+      "gist_answer": "No—the feedback is mixed: some say the gallery is easy to find [V2-FB-0048], while others say it’s useful only once you know where it is [V2-FB-0071] or that discoverability remains a rough edge [V2-FB-0083].\n\nLimitation: The evidence does not show whether this reflects customers overall.",
+      "citations": [
+        "V2-FB-0071",
+        "V2-FB-0048",
+        "V2-FB-0083"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0071",
+        "V2-FB-0048",
+        "V2-FB-0360",
+        "V2-SUP-0006",
+        "V2-FB-0275",
+        "V2-FB-0083",
+        "release-06",
+        "V2-FB-0072"
+      ],
+      "input_tokens": 660,
+      "output_tokens": 197,
+      "latency_ms": 2485,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0048",
+        "V2-FB-0071",
+        "V2-FB-0083"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0048"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0083"
+      ],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0048",
+        "V2-FB-0072",
+        "V2-FB-0360"
+      ]
+    },
+    {
+      "question_id": "B4-Q-018",
+      "category": "contradictory",
+      "question": "Did the CRM connector stay unreliable after the June refresh?",
+      "expected_answer": "Mixed. After the June 5 refresh (release-05), one customer's queue was still behind after two reconnections, while others described overnight recovery or stability that week. These reports do not establish lasting reliability.",
+      "raw_model_answer": "Status: partial\n\nSome reports describe sync problems after the June refresh: one customer said the queue still had not caught up after reconnecting, and another reported a gap followed by a backfill. [V2-SUP-0111] [V2-FB-0148] Another said the CRM tile was green while the newest accounts were missing. [V2-FB-0112]\n\nLimitation: The evidence does not establish whether the connector remained broadly or consistently unreliable after the refresh.",
+      "gist_answer": "Some reports describe sync problems after the June refresh: one customer said the queue still had not caught up after reconnecting, and another reported a gap followed by a backfill. [V2-SUP-0111] [V2-FB-0148] Another said the CRM tile was green while the newest accounts were missing. [V2-FB-0112]\n\nLimitation: The evidence does not establish whether the connector remained broadly or consistently unreliable after the refresh.",
+      "citations": [
+        "V2-SUP-0111",
+        "V2-FB-0112",
+        "V2-FB-0148"
+      ],
+      "retrieved_source_ids": [
+        "release-05",
+        "prd-03",
+        "V2-SUP-0111",
+        "V2-FB-0112",
+        "V2-FB-0376",
+        "V2-FB-0148",
+        "V2-FB-0064",
+        "V2-FB-0005"
+      ],
+      "input_tokens": 742,
+      "output_tokens": 229,
+      "latency_ms": 2984,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0112",
+        "V2-FB-0148",
+        "V2-SUP-0111"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-SUP-0111"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0112",
+        "V2-FB-0148"
+      ],
+      "evidence_groups_cited": "1/3",
+      "retrieved_relevant_in_context": [
+        "V2-SUP-0111",
+        "release-05"
+      ]
+    },
+    {
+      "question_id": "B4-Q-019",
+      "category": "contradictory",
+      "question": "Did customers see the invoice breakdown as a clear improvement?",
+      "expected_answer": "Partly. Customers say the breakdown is easier to read, yet the mid-cycle change is still opaque and the adjustment line cannot be traced to actual people.",
+      "raw_model_answer": "Status: partial\n\nSome feedback said the invoice breakdown was easier to read, while noting that mid-cycle changes remained opaque [V2-SUP-0053] [V2-FB-0094].\n\nLimitation: The evidence does not show whether this was a broad customer view or establish that the recent release caused the improvement [V2-SUP-0053].",
+      "gist_answer": "Some feedback said the invoice breakdown was easier to read, while noting that mid-cycle changes remained opaque [V2-SUP-0053] [V2-FB-0094].\n\nLimitation: The evidence does not show whether this was a broad customer view or establish that the recent release caused the improvement [V2-SUP-0053].",
+      "citations": [
+        "V2-SUP-0053",
+        "V2-FB-0094"
+      ],
+      "retrieved_source_ids": [
+        "V2-SUP-0053",
+        "release-04",
+        "V2-FB-0070",
+        "prd-04",
+        "V2-FB-0094",
+        "V2-FB-0214",
+        "V2-FB-0010",
+        "V2-SUP-0033"
+      ],
+      "input_tokens": 717,
+      "output_tokens": 230,
+      "latency_ms": 2715,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "1/2",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0094",
+        "V2-SUP-0053"
+      ]
+    },
+    {
+      "question_id": "B4-Q-020",
+      "category": "contradictory",
+      "question": "Did the owner checklist settle onboarding for invited team members?",
+      "expected_answer": "Not fully. Release-01 says invited users should not need to verify the owner again, but later reports describe a repeat step. Customers say the checklist is clearer while the invited-user handoff is still awkward, and new hires who finished the form twice still could not get in; those reports do not attribute it to the checklist.",
+      "raw_model_answer": "Status: partial\n\nNo—the owner checklist clarified verification, but one report says the invited-user handoff remained awkward; the release also says reports of a repeat step were still under investigation. [release-01] [V2-FB-0013]\n\nLimitation: The evidence does not show whether the handoff was later resolved or how invited team members generally experienced onboarding.",
+      "gist_answer": "No—the owner checklist clarified verification, but one report says the invited-user handoff remained awkward; the release also says reports of a repeat step were still under investigation. [release-01] [V2-FB-0013]\n\nLimitation: The evidence does not show whether the handoff was later resolved or how invited team members generally experienced onboarding.",
+      "citations": [
+        "V2-FB-0013",
+        "release-01"
+      ],
+      "retrieved_source_ids": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "prd-01",
+        "release-01",
+        "V2-FB-0025",
+        "V2-FB-0263",
+        "V2-FB-0212",
+        "V2-SUP-0107"
+      ],
+      "input_tokens": 747,
+      "output_tokens": 167,
+      "latency_ms": 2507,
+      "expected_abstention": false,
+      "abstained": false,
+      "abstention_correct": true,
+      "gist_status": "partial",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0013",
+        "release-01"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [
+        "V2-FB-0013",
+        "release-01"
+      ],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [],
+      "evidence_groups_cited": "2/3",
+      "retrieved_relevant_in_context": [
+        "V2-FB-0013",
+        "V2-FB-0337",
+        "release-01"
+      ]
+    },
+    {
+      "question_id": "B4-Q-021",
+      "category": "unanswerable",
+      "question": "What percentage of enterprise customers use single sign-on?",
+      "expected_answer": "Abstain. No source gives an SSO adoption rate; individual SSO reports are not a percentage.",
+      "raw_model_answer": "Status: insufficient\n\nThe sources describe individual sign-in or identity-configuration issues, but provide no percentage of enterprise customers using single sign-on [V2-SUP-0014] [V2-FB-0099].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "V2-SUP-0101",
+        "V2-FB-0099",
+        "V2-SUP-0009",
+        "V2-SUP-0014",
+        "V2-FB-0255",
+        "V2-SUP-0086",
+        "V2-FB-0327",
+        "V2-FB-0195"
+      ],
+      "input_tokens": 739,
+      "output_tokens": 159,
+      "latency_ms": 2421,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0099",
+        "V2-SUP-0014"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0099",
+        "V2-SUP-0014"
+      ],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-022",
+      "category": "unanswerable",
+      "question": "How many engineering hours did the August portfolio loading change take?",
+      "expected_answer": "Abstain. The release describes the change but no source states engineering effort.",
+      "raw_model_answer": "Status: insufficient\n\nThe release note describes the faster loading path but does not state how many engineering hours it took [release-07].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "V2-FB-0044",
+        "V2-FB-0368",
+        "V2-FB-0008",
+        "V2-SUP-0003",
+        "release-07",
+        "V2-FB-0104",
+        "V2-FB-0032",
+        "V2-FB-0332"
+      ],
+      "input_tokens": 659,
+      "output_tokens": 117,
+      "latency_ms": 1918,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-07"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [
+        "release-07"
+      ],
+      "cited_unjudged": [],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-023",
+      "category": "unanswerable",
+      "question": "Which customer cancelled their subscription because of the digest change?",
+      "expected_answer": "Abstain. Reports describe frustration and muting, but no source records a cancellation.",
+      "raw_model_answer": "Status: insufficient\n\nThe feedback does not identify a customer who cancelled because of the digest change [V2-FB-0318] [V2-FB-0367] [V2-FB-0162].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "V2-FB-0318",
+        "V2-FB-0367",
+        "V2-FB-0355",
+        "V2-FB-0354",
+        "V2-FB-0102",
+        "V2-FB-0162",
+        "V2-FB-0234",
+        "V2-FB-0030"
+      ],
+      "input_tokens": 591,
+      "output_tokens": 175,
+      "latency_ms": 2217,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "V2-FB-0162",
+        "V2-FB-0318",
+        "V2-FB-0367"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [],
+      "cited_unjudged": [
+        "V2-FB-0162",
+        "V2-FB-0318",
+        "V2-FB-0367"
+      ],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    },
+    {
+      "question_id": "B4-Q-024",
+      "category": "unanswerable",
+      "question": "On what date is the next Pulse release scheduled?",
+      "expected_answer": "Abstain. The documents describe past releases only; no future release date is stated.",
+      "raw_model_answer": "Status: insufficient\nThe sources provide publication dates for releases but do not state when the next release is scheduled [release-01] [release-08].",
+      "gist_answer": "I don't have enough evidence in the indexed Pulse sources to answer that question. Try a more specific question or broaden the filters.",
+      "citations": [],
+      "retrieved_source_ids": [
+        "release-02",
+        "release-04",
+        "release-03",
+        "release-08",
+        "release-07",
+        "release-06",
+        "release-05",
+        "release-01"
+      ],
+      "input_tokens": 927,
+      "output_tokens": 156,
+      "latency_ms": 2237,
+      "expected_abstention": true,
+      "abstained": true,
+      "abstention_correct": true,
+      "gist_status": "insufficient_evidence",
+      "model_called": true,
+      "raw_cited_source_ids": [
+        "release-01",
+        "release-08"
+      ],
+      "cited_ids_all_retrieved": true,
+      "cited_relevant": [],
+      "cited_hard_negatives": [
+        "release-08"
+      ],
+      "cited_unjudged": [
+        "release-01"
+      ],
+      "evidence_groups_cited": null,
+      "retrieved_relevant_in_context": []
+    }
+  ],
+  "limitations": "24 held-out questions (20 answerable): directional evidence. Labels are AI-judge labels adopted by the owner. Answer quality requires the owner's claim review of the CSV sheet."
+}

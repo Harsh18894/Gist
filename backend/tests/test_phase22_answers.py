@@ -34,7 +34,7 @@ def _reply(monkeypatch, text, sent=None):
     calls = []
     def fake(_db, _question, evidence):
         calls.append(evidence)
-        return text, {**FREE, "sent_source_ids": sent or [sid for sid, _ in evidence]}
+        return text, {**FREE, "sent_source_ids": sent or [item[0] for item in evidence]}
     monkeypatch.setattr(service, "complete", fake)
     return calls
 
@@ -113,3 +113,71 @@ def test_output_cap_is_600_and_enforced_before_any_spend(monkeypatch):
     monkeypatch.setattr(provider.budget, "reserve", lambda *a, **k: pytest.fail("must reject before reserving"))
     with pytest.raises(provider.PaidRequestRejected, match="600"):
         provider._post(None, "responses", "m", {"input": "x", "max_output_tokens": 601}, 0.1, 0.5)
+
+
+def test_source_metadata_is_sent_to_the_model(monkeypatch):
+    sent = {}
+    def fake_post(_db, endpoint, model, body, *_prices, **_kw):
+        sent["sources"] = json.loads(body["input"])["sources"]
+        sent["instructions"] = body["instructions"]
+        return {"output": [{"type": "message", "content": [{"type": "output_text", "text": "Status: answered\nok [a]"}]}]}, dict(FREE)
+    monkeypatch.setattr(provider, "_post", fake_post)
+    provider.complete(None, "When?", [("a", "text", {"kind": "feedback", "date": "2025-03-01", "segment": None}),
+                                      ("b", "legacy two-item evidence")])
+    assert sent["sources"][0] == {"source_id": "a", "kind": "feedback", "date": "2025-03-01", "content": "text"}
+    assert sent["sources"][1] == {"source_id": "b", "content": "legacy two-item evidence"}
+    assert "does not show when an issue began" in sent["instructions"] and "several unrelated issues" in sent["instructions"]
+
+
+def test_answer_path_passes_hit_metadata(paid_db, monkeypatch):
+    calls = _reply(monkeypatch, "Status: answered\nIt moved [rel-1].")
+    _ask(paid_db)
+    assert all(len(item) == 3 and "date" in item[2] and "kind" in item[2] for item in calls[0])
+
+
+def test_numbers_followed_by_punctuation_are_matched_without_it():
+    from app.rag.evidence import unsupported_numbers
+    source = ["Published: 2025-05-05. Seats archived mid-cycle remain counted. I woke up to 38 project emails."]
+    assert not unsupported_numbers("The breakdown was published May 5, 2025. [release-04]", source)
+    assert not unsupported_numbers("One customer got 38 emails.", source)
+    assert unsupported_numbers("One customer got 39 emails.", source)
+    assert unsupported_numbers("Revenue rose 12%.", source)
+
+
+def test_paid_cause_rule_blocks_only_explicit_cause_requests():
+    policy = [Hit("p:000", "p", "", "release_note", "", None, None, None,
+                  "Exports are counted per workspace until the month closes.", 1, 1, None)]
+    why = "Why did the export count stay high after a workspace was removed?"
+    assert assess(why, policy, fact_rules_only=True).sufficient
+    assert assess(why, policy).rule == "cause"  # demo mode keeps the broad rule
+    assert not assess("What caused the export failures?", policy, fact_rules_only=True).sufficient
+    assert not assess("What is the root cause of the export failures?", policy, fact_rules_only=True).sufficient
+
+
+def test_paid_retriever_setting(paid_db, monkeypatch):
+    calls = _reply(monkeypatch, "Status: answered\nIt moved [rel-1].")
+    monkeypatch.setenv("GIST_PAID_RETRIEVER", "mmr")
+    result = _ask(paid_db)
+    assert result.status == "answered" and calls and all(item[0] in {"rel-1", "fb-1"} for item in calls[0])
+    monkeypatch.setenv("GIST_PAID_RETRIEVER", "other")
+    with pytest.raises(ValueError, match="hybrid or mmr"):
+        _ask(paid_db)
+    monkeypatch.delenv("GIST_PAID_RETRIEVER")
+    assert service.paid_retriever() == "hybrid"
+
+
+def test_dates_from_source_metadata_count_as_number_evidence(tmp_path, monkeypatch):
+    with connection(tmp_path / "dated.sqlite3") as db:
+        initialize(db)
+        with db:
+            upsert_source(db, Source("fb-9", "fb-9", "feedback", "We archived two collaborators but the invoice still counts them.",
+                                     "fb-9.md", "2025-01-29"))
+        row = db.execute("SELECT id, content FROM chunks").fetchone()
+        vector = demo_vector(row["content"])
+        with db:
+            db.execute("INSERT INTO embeddings VALUES (?,?,?,?)", (row["id"], EMBED_MODEL, len(vector), vector.tobytes()))
+        monkeypatch.setattr(service, "embed_query_cached", lambda _db, text: (demo_vector(text), FREE))
+        _reply(monkeypatch, "Status: answered\nA report on January 29 says archived collaborators still counted [fb-9].")
+        assert _ask(db, "Were archived collaborators still counted on invoices?").status == "answered"
+        _reply(monkeypatch, "Status: answered\nA report on January 30 says archived collaborators still counted [fb-9].")
+        assert _ask(db, "Were archived collaborators still counted on invoices?").status == "insufficient_evidence"

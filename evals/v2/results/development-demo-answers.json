@@ -42,7 +42,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 3
+      "latency_ms": 2
     },
     {
       "question_id": "V2-Q-006",
@@ -161,7 +161,7 @@
       "generated_citations_empty": true,
       "expected_abstention": false,
       "abstention_correct": null,
-      "latency_ms": 2
+      "latency_ms": 3
     },
     {
       "question_id": "V2-Q-016",

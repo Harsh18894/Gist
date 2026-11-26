@@ -1,0 +1,37 @@
+{
+  "benchmark_version": "gist-phase2.2-benchmark-4-reviewed",
+  "benchmark_manifest_sha256": "704a227069aca810468c501ea88ab70ab73de6be2ad38a145ef1291adad37775",
+  "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+  "questions_sha256": "7821c54678737479491e367df7032145a7962b267256da6fe71dbc909178b623",
+  "answer_config": {
+    "retriever": "locked v2 hybrid_search (retrieval.py)",
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "gpt-6-luna",
+    "context_sources": 8,
+    "snippet_chars": 1200,
+    "generation_byte_limit": 12000,
+    "max_output_tokens": 600,
+    "evidence_gate": "fact rules only in paid mode",
+    "statuses": [
+      "answered",
+      "partial",
+      "insufficient_evidence"
+    ]
+  },
+  "files_sha256": {
+    "backend/app/rag/service.py": "d7986c1dc45e703ccc9835d0a54542a7bb881e5eb54e1febc4218eb5c3accbb1",
+    "backend/app/rag/provider.py": "59e8efc388a47e6fe3dc1381bcdc29c3c316fa67352c1b63f9d276d2a019ace6",
+    "backend/app/rag/evidence.py": "9a6cb47283ac54c320eb9922c05e9fbf66b5c6c942681ac1c58a09c1a9d6dd1c",
+    "backend/app/rag/retrieval.py": "f62234c6a72695fd51e5f96deebb8ae626bfd8deee664c5c137cc0ff656c3207",
+    "backend/app/rag/ingest.py": "eef51b1677d4b354ab54a5603df50e25e54302f608fe24e16ea1bf3fe428a4b8",
+    "backend/app/rag/budget.py": "cd2d8fb3720b84ce18e67b63f7f52d5c0693a21c2f85cfea09a48c08c9f266a9",
+    "backend/app/schemas.py": "0619d5ccd3c67d474c4a9d6add7ddabab4e42fa0949ac2e4c1c8aef81399dd4a",
+    "backend/app/database.py": "274c5fb2831a4f640737d0145c7290eb1e0c930e536c23921a1f74d019ac937f",
+    "backend/scripts/run_benchmark4_final.py": "ddcd53a10019910025da6efb82d576e429a7f9806b16547aa599372e6e2e3528",
+    "backend/scripts/run_benchmark3_answers.py": "bc590f827afa9dd5dcf4c9f7a4c2ec0deb48af7e04fa7787df97a35a5d6a49ec",
+    "backend/scripts/evaluate_benchmark3_dev.py": "3bfa4b386810a7033b947a459f2ad40c4a256660bad9557e1a97fe37482037f1"
+  },
+  "locked_at": "2026-11-26T10:32:04+00:00",
+  "selection": "Phase 2.2 answer path as developed on benchmark-3 development questions. Task 5 (MMR for answers) was skipped by owner decision; the locked v2 hybrid remains the retriever.",
+  "policy": "Run the 24 v4 questions once. Do not tune or rerun against them."
+}

@@ -115,6 +115,10 @@ Phase 2.1 has an **experimental offline retriever** with bounded local subquerie
 
 Phase 2.1 final validation is complete: see [the report](docs/phase21-final-validation.md). Held-out retrieval Hit@5 was 0.80 on five questions, but only 5 of 20 answerable answers were rated good in the owner's claim review. Proposed release readiness: **FAIL**.
 
+Phase 2.2 final validation is complete: see [the report](docs/phase22-final-validation.md). On 24 new held-out questions, all 4 unanswerables were declined, wrong refusals were 10%, and the owner rated 40% of answerable answers good and 20% poor. That misses the 50%-good target, so the proposed verdict is **FAIL**. Benchmark-v4 labels are AI-judge labels adopted by the owner.
+
+Phase 2.3 final validation is complete: see [the report](docs/phase23-final-validation.md). On 24 new held-out questions with owner-written labels, all unanswerables were declined, wrong refusals were 5%, poor answers 15%, and no temporal answer was rated poor. 45% of answerable answers were rated good, just under the 50% target, so the proposed verdict is **FAIL (narrow)**. Multi-source and contradictory questions remain the limitation.
+
 ## API
 
 Phase 1: `GET /api/health`, `GET /api/stats`, `GET /api/records`, and `GET /api/records/{id}`. Phase 2: `GET /api/search` (`keyword`, `semantic`, or `hybrid`), `POST /api/ask`, `GET /api/sources/{id}`, `GET /api/rag/status`, and `GET /api/usage`. Search and Ask support segment, product-area, and inclusive date filters. Ask defaults to `mode: "demo"`; `mode: "openai"` is guarded. Invalid input returns structured 422 errors. Retrieval-only results use `retrieved_sources`; generated answers use `citations`. The source endpoint returns the indexed original text for verification.

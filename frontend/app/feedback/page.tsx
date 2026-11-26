@@ -7,7 +7,9 @@ import { ErrorState, Loading } from "@/components/states";
 
 const categories: Category[] = ["Verification friction", "Integration failures", "Notification overload", "Slow performance", "Billing confusion", "Feature discoverability", "Account access", "Import mapping", "Alert delivery", "Template permissions", "Multiple issues", "Unclear"];
 const segments: Segment[] = ["Individual", "SMB", "Mid-market", "Enterprise"];
-const date = (value: string) => new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const EXTRA_KEYS = ["product_area", "sentiment", "feature", "channel", "from_date", "to_date"] as const;
+const EXTRA_LABELS: Record<string, string> = { product_area: "Area", sentiment: "Sentiment", feature: "Feature", channel: "Channel", from_date: "From", to_date: "To" };
+const date = (value: string) => new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }); // UTC, matching how analytics count dates
 
 export default function FeedbackExplorer() {
   const [category, setCategory] = useState("");
@@ -19,16 +21,28 @@ export default function FeedbackExplorer() {
   const [selected, setSelected] = useState<Feedback | null>(null);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
+  // Drill-down filters arrive in the URL from the analytics overview (area, sentiment, feature, channel, dates).
+  const [extra, setExtra] = useState<Record<string, string>>({});
+  const [ready, setReady] = useState(false);
   const reload = useCallback(() => setAttempt(n => n + 1), []);
   useEffect(() => {
+    const url = new URLSearchParams(window.location.search);
+    setCategory(url.get("category") ?? ""); setSegment(url.get("segment") ?? "");
+    const q = url.get("query") ?? ""; setQuery(q); setSearch(q);
+    const found: Record<string, string> = {};
+    for (const key of EXTRA_KEYS) { const value = url.get(key); if (value) found[key] = value; }
+    setExtra(found); setReady(true);
+  }, []);
+  useEffect(() => {
+    if (!ready) return;
     const controller = new AbortController();
-    const params = new URLSearchParams({ page: String(page), page_size: "15" });
+    const params = new URLSearchParams({ page: String(page), page_size: "15", ...extra });
     if (category) params.set("category", category);
     if (segment) params.set("segment", segment);
     if (query) params.set("query", query);
     apiGet<Page<Feedback>>(`/api/records?${params}`, controller.signal).then(result => { setData(result); setError(""); }).catch(e => { if (e.name !== "AbortError") setError(e.message); });
     return () => controller.abort();
-  }, [category, segment, query, page, attempt]);
+  }, [category, segment, query, page, attempt, extra, ready]);
   const filterCategory = (value: string) => { setCategory(value); setPage(1); setData(null); };
   const filterSegment = (value: string) => { setSegment(value); setPage(1); setData(null); };
   const submitSearch = (event: React.FormEvent) => { event.preventDefault(); setQuery(search.trim()); setPage(1); setData(null); };
@@ -43,6 +57,13 @@ export default function FeedbackExplorer() {
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_210px_190px]"><form onSubmit={submitSearch} className="relative"><Search size={17} className="absolute left-3 top-3 text-muted"/><input aria-label="Search feedback" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search feedback or feature…" className="h-11 w-full rounded-lg border border-line bg-white pl-10 pr-20 text-sm outline-none focus:border-brand"/><button type="submit" className="absolute right-1.5 top-1.5 rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white">Search</button></form>
           <select aria-label="Filter by issue category" value={category} onChange={e => filterCategory(e.target.value)} className="h-11 rounded-lg border border-line bg-white px-3 text-sm"><option value="">All categories</option>{categories.map(x => <option key={x}>{x}</option>)}</select>
           <select aria-label="Filter by customer segment" value={segment} onChange={e => filterSegment(e.target.value)} className="h-11 rounded-lg border border-line bg-white px-3 text-sm"><option value="">All segments</option>{segments.map(x => <option key={x}>{x}</option>)}</select></div>
+        {Object.keys(extra).length > 0 && <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Drill-down filters">
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Filtered by</span>
+          {Object.entries(extra).map(([key, value]) => <button key={key} type="button" onClick={() => { const next = { ...extra }; delete next[key]; setExtra(next); setPage(1); setData(null); }}
+            className="inline-flex items-center gap-1.5 rounded-full bg-pale px-3 py-1 text-xs font-semibold text-brand hover:bg-teal-100" aria-label={`Remove filter ${EXTRA_LABELS[key]}: ${value}`}>
+            {EXTRA_LABELS[key]}: {value === "" ? "(blank)" : value}<X size={12}/></button>)}
+          <button type="button" onClick={() => { setExtra({}); setPage(1); setData(null); }} className="text-xs font-semibold text-muted hover:text-ink">Clear all</button>
+        </div>}
       </div>
       {error ? <div className="p-5"><ErrorState message={error} retry={() => { setError(""); reload(); }}/></div> : !data ? <div className="p-5"><Loading/></div> : data.items.length === 0 ? <div className="p-14 text-center"><h3 className="font-bold">No matching feedback</h3><p className="mt-2 text-sm text-muted">Try a broader search or remove a filter.</p><button className="mt-4 text-sm font-semibold text-brand hover:underline" onClick={() => { setCategory(""); setSegment(""); setSearch(""); setQuery(""); setPage(1); }}>Clear filters</button></div> : <>
         <div className="overflow-x-auto"><table className="w-full min-w-[790px] text-left text-sm"><thead className="bg-canvas text-xs uppercase tracking-wider text-muted"><tr><th className="px-6 py-3 font-semibold">Feedback</th><th className="px-4 py-3 font-semibold">Category</th><th className="px-4 py-3 font-semibold">Segment</th><th className="px-4 py-3 font-semibold">Sentiment</th><th className="px-6 py-3 font-semibold">Date</th></tr></thead><tbody className="divide-y divide-line">{data.items.map(record => <tr key={record.id} className="transition hover:bg-canvas/70"><td className="max-w-sm px-6 py-4"><button onClick={() => openRecord(record.id)} className="block w-full text-left focus-visible:rounded"><span className="font-semibold text-brand hover:underline">{record.id}</span><span className="mt-1 block truncate text-muted">{record.feedback_text}</span></button></td><td className="px-4 py-4 font-medium">{record.issue_category}</td><td className="px-4 py-4 text-muted">{record.customer_segment}</td><td className="px-4 py-4"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${record.sentiment === "Negative" ? "bg-rose-50 text-rose-700" : record.sentiment === "Positive" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>{record.sentiment}</span></td><td className="whitespace-nowrap px-6 py-4 text-muted">{date(record.timestamp)}</td></tr>)}</tbody></table></div>

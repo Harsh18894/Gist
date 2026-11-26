@@ -79,6 +79,10 @@ FACT_RULES: tuple[FactRule, ...] = (
         "No source states an aggregate count; retrieved records are a sample, not a total."),
 )
 
+# Paid mode blocks only explicit requests for a cause. A general "why…" question can be
+# answered by a stated rule or policy; the model is told not to infer causes from timing.
+EXPLICIT_CAUSE = re.compile(r"\b(?:what caused|what causes|root cause|what led to|caused by what)\b")
+
 # Product processes. A question naming one needs evidence about the same process;
 # members of a group count as covering each other for term coverage.
 PROCESS_SYNONYMS: dict[str, frozenset[str]] = {
@@ -134,7 +138,8 @@ def assess(question: str, hits: list[Hit], *, fact_rules_only: bool = False) -> 
             return EvidenceAssessment(False, f"No source is about the requested {group} process.", "process")
 
     for rule in FACT_RULES:
-        if rule.question.search(query):
+        pattern = EXPLICIT_CAUSE if fact_rules_only and rule.name == "cause" else rule.question
+        if pattern.search(query):
             texts = contents if rule.case_sensitive_evidence else lowered
             if not any(rule.evidence.search(text) for text in texts):
                 return EvidenceAssessment(False, rule.reason, rule.name)
@@ -159,4 +164,6 @@ def unsupported_numbers(answer: str, cited_texts: list[str]) -> bool:
     without_citations = re.sub(r"\[[^\]]+\]", "", answer)
     evidence = " ".join(cited_texts)
     numbers = re.findall(r"(?<![\w-])\$?\d[\d,.]*%?(?![\w-])", without_citations)
-    return any(value not in evidence for value in numbers)
+    # Sentence punctuation after a number ("May 5, 2025.") is not part of the number.
+    values = [value.rstrip(",.") for value in numbers]
+    return any(value and value not in evidence for value in values)

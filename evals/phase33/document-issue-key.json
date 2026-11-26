@@ -1,0 +1,83 @@
+{
+  "provenance": "Agent-authored on 2026-11-26 from each document's title and 'Problem and scope' / 'Changes and limits' text, before any linking was run. Owner-reviewed on 2026-11-27: one correction (below); all other assignments confirmed. Used only to score document linking.",
+  "issues_without_documents": [
+    "RESET_LOGIN",
+    "SSO_SETUP",
+    "CSV_MAPPING"
+  ],
+  "documents": {
+    "prd-01": [
+      "INVITE_LOOP"
+    ],
+    "prd-02": [
+      "DASH_SLOW",
+      "DASH_FILTER"
+    ],
+    "prd-03": [
+      "CRM_SYNC"
+    ],
+    "prd-04": [
+      "SEAT_BILL"
+    ],
+    "prd-05": [
+      "DIGEST_NOISE",
+      "ALERT_DELAY"
+    ],
+    "prd-06": [
+      "TEMPLATE_FIND",
+      "TEMPLATE_ACCESS"
+    ],
+    "release-01": [
+      "INVITE_LOOP"
+    ],
+    "release-02": [
+      "DASH_FILTER"
+    ],
+    "release-03": [
+      "DIGEST_NOISE"
+    ],
+    "release-04": [
+      "SEAT_BILL"
+    ],
+    "release-05": [
+      "CRM_SYNC"
+    ],
+    "release-06": [
+      "TEMPLATE_FIND",
+      "TEMPLATE_ACCESS"
+    ],
+    "release-07": [
+      "DASH_SLOW"
+    ],
+    "release-08": [
+      "ALERT_DELAY",
+      "DIGEST_NOISE"
+    ]
+  },
+  "owner_review": {
+    "date": "2026-11-27",
+    "result": "1 correction; 13 of 14 documents confirmed; RESET_LOGIN and SSO_SETUP confirmed as having no document"
+  },
+  "corrections": [
+    {
+      "document": "prd-03",
+      "old": [
+        "CRM_SYNC",
+        "CSV_MAPPING"
+      ],
+      "new": [
+        "CRM_SYNC"
+      ],
+      "issues_without_documents_old": [
+        "RESET_LOGIN",
+        "SSO_SETUP"
+      ],
+      "issues_without_documents_new": [
+        "RESET_LOGIN",
+        "SSO_SETUP",
+        "CSV_MAPPING"
+      ],
+      "reason": "Owner: prd-03 covers missing records after the connector reports success and explicitly calls CSV import mapping a separate workflow."
+    }
+  ]
+}

@@ -1,13 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { apiGet, Page, query, Ticket } from "@/lib/api";
 import { ErrorState, Loading } from "@/components/states";
+import { Button, EmptyState, FilterChip, Id, Meta, PageHeader, Pagination, Panel, severityTone, Status } from "@/components/ui";
 
 const KEYS = ["severity", "status", "category", "segment", "product_area", "from_date", "to_date"] as const;
 const LABELS: Record<string, string> = { severity: "Severity", status: "Status", category: "Category", segment: "Segment", product_area: "Area", from_date: "From", to_date: "To" };
 const day = (value: string) => new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }); // UTC, matching how analytics count dates
+const statusTone = (s: string) => /resolved|closed/i.test(s) ? "positive" as const : /open/i.test(s) ? "accent" as const : "neutral" as const;
 
 export default function SupportTickets() {
   const [filters, setFilters] = useState<Record<string, string> | null>(null);
@@ -33,37 +35,41 @@ export default function SupportTickets() {
   }, [filters, page, attempt]);
 
   const remove = (key: string) => { const next = { ...filters }; delete next[key]; setFilters(next); setPage(1); setData(null); };
+  const clear = () => { setFilters({}); setPage(1); setData(null); };
+  const active = filters ? Object.keys(filters).length : 0;
 
   return <>
-    <div className="mb-8"><p className="mb-2 text-xs font-bold uppercase tracking-[.2em] text-brand">Customer voice / Pulse</p>
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Support Tickets</h1>
-      <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">The synthetic support conversations behind the ticket figures on the Overview.</p></div>
-    <section aria-label="Support tickets" className="overflow-hidden rounded-2xl border border-line bg-white shadow-panel">
-      <div className="border-b border-line p-5 sm:p-6">
-        <h2 className="text-lg font-bold">Tickets</h2><p className="mt-1 text-sm text-muted">{data ? `${data.total} matching tickets` : "Loading…"}</p>
-        {filters && Object.keys(filters).length > 0 && <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Active filters">
-          {Object.entries(filters).map(([key, value]) => <button key={key} type="button" onClick={() => remove(key)} aria-label={`Remove filter ${LABELS[key]}: ${value}`}
-            className="inline-flex items-center gap-1.5 rounded-full bg-pale px-3 py-1 text-xs font-semibold text-brand hover:bg-teal-100">{LABELS[key]}: {value}<X size={12}/></button>)}
-          <button type="button" onClick={() => { setFilters({}); setPage(1); setData(null); }} className="text-xs font-semibold text-muted hover:text-ink">Clear all</button>
-        </div>}
-      </div>
-      {error ? <div className="p-5"><ErrorState message={error} retry={() => { setError(""); reload(); }}/></div> : !data ? <div className="p-5"><Loading/></div>
-        : data.items.length === 0 ? <div className="p-14 text-center"><h3 className="font-bold">No matching tickets</h3><p className="mt-1 text-sm text-muted">Remove a filter to widen the results.</p></div> : <>
-        <ul className="divide-y divide-line">{data.items.map(t => <li key={t.id} className="px-5 py-4 sm:px-6">
-          <details>
-            <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-3">
-              <span><span className="font-semibold">{t.subject}</span><span className="ml-2 text-xs text-muted">{t.id}</span></span>
-              <span className="flex flex-wrap gap-2 text-xs"><span className="rounded-full bg-canvas px-2.5 py-1">{t.severity}</span><span className="rounded-full bg-canvas px-2.5 py-1">{t.status}</span>
-                <span className="rounded-full bg-canvas px-2.5 py-1">{t.customer_segment}</span><span className="rounded-full bg-canvas px-2.5 py-1">{t.product_area}</span><span className="text-muted">{day(t.timestamp)}</span></span>
+    <PageHeader title="Support tickets" lede="The support conversations behind the ticket figures. Open a ticket to read what the customer wrote."/>
+    {active > 0 && <div className="mb-4 flex flex-wrap items-center gap-2" aria-label="Active filters">
+      {Object.entries(filters!).map(([key, value]) => <FilterChip key={key} label={LABELS[key]} value={value} onRemove={() => remove(key)}/>)}
+      <Button size="sm" variant="ghost" onClick={clear}>Clear all</Button>
+    </div>}
+
+    <Panel as="section" aria-label="Support tickets" className="overflow-hidden">
+      <p className="border-b border-line bg-sunken/50 px-4 py-2.5 text-xs text-ink-3 sm:px-5" aria-live="polite">{data ? `${data.total} ${active ? "matching " : ""}tickets` : "Loading tickets…"}</p>
+      {error ? <div className="p-5"><ErrorState message={error} retry={() => { setError(""); reload(); }}/></div>
+        : !data ? <div className="p-5"><Loading label="Loading tickets…" rows={8}/></div>
+        : data.items.length === 0 ? <EmptyState title="No tickets match" action={active > 0 && <Button onClick={clear}>Clear all filters</Button>}>
+            {active > 0 ? "Remove a filter to widen the results." : "There are no support tickets in this dataset."}</EmptyState>
+        : <>
+        <ul className="divide-y divide-line">{data.items.map(t => <li key={t.id}>
+          <details className="group">
+            <summary className="flex cursor-pointer list-none items-start gap-3 px-4 py-3.5 transition-colors duration-fast hover:bg-sunken/60 sm:px-5 [&::-webkit-details-marker]:hidden">
+              <ChevronDown size={16} className="mt-1 shrink-0 text-ink-3 transition-transform duration-fast group-open:rotate-180" aria-hidden="true"/>
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-medium text-ink">{t.subject}</span>
+                <Meta className="mt-1" items={[<Status key="sev" tone={severityTone(t.severity)}>{t.severity}</Status>, <Status key="st" tone={statusTone(t.status)}>{t.status}</Status>, t.customer_segment, t.product_area, day(t.timestamp)]}/>
+              </span>
+              <Id className="mt-0.5 hidden sm:block">{t.id}</Id>
             </summary>
-            <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-ink">{t.description}</p>
-            <p className="mt-2 text-xs text-muted">{t.issue_category} · {t.related_feature}</p>
+            <div className="px-4 pb-5 pl-11 sm:px-5 sm:pl-12">
+              <p className="voice max-w-prose whitespace-pre-wrap text-[0.975rem] leading-7">{t.description}</p>
+              <Meta className="mt-3" items={[t.issue_category, t.related_feature, t.subscription_tier, <Id key="id" className="sm:hidden">{t.id}</Id>]}/>
+            </div>
           </details>
         </li>)}</ul>
-        <div className="flex items-center justify-between border-t border-line px-5 py-4 text-sm sm:px-6"><span className="text-muted">Page {data.page} of {data.pages} · {data.total} tickets</span>
-          <div className="flex gap-2"><button disabled={page <= 1} onClick={() => setPage(p => p - 1)} aria-label="Previous page" className="rounded-lg border border-line p-2 disabled:opacity-40"><ArrowLeft size={16}/></button>
-            <button disabled={page >= data.pages} onClick={() => setPage(p => p + 1)} aria-label="Next page" className="rounded-lg border border-line p-2 disabled:opacity-40"><ArrowRight size={16}/></button></div></div>
+        <Pagination page={data.page} pages={data.pages} total={data.total} noun="tickets" onPage={p => { setPage(p); document.getElementById("main")?.scrollIntoView({ block: "start" }); }}/>
       </>}
-    </section>
+    </Panel>
   </>;
 }

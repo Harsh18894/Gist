@@ -1,0 +1,2868 @@
+{
+  "data": "Pulse v2 feedback (400 records); annotations used for scoring only",
+  "split": "sha256(source_id) parity: even = development, odd = test",
+  "targets": {
+    "purity": 0.85,
+    "issue_recall": 0.75,
+    "hard_negatives_separated": 6,
+    "ambiguous_unclustered": 0.5,
+    "multi_issue_both": 0.5
+  },
+  "selection_rule": "max development ARI, then purity, then fewer unclustered",
+  "chosen": {
+    "category": {
+      "config": {
+        "method": "category",
+        "threshold": 0.3,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 10,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 10,
+        "purity": 0.8424,
+        "issue_recall": 0.7213,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.9333,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.8125,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.8062,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 6,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 1.0,
+        "multi_issue_both": 0.0
+      },
+      "test": {
+        "split": "test",
+        "records": 205,
+        "clusters_used": 10,
+        "purity": 0.8757,
+        "issue_recall": 0.707,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8889,
+          "CRM_SYNC": 0.85,
+          "CSV_MAPPING": 0.8333,
+          "DASH_FILTER": 0.8667,
+          "DASH_SLOW": 0.8889,
+          "DIGEST_NOISE": 0.9444,
+          "INVITE_LOOP": 0.75,
+          "RESET_LOGIN": 0.6538,
+          "SEAT_BILL": 0.8667,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.9412,
+          "TEMPLATE_FIND": 0.0
+        },
+        "adjusted_rand_index": 0.8651,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 6,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 1.0,
+        "multi_issue_both": 0.0
+      },
+      "test_targets_met": {
+        "purity": true,
+        "issue_recall": false,
+        "hard_negatives_separated": true,
+        "ambiguous_unclustered": true,
+        "multi_issue_both": false
+      }
+    },
+    "tfidf": {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.05,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 42,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 42,
+        "purity": 0.6319,
+        "issue_recall": 0.5794,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.6667,
+          "CRM_SYNC": 0.3125,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.6471,
+          "DASH_SLOW": 0.4667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.6316,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.5714
+        },
+        "adjusted_rand_index": 0.1617,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 25,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      },
+      "test": {
+        "split": "test",
+        "records": 205,
+        "clusters_used": 41,
+        "purity": 0.568,
+        "issue_recall": 0.5024,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.5556,
+          "CRM_SYNC": 0.5,
+          "CSV_MAPPING": 0.4444,
+          "DASH_FILTER": 0.6667,
+          "DASH_SLOW": 0.5,
+          "DIGEST_NOISE": 0.8333,
+          "INVITE_LOOP": 0.2,
+          "RESET_LOGIN": 0.8462,
+          "SEAT_BILL": 0.2667,
+          "SSO_SETUP": 0.25,
+          "TEMPLATE_ACCESS": 0.8824,
+          "TEMPLATE_FIND": 0.0833
+        },
+        "adjusted_rand_index": 0.1362,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "ALERT_DELAY",
+          "CSV_MAPPING",
+          "DASH_SLOW",
+          "DIGEST_NOISE",
+          "RESET_LOGIN",
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS"
+        ],
+        "mixed_clusters": 26,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      },
+      "test_targets_met": {
+        "purity": false,
+        "issue_recall": false,
+        "hard_negatives_separated": true,
+        "ambiguous_unclustered": false,
+        "multi_issue_both": false
+      }
+    },
+    "embedding": {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.55,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 31,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 31,
+        "purity": 0.7469,
+        "issue_recall": 0.6912,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.5625,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.5294,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.75,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.3571,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.3766,
+        "single_issue_unclustered": 0.0182,
+        "hard_negatives_separated": 5,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 10,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.3077
+      },
+      "test": {
+        "split": "test",
+        "records": 205,
+        "clusters_used": 30,
+        "purity": 0.7362,
+        "issue_recall": 0.6886,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.6111,
+          "CRM_SYNC": 0.55,
+          "CSV_MAPPING": 0.8333,
+          "DASH_FILTER": 0.5333,
+          "DASH_SLOW": 0.8333,
+          "DIGEST_NOISE": 0.8333,
+          "INVITE_LOOP": 0.8,
+          "RESET_LOGIN": 0.8462,
+          "SEAT_BILL": 0.8667,
+          "SSO_SETUP": 0.375,
+          "TEMPLATE_ACCESS": 0.7647,
+          "TEMPLATE_FIND": 0.4167
+        },
+        "adjusted_rand_index": 0.3728,
+        "single_issue_unclustered": 0.0355,
+        "hard_negatives_separated": 5,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "CSV_MAPPING",
+          "DASH_FILTER",
+          "DASH_SLOW",
+          "DIGEST_NOISE",
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.4091
+      },
+      "test_targets_met": {
+        "purity": false,
+        "issue_recall": false,
+        "hard_negatives_separated": false,
+        "ambiguous_unclustered": false,
+        "multi_issue_both": false
+      }
+    }
+  },
+  "development_sweep": [
+    {
+      "config": {
+        "method": "category",
+        "threshold": 0.3,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 10,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 10,
+        "purity": 0.8424,
+        "issue_recall": 0.7213,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.9333,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.8125,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.8062,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 6,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 1.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.05,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 42,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 42,
+        "purity": 0.6074,
+        "issue_recall": 0.5683,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.5,
+          "CRM_SYNC": 0.375,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.6471,
+          "DASH_SLOW": 0.2667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.4375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.9444,
+          "SSO_SETUP": 0.6842,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.5714
+        },
+        "adjusted_rand_index": 0.1617,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 27,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0769
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.05,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 42,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 42,
+        "purity": 0.6196,
+        "issue_recall": 0.565,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.5,
+          "CRM_SYNC": 0.1875,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.6471,
+          "DASH_SLOW": 0.4667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.4375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.9444,
+          "SSO_SETUP": 0.6316,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.5714
+        },
+        "adjusted_rand_index": 0.1617,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 25,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.05,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 42,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 42,
+        "purity": 0.6319,
+        "issue_recall": 0.5794,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.6667,
+          "CRM_SYNC": 0.3125,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.6471,
+          "DASH_SLOW": 0.4667,
+          "DIGEST_NOISE": 0.8125,
+          "INVITE_LOOP": 0.375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.6316,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.5714
+        },
+        "adjusted_rand_index": 0.1617,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 25,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.1,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 70,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.7961,
+        "issue_recall": 0.6991,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.5,
+          "CSV_MAPPING": 0.4667,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.5833,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1398,
+        "single_issue_unclustered": 0.0788,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 26,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.1538
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.1,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 70,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 69,
+        "purity": 0.8013,
+        "issue_recall": 0.6947,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.5,
+          "CSV_MAPPING": 0.4667,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.5833,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1405,
+        "single_issue_unclustered": 0.0848,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 22,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.0769
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.1,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 70,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 69,
+        "purity": 0.8146,
+        "issue_recall": 0.7051,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.625,
+          "CSV_MAPPING": 0.4667,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.5833,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1405,
+        "single_issue_unclustered": 0.0848,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 22,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.0769
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.15,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 74,
+        "purity": 0.8552,
+        "issue_recall": 0.7494,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8824,
+          "DASH_SLOW": 0.6667,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1291,
+        "single_issue_unclustered": 0.1212,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 23,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.15,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 74,
+        "purity": 0.8732,
+        "issue_recall": 0.745,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8824,
+          "DASH_SLOW": 0.6667,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1318,
+        "single_issue_unclustered": 0.1394,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 19,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.15,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 74,
+        "purity": 0.8936,
+        "issue_recall": 0.7554,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8824,
+          "DASH_SLOW": 0.6667,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1325,
+        "single_issue_unclustered": 0.1455,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 19,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.2,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.8732,
+        "issue_recall": 0.7486,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1313,
+        "single_issue_unclustered": 0.1394,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 20,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.2,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.8921,
+        "issue_recall": 0.7443,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1341,
+        "single_issue_unclustered": 0.1576,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 16,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.2,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.913,
+        "issue_recall": 0.7547,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8421,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.6667
+        },
+        "adjusted_rand_index": 0.1348,
+        "single_issue_unclustered": 0.1636,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 16,
+        "ambiguous_unclustered": 0.1176,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.25,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.9191,
+        "issue_recall": 0.7613,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1336,
+        "single_issue_unclustered": 0.1758,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 17,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.5385
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.25,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.9474,
+        "issue_recall": 0.7585,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1365,
+        "single_issue_unclustered": 0.1939,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.25,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 76,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 73,
+        "purity": 0.9697,
+        "issue_recall": 0.7689,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1372,
+        "single_issue_unclustered": 0.2,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.3,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9173,
+        "issue_recall": 0.7359,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.625,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1303,
+        "single_issue_unclustered": 0.1939,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 14,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.3,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9535,
+        "issue_recall": 0.7331,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.625,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1345,
+        "single_issue_unclustered": 0.2182,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 10,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.3,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9843,
+        "issue_recall": 0.7435,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1361,
+        "single_issue_unclustered": 0.2303,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 10,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9538,
+        "issue_recall": 0.7463,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1324,
+        "single_issue_unclustered": 0.2121,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9921,
+        "issue_recall": 0.7435,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1366,
+        "single_issue_unclustered": 0.2364,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 9,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 73,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9921,
+        "issue_recall": 0.7435,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1366,
+        "single_issue_unclustered": 0.2364,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 9,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 69,
+        "purity": 0.9535,
+        "issue_recall": 0.7376,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1324,
+        "single_issue_unclustered": 0.2182,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 12,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 69,
+        "purity": 1.0,
+        "issue_recall": 0.7435,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1371,
+        "single_issue_unclustered": 0.2485,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 9,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "tfidf",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 69,
+        "purity": 1.0,
+        "issue_recall": 0.7435,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7059,
+          "DASH_SLOW": 0.9333,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.9286,
+          "TEMPLATE_FIND": 0.619
+        },
+        "adjusted_rand_index": 0.1371,
+        "single_issue_unclustered": 0.2485,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 9,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.35,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.4,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 1,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 1,
+        "purity": 0.1152,
+        "issue_recall": 0.0833,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.0,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.0,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 1,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.45,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 2,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 2,
+        "purity": 0.1273,
+        "issue_recall": 0.0926,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.1111,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": -0.0005,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.45,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 2,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 2,
+        "purity": 0.1273,
+        "issue_recall": 0.0926,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.1111,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": -0.0005,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.45,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 2,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 2,
+        "purity": 0.1273,
+        "issue_recall": 0.0926,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.0,
+          "DASH_FILTER": 0.0,
+          "DASH_SLOW": 0.0,
+          "DIGEST_NOISE": 0.0,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.1111,
+          "SSO_SETUP": 0.0,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": -0.0005,
+        "single_issue_unclustered": 0.0,
+        "hard_negatives_separated": 0,
+        "hard_negative_pairs_separated": [],
+        "fragmented_issues": [],
+        "mixed_clusters": 2,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.5,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 12,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 12,
+        "purity": 0.4479,
+        "issue_recall": 0.3881,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0833,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.1333,
+          "DIGEST_NOISE": 0.75,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.2688,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 2,
+        "hard_negative_pairs_separated": [
+          "CRM_SYNC/CSV_MAPPING",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DASH_SLOW",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 8,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.5,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 12,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 12,
+        "purity": 0.4479,
+        "issue_recall": 0.3829,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0833,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.1333,
+          "DIGEST_NOISE": 0.6875,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.2688,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 2,
+        "hard_negative_pairs_separated": [
+          "CRM_SYNC/CSV_MAPPING",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DASH_SLOW",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 8,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.5,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 12,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 12,
+        "purity": 0.4479,
+        "issue_recall": 0.3829,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.0833,
+          "CRM_SYNC": 0.0,
+          "CSV_MAPPING": 0.5333,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.1333,
+          "DIGEST_NOISE": 0.6875,
+          "INVITE_LOOP": 0.0,
+          "RESET_LOGIN": 0.0,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.7895,
+          "TEMPLATE_ACCESS": 0.0,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.2688,
+        "single_issue_unclustered": 0.0121,
+        "hard_negatives_separated": 2,
+        "hard_negative_pairs_separated": [
+          "CRM_SYNC/CSV_MAPPING",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DASH_SLOW",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 8,
+        "ambiguous_unclustered": 0.0,
+        "multi_issue_both": 0.0
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.55,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 31,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 31,
+        "purity": 0.7407,
+        "issue_recall": 0.6896,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.5625,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.5294,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.75,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 1.0,
+          "TEMPLATE_ACCESS": 0.2857,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.3766,
+        "single_issue_unclustered": 0.0182,
+        "hard_negatives_separated": 5,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 12,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.3846
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.55,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 31,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 31,
+        "purity": 0.7407,
+        "issue_recall": 0.6852,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.5625,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.5294,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.75,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.2857,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.3766,
+        "single_issue_unclustered": 0.0182,
+        "hard_negatives_separated": 5,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 11,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.3077
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.55,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 31,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 31,
+        "purity": 0.7469,
+        "issue_recall": 0.6912,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.5625,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.5294,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.75,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.3333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.3571,
+          "TEMPLATE_FIND": 0.9048
+        },
+        "adjusted_rand_index": 0.3766,
+        "single_issue_unclustered": 0.0182,
+        "hard_negatives_separated": 5,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 10,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.3077
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.6,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 49,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 48,
+        "purity": 0.8481,
+        "issue_recall": 0.7903,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.9412,
+          "DASH_SLOW": 0.6667,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 1.0,
+          "TEMPLATE_ACCESS": 0.4286,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.3252,
+        "single_issue_unclustered": 0.0424,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 19,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.6154
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.6,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 49,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 47,
+        "purity": 0.8481,
+        "issue_recall": 0.7859,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.9412,
+          "DASH_SLOW": 0.6667,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.4286,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.3252,
+        "single_issue_unclustered": 0.0424,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 16,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.5385
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.6,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 49,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 47,
+        "purity": 0.8544,
+        "issue_recall": 0.7876,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.75,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.6,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.7333,
+          "DIGEST_NOISE": 0.625,
+          "INVITE_LOOP": 0.9375,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8889,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.5,
+          "TEMPLATE_FIND": 1.0
+        },
+        "adjusted_rand_index": 0.3252,
+        "single_issue_unclustered": 0.0424,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "CRM_SYNC",
+          "DASH_FILTER",
+          "DIGEST_NOISE",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.65,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 67,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 64,
+        "purity": 0.9236,
+        "issue_recall": 0.7984,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8824,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 1.0,
+          "TEMPLATE_ACCESS": 0.6429,
+          "TEMPLATE_FIND": 0.8095
+        },
+        "adjusted_rand_index": 0.2026,
+        "single_issue_unclustered": 0.1273,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "DASH_FILTER",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 16,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.5385
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.65,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 67,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 63,
+        "purity": 0.9437,
+        "issue_recall": 0.8043,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.8125,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8824,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 1.0,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.8095
+        },
+        "adjusted_rand_index": 0.2034,
+        "single_issue_unclustered": 0.1394,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "DASH_FILTER",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 12,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.5385
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.65,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 67,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 63,
+        "purity": 0.9437,
+        "issue_recall": 0.7949,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.9167,
+          "CRM_SYNC": 0.75,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.7647,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.6875,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 1.0,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.8095
+        },
+        "adjusted_rand_index": 0.2034,
+        "single_issue_unclustered": 0.1394,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "DASH_FILTER",
+          "INVITE_LOOP",
+          "RESET_LOGIN",
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 9,
+        "ambiguous_unclustered": 0.0588,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.7,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 71,
+        "purity": 0.9489,
+        "issue_recall": 0.7798,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.6429,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.1611,
+        "single_issue_unclustered": 0.1697,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 14,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.7,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 71,
+        "purity": 0.9704,
+        "issue_recall": 0.7857,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.1618,
+        "single_issue_unclustered": 0.1818,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 12,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.7,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 71,
+        "purity": 0.9704,
+        "issue_recall": 0.7857,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.8,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8667,
+          "DIGEST_NOISE": 0.5625,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.8333,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.9474,
+          "TEMPLATE_ACCESS": 0.7143,
+          "TEMPLATE_FIND": 0.7143
+        },
+        "adjusted_rand_index": 0.1618,
+        "single_issue_unclustered": 0.1818,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 11,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.75,
+        "min_size": 3,
+        "secondary_threshold": 0.35
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9318,
+        "issue_recall": 0.7471,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.5238
+        },
+        "adjusted_rand_index": 0.1329,
+        "single_issue_unclustered": 0.2,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 13,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.75,
+        "min_size": 3,
+        "secondary_threshold": 0.45
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9609,
+        "issue_recall": 0.7471,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.5238
+        },
+        "adjusted_rand_index": 0.1362,
+        "single_issue_unclustered": 0.2242,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 11,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    },
+    {
+      "config": {
+        "method": "embedding",
+        "threshold": 0.75,
+        "min_size": 3,
+        "secondary_threshold": 0.55
+      },
+      "clusters": 74,
+      "development": {
+        "split": "development",
+        "records": 195,
+        "clusters_used": 70,
+        "purity": 0.9609,
+        "issue_recall": 0.7471,
+        "recall_by_issue": {
+          "ALERT_DELAY": 0.8333,
+          "CRM_SYNC": 0.9375,
+          "CSV_MAPPING": 0.7333,
+          "DASH_FILTER": 0.8235,
+          "DASH_SLOW": 0.8,
+          "DIGEST_NOISE": 0.5,
+          "INVITE_LOOP": 0.5625,
+          "RESET_LOGIN": 0.6667,
+          "SEAT_BILL": 0.8333,
+          "SSO_SETUP": 0.8947,
+          "TEMPLATE_ACCESS": 0.8571,
+          "TEMPLATE_FIND": 0.5238
+        },
+        "adjusted_rand_index": 0.1362,
+        "single_issue_unclustered": 0.2242,
+        "hard_negatives_separated": 7,
+        "hard_negative_pairs_separated": [
+          "INVITE_LOOP/RESET_LOGIN",
+          "INVITE_LOOP/SSO_SETUP",
+          "RESET_LOGIN/SSO_SETUP",
+          "CRM_SYNC/CSV_MAPPING",
+          "DASH_SLOW/DASH_FILTER",
+          "TEMPLATE_FIND/TEMPLATE_ACCESS",
+          "DIGEST_NOISE/ALERT_DELAY"
+        ],
+        "fragmented_issues": [
+          "SEAT_BILL",
+          "SSO_SETUP",
+          "TEMPLATE_ACCESS",
+          "TEMPLATE_FIND"
+        ],
+        "mixed_clusters": 11,
+        "ambiguous_unclustered": 0.1765,
+        "multi_issue_both": 0.4615
+      }
+    }
+  ]
+}

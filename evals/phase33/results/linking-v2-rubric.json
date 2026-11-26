@@ -1,0 +1,2880 @@
+{
+  "data": "Pulse v2; annotations and the document key used for scoring only",
+  "targets": {
+    "ticket_precision": 0.8,
+    "document_top1_precision": 0.75,
+    "no_document_abstention": 0.5
+  },
+  "selection_rules": "tickets: max dev recall with dev precision >= 0.85; documents: max dev mean(top-1 precision, recall, abstention)",
+  "chosen": {
+    "config": {
+      "ticket_threshold": 0.6,
+      "second_ticket_margin": 0.03,
+      "document_threshold": 0.5,
+      "max_documents": 2
+    },
+    "development": {
+      "split": "development",
+      "confidence_calibration": {
+        "high": {
+          "opportunities": 7,
+          "mean_purity": 1.0
+        },
+        "low": {
+          "opportunities": 9,
+          "mean_purity": 0.9074
+        },
+        "medium": {
+          "opportunities": 13,
+          "mean_purity": 0.9519
+        }
+      },
+      "ticket_links": 46,
+      "ticket_precision": 0.9565,
+      "ticket_recall": 0.8302,
+      "ambiguous_tickets_linked": 0,
+      "opportunities": 29,
+      "opportunities_with_document": 2,
+      "document_top1_precision": 1.0,
+      "document_recall": 0.0952,
+      "no_document_opportunities": 8,
+      "no_document_abstention": 1.0
+    },
+    "test": {
+      "split": "test",
+      "confidence_calibration": {
+        "high": {
+          "opportunities": 3,
+          "mean_purity": 1.0
+        },
+        "low": {
+          "opportunities": 6,
+          "mean_purity": 1.0
+        },
+        "medium": {
+          "opportunities": 23,
+          "mean_purity": 0.9582
+        }
+      },
+      "ticket_links": 52,
+      "ticket_precision": 0.8846,
+      "ticket_recall": 0.7759,
+      "ambiguous_tickets_linked": 0,
+      "opportunities": 32,
+      "opportunities_with_document": 8,
+      "document_top1_precision": 1.0,
+      "document_recall": 0.2759,
+      "no_document_opportunities": 3,
+      "no_document_abstention": 1.0
+    },
+    "test_targets_met": {
+      "ticket_precision": true,
+      "document_top1_precision": true,
+      "no_document_abstention": true,
+      "confidence_monotonic": false,
+      "high_confidence_purity_0_9": true
+    }
+  },
+  "opportunities": 61,
+  "development_sweep": [
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.4,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.45,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.5,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 62,
+        "ticket_precision": 0.7581,
+        "ticket_recall": 0.8868,
+        "ambiguous_tickets_linked": 3,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.55,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 8,
+            "mean_purity": 0.8958
+          },
+          "medium": {
+            "opportunities": 14,
+            "mean_purity": 0.9554
+          }
+        },
+        "ticket_links": 56,
+        "ticket_precision": 0.8214,
+        "ticket_recall": 0.8679,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.6,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 9,
+            "mean_purity": 0.9074
+          },
+          "medium": {
+            "opportunities": 13,
+            "mean_purity": 0.9519
+          }
+        },
+        "ticket_links": 46,
+        "ticket_precision": 0.9565,
+        "ticket_recall": 0.8302,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.65,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 10,
+            "mean_purity": 0.9167
+          },
+          "medium": {
+            "opportunities": 12,
+            "mean_purity": 0.9479
+          }
+        },
+        "ticket_links": 37,
+        "ticket_precision": 0.9459,
+        "ticket_recall": 0.6604,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.7,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 7,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 13,
+            "mean_purity": 0.9359
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 0.9306
+          }
+        },
+        "ticket_links": 26,
+        "ticket_precision": 0.9615,
+        "ticket_recall": 0.4717,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.75,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "high": {
+            "opportunities": 4,
+            "mean_purity": 1.0
+          },
+          "low": {
+            "opportunities": 17,
+            "mean_purity": 0.9142
+          },
+          "medium": {
+            "opportunities": 8,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 12,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.2264,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.3,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 28,
+        "document_top1_precision": 0.3571,
+        "document_recall": 0.619,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.35,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 21,
+        "document_top1_precision": 0.4286,
+        "document_recall": 0.4762,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.25
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.4,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 12,
+        "document_top1_precision": 0.5833,
+        "document_recall": 0.3333,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 0.875
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.45,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.5,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 2,
+        "document_top1_precision": 1.0,
+        "document_recall": 0.0952,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.55,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.6,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.65,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    },
+    {
+      "config": {
+        "ticket_threshold": 0.8,
+        "second_ticket_margin": 0.03,
+        "document_threshold": 0.7,
+        "max_documents": 2
+      },
+      "development": {
+        "split": "development",
+        "confidence_calibration": {
+          "low": {
+            "opportunities": 20,
+            "mean_purity": 0.9271
+          },
+          "medium": {
+            "opportunities": 9,
+            "mean_purity": 1.0
+          }
+        },
+        "ticket_links": 6,
+        "ticket_precision": 1.0,
+        "ticket_recall": 0.1132,
+        "ambiguous_tickets_linked": 0,
+        "opportunities": 29,
+        "opportunities_with_document": 0,
+        "document_top1_precision": null,
+        "document_recall": 0.0,
+        "no_document_opportunities": 8,
+        "no_document_abstention": 1.0
+      }
+    }
+  ]
+}

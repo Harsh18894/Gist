@@ -1,15 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, Search, X } from "lucide-react";
 import { apiGet, Category, Feedback, Page, Segment } from "@/lib/api";
+import { Dialog } from "@/components/dialog";
 import { ErrorState, Loading } from "@/components/states";
+import { Button, EmptyState, FilterChip, Id, Meta, PageHeader, Pagination, Panel, SearchField, Select, sentimentTone, Status } from "@/components/ui";
 
 const categories: Category[] = ["Verification friction", "Integration failures", "Notification overload", "Slow performance", "Billing confusion", "Feature discoverability", "Account access", "Import mapping", "Alert delivery", "Template permissions", "Multiple issues", "Unclear"];
 const segments: Segment[] = ["Individual", "SMB", "Mid-market", "Enterprise"];
 const EXTRA_KEYS = ["product_area", "sentiment", "feature", "channel", "from_date", "to_date"] as const;
 const EXTRA_LABELS: Record<string, string> = { product_area: "Area", sentiment: "Sentiment", feature: "Feature", channel: "Channel", from_date: "From", to_date: "To" };
 const date = (value: string) => new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }); // UTC, matching how analytics count dates
+const COLS = "lg:grid lg:grid-cols-[minmax(0,1fr)_10rem_7rem_6.5rem_6.5rem] lg:gap-x-5";
 
 export default function FeedbackExplorer() {
   const [category, setCategory] = useState("");
@@ -43,33 +45,73 @@ export default function FeedbackExplorer() {
     apiGet<Page<Feedback>>(`/api/records?${params}`, controller.signal).then(result => { setData(result); setError(""); }).catch(e => { if (e.name !== "AbortError") setError(e.message); });
     return () => controller.abort();
   }, [category, segment, query, page, attempt, extra, ready]);
-  const filterCategory = (value: string) => { setCategory(value); setPage(1); setData(null); };
-  const filterSegment = (value: string) => { setSegment(value); setPage(1); setData(null); };
-  const submitSearch = (event: React.FormEvent) => { event.preventDefault(); setQuery(search.trim()); setPage(1); setData(null); };
+  const refresh = () => { setPage(1); setData(null); };
+  const filterCategory = (value: string) => { setCategory(value); refresh(); };
+  const filterSegment = (value: string) => { setSegment(value); refresh(); };
+  const submitSearch = (event: React.FormEvent) => { event.preventDefault(); setQuery(search.trim()); refresh(); };
+  const changeSearch = (value: string) => { setSearch(value); if (!value && query) { setQuery(""); refresh(); } };
+  const clearAll = () => { setCategory(""); setSegment(""); setSearch(""); setQuery(""); setExtra({}); refresh(); };
+  const goPage = (p: number) => { setPage(p); setData(null); document.getElementById("main")?.scrollIntoView({ block: "start" }); };
   const openRecord = async (id: string) => {
     try { setSelected(await apiGet<Feedback>(`/api/records/${encodeURIComponent(id)}`)); }
     catch (e) { setError(e instanceof Error ? e.message : "Could not load record."); }
   };
+  const anyFilter = Boolean(category || segment || query || Object.keys(extra).length);
+
   return <>
-    <div className="mb-8"><p className="mb-2 text-xs font-bold uppercase tracking-[.2em] text-brand">Customer voice / Pulse</p><h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Feedback Explorer</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-muted">Inspect the original synthetic feedback behind each theme. Search text, filter the evidence, and open a record for details.</p></div>
-    <section className="overflow-hidden rounded-2xl border border-line bg-white shadow-panel" aria-label="Feedback records">
-      <div className="border-b border-line p-5 sm:p-6"><div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="text-lg font-bold">All feedback</h2><p className="mt-1 text-sm text-muted">{data ? `${data.total} matching records` : "Loading records…"}</p></div><span className="rounded-full bg-pale px-3 py-1.5 text-xs font-semibold text-brand">Synthetic dataset</span></div>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_210px_190px]"><form onSubmit={submitSearch} className="relative"><Search size={17} className="absolute left-3 top-3 text-muted"/><input aria-label="Search feedback" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search feedback or feature…" className="h-11 w-full rounded-lg border border-line bg-white pl-10 pr-20 text-sm outline-none focus:border-brand"/><button type="submit" className="absolute right-1.5 top-1.5 rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white">Search</button></form>
-          <select aria-label="Filter by issue category" value={category} onChange={e => filterCategory(e.target.value)} className="h-11 rounded-lg border border-line bg-white px-3 text-sm"><option value="">All categories</option>{categories.map(x => <option key={x}>{x}</option>)}</select>
-          <select aria-label="Filter by customer segment" value={segment} onChange={e => filterSegment(e.target.value)} className="h-11 rounded-lg border border-line bg-white px-3 text-sm"><option value="">All segments</option>{segments.map(x => <option key={x}>{x}</option>)}</select></div>
-        {Object.keys(extra).length > 0 && <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Drill-down filters">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted">Filtered by</span>
-          {Object.entries(extra).map(([key, value]) => <button key={key} type="button" onClick={() => { const next = { ...extra }; delete next[key]; setExtra(next); setPage(1); setData(null); }}
-            className="inline-flex items-center gap-1.5 rounded-full bg-pale px-3 py-1 text-xs font-semibold text-brand hover:bg-teal-100" aria-label={`Remove filter ${EXTRA_LABELS[key]}: ${value}`}>
-            {EXTRA_LABELS[key]}: {value === "" ? "(blank)" : value}<X size={12}/></button>)}
-          <button type="button" onClick={() => { setExtra({}); setPage(1); setData(null); }} className="text-xs font-semibold text-muted hover:text-ink">Clear all</button>
-        </div>}
+    <PageHeader title="Feedback" lede="Every customer record behind the numbers. Search the text, narrow by category or segment, and open a record for its full context."/>
+
+    <div className="mb-4 grid gap-3 sm:grid-cols-[minmax(0,1fr)_12rem_10rem]">
+      <form onSubmit={submitSearch} role="search" className="flex gap-2">
+        <SearchField value={search} onChange={changeSearch} label="Search feedback" placeholder="Search text or feature, then press Enter" className="flex-1"/>
+        <Button type="submit" className="sm:hidden">Search</Button>
+      </form>
+      <Select aria-label="Filter by issue category" value={category} onChange={e => filterCategory(e.target.value)}><option value="">All categories</option>{categories.map(x => <option key={x}>{x}</option>)}</Select>
+      <Select aria-label="Filter by customer segment" value={segment} onChange={e => filterSegment(e.target.value)}><option value="">All segments</option>{segments.map(x => <option key={x}>{x}</option>)}</Select>
+    </div>
+    {(Object.keys(extra).length > 0 || query) && <div className="mb-4 flex flex-wrap items-center gap-2" aria-label="Active filters">
+      {query && <FilterChip label="Text" value={query} onRemove={() => { setSearch(""); setQuery(""); refresh(); }}/>}
+      {Object.entries(extra).map(([key, value]) => <FilterChip key={key} label={EXTRA_LABELS[key]} value={value === "" ? "(blank)" : value}
+        onRemove={() => { const next = { ...extra }; delete next[key]; setExtra(next); refresh(); }}/>)}
+      <Button size="sm" variant="ghost" onClick={clearAll}>Clear all</Button>
+    </div>}
+
+    <Panel as="section" aria-label="Feedback records" className="overflow-hidden">
+      <div className={`hidden border-b border-line bg-sunken/50 px-5 py-2.5 text-xs font-medium text-ink-3 ${COLS}`} aria-hidden="true">
+        <span>Feedback <span className="num font-normal">{data ? `· ${data.total}` : ""}</span></span><span>Category</span><span>Segment</span><span>Sentiment</span><span className="text-right">Date</span>
       </div>
-      {error ? <div className="p-5"><ErrorState message={error} retry={() => { setError(""); reload(); }}/></div> : !data ? <div className="p-5"><Loading/></div> : data.items.length === 0 ? <div className="p-14 text-center"><h3 className="font-bold">No matching feedback</h3><p className="mt-2 text-sm text-muted">Try a broader search or remove a filter.</p><button className="mt-4 text-sm font-semibold text-brand hover:underline" onClick={() => { setCategory(""); setSegment(""); setSearch(""); setQuery(""); setPage(1); }}>Clear filters</button></div> : <>
-        <div className="overflow-x-auto"><table className="w-full min-w-[790px] text-left text-sm"><thead className="bg-canvas text-xs uppercase tracking-wider text-muted"><tr><th className="px-6 py-3 font-semibold">Feedback</th><th className="px-4 py-3 font-semibold">Category</th><th className="px-4 py-3 font-semibold">Segment</th><th className="px-4 py-3 font-semibold">Sentiment</th><th className="px-6 py-3 font-semibold">Date</th></tr></thead><tbody className="divide-y divide-line">{data.items.map(record => <tr key={record.id} className="transition hover:bg-canvas/70"><td className="max-w-sm px-6 py-4"><button onClick={() => openRecord(record.id)} className="block w-full text-left focus-visible:rounded"><span className="font-semibold text-brand hover:underline">{record.id}</span><span className="mt-1 block truncate text-muted">{record.feedback_text}</span></button></td><td className="px-4 py-4 font-medium">{record.issue_category}</td><td className="px-4 py-4 text-muted">{record.customer_segment}</td><td className="px-4 py-4"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${record.sentiment === "Negative" ? "bg-rose-50 text-rose-700" : record.sentiment === "Positive" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>{record.sentiment}</span></td><td className="whitespace-nowrap px-6 py-4 text-muted">{date(record.timestamp)}</td></tr>)}</tbody></table></div>
-        <div className="flex items-center justify-between border-t border-line px-5 py-4 text-sm sm:px-6"><span className="text-muted">Page {data.page} of {data.pages} · {data.total} records</span><div className="flex gap-2"><button disabled={page <= 1} onClick={() => { setPage(page - 1); setData(null); }} aria-label="Previous page" className="rounded-lg border border-line p-2 disabled:opacity-40"><ArrowLeft size={16}/></button><button disabled={page >= data.pages} onClick={() => { setPage(page + 1); setData(null); }} aria-label="Next page" className="rounded-lg border border-line p-2 disabled:opacity-40"><ArrowRight size={16}/></button></div></div>
+      <p className="border-b border-line px-4 py-2.5 text-xs text-ink-3 lg:hidden" aria-live="polite">{data ? `${data.total} matching records` : "Loading records…"}</p>
+      {error ? <div className="p-5"><ErrorState message={error} retry={() => { setError(""); reload(); }}/></div>
+        : !data ? <div className="p-5"><Loading label="Loading records…" rows={8}/></div>
+        : data.items.length === 0 ? <EmptyState title="No feedback matches" action={anyFilter && <Button onClick={clearAll}>Clear all filters</Button>}>
+            {anyFilter ? "Nothing fits every filter at once. Remove one to widen the results." : "There are no feedback records in this dataset yet."}</EmptyState>
+        : <>
+          <ul className="divide-y divide-line">{data.items.map(record => <li key={record.id}>
+            <button type="button" onClick={() => { setSelected(record); openRecord(record.id); }} className={`block w-full px-4 py-3.5 text-left transition-colors duration-fast hover:bg-sunken/60 sm:px-5 ${COLS} lg:items-start`}>
+              <span className="block min-w-0">
+                <span className="voice line-clamp-2 text-[0.975rem] leading-6">{record.feedback_text}</span>
+                <span className="mt-1 block lg:hidden"><Meta items={[<Status key="s" tone={sentimentTone(record.sentiment)}>{record.sentiment}</Status>, record.issue_category, record.customer_segment, date(record.timestamp)]}/></span>
+                <Id className="mt-1 hidden lg:block">{record.id}</Id>
+              </span>
+              <span className="hidden pt-0.5 text-sm text-ink md:block">{record.issue_category}</span>
+              <span className="hidden pt-0.5 text-sm text-ink-2 md:block">{record.customer_segment}</span>
+              <span className="hidden pt-0.5 md:block"><Status tone={sentimentTone(record.sentiment)}>{record.sentiment}</Status></span>
+              <span className="num hidden whitespace-nowrap pt-0.5 text-right text-sm text-ink-2 md:block">{date(record.timestamp)}</span>
+            </button>
+          </li>)}</ul>
+          <Pagination page={data.page} pages={data.pages} total={data.total} noun="records" onPage={goPage}/>
+        </>}
+    </Panel>
+
+    <Dialog open={Boolean(selected)} onClose={() => setSelected(null)} kicker={selected && <>Feedback record · <Id>{selected.id}</Id></>} title={selected ? `${selected.issue_category} · ${selected.product_area}` : ""}
+      footer={<p className="text-2xs text-ink-3">Synthetic Pulse data. Category and feature labels come with the record; Gist does not infer them.</p>}>
+      {selected && <>
+        <blockquote className="voice border-l-2 border-accent pl-4 text-lg leading-8">{selected.feedback_text}</blockquote>
+        <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 text-sm sm:grid-cols-3">
+          {([["Date", date(selected.timestamp)], ["Sentiment", <Status key="s" tone={sentimentTone(selected.sentiment)}>{selected.sentiment}</Status>], ["Segment", selected.customer_segment], ["Tier", selected.subscription_tier], ["Product area", selected.product_area], ["Feature", selected.related_feature], ["Category", selected.issue_category], ["Channel", selected.feedback_channel]] as [string, React.ReactNode][]).map(([label, value]) =>
+            <div key={label}><dt className="text-2xs text-ink-3">{label}</dt><dd className="mt-0.5 text-ink">{value}</dd></div>)}
+        </dl>
       </>}
-    </section>
-    {selected && <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/45 p-4" onMouseDown={e => { if (e.target === e.currentTarget) setSelected(null); }}><section role="dialog" aria-modal="true" aria-labelledby="record-title" className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"><div className="flex items-start justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-wider text-brand">Feedback record</p><h2 id="record-title" className="mt-1 text-2xl font-bold">{selected.id}</h2></div><button onClick={() => setSelected(null)} aria-label="Close record" className="rounded-lg p-2 text-muted hover:bg-canvas"><X size={20}/></button></div><p className="mt-6 rounded-xl bg-canvas p-5 text-base leading-7">“{selected.feedback_text}”</p><dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 text-sm">{[["Date", date(selected.timestamp)], ["Segment", selected.customer_segment], ["Tier", selected.subscription_tier], ["Product area", selected.product_area], ["Category", selected.issue_category], ["Feature", selected.related_feature], ["Channel", selected.feedback_channel], ["Sentiment", selected.sentiment]].map(([label, value]) => <div key={label}><dt className="text-xs font-semibold uppercase tracking-wider text-muted">{label}</dt><dd className="mt-1 font-medium">{value}</dd></div>)}</dl><p className="mt-7 border-t border-line pt-4 text-xs text-muted">Synthetic Pulse data · source identifier {selected.id}</p></section></div>}
+    </Dialog>
   </>;
 }

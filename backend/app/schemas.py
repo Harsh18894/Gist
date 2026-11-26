@@ -243,3 +243,64 @@ class TicketPage(BaseModel):
     page: int = Field(ge=1)
     page_size: int = Field(ge=1, le=100)
     pages: int = Field(ge=0)
+
+
+# --- Phase 3.2 issue explorer (clusters are similarity groups, not confirmed root causes)
+class IssueRecord(BaseModel):
+    id: str
+    text: str
+    date: str
+    segment: str
+    area: str
+    sentiment: str
+    category: str
+
+
+class IssueMember(IssueRecord):
+    membership: Literal["primary", "secondary"]
+    similarity: float
+    shared_terms: list[str]
+
+
+class SubTheme(BaseModel):
+    id: str
+    theme_id: str
+    label: str
+    top_terms: list[str]
+    size: int
+    secondary_members: int
+    distinct_texts: int
+    trend: Literal["new", "rising", "falling", "steady"]
+    recent_90_days: int
+    prior_90_days: int
+    first_date: str
+    last_date: str
+    segments: dict[str, int]
+    areas: dict[str, int]
+    sentiment: dict[str, int]
+    needs_triage: bool
+    representatives: list[dict[str, str]]
+
+
+class SubThemeDetail(SubTheme):
+    members: list[IssueMember]
+
+
+class Theme(BaseModel):
+    id: str
+    label: str
+    size: int
+    sub_theme_ids: list[str]
+    areas: dict[str, int]
+    needs_triage: bool
+
+
+class IssueMap(BaseModel):
+    method: str
+    records: int
+    themes: list[Theme]
+    sub_themes: list[SubTheme]
+    unclustered_count: int
+    multi_issue_records: int
+    interpretation: str
+    evaluation: str

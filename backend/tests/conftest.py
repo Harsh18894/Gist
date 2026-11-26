@@ -45,6 +45,8 @@ def _ledger_state() -> tuple[int, int] | None:
 @pytest.fixture(autouse=True)
 def _offline_env(monkeypatch, tmp_path: Path):
     monkeypatch.setenv("GIST_SPEND_DB_PATH", str(tmp_path / "spend.sqlite3"))
+    monkeypatch.setenv("GIST_PRIORITIES_DB_PATH", str(tmp_path / "priorities.sqlite3"))
+    monkeypatch.setenv("GIST_EXPERIMENTS_DIR", str(tmp_path / "generated"))
     for name in CLEARED_ENV:
         monkeypatch.delenv(name, raising=False)
     before = _ledger_state()

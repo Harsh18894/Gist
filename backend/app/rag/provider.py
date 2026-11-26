@@ -254,6 +254,11 @@ def judge(db: sqlite3.Connection, instructions: str, payload: dict) -> tuple[str
     return _output_text(response), {**usage, "model": model}
 
 
+def suggest(db: sqlite3.Connection, instructions: str, payload: dict) -> tuple[str, dict]:
+    """One bounded Phase 3.5 suggestion-drafting call: same guards, cap and ledger as the judge."""
+    return judge(db, instructions, payload)
+
+
 def complete(db: sqlite3.Connection, question: str, evidence: list[tuple]) -> tuple[str, dict]:
     """Generate a cited answer. `evidence` items are (source_id, text) or (source_id, text, metadata)."""
     model, input_price, output_price = _llm_settings()

@@ -1,0 +1,163 @@
+{
+  "data": "Pulse v2 (synthetic); no PM estimates applied",
+  "opportunities": 61,
+  "targets": {
+    "mean_top10_overlap": 7,
+    "min_top10_overlap": 5,
+    "max_spearman_with_reach": 0.9
+  },
+  "summary": {
+    "mean_top10_overlap": 9.6,
+    "min_top10_overlap": 9,
+    "spearman_with_reach": 0.8526
+  },
+  "targets_met": {
+    "mean_top10_overlap": true,
+    "min_top10_overlap": true,
+    "not_just_volume": true
+  },
+  "default_top10": [
+    "OPP-C13",
+    "OPP-C11",
+    "OPP-C01",
+    "OPP-C10",
+    "OPP-C02",
+    "OPP-C05",
+    "OPP-C03",
+    "OPP-C26",
+    "OPP-C16",
+    "OPP-C07"
+  ],
+  "variants": [
+    {
+      "changed": "reach",
+      "factor": 0.5,
+      "weights": {
+        "reach": 12,
+        "recent": 20,
+        "negative": 15,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 9,
+      "spearman_with_default": 0.9831
+    },
+    {
+      "changed": "reach",
+      "factor": 1.5,
+      "weights": {
+        "reach": 38,
+        "recent": 20,
+        "negative": 15,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 9,
+      "spearman_with_default": 0.9921
+    },
+    {
+      "changed": "recent",
+      "factor": 0.5,
+      "weights": {
+        "reach": 25,
+        "recent": 10,
+        "negative": 15,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 9,
+      "spearman_with_default": 0.9856
+    },
+    {
+      "changed": "recent",
+      "factor": 1.5,
+      "weights": {
+        "reach": 25,
+        "recent": 30,
+        "negative": 15,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9881
+    },
+    {
+      "changed": "negative",
+      "factor": 0.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 8,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9897
+    },
+    {
+      "changed": "negative",
+      "factor": 1.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 22,
+        "support": 20,
+        "evidence": 20
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9962
+    },
+    {
+      "changed": "support",
+      "factor": 0.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 15,
+        "support": 10,
+        "evidence": 20
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9877
+    },
+    {
+      "changed": "support",
+      "factor": 1.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 15,
+        "support": 30,
+        "evidence": 20
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9872
+    },
+    {
+      "changed": "evidence",
+      "factor": 0.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 15,
+        "support": 20,
+        "evidence": 10
+      },
+      "top10_overlap": 9,
+      "spearman_with_default": 0.9959
+    },
+    {
+      "changed": "evidence",
+      "factor": 1.5,
+      "weights": {
+        "reach": 25,
+        "recent": 20,
+        "negative": 15,
+        "support": 20,
+        "evidence": 30
+      },
+      "top10_overlap": 10,
+      "spearman_with_default": 0.9959
+    }
+  ]
+}

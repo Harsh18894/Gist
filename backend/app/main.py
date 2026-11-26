@@ -8,14 +8,15 @@ from fastapi import FastAPI, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 
-from . import analytics
+from . import analytics, evidence, experiments, issues, opportunities, priorities
 from .config import cors_origin
 from .database import connection
 from .errors import GistError, InvalidRequest
 from .schemas import (AnalyticsReleases, AnalyticsRepeated, AnalyticsSummary, AnalyticsTrends, Area, AskRequest,
                       AskResponse, Category, ErrorResponse, Feedback, Page, SearchHit, Segment, Sentiment,
-                      SourceDetail, Stats, TicketPage, UsageSummary)
+                      SourceDetail, Stats, TicketPage, UsageSummary, IssueMap, SubThemeDetail, IssueRecord)
 from .services import get_record, get_stats, list_records
 from .rag.ingest import DEMO_MODEL
 from .rag.provider import PaidApiDisabled, PaidRequestRejected, ProviderError, usage_summary
@@ -47,7 +48,7 @@ async def unexpected_errors(request: Request, call_next):
         return _error(500, "internal_error", "Gist hit an unexpected error. Check the API logs.")
 
 
-app.add_middleware(CORSMiddleware, allow_origins=[cors_origin()], allow_methods=["GET", "POST"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=[cors_origin()], allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
 
 
 @app.exception_handler(GistError)
@@ -219,3 +220,127 @@ def rag_status() -> dict:
             "paid_api_enabled": os.getenv("GIST_ENABLE_PAID_API") == "true" and
             os.getenv("GIST_PAID_EVAL_APPROVED") == "true" and chunks > 0 and openai_vectors == chunks,
             "llm_model": os.getenv("GIST_LLM_MODEL", DEFAULT_LLM_MODEL)}
+
+
+@app.get("/api/issues", response_model=IssueMap)
+def issue_map() -> dict:
+    with connection() as db:
+        data = issues.issue_map(db)
+    return {**{k: v for k, v in data.items() if k not in ("sub_themes", "unclustered")},
+            "sub_themes": [{k: v for k, v in s.items() if k != "members"} for s in data["sub_themes"]],
+            "unclustered_count": len(data["unclustered"])}
+
+
+@app.get("/api/issues/unclustered", response_model=list[IssueRecord])
+def unclustered_issues() -> list[dict]:
+    with connection() as db:
+        return issues.issue_map(db)["unclustered"]
+
+
+@app.get("/api/issues/{sub_theme_id}", response_model=SubThemeDetail, responses={404: {"model": ErrorResponse}})
+def sub_theme(sub_theme_id: str) -> dict | JSONResponse:
+    with connection() as db:
+        found = next((s for s in issues.issue_map(db)["sub_themes"] if s["id"] == sub_theme_id), None)
+    if not found:
+        return _error(404, "not_found", "Sub-theme not found.")
+    return found
+
+
+@app.get("/api/opportunities")
+def opportunity_list() -> dict:
+    """Evidence-backed opportunity cards (lightweight list; per-record evidence IDs omitted)."""
+    with connection() as db:
+        data = opportunities.build(db)
+    slim = []
+    for card in data["opportunities"]:
+        evidence = {k: v for k, v in card["evidence"].items() if k not in ("feedback_ids", "linked_tickets")}
+        evidence["linked_tickets"] = len(card["evidence"]["linked_tickets"])
+        slim.append({**{k: v for k, v in card.items() if k not in ("evidence", "quotes", "assumptions", "unknowns")},
+                     "evidence": evidence})
+    return {**{k: v for k, v in data.items() if k != "opportunities"}, "opportunities": slim}
+
+
+@app.get("/api/opportunities/{opportunity_id}", response_model=None, responses={404: {"model": ErrorResponse}})
+def opportunity_detail(opportunity_id: str) -> dict | JSONResponse:
+    with connection() as db:
+        data = opportunities.build(db)
+        found = next((c for c in data["opportunities"] if c["id"] == opportunity_id), None)
+        if not found:
+            return _error(404, "not_found", "Opportunity not found.")
+        records = {row[0]: row[1] for row in db.execute(
+            f"SELECT id, feedback_text FROM feedback WHERE id IN ({','.join('?' * len(found['evidence']['feedback_ids']))})",
+            found["evidence"]["feedback_ids"])}
+        tickets = {row[0]: {"subject": row[1], "description": row[2]} for row in db.execute(
+            f"SELECT id, subject, description FROM support_tickets WHERE id IN ({','.join('?' * max(1, len(found['evidence']['linked_tickets'])))})",
+            [t["id"] for t in found["evidence"]["linked_tickets"]] or [""])}
+    return {**found, "confidence_rubric": data["confidence_rubric"], "interpretation": data["interpretation"],
+            "evidence": {**found["evidence"],
+                         "feedback": [{"id": i, "text": records[i]} for i in found["evidence"]["feedback_ids"]],
+                         "linked_tickets": [{**t, **tickets[t["id"]]} for t in found["evidence"]["linked_tickets"]]}}
+
+
+class WeightsUpdate(BaseModel):
+    weights: dict[str, int]
+
+
+class PriorityInput(BaseModel):
+    strategic: Literal["low", "medium", "high"] | None = None
+    effort: Literal["S", "M", "L", "XL"] | None = None
+    note: str | None = Field(default=None, max_length=priorities.NOTE_LIMIT)
+
+
+@app.get("/api/priorities")
+def priority_table() -> dict:
+    """Transparent prioritization: measured parts, weights and PM estimates, labelled separately."""
+    with connection() as db:
+        cards = opportunities.build(db)["opportunities"]
+        return priorities.table(db, cards)
+
+
+@app.put("/api/priorities/weights")
+def priority_weights(body: WeightsUpdate) -> dict:
+    with connection() as db:
+        key = priorities.dataset_key(db)
+    return {"weights": priorities.set_weights(key, body.weights)}
+
+
+@app.delete("/api/priorities/weights")
+def priority_weights_reset() -> dict:
+    with connection() as db:
+        key = priorities.dataset_key(db)
+    return {"weights": priorities.reset_weights(key)}
+
+
+@app.put("/api/priorities/{opportunity_id}", response_model=None, responses={404: {"model": ErrorResponse}})
+def priority_input(opportunity_id: str, body: PriorityInput) -> dict | JSONResponse:
+    with connection() as db:
+        key = priorities.dataset_key(db)
+        known = {c["id"] for c in opportunities.build(db)["opportunities"]}
+    if opportunity_id not in known:
+        return _error(404, "not_found", "Opportunity not found.")
+    return priorities.set_input(key, opportunity_id, body.strategic, body.effort, body.note)
+
+
+@app.get("/api/experiments")
+def experiment_list() -> dict:
+    """Experiment cards: data facts plus saved, checked AI suggestions (never a live paid call)."""
+    with connection() as db:
+        return experiments.experiments(db)
+
+
+@app.get("/api/experiments/{opportunity_id}", response_model=None, responses={404: {"model": ErrorResponse}})
+def experiment_detail(opportunity_id: str) -> dict | JSONResponse:
+    with connection() as db:
+        data = experiments.experiments(db)
+    found = next((e for e in data["experiments"] if e["opportunity_id"] == opportunity_id), None)
+    if not found:
+        return _error(404, "not_found", "Experiment not found.")
+    return {**found, "interpretation": data["interpretation"]}
+
+
+@app.get("/api/evidence")
+def evidence_search(q: str = "", kind: str | None = None, product_area: str | None = None, segment: str | None = None,
+                    status: str | None = None, page: int = 1, page_size: int = 20) -> dict:
+    """Search every indexed source and show where Gist uses it (opportunity evidence, links, triage)."""
+    with connection() as db:
+        return evidence.search(db, q, kind, product_area, segment, status, page, page_size)

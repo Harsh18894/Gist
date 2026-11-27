@@ -54,3 +54,21 @@ def test_warming_reports_what_it_built_in_the_log(monkeypatch, tmp_path, caplog)
     line = next(r.getMessage() for r in caplog.records if r.getMessage().startswith("Caches warmed"))
     assert "sub-themes" in line and "opportunities" in line
     assert gist.level == logging.INFO and gist.handlers      # Gist's INFO lines are printed under uvicorn
+
+
+def test_warming_primes_the_events_cache(monkeypatch, tmp_path, events_db):
+    from app.investigate import tools
+    _fresh(monkeypatch, tmp_path, "true")
+    monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(events_db[0]))
+    tools._DAILY_COUNTS.clear()
+    assert main.warm_caches() is not None
+    assert tools._DAILY_COUNTS                                       # filled during startup, before any investigation
+
+
+def test_missing_events_database_does_not_undo_other_warming(monkeypatch, tmp_path):
+    from app.investigate import tools
+    _fresh(monkeypatch, tmp_path, "true")
+    monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(tmp_path / "missing-events.sqlite3"))
+    tools._DAILY_COUNTS.clear()
+    assert main.warm_caches() is not None                            # still reports success for the main caches
+    assert issues._cache and opportunities._cache and not tools._DAILY_COUNTS

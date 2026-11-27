@@ -60,9 +60,18 @@ def warm_caches() -> float | None:
     except Exception:  # noqa: BLE001 - warming must never stop the API from starting
         logger.warning("Cache warming failed; caches will be built on first use.", exc_info=True)
         return None
+    # The product-events database is separate and optional locally: warm it on its own, so a problem here never
+    # undoes the warming above. Counting events per day also reads the whole file once, so first queries are fast.
+    from .investigate import tools
+    try:
+        with tools.connect() as events_db:
+            event_days = f"{len(tools._daily_counts(events_db))} event days"
+    except Exception:  # noqa: BLE001
+        event_days = "events not warmed"
+        logger.warning("Events cache warming skipped; investigations will build it on first use.", exc_info=True)
     seconds = time.perf_counter() - started
-    logger.info("Caches warmed in %.2f s (%d sub-themes, %d opportunities, %s)", seconds,
-                len(issue_map["sub_themes"]), len(built["opportunities"]), built["method"])
+    logger.info("Caches warmed in %.2f s (%d sub-themes, %d opportunities, %s, %s)", seconds,
+                len(issue_map["sub_themes"]), len(built["opportunities"]), built["method"], event_days)
     return seconds
 
 

@@ -126,3 +126,21 @@ def test_missing_events_db_is_a_clear_error(tmp_path, monkeypatch):
     monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(tmp_path / "missing.sqlite3"))
     with pytest.raises(Exception, match="events"):
         T.metric_series("signups")
+
+
+def test_daily_counts_are_cached_per_content_and_match_sql(db, tmp_path, monkeypatch):
+    import shutil
+    fresh = dict(q(db, "SELECT substr(ts,1,10), COUNT(*) FROM events GROUP BY 1"))
+    first = T.data_quality("2025-11-01", "2025-11-30")
+    with T.connect() as conn:
+        assert T._daily_counts(conn) == fresh                        # cached counts equal a fresh full count
+    assert T.data_quality("2025-11-01", "2025-11-30") == first      # and give the same answer
+    # A changed dataset (new content hash) is recounted, never served from the old cache.
+    changed = tmp_path / "changed.sqlite3"
+    shutil.copyfile(db, changed)
+    with sqlite3.connect(changed) as c:
+        c.execute("DELETE FROM events WHERE substr(ts,1,10) = '2025-11-10'")
+        c.execute("UPDATE meta SET value = 'changed' WHERE key = 'content_sha256'")
+    monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(changed))
+    flagged = {d["date"] for d in T.data_quality("2025-11-01", "2025-11-30")["low_volume_days"]}
+    assert "2025-11-10" in flagged

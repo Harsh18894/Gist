@@ -225,6 +225,26 @@ def releases(from_date: str | None = None, to_date: str | None = None, db_path: 
             "note": "A release near a change is timing only, not evidence of cause."}
 
 
+_DAILY_COUNTS: dict[tuple, dict[str, int]] = {}
+
+
+def _daily_counts(db: sqlite3.Connection) -> dict[str, int]:
+    """Events recorded per day. The events database is read-only at runtime, so the full-table count is computed
+    once per database file and content hash, and reused (a regenerated dataset has a new hash and is recounted)."""
+    file = db.execute("PRAGMA database_list").fetchone()[2]
+    has_meta = db.execute("SELECT name FROM sqlite_master WHERE name = 'meta'").fetchone()
+    content = db.execute("SELECT value FROM meta WHERE key = 'content_sha256'").fetchone() if has_meta else None
+    key = (file, content[0]) if content else None
+    if key is not None and key in _DAILY_COUNTS:
+        return _DAILY_COUNTS[key]
+    counts = dict(db.execute("SELECT substr(ts,1,10), COUNT(*) FROM events GROUP BY 1").fetchall())
+    if key is not None:
+        if len(_DAILY_COUNTS) >= 4:
+            _DAILY_COUNTS.clear()
+        _DAILY_COUNTS[key] = counts
+    return counts
+
+
 def data_quality(from_date: str | None = None, to_date: str | None = None, threshold: float = 0.5,
                  db_path: Path | None = None) -> dict:
     """Flag days whose recorded event volume is below `threshold` x the median of the same weekday over the prior 4 weeks."""
@@ -232,7 +252,7 @@ def data_quality(from_date: str | None = None, to_date: str | None = None, thres
         raise InvalidRequest("bad threshold", public_message="threshold must be between 0 and 1.")
     lo, hi = _day(from_date, DATA_START, "from_date"), _day(to_date, DATA_END, "to_date")
     with connect(db_path) as db:
-        counts = dict(db.execute("SELECT substr(ts,1,10), COUNT(*) FROM events GROUP BY 1").fetchall())
+        counts = _daily_counts(db)
     flagged = []
     day = max(lo, DATA_START + timedelta(days=28))
     while day <= min(hi, DATA_END):

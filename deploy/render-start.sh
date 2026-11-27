@@ -23,6 +23,7 @@ export GIST_OPS_DB_PATH="$DATA/gist-ops.sqlite3"
 export GIST_PRIORITIES_DB_PATH="$DATA/gist-priorities.sqlite3"
 export GIST_PUBLIC_MODE="${GIST_PUBLIC_MODE:-true}"          # public by default when deployed
 export GIST_TRUST_PROXY="${GIST_TRUST_PROXY:-true}"
+export GIST_WARM_CACHES="${GIST_WARM_CACHES:-true}"         # build caches before serving: fast first visit after a wake-up
 
 exec env PYTHONPATH=backend uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8000}" \
   --proxy-headers --forwarded-allow-ips='*' --no-server-header

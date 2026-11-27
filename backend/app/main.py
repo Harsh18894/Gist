@@ -1,4 +1,5 @@
-"""Gist Phase 1 read-only HTTP API."""
+"""Gist HTTP API."""
+from contextlib import asynccontextmanager
 from datetime import date
 import logging
 import os
@@ -34,7 +35,32 @@ def _error(status: int, code: str, message: str) -> JSONResponse:
     return JSONResponse(status_code=status, content={"error": {"code": code, "message": message}})
 
 
-app = FastAPI(title="Gist API", description="Synthetic Pulse product intelligence data", version="0.1.0",
+def warm_caches() -> float | None:
+    """Build the deterministic caches (issue map, opportunities) before serving, so the first visitor after a
+    restart or a free-tier wake-up does not pay for them. Returns seconds taken, or None if warming failed.
+    Never raises: a warming problem is logged and the request path builds the caches as before."""
+    import time
+    started = time.perf_counter()
+    try:
+        with connection() as db:
+            issues.issue_map(db)
+            opportunities.build(db)
+    except Exception:  # noqa: BLE001 - warming must never stop the API from starting
+        logger.warning("Cache warming failed; caches will be built on first use.", exc_info=True)
+        return None
+    seconds = time.perf_counter() - started
+    logger.info("Caches warmed in %.2f s", seconds)
+    return seconds
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    if os.getenv("GIST_WARM_CACHES", "").strip().lower() == "true":
+        warm_caches()
+    yield
+
+
+app = FastAPI(title="Gist API", description="Synthetic Pulse product intelligence data", version="0.1.0", lifespan=lifespan,
               responses={500: {"model": ErrorResponse}, 503: {"model": ErrorResponse}})
 
 

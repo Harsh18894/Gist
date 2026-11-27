@@ -1,6 +1,7 @@
 """Phase 3.3 opportunities: evidence integrity, no invented business figures, both data paths."""
 import json
 import shutil
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -71,3 +72,39 @@ def test_frequency_counts_primary_records_only(client):
     for card in client.get("/api/opportunities").json()["opportunities"]:
         assert card["frequency"]["records"] == card["evidence"]["feedback_records"]
         assert card["confidence"]["checks"]["evidence"] == (card["frequency"]["records"] >= 5)
+
+
+def test_build_cache_matches_fresh_computation_and_is_reused(client):
+    from app.config import database_path
+    with sqlite3.connect(database_path()) as db:
+        first = opportunities.build(db)
+        assert opportunities.build(db) is first                                   # reused, not recomputed
+        fresh = opportunities._build(db, opportunities.DEFAULT_LINK)
+    assert json.dumps(first, sort_keys=True, default=str) == json.dumps(fresh, sort_keys=True, default=str)
+
+
+def test_routes_never_modify_the_cached_opportunities(client, events_db, monkeypatch):
+    import copy
+    from app.config import database_path
+    monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(events_db[0]))
+    with sqlite3.connect(database_path()) as db:
+        cached = opportunities.build(db)
+    before = copy.deepcopy(cached)
+    oid = cached["opportunities"][0]["id"]
+    for path in ("/api/opportunities", f"/api/opportunities/{oid}", "/api/priorities", "/api/experiments",
+                 f"/api/experiments/{oid}", "/api/evidence", "/api/evidence?q=invite"):
+        assert client.get(path).status_code == 200, path
+    client.put(f"/api/priorities/{oid}", json={"strategic": "high", "effort": "S", "note": "x"})
+    assert cached == before
+
+
+def test_cache_key_follows_tickets_and_documents(client):
+    from app.config import database_path
+    with sqlite3.connect(database_path()) as db:
+        first = opportunities.build(db)
+        cols = [r[1] for r in db.execute("PRAGMA table_info(support_tickets)")]
+        row = dict(zip(cols, db.execute("SELECT * FROM support_tickets LIMIT 1").fetchone()))
+        row["id"] = "SUP-ZZZ-CACHE"
+        db.execute(f"INSERT INTO support_tickets ({','.join(cols)}) VALUES ({','.join('?' * len(cols))})", [row[c] for c in cols])
+        db.commit()
+        assert opportunities.build(db) is not first

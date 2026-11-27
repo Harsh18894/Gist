@@ -53,7 +53,35 @@ def _vectors(db: sqlite3.Connection, feedback: list[str], tickets: list[tuple], 
                 vectorizer.transform([d[1] for d in documents]), "word similarity")
 
 
+DEFAULT_LINK = LinkConfig()
+_cache: dict[tuple, dict] = {}
+_CACHE_LIMIT = 8
+
+
+def _data_key(db: sqlite3.Connection) -> tuple:
+    """Everything build() depends on: the issue-map key plus tickets, documents and stored embeddings."""
+    counts = db.execute("""SELECT (SELECT COUNT(*) || ':' || IFNULL(MAX(id), '') FROM support_tickets),
+                                  (SELECT COUNT(*) || ':' || IFNULL(MAX(id), '') FROM documents),
+                                  (SELECT COUNT(*) FROM sqlite_master WHERE name = 'embeddings')""").fetchone()
+    vectors = db.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0] if counts[2] else 0
+    return issues._key(db) + (counts[0], counts[1], vectors)
+
+
 def build(db: sqlite3.Connection, link: LinkConfig = LinkConfig()) -> dict:
+    """Opportunity cards for the current data. Deterministic, so the server's default configuration is cached per
+    data version (callers must not modify the returned structure; tests guard this). Other configurations, used by
+    the evaluation sweeps, are computed fresh."""
+    if link != DEFAULT_LINK:
+        return _build(db, link)
+    key = _data_key(db)
+    if key not in _cache:
+        if len(_cache) >= _CACHE_LIMIT:
+            _cache.clear()
+        _cache[key] = _build(db, link)
+    return _cache[key]
+
+
+def _build(db: sqlite3.Connection, link: LinkConfig) -> dict:
     data = issues.issue_map(db)
     subs = [s for s in data["sub_themes"] if not s["needs_triage"]]
     feedback_ids = [row[0] for row in db.execute("SELECT id FROM feedback ORDER BY id")]

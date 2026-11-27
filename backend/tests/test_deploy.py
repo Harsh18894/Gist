@@ -34,6 +34,7 @@ def test_start_script_is_public_by_default_and_verifies_data():
     assert 'GIST_PUBLIC_MODE="${GIST_PUBLIC_MODE:-true}"' in script
     assert "verify_runtime.py" in script and "set -euo pipefail" in script
     assert "--no-answer-key" in script            # the server never writes the answer key
+    assert 'GIST_WARM_CACHES="${GIST_WARM_CACHES:-true}"' in script   # fast first visit after a wake-up
 
 
 def test_frontend_declares_node_20():

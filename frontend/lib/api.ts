@@ -238,6 +238,7 @@ export interface BenchmarkMetric { key: string; label: string; unit: string; bet
 export interface BenchmarkRun {
   id: string; phase: string; title: string; family: string; benchmark: string; version: string; split: string; kind: string;
   judged_by: string; process: string; config: Record<string, string | number>; file: string; verdict: string;
+  status: "met" | "partly_met" | "below_target" | "below_release_bar" | "measured" | "not_adopted" | "development"; target_note: string;
   metrics: BenchmarkMetric[]; files: { path: string; sha256: string | null }[];
 }
 export interface Benchmarks { judged_by: Record<string, string>; runs: BenchmarkRun[]; families: Record<string, string[]>; note: string }

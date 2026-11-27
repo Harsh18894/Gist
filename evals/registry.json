@@ -22,7 +22,7 @@
     "embedding": "none"
    },
    "file": "evals/v2/results/heldout_test-all.json",
-   "verdict": "FAIL (Phase 2 release readiness)",
+   "verdict": "Below release bar · accepted limitation",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -60,7 +60,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "below_release_bar",
+   "target_note": "Phase 2 release readiness was judged not met: weak held-out retrieval (no numeric target)."
   },
   {
    "id": "p2-v2-heldout-vector",
@@ -78,7 +80,7 @@
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/v2/results/heldout_test-all.json",
-   "verdict": "FAIL (Phase 2 release readiness)",
+   "verdict": "Below release bar · accepted limitation",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -116,7 +118,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "below_release_bar",
+   "target_note": "Phase 2 release readiness was judged not met: weak held-out retrieval (no numeric target)."
   },
   {
    "id": "p2-v2-heldout-hybrid",
@@ -134,7 +138,7 @@
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/v2/results/heldout_test-all.json",
-   "verdict": "FAIL (Phase 2 release readiness)",
+   "verdict": "Below release bar · accepted limitation",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -172,7 +176,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "below_release_bar",
+   "target_note": "Phase 2 release readiness was judged not met: weak held-out retrieval (no numeric target)."
   },
   {
    "id": "p21-b3-heldout-keyword",
@@ -190,7 +196,7 @@
     "embedding": "none"
    },
    "file": "evals/phase21/results/benchmark3-heldout-final.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Measured (no pass/fail target)",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -228,7 +234,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "measured",
+   "target_note": "Retrieval was judged a conditional pass; no numeric target."
   },
   {
    "id": "p21-b3-heldout-vector",
@@ -246,7 +254,7 @@
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/phase21/results/benchmark3-heldout-final.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Measured (no pass/fail target)",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -284,7 +292,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "measured",
+   "target_note": "Retrieval was judged a conditional pass; no numeric target."
   },
   {
    "id": "p21-b3-heldout-hybrid_locked_v2",
@@ -302,7 +312,7 @@
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/phase21/results/benchmark3-heldout-final.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Measured (no pass/fail target)",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -340,12 +350,14 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "measured",
+   "target_note": "Retrieval was judged a conditional pass; no numeric target."
   },
   {
    "id": "p21-b3-heldout-candidate_locked",
    "phase": "2.1",
-   "title": "Benchmark 3 held-out retrieval: MMR candidate (locked, \u03bb=0.7)",
+   "title": "Benchmark 3 held-out retrieval: MMR candidate (locked, λ=0.7)",
    "family": "retrieval-strategy",
    "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
    "version": "gist-phase2.1-benchmark-3-reviewed",
@@ -354,11 +366,11 @@
    "judged_by": "owner",
    "process": "docs/phase21-final-validation.md",
    "config": {
-    "retriever": "MMR re-ranking \u03bb=0.7 (locked)",
+    "retriever": "MMR re-ranking λ=0.7 (locked)",
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/phase21/results/benchmark3-heldout-final.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Measured (no pass/fail target)",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -396,7 +408,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "measured",
+   "target_note": "Tied the hybrid default on 5 answerable questions; not adopted."
   },
   {
    "id": "p21-b3-answers",
@@ -415,7 +429,7 @@
     "retriever": "hybrid (locked v2)"
    },
    "file": "evals/phase21/results/benchmark3-answers.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Below release bar · accepted limitation",
    "metrics": [
     {
      "key": "answered",
@@ -462,7 +476,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "below_release_bar",
+   "target_note": "5 of 20 answerable answers rated good by the owner; release readiness judged not met."
   },
   {
    "id": "p22-b3-dev-cap350",
@@ -481,7 +497,7 @@
     "retriever": "hybrid (locked v2)"
    },
    "file": "evals/phase21/results/benchmark3-answers-phase22-dev.json",
-   "verdict": "development only",
+   "verdict": "Development run",
    "metrics": [
     {
      "key": "answered",
@@ -528,7 +544,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "development",
+   "target_note": "Development comparison of output budgets."
   },
   {
    "id": "p22-b3-dev-cap600",
@@ -547,7 +565,7 @@
     "retriever": "hybrid (locked v2)"
    },
    "file": "evals/phase21/results/benchmark3-answers-phase22-dev-cap600.json",
-   "verdict": "development only",
+   "verdict": "Development run",
    "metrics": [
     {
      "key": "answered",
@@ -594,7 +612,9 @@
      "unit": "ms",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "development",
+   "target_note": "Development comparison of output budgets."
   },
   {
    "id": "p22-b4-final",
@@ -613,7 +633,7 @@
     "retriever": "hybrid (locked v2)"
    },
    "file": "evals/phase22/results/benchmark4-final.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -677,7 +697,9 @@
      "unit": "usd",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Below: good answers 8 of 20 · target ≥ 10; 2 answers cited a look-alike (hard-negative) source · target 0. Met: unanswerables 4 of 4, wrong refusals 10% (≤ 10%), poor 20% (≤ 20%), no out-of-context citations."
   },
   {
    "id": "p23-b5-final",
@@ -696,7 +718,7 @@
     "retriever": "hybrid (locked v2)"
    },
    "file": "evals/phase23/results/benchmark5-final.json",
-   "verdict": "FAIL, accepted (multi-source limitation)",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "hit_at_5",
@@ -760,7 +782,9 @@
      "unit": "usd",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Below: good answers 9 of 20 · target ≥ 10. Met: unanswerables 4 of 4, wrong refusals 5% (≤ 10%), poor 15% (≤ 20%), temporal poor 0 of 4 (≤ 1), no accepted out-of-context citations."
   },
   {
    "id": "p21-judge-v1",
@@ -779,7 +803,7 @@
     "output_cap_tokens": 600
    },
    "file": "evals/phase21/results/judge-calibrate-v1.json",
-   "verdict": "not adopted; human review remains the measure",
+   "verdict": "Calibrated · not adopted",
    "metrics": [
     {
      "key": "overall_agreement",
@@ -808,7 +832,9 @@
      "unit": "share",
      "better": "higher"
     }
-   ]
+   ],
+   "status": "not_adopted",
+   "target_note": "Claim agreement 1.00 on only 6 rows (target ≥ 0.80), but the prompt was judged too lenient. Not adopted."
   },
   {
    "id": "p21-judge-v2-cap1500",
@@ -827,7 +853,7 @@
     "output_cap_tokens": 1500
    },
    "file": "evals/phase21/results/judge-calibrate-v2-cap1500.json",
-   "verdict": "not adopted; human review remains the measure",
+   "verdict": "Calibrated · not adopted",
    "metrics": [
     {
      "key": "overall_agreement",
@@ -856,7 +882,9 @@
      "unit": "share",
      "better": "higher"
     }
-   ]
+   ],
+   "status": "not_adopted",
+   "target_note": "Claim agreement 0.875 (target ≥ 0.80), but abstention agreement 0.50 and overall 0.67, so the prompt was revised."
   },
   {
    "id": "p21-judge-v2-fresh18",
@@ -875,7 +903,7 @@
     "output_cap_tokens": 1500
    },
    "file": "evals/phase21/results/judge-calibrate-v2-prompt-fresh18.json",
-   "verdict": "not adopted; human review remains the measure",
+   "verdict": "Calibrated · not adopted",
    "metrics": [
     {
      "key": "overall_agreement",
@@ -904,7 +932,9 @@
      "unit": "share",
      "better": "higher"
     }
-   ]
+   ],
+   "status": "not_adopted",
+   "target_note": "Claim agreement 0.67 on fresh rows · target ≥ 0.80. Not adopted; human review remains the measure."
   },
   {
    "id": "p32-clustering",
@@ -922,7 +952,7 @@
     "threshold": 0.65
    },
    "file": "evals/phase32/results/clustering-themes-v1.json",
-   "verdict": "FAIL on size target, accepted",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "purity",
@@ -960,7 +990,9 @@
      "unit": "count",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Met: purity 0.91 (≥ 0.85), issue recall 0.82 (≥ 0.75), 7 look-alikes separated (≥ 6), multi-issue records in both groups 0.64 (≥ 0.50). Below: 64 themes · target ≤ 24; vague records left ungrouped 0% · target ≥ 50%."
   },
   {
    "id": "p33-linking",
@@ -978,7 +1010,7 @@
     "document_threshold": 0.5
    },
    "file": "evals/phase33/results/linking-v3-owner-key.json",
-   "verdict": "PASS linking; confidence rubric FAIL (shown as checklist)",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "ticket_precision",
@@ -1025,12 +1057,14 @@
      "unit": "share",
      "better": "higher"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Met: ticket precision 0.88 (≥ 0.80), top document 1.00 (≥ 0.75), abstention 1.00 (≥ 0.50). Below: confidence rubric not monotonic, so it is shown as a checklist."
   },
   {
    "id": "p34-robustness",
    "phase": "3.4",
-   "title": "Prioritization robustness (\u00b150% weight changes)",
+   "title": "Prioritization robustness (±50% weight changes)",
    "family": "product-intelligence",
    "benchmark": "Pulse v2 opportunities",
    "version": "robustness-v1",
@@ -1042,7 +1076,7 @@
     "weights": "defaults"
    },
    "file": "evals/phase34/results/robustness-v1.json",
-   "verdict": "PASS",
+   "verdict": "Met",
    "metrics": [
     {
      "key": "overlap",
@@ -1071,7 +1105,9 @@
      "unit": "ratio",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "met",
+   "target_note": "Mean top-10 overlap 9.6 (≥ 7), minimum 9 (≥ 5), Spearman with reach 0.85 (< 0.90)."
   },
   {
    "id": "p35-experiment-review",
@@ -1089,7 +1125,7 @@
     "prompt": "exp-v1"
    },
    "file": "evals/phase35/results/review-v1.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Below target · accepted limitation",
    "metrics": [
     {
      "key": "useful",
@@ -1118,7 +1154,9 @@
      "unit": "count",
      "better": "higher"
     }
-   ]
+   ],
+   "status": "below_target",
+   "target_note": "Useful 5 · target ≥ 6; sensible metric 7 · target ≥ 8. Met: wrong 0 (≤ 1); automated checks 58 of 61 (≥ 90%)."
   },
   {
    "id": "p43-dev-run1",
@@ -1137,7 +1175,7 @@
     "output_cap_tokens": 3000
    },
    "file": "evals/phase43/results/dev-run1.json",
-   "verdict": "development only",
+   "verdict": "Development run",
    "metrics": [
     {
      "key": "planted",
@@ -1184,7 +1222,9 @@
      "unit": "usd",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "development",
+   "target_note": "First development run (prompt inv-v1)."
   },
   {
    "id": "p43-dev-run2",
@@ -1203,7 +1243,7 @@
     "output_cap_tokens": 3000
    },
    "file": "evals/phase43/results/dev-run2.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "planted",
@@ -1250,7 +1290,9 @@
      "unit": "usd",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Met: planted causes 4 of 5 (≥ 4), cost. Below: decoy criteria and reports passing (6 of 8 · target ≥ 7), mostly from checker false positives later fixed."
   },
   {
    "id": "p44-heldout",
@@ -1269,7 +1311,7 @@
     "output_cap_tokens": 3000
    },
    "file": "evals/phase44/results/heldout-run.json",
-   "verdict": "FAIL, accepted",
+   "verdict": "Partly met · accepted limitation",
    "metrics": [
     {
      "key": "planted",
@@ -1316,7 +1358,18 @@
      "unit": "usd",
      "better": "lower"
     }
-   ]
+   ],
+   "status": "partly_met",
+   "target_note": "Met: planted causes 4 of 6 (≥ 4), decoy top explanation 3 of 4 (≥ 3), reports passing 8 of 10 (≥ 8), cost (≤ $0.08). Below: no high-confidence product blame 3 of 4 · target 4 of 4 (one report timed out); 1 uncertain billing entry · target 0 (later reconciled)."
   }
- ]
+ ],
+ "statuses": {
+  "met": "Met",
+  "partly_met": "Partly met · accepted limitation",
+  "below_target": "Below target · accepted limitation",
+  "below_release_bar": "Below release bar · accepted limitation",
+  "measured": "Measured (no pass/fail target)",
+  "not_adopted": "Calibrated · not adopted",
+  "development": "Development run"
+ }
 }

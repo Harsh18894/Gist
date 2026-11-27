@@ -24,16 +24,19 @@ function fmt(m: BenchmarkMetric): string {
   return m.of ? `${body} of ${m.of}` : body;
 }
 const usd = (v: number | null | undefined, d = 4) => v === null || v === undefined ? "—" : `$${v.toFixed(d)}`;
-const verdictTone = (v: string) => /^PASS/.test(v) ? "positive" as const : /FAIL/.test(v) ? "signal" as const : "neutral" as const;
+// Accepted limitations are amber (caution), not red: they were recorded and accepted, not hidden or failing silently.
+const statusTone = (s: BenchmarkRun["status"]) => s === "met" ? "positive" as const
+  : s === "partly_met" || s === "below_target" || s === "below_release_bar" ? "caution" as const : "neutral" as const;
 
 function RunRow({ run }: { run: BenchmarkRun }) {
   return <li className="py-4">
     <div className="flex flex-wrap items-baseline justify-between gap-2">
       <p className="text-sm font-medium text-ink">{run.title}</p>
-      <Status tone={verdictTone(run.verdict)}>{run.verdict}</Status>
+      <Status tone={statusTone(run.status)}>{run.verdict}</Status>
     </div>
     <Meta className="mt-1" items={[`Phase ${run.phase}`, <Tag key="k" tone={run.kind === "frozen-final" ? "accent" : "neutral"}>{KIND_LABEL[run.kind] ?? run.kind}</Tag>, run.split,
       <Status key="j" tone={JUDGE_TONE[run.judged_by as keyof typeof JUDGE_TONE] ?? "neutral"}>judged: {run.judged_by}</Status>, run.version]}/>
+    {run.target_note && <p className="mt-1.5 text-xs text-ink-2">{run.target_note}</p>}
     <dl className="mt-2.5 grid grid-cols-2 gap-x-6 gap-y-1.5 sm:grid-cols-3 lg:grid-cols-5">{run.metrics.map(m => <div key={m.key}>
       <dt className="text-2xs text-ink-3">{m.label}</dt><dd className="num text-sm text-ink" title={m.problem ?? undefined}>{fmt(m)}</dd></div>)}</dl>
     <details className="mt-2">
@@ -134,7 +137,7 @@ export default function Evaluation() {
         <Compare runs={familyRuns}/>
       </Section>
 
-      <Section id="benchmarks" title={`Benchmark runs (${listed.length})`} description="Versioned results with their verdicts. Frozen finals ran once and were never tuned against."
+      <Section id="benchmarks" title={`Benchmark runs (${listed.length})`} description="Versioned results against targets set before each run. Frozen finals ran once and were never tuned against; results below target are recorded as accepted limitations."
         actions={<Select aria-label="Kind" value={kind} onChange={e => setKind(e.target.value)} className="h-9 w-auto text-xs">
           <option value="">All kinds</option><option value="frozen-final">Frozen finals</option><option value="development">Development</option><option value="diagnostic">Diagnostic</option></Select>}>
         <ul className="divide-y divide-line">{listed.map(r => <RunRow key={r.id} run={r}/>)}</ul>

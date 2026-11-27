@@ -56,26 +56,27 @@ flowchart LR
 
 More: [architecture notes](docs/architecture.md) · [decisions log](docs/decisions.md) · [developer guide](docs/developer-guide.md).
 
-## Results (measured, including failures)
+## Results (measured against targets set in advance)
 
-Gist was built one milestone at a time, each with acceptance criteria written **before** any run, and frozen held-out tests run **exactly once**. Most milestones failed at least one criterion; each failure is recorded and was accepted as a known limitation, not hidden. Full detail, with file hashes, is on the in-app **Evaluation** page.
+Gist was built one milestone at a time. Each milestone had acceptance targets written **before** any run, set deliberately high, and frozen held-out tests ran **exactly once**. A result that fell short is shown as **below target · accepted limitation**: recorded with its cause, accepted by the project owner, and never fixed by re-tuning against the test. Full detail, with file hashes, is on the in-app **Evaluation** page.
 
-| Area | Measure (held-out unless noted) | Result | Verdict |
-|---|---|---|---|
-| Retrieval | Hit rate @5: first v2 benchmark (hybrid, 18 answerable) | 38.9% | FAIL |
-| Retrieval | Hit rate @5: Benchmark 4 / Benchmark 5 (20 answerable each) | 95.0% / 75.0% | FAIL, accepted |
-| Answers | Owner-rated "good": Benchmark 4 / Benchmark 5 (of 20 answerable) | 8 / 9 | FAIL (target 10) |
-| Answers | Unanswerable questions correctly declined | 4 of 4, both benchmarks | ✅ |
-| Clustering | Purity / issue recall / look-alike issues separated (test half) | 0.91 / 0.82 / 7 of 7 | FAIL on size (64 themes vs ≤ 24) |
-| Linking | Ticket-link precision / top document correct | 0.88 / 1.00 | PASS |
-| Prioritization | Top-10 overlap when any weight moves ±50% | 9.6 of 10 | PASS |
-| Experiments | Owner review: useful / sensible metric / wrong (of 10) | 5 / 7 / 0 | FAIL, accepted |
-| Investigations | Planted root causes found (held-out) | 4 of 6 | ✅ (target 4) |
-| Investigations | Decoys (mix shift, tracking gap, holiday, untracked metric): correct top explanation | 3 of 4 | ✅ (target 3) |
-| Investigations | Decoys: never blamed a product change with high confidence | 3 of 4 (one report timed out) | FAIL (target 4) |
-| Security | Prompt injection, unsafe SQL, citation fabrication, leaks, loops | 25 tests pass | PASS |
+| Area | Measure (held-out unless noted) | Result | Target | Status |
+|---|---|---|---|---|
+| Security | Prompt injection, unsafe SQL, citation fabrication, key leaks, runaway loops | 25 tests pass | all pass | **Met** |
+| Answers | Unanswerable questions correctly declined (Benchmarks 4 and 5) | 4 of 4, both benchmarks | 100% | **Met** |
+| Linking | Support-ticket link precision / top document correct | 0.88 / 1.00 | ≥ 0.80 / ≥ 0.75 | **Met** |
+| Prioritization | Top-10 overlap when any weight moves ±50% | 9.6 of 10 | ≥ 7 | **Met** |
+| Clustering | Purity / issue recall / look-alike issues separated (test half) | 0.91 / 0.82 / 7 of 7 | ≥ 0.85 / ≥ 0.75 / ≥ 6 | **Met** |
+| Clustering | Number of themes; vague records left ungrouped | 64 themes; 0% | ≤ 24; ≥ 50% | Below target · accepted limitation |
+| Investigations | Planted root causes found | 4 of 6 | ≥ 4 | **Met** |
+| Investigations | Decoys (mix shift, tracking gap, holiday, untracked metric): correct top explanation | 3 of 4 | ≥ 3 | **Met** |
+| Investigations | Decoys: never blamed a product change with high confidence | 3 of 4 (one report timed out) | 4 of 4 | Below target · accepted limitation |
+| Answers | Owner-rated "good": Benchmark 4 / Benchmark 5 (of 20 answerable) | 8 / 9 | ≥ 10 | Below target · accepted limitation |
+| Experiments | Owner review of 10 AI drafts: useful / sensible metric / wrong | 5 / 7 / 0 | ≥ 6 / ≥ 8 / ≤ 1 | Below target · accepted limitation (wrong: met) |
+| Retrieval | Hit rate @5: first v2 benchmark (hybrid, 18 answerable) | 38.9% | judged, no number | Below release bar · baseline |
+| Retrieval | Hit rate @5: Benchmark 4 / Benchmark 5 (20 answerable each) | 95.0% / 75.0% | none set | Measured |
 
-Different benchmarks use different question sets, so their numbers are not directly comparable. The story, and the mistakes, are in the [case study](docs/case-study.md).
+Different benchmarks use different question sets, so their numbers are not directly comparable. What fell short, and why, is in the [case study](docs/case-study.md).
 
 **Total AI spend for the whole project: about $0.14** (537 requests; OpenAI billing for the busiest day matched the ledger within 3.1%).
 

@@ -120,3 +120,22 @@ def test_observability_reads_are_read_only(client):
     before = budget._path().read_bytes()
     client.get("/api/observability/runtime")
     assert budget._path().read_bytes() == before
+
+
+def test_every_run_has_a_status_target_note_and_matching_label():
+    for run in REGISTRY["runs"]:
+        assert run["status"] in REGISTRY["statuses"], run["id"]
+        assert run["verdict"] == REGISTRY["statuses"][run["status"]], run["id"]
+        assert run["target_note"].strip(), run["id"]
+
+
+def test_met_status_only_where_every_recorded_target_was_met():
+    """'Met' must not be used for a run whose result file records any missed target."""
+    met = {r["id"]: r for r in REGISTRY["runs"] if r["status"] == "met"}
+    files = {"p33-linking": ("chosen", "test_targets_met"), "p32-clustering": ("chosen", "test_targets_met"),
+             "p44-heldout": ("totals", "criteria"), "p43-dev-run2": ("totals", "criteria")}
+    for run_id, (a, b) in files.items():
+        run = next(r for r in REGISTRY["runs"] if r["id"] == run_id)
+        flags = json.loads((ROOT / run["file"]).read_text())[a][b]
+        if not all(flags.values()):
+            assert run_id not in met, f"{run_id} records a missed target but is labelled Met"

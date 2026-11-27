@@ -6,6 +6,7 @@ import pytest
 
 from app.rag import provider
 from scripts import judge_answers as judge
+from helpers import require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "evals/phase21/results/benchmark3-answer-claim-review-completed.csv"
@@ -41,6 +42,7 @@ def test_agreement_counts_and_excludes_trivial_abstentions():
 NEW_SHEET = ROOT / "evals/phase21/results/benchmark3-answer-claim-review-phase22-dev-cap600.csv"
 
 
+@require_private()
 @pytest.mark.parametrize("prompt", sorted(judge.PROMPTS))
 @pytest.mark.parametrize("sheet", [REVIEW, NEW_SHEET])
 def test_every_review_row_fits_the_request_bound(prompt, sheet):
@@ -50,6 +52,7 @@ def test_every_review_row_fits_the_request_bound(prompt, sheet):
         assert len(json.dumps(body, ensure_ascii=True).encode()) <= provider.GENERATION_BYTE_LIMIT, row["question_id"]
 
 
+@require_private()
 def test_calibration_run_with_fake_judge_is_immutable(tmp_path, monkeypatch):
     monkeypatch.setattr(judge, "RESULTS", tmp_path)
     reply = '{"claims_supported": "all", "unsupported_claims": [], "correct_abstention": "yes", "overall": "good", "reason": "r"}'
@@ -83,6 +86,7 @@ def test_answer_path_cannot_borrow_the_judge_cap(monkeypatch):
         provider._post(None, "responses", "m", {"input": "x", "max_output_tokens": 10}, 0.1, 0.5, output_cap=5000)
 
 
+@require_private()
 def test_v2_decision_label_maps_and_prompt_is_recorded(tmp_path, monkeypatch):
     verdict = judge.parse_verdict('{"claims_supported": "all", "decision_correct": "No", "overall": "poor"}')
     assert verdict["correct_abstention"] == "no"

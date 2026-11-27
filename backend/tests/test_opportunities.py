@@ -1,5 +1,6 @@
 """Phase 3.3 opportunities: evidence integrity, no invented business figures, both data paths."""
 import json
+import shutil
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,7 @@ from fastapi.testclient import TestClient
 from app import issues, opportunities
 from app.main import app
 from scripts.seed import seed
+from helpers import V2_DB  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 FORBIDDEN = ("$", "revenue of", "arr ", "mrr", "uplift", "roi", "story points", "person-days")
@@ -45,10 +47,12 @@ def test_opportunities_fall_back_without_stored_vectors(tmp_path, monkeypatch):
         assert _check(client)["method"] == "word similarity"
 
 
-def test_opportunities_on_real_v2_index_link_tickets_and_documents(monkeypatch):
+def test_opportunities_on_real_v2_index_link_tickets_and_documents(monkeypatch, tmp_path):
     issues._cache.clear()
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
-    monkeypatch.setenv("GIST_DB_PATH", str(ROOT / "backend/gist-v2.sqlite3"))
+    copy = tmp_path / "gist-v2.sqlite3"
+    shutil.copyfile(V2_DB, copy)   # never write to the shipped snapshot
+    monkeypatch.setenv("GIST_DB_PATH", str(copy))
     with TestClient(app) as client:
         data = _check(client)
     assert data["method"].startswith("learned vectors") and len(data["opportunities"]) == 61

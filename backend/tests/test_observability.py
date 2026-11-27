@@ -16,7 +16,7 @@ REGISTRY = json.loads((ROOT / "evals/registry.json").read_text())
 FINALS = ["evals/v2/results/heldout_test-all.json", "evals/phase21/results/benchmark3-heldout-final.json",
           "evals/phase22/results/benchmark4-final.json", "evals/phase23/results/benchmark5-final.json",
           "evals/phase32/results/clustering-themes-v1.json", "evals/phase33/results/linking-v3-owner-key.json",
-          "evals/phase34/results/robustness-v1.json", "evals/phase35/results/review-v1.json",
+          "evals/phase34/results/robustness-v1.json", "evals/phase35/results/review-v1-summary.json",
           "evals/phase43/results/dev-run2.json", "evals/phase44/results/heldout-run.json"]
 
 
@@ -33,7 +33,7 @@ def test_registry_never_types_a_value():
     for run in REGISTRY["runs"]:
         for m in run["metrics"]:
             assert set(m) == {"key", "label", "source", "unit", "better"}, run["id"]
-            assert set(m["source"]) <= {"json", "csv_count"}
+            assert set(m["source"]) <= {"json", "file", "csv_count"}
 
 
 def test_judged_metrics_name_their_process_document():

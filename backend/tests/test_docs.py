@@ -1,5 +1,5 @@
 """Phase 5.2: portfolio docs stay true. Links resolve, and README results equal the versioned result files."""
-import csv
+import json
 import re
 from pathlib import Path
 
@@ -31,8 +31,7 @@ def _pct(v):
 
 
 def _answerable_good(path: str) -> int:
-    rows = csv.DictReader((ROOT / path).open())
-    return sum(1 for r in rows if r["category"] != "unanswerable" and r["overall (good/acceptable/poor)"] == "good")
+    return json.loads((ROOT / path).read_text())["overall_answerable"]["good"]
 
 
 def test_readme_results_match_result_files():
@@ -40,8 +39,8 @@ def test_readme_results_match_result_files():
     expected = [
         _pct(_value("p2-v2-heldout-hybrid", "hit_at_5")),                                       # 38.9%
         f"{_pct(_value('p22-b4-final', 'hit_at_5'))} / {_pct(_value('p23-b5-final', 'hit_at_5'))}",
-        f"{_answerable_good('evals/phase22/results/benchmark4-final-answer-review-completed.csv')} / "
-        f"{_answerable_good('evals/phase23/results/benchmark5-final-answer-review-completed.csv')}",
+        f"{_answerable_good('evals/phase22/results/benchmark4-final-review-summary.json')} / "
+        f"{_answerable_good('evals/phase23/results/benchmark5-final-review-summary.json')}",
         f"{_value('p32-clustering', 'purity'):.2f} / {_value('p32-clustering', 'issue_recall'):.2f} / "
         f"{_value('p32-clustering', 'hard_negatives')} of 7",
         f"{_value('p32-clustering', 'themes')} themes",

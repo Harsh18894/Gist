@@ -71,10 +71,13 @@ def resolve(run: dict, cache: dict | None = None) -> dict:
         src = metric["source"]
         value, raw, problem, of = None, None, None, None
         if "json" in src:
-            if not main.exists():
+            target = ROOT / src["file"] if "file" in src else main   # a metric may live in a companion summary file
+            if "file" in src and target.exists():
+                files[src["file"]] = _sha(target)
+            if not target.exists():
                 problem = "file missing"
             else:
-                raw = _json_path(load(main), src["json"])
+                raw = _json_path(load(target), src["json"])
                 value = _number(raw)
                 if value is None and raw == "0/0":
                     problem = None            # nothing to measure in this run (e.g. no unanswerable questions); shown as n/a

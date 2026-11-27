@@ -16,6 +16,7 @@ from app.rag.retrieval import Hit
 from app.rag.service import answer
 from app.schemas import AskRequest
 from scripts.freeze_v2_split import ROOT, verify
+from helpers import V2_DB, require_private  # noqa: E402
 
 
 def _hit(content: str) -> Hit:
@@ -38,7 +39,7 @@ def test_evidence_gate_rejects_hard_negative_ambiguity_and_unsupported_numbers()
 def test_development_unanswerables_abstain_without_generated_citations():
     manifest = verify()
     questions = {row["id"]: row for row in json.loads((ROOT / "evals/v2/questions.json").read_text())["questions"]}
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         db.row_factory = sqlite3.Row
         for qid in manifest["development_ids"]:
             if questions[qid]["evaluation_category"] != "unanswerable":
@@ -55,7 +56,7 @@ def test_development_judgments_are_separate_and_source_backed():
     judgments = json.loads(judgment_file.read_text())["questions"]
     assert {row["question_id"] for row in judgments} == set(manifest["development_ids"])
     assert not {row["question_id"] for row in judgments} & set(manifest["heldout_test_ids"])
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         valid_ids = {row[0] for row in db.execute("SELECT id FROM sources")}
     for row in judgments:
         assert set(row["reviewed_relevant_source_ids"]) <= valid_ids

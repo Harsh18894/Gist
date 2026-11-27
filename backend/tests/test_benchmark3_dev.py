@@ -3,10 +3,12 @@ import json
 from pathlib import Path
 
 from scripts import evaluate_benchmark3_dev as evaluator
+from helpers import require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
+@require_private()
 def test_only_frozen_development_questions_are_selected():
     manifest, questions = evaluator.development_questions()
     assert len(questions) == 18 and all(q["split"] == "development" for q in questions)

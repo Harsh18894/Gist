@@ -1,0 +1,28 @@
+{
+  "reviewer": "owner",
+  "rows": 10,
+  "usefulness": {
+    "needs_work": 5,
+    "useful": 5
+  },
+  "metric_sensible": {
+    "yes": 7,
+    "no": 3
+  },
+  "grounded": {
+    "no": 1,
+    "yes": 9
+  },
+  "targets": {
+    "useful_at_least": 6,
+    "wrong_at_most": 1,
+    "metric_sensible_at_least": 8
+  },
+  "targets_met": {
+    "useful_at_least_6": false,
+    "wrong_at_most_1": true,
+    "metric_sensible_at_least_8": false
+  },
+  "pass": false,
+  "note": "Counts from the owner's review of 10 experiment cards (reviewer notes are not published)."
+}

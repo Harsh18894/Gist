@@ -3,6 +3,7 @@ import pytest
 
 from app.schemas import AskResponse
 from scripts import run_dev_answers as dev
+from helpers import require_private  # noqa: E402
 
 
 def _response(status, cited=(), retrieved=("a",)):
@@ -14,6 +15,7 @@ def _response(status, cited=(), retrieved=("a",)):
                        estimated_cost_usd=0.0)
 
 
+@require_private()
 def test_selection_is_benchmark3_development_plus_consumed_v4():
     selected = dev.questions()
     assert sum(q["set"] == "benchmark3-dev" for q in selected) == 18
@@ -21,6 +23,7 @@ def test_selection_is_benchmark3_development_plus_consumed_v4():
     assert not any(q["set"] == "benchmark3-dev" and q["split"] != "development" for q in selected)
 
 
+@require_private()
 def test_fake_run_summarizes_and_is_immutable(tmp_path, monkeypatch):
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
     monkeypatch.setattr(dev, "RESULTS", tmp_path)

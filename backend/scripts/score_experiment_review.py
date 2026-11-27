@@ -1,7 +1,7 @@
 """Import and score the Phase 3.5 owner review of experiment suggestions. No API calls.
 
 Checks that the completed sheet matches the generated sheet in every non-review column,
-validates the labels, stores the owner copy once, and scores the targets fixed in PLAN.md.
+validates the labels, stores the owner copy once, and scores the targets fixed before the review.
 """
 from __future__ import annotations
 

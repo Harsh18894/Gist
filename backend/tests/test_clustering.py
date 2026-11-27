@@ -7,6 +7,7 @@ import pytest
 
 from app import clustering
 from scripts import evaluate_clustering as evaluation
+from helpers import V2_DB, require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -34,7 +35,7 @@ def test_config_validation():
 
 
 def test_cluster_output_is_explained_and_deterministic():
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         config = clustering.ClusterConfig("tfidf", 0.3, 3, 0.45, remove_boilerplate=True)
         first, second = clustering.cluster(db, config), clustering.cluster(db, config)
     assert first == second and first["records"] == 400
@@ -58,7 +59,7 @@ def test_evaluation_split_is_fixed_and_uses_truth_only_for_scoring():
 
 
 def test_theme_hierarchy_is_consistent():
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         result = clustering.themes(db, clustering.ClusterConfig("embedding", 0.7, 3, 0.45), 0.6, "embedding")
         with pytest.raises(ValueError):
             clustering.themes(db, clustering.ClusterConfig("embedding", 0.7), 0.6, "colour")
@@ -73,7 +74,7 @@ def test_theme_hierarchy_is_consistent():
 
 
 def test_labels_do_not_repeat_words_from_their_leading_phrase():
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         result = clustering.cluster(db, clustering.ClusterConfig("embedding", 0.65, 3, 0.45))
     for c in result["clusters"]:
         parts = c["label"].split(" / ")

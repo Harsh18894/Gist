@@ -1,6 +1,6 @@
 """Issue Explorer data: sub-themes (primary unit) inside loose themes, with explanations.
 
-Display settings were chosen on the development half in Phase 3.2 (see PLAN.md). Results
+Display settings were chosen on the development half (see evals/phase32/results/). Results
 are cached per dataset version and source fingerprint, since clustering is deterministic.
 """
 from __future__ import annotations

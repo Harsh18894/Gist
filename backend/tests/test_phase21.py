@@ -13,6 +13,7 @@ from app.database import initialize
 from app.rag.ingest import Source, upsert_source
 from app.rag.phase21 import InvestigationConfig, classify_question, investigate, subqueries
 from app.rag.retrieval import Filters
+from helpers import V2_DB, require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -117,7 +118,7 @@ def test_phase21_draft_benchmark_is_separate_and_not_human_approved():
     normalize = lambda text: re.sub(r"[^a-z0-9 ]", "", text.lower())
     assert max(SequenceMatcher(None, normalize(a["question"]), normalize(b["question"])).ratio()
                for a in development for b in heldout) < .72
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         ids = {row[0] for row in db.execute("SELECT id FROM sources")}
         assert all({sid for group in q["evidence_groups"] for sid in group} <= ids for q in questions)
         assert all(set(q["hard_negative_source_ids"]) <= ids for q in questions)

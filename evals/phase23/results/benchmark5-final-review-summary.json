@@ -1,0 +1,27 @@
+{
+  "benchmark": "Benchmark 5",
+  "note": "Counts from the owner's answer review (reviewer comments are not published).",
+  "rows": 24,
+  "answerable": 20,
+  "unanswerable": 4,
+  "overall_all_rows": {
+    "good": 13,
+    "acceptable": 8,
+    "poor": 3
+  },
+  "overall_answerable": {
+    "good": 9,
+    "acceptable": 8,
+    "poor": 3
+  },
+  "unanswerable_good": 4,
+  "claims_supported": {
+    "all": 20,
+    "n_a": 3,
+    "some": 1
+  },
+  "correct_abstention": {
+    "yes": 21,
+    "no": 3
+  }
+}

@@ -16,7 +16,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase2-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "keyword",
     "embedding": "none"
@@ -74,7 +74,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase2-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "vector",
     "embedding": "text-embedding-3-small"
@@ -132,7 +132,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase2-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "hybrid",
     "embedding": "text-embedding-3-small"
@@ -190,7 +190,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "keyword",
     "embedding": "none"
@@ -248,7 +248,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "vector",
     "embedding": "text-embedding-3-small"
@@ -306,7 +306,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "hybrid (locked v2)",
     "embedding": "text-embedding-3-small"
@@ -364,7 +364,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/README.md",
    "config": {
     "retriever": "MMR re-ranking λ=0.7 (locked)",
     "embedding": "text-embedding-3-small"
@@ -422,7 +422,7 @@
    "split": "held-out",
    "kind": "frozen-final",
    "judged_by": "automatic",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/v2/answer-review-rubric.md",
    "config": {
     "model": "gpt-6-luna",
     "output_cap_tokens": 350,
@@ -490,7 +490,7 @@
    "split": "development",
    "kind": "development",
    "judged_by": "automatic",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/v2/answer-review-rubric.md",
    "config": {
     "model": "gpt-6-luna",
     "output_cap_tokens": 350,
@@ -558,7 +558,7 @@
    "split": "development",
    "kind": "development",
    "judged_by": "automatic",
-   "process": "docs/phase21-final-validation.md",
+   "process": "evals/v2/answer-review-rubric.md",
    "config": {
     "model": "gpt-6-luna",
     "output_cap_tokens": 600,
@@ -664,26 +664,20 @@
     },
     {
      "key": "answers_good",
-     "label": "Answers rated good (owner)",
+     "label": "Answers rated good (owner, of 20 answerable)",
      "source": {
-      "csv_count": {
-       "file": "evals/phase22/results/benchmark4-final-answer-review-completed.csv",
-       "column": "overall (good/acceptable/poor)",
-       "equals": "good"
-      }
+      "json": "overall_answerable.good",
+      "file": "evals/phase22/results/benchmark4-final-review-summary.json"
      },
      "unit": "count",
      "better": "higher"
     },
     {
      "key": "answers_poor",
-     "label": "Answers rated poor (owner)",
+     "label": "Answers rated poor (owner, of 20 answerable)",
      "source": {
-      "csv_count": {
-       "file": "evals/phase22/results/benchmark4-final-answer-review-completed.csv",
-       "column": "overall (good/acceptable/poor)",
-       "equals": "poor"
-      }
+      "json": "overall_answerable.poor",
+      "file": "evals/phase22/results/benchmark4-final-review-summary.json"
      },
      "unit": "count",
      "better": "lower"
@@ -749,26 +743,20 @@
     },
     {
      "key": "answers_good",
-     "label": "Answers rated good (owner)",
+     "label": "Answers rated good (owner, of 20 answerable)",
      "source": {
-      "csv_count": {
-       "file": "evals/phase23/results/benchmark5-final-answer-review-completed.csv",
-       "column": "overall (good/acceptable/poor)",
-       "equals": "good"
-      }
+      "json": "overall_answerable.good",
+      "file": "evals/phase23/results/benchmark5-final-review-summary.json"
      },
      "unit": "count",
      "better": "higher"
     },
     {
      "key": "answers_poor",
-     "label": "Answers rated poor (owner)",
+     "label": "Answers rated poor (owner, of 20 answerable)",
      "source": {
-      "csv_count": {
-       "file": "evals/phase23/results/benchmark5-final-answer-review-completed.csv",
-       "column": "overall (good/acceptable/poor)",
-       "equals": "poor"
-      }
+      "json": "overall_answerable.poor",
+      "file": "evals/phase23/results/benchmark5-final-review-summary.json"
      },
      "unit": "count",
      "better": "lower"
@@ -796,7 +784,7 @@
    "split": "calibration",
    "kind": "diagnostic",
    "judged_by": "ai-judge",
-   "process": "docs/phase22-final-validation.md",
+   "process": "evals/phase21/answer-judge-prompt.md",
    "config": {
     "judge_model": "gpt-6-luna",
     "judge_prompt": "v1",
@@ -846,7 +834,7 @@
    "split": "calibration",
    "kind": "diagnostic",
    "judged_by": "ai-judge",
-   "process": "docs/phase22-final-validation.md",
+   "process": "evals/phase21/answer-judge-prompt.md",
    "config": {
     "judge_model": "gpt-6-luna",
     "judge_prompt": "v1",
@@ -896,7 +884,7 @@
    "split": "calibration",
    "kind": "diagnostic",
    "judged_by": "ai-judge",
-   "process": "docs/phase22-final-validation.md",
+   "process": "evals/phase21/answer-judge-prompt.md",
    "config": {
     "judge_model": "gpt-6-luna",
     "judge_prompt": "v2",
@@ -946,7 +934,7 @@
    "split": "test half",
    "kind": "frozen-final",
    "judged_by": "automatic",
-   "process": "evals/phase32/results/clustering-themes-v1.json (selection rule) and PLAN.md Phase 3.2",
+   "process": "evals/phase32/results/clustering-themes-v1.json (targets and selection rule)",
    "config": {
     "method": "embedding average-linkage",
     "threshold": 0.65
@@ -1004,7 +992,7 @@
    "split": "test half",
    "kind": "frozen-final",
    "judged_by": "automatic",
-   "process": "evals/phase33/document-issue-key.json (owner-reviewed) and PLAN.md Phase 3.3",
+   "process": "evals/phase33/document-issue-key.json (owner-reviewed key) and evals/phase33/results/linking-v3-owner-key.json",
    "config": {
     "ticket_threshold": 0.6,
     "document_threshold": 0.5
@@ -1071,7 +1059,7 @@
    "split": "all",
    "kind": "frozen-final",
    "judged_by": "automatic",
-   "process": "backend/scripts/evaluate_priorities.py (criteria in PLAN.md Phase 3.4)",
+   "process": "backend/scripts/evaluate_priorities.py (targets in the result file)",
    "config": {
     "weights": "defaults"
    },
@@ -1119,12 +1107,12 @@
    "split": "sample",
    "kind": "frozen-final",
    "judged_by": "owner",
-   "process": "evals/phase35/review/README.md",
+   "process": "evals/README.md (owner rating scale) and evals/phase35/results/review-v1-summary.json",
    "config": {
     "model": "gpt-6-luna",
     "prompt": "exp-v1"
    },
-   "file": "evals/phase35/results/review-v1.json",
+   "file": "evals/phase35/results/review-v1-summary.json",
    "verdict": "Below target · accepted limitation",
    "metrics": [
     {

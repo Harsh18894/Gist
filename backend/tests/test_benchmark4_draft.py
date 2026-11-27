@@ -6,6 +6,7 @@ import sqlite3
 from pathlib import Path
 
 from scripts import import_phase21_review as importer
+from helpers import V2_DB, require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 DRAFT_PATH, _OUT, VERSION = importer.TARGETS["v4"]
@@ -28,7 +29,7 @@ def test_draft_is_heldout_only_balanced_and_hashed():
 
 
 def test_labels_reference_real_sources_and_negatives_are_disjoint():
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         ids = {row[0] for row in db.execute("SELECT id FROM sources")}
     for q in DRAFT["questions"]:
         members = {sid for group in q["evidence_groups"] for sid in group}
@@ -36,6 +37,7 @@ def test_labels_reference_real_sources_and_negatives_are_disjoint():
         assert not members & set(q["hard_negative_source_ids"]) and len(q["hard_negative_source_ids"]) <= 3
 
 
+@require_private()
 def test_full_owner_approval_freezes_v4(tmp_path):
     def fill(path, updates):
         with path.open(encoding="utf-8") as handle:
@@ -66,6 +68,7 @@ def test_full_owner_approval_freezes_v4(tmp_path):
     assert frozen["human_review"]["assisted_by_ai_prereview"].startswith("Owner review with an AI pre-review")
 
 
+@require_private()
 def test_draft2_keeps_ids_draft1_and_shows_ai_prereview_read_only():
     draft1 = json.loads(DRAFT1.read_text())
     raw = json.dumps(draft1["questions"], sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()

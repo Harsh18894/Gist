@@ -37,7 +37,7 @@ Scenarios C and E use **stored AI runs**, so they cost nothing to view. Running 
 - Find-sources mode ranks evidence and writes nothing ("Local retrieval · no AI-written text", "No API cost").
 - Every result opens the original text.
 - In paid mode Gist writes a cited answer; when the sources only partly cover a question it marks the answer **partial** and says what is missing.
-- **Known weakness:** contradictory and multi-source questions were the weakest category in the Phase 2.3 held-out test.
+- **Known weakness:** contradictory and multi-source questions were the weakest category in held-out testing.
 
 ---
 

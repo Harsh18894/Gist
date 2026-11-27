@@ -54,7 +54,7 @@ flowchart LR
 - **Backend:** FastAPI, Pydantic, SQLite (FTS5), NumPy. No LangChain, no vector database, no Docker: the whole corpus fits in SQLite, and every step stays inspectable.
 - **AI:** OpenAI `text-embedding-3-small` and `gpt-6-luna`, called only through one guarded provider with a spend ledger, output caps and per-call cost recording.
 
-More: [architecture notes](docs/architecture.md) · [decisions log](docs/decisions.md) · [developer guide](docs/developer-guide.md).
+More: [architecture](docs/architecture.md) · [design system](docs/design-system.md) · [how results are judged](evals/README.md).
 
 ## Results (measured against targets set in advance)
 
@@ -76,7 +76,7 @@ Gist was built one milestone at a time. Each milestone had acceptance targets wr
 | Retrieval | Hit rate @5: first v2 benchmark (hybrid, 18 answerable) | 38.9% | judged, no number | Below release bar · baseline |
 | Retrieval | Hit rate @5: Benchmark 4 / Benchmark 5 (20 answerable each) | 95.0% / 75.0% | none set | Measured |
 
-Different benchmarks use different question sets, so their numbers are not directly comparable. What fell short, and why, is in the [case study](docs/case-study.md).
+Different benchmarks use different question sets, so their numbers are not directly comparable. How each result was judged is described in [evals/README.md](evals/README.md).
 
 **Total AI spend for the whole project: about $0.14** (537 requests; OpenAI billing for the busiest day matched the ledger within 3.1%).
 
@@ -105,17 +105,16 @@ Verify: `.venv/bin/pytest backend/tests` (394 tests) and `(cd frontend && npm ru
 
 ## Public demo
 
-**Live demo: https://gist-tau.vercel.app** (the API sleeps when idle, so the first load can take up to a minute). It runs on Vercel and Render's free tiers; see the [deployment guide](docs/deployment.md). The public demo runs in **read-only public mode**:
+**Live demo: https://gist-tau.vercel.app** (the API sleeps when idle, so the first load can take up to a minute). It runs on Vercel (web) and Render (API) free tiers, in **read-only public mode**:
 - visitors can't change what others see;
 - every route is rate-limited;
 - paid AI sits behind an access code with per-visitor limits, a daily budget, and a dedicated OpenAI project budget.
 
-See [production readiness](docs/production-readiness.md).
 
 ## Known limitations
 
 - **Synthetic data only.** The results show the method works on a controlled dataset with known answers, not that it would work on a real company's feedback.
-- **Multi-source and contradictory questions** are the main answer-quality weakness (Phase 2.3).
+- **Multi-source and contradictory questions** are the main answer-quality weakness.
 - **The AI experiment suggestions** are generic in places and sometimes propose a fix before diagnosing the cause (5 of 10 useful).
 - **AI root-cause reports** are cautious: no "high" confidence was ever given. One held-out report timed out, and one misread a launch as a tracking gap.
 - **The AI judge was calibrated and not adopted;** human review remains the measure.
@@ -123,4 +122,8 @@ See [production readiness](docs/production-readiness.md).
 
 ## Project docs
 
-[Case study](docs/case-study.md) · [Demo scenarios](docs/demo-scenarios.md) · [Demo script](docs/demo-script.md) · [Decisions](docs/decisions.md) · [Production readiness](docs/production-readiness.md) · [Deployment](docs/deployment.md) · [Design system](docs/design-system.md) · [Developer guide](docs/developer-guide.md) · [Learning notes](docs/learning-notes.md) · [Milestone log](PLAN.md)
+[Demo scenarios](docs/demo-scenarios.md) · [Architecture](docs/architecture.md) · [Design system](docs/design-system.md) · [How results are judged](evals/README.md)
+
+## Author
+
+Designed and built by [Harsh18894](https://github.com/Harsh18894).

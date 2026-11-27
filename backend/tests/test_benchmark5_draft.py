@@ -8,6 +8,7 @@ from pathlib import Path
 
 from scripts import create_benchmark4 as base
 from scripts import import_phase21_review as importer
+from helpers import V2_DB, require_private  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 DRAFT_PATH, _OUT, VERSION = importer.TARGETS["v5"]
@@ -32,7 +33,7 @@ def test_v5_is_heldout_balanced_hashed_and_new():
 
 
 def test_v5_labels_reference_real_sources():
-    with sqlite3.connect(f"file:{ROOT / 'backend/gist-v2.sqlite3'}?mode=ro", uri=True) as db:
+    with sqlite3.connect(f"file:{V2_DB}?mode=ro", uri=True) as db:
         ids = {row[0] for row in db.execute("SELECT id FROM sources")}
     for q in DRAFT["questions"]:
         members = {sid for group in q["evidence_groups"] for sid in group}
@@ -40,6 +41,7 @@ def test_v5_labels_reference_real_sources():
         assert bool(q["evidence_groups"]) == (q["category"] != "unanswerable")
 
 
+@require_private()
 def test_full_owner_approval_freezes_v5(tmp_path):
     def fill(path, update):
         with path.open(encoding="utf-8") as handle:

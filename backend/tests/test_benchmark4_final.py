@@ -4,8 +4,10 @@ import pytest
 from app.schemas import AskResponse
 from scripts import lock_benchmark4 as lock
 from scripts import run_benchmark4_final as final
+from helpers import require_private  # noqa: E402
 
 
+@require_private()
 def test_lock_create_verify_and_tamper(tmp_path, monkeypatch):
     path = tmp_path / "lock.json"
     record = lock.create(path)
@@ -19,6 +21,7 @@ def test_lock_create_verify_and_tamper(tmp_path, monkeypatch):
         lock.verify_lock(path)
 
 
+@require_private()
 def test_final_selection_is_the_frozen_heldout_set():
     manifest, questions = final.final_questions()
     assert [q["id"] for q in questions] == manifest["heldout_ids"] and len(questions) == 24
@@ -33,6 +36,7 @@ def _response(status, cited=(), retrieved=("a",)):
                        estimated_cost_usd=0.0)
 
 
+@require_private()
 def test_run_guards_and_fake_full_run(tmp_path, monkeypatch):
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
     monkeypatch.setattr(final, "verify_lock", lambda: (_ for _ in ()).throw(ValueError("lock changed")))

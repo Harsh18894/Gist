@@ -1,6 +1,6 @@
 """Evaluate Phase 3.4 prioritization robustness on Pulse v2. $0, read-only, no API calls.
 
-There is no ground truth for priority, so this checks the criteria set in PLAN.md before the run:
+There is no ground truth for priority, so this checks criteria fixed before the run (recorded in the result file):
 - robustness: each default weight changed by -50% / +50% (10 variants); top-10 overlap with the
   default ranking must have mean >= 7/10 and minimum >= 5/10;
 - not just volume: Spearman correlation between the evidence score and reach must be < 0.9.

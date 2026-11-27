@@ -1,110 +1,92 @@
 # Gist architecture
 
-```mermaid
-flowchart LR
-    A[Pulse v1 or v2 synthetic generator] --> B[Versioned JSONL and Markdown sources]
-    B --> C[Explicit versioned SQLite seeder]
-    H[Private v2 annotations and 50 questions] --> E[Versioned offline evaluation]
-    X[Local synthetic CSV TXT MD] --> I[Importer and cleaner]
-    C --> I
-    I --> S[(Sources and chunks)]
-    S --> F[(SQLite FTS5)]
-    S --> V[(Persisted vectors)]
-    F --> R[Locked v2 hybrid rank fusion]
-    V --> R
-    R --> G[FastAPI Ask and Search]
-    G --> U[Next.js Ask Gist]
-    S --> P[Verifiable source endpoint]
-    P --> U
-    R --> E
-    F --> J[Phase 2.1 bounded investigation experiment]
-    V --> J
-    J --> D[Development-only trace and replay]
-```
+Gist has two independent apps:
+- `frontend/`: Next.js App Router, TypeScript and Tailwind.
+- `backend/`: FastAPI, Pydantic, SQLite (FTS5) and NumPy.
 
-## Components and responsibilities
+They talk only over HTTP through `frontend/lib/api.ts`, and the frontend renders only numbers returned by the API. All data is synthetic ("Pulse", a fictional SaaS product).
 
-- `backend/scripts/generate_data.py` creates deterministic fictional Pulse source data with a fixed seed.
-- `backend/scripts/generate_v2.py` creates a separate scenario-based v2 corpus. `backend/scripts/audit_v2.py` checks repetition, distributions, and timelines. The private source annotations and question ground truth stay under `evals/v2/` and never enter search.
-- `backend/scripts/seed.py` selects v1 or v2, refuses implicit database replacement, and builds the no-key index in a version-specific SQLite file. `backend/scripts/rag.py` imports additional synthetic files or, after paid opt-in, persists OpenAI vectors.
-- `backend/app/database.py` owns the schema, indexes, source metadata, embeddings, and API usage ledger.
-- `backend/app/services.py` owns parameterized SQL and derived statistics.
-- `backend/app/rag/ingest.py` cleans and chunks text, preserves source metadata, and computes deterministic local demo vectors.
-- `backend/app/rag/retrieval.py` applies filters, runs FTS5 and NumPy cosine search, then combines ranks.
-- `backend/app/rag/phase21.py` is an experimental, bounded investigation retriever. It classifies questions, uses at most three local FTS subqueries by default, merges source-level candidates, and records which subquery surfaced each source. It does not replace the locked v2 retrieval path or enter generated answers yet.
-- `backend/scripts/evaluate_phase21.py` replays saved original-query development candidate rankings and runs new subqueries locally. It cannot load the frozen v2 held-out set. Results live in `evals/phase21/` and are explicitly not a fresh final evaluation.
-- `backend/app/rag/service.py` handles insufficient evidence and checks generated citation IDs.
-- `backend/app/rag/provider.py` contains guarded OpenAI calls and records reported tokens, latency, and estimated cost.
-- `backend/app/main.py` owns HTTP routing and structured validation errors. `frontend/lib/api.ts` owns typed HTTP access.
-
-## Phase 1 data flow
-
-The generator writes JSONL and Markdown. The seeder loads them into SQLite. A page requests `/api/stats` or `/api/records`; FastAPI validates parameters, the service queries SQLite, and Pydantic shapes the response. The frontend renders only values received from the API. AI calls are absent.
-
-The active dataset is selected by `GIST_DATASET_VERSION` (`v1` by default). v2 uses `backend/gist-v2.sqlite3` unless a matching `GIST_DB_PATH` is explicitly set. Each seeded database stores a source-file SHA-256 fingerprint. The API refuses a version mismatch or a changed source corpus until it is explicitly reindexed; replacing an index deletes its old chunks and embeddings. Older unversioned v1 databases remain readable as legacy v1.
-
-## Phase 2 RAG query flow
+## System overview
 
 ```mermaid
 flowchart LR
-    Q[Question and filters] --> K[FTS5 keyword search]
-    Q --> M[Query vector]
-    K --> R[Reciprocal rank fusion]
-    M --> N[NumPy cosine search]
-    N --> R
-    R --> C[Top cited chunks]
-    C --> D[Local extractive preview]
-    C -. approved paid mode .-> O[OpenAI Responses answer]
-    O --> V[Citation ID validation]
+    subgraph Sources["Versioned synthetic data"]
+      FB[Feedback, tickets,<br/>PRDs, release notes]
+      EV[Product events]
+    end
+    FB --> SEED[Seeder: fingerprinted,<br/>refuses silent overwrite]
+    SEED --> DB[(SQLite: sources, chunks,<br/>FTS5, stored embeddings)]
+    EV --> EDB[(Events DB, read-only)]
+
+    DB --> RET[Hybrid retrieval<br/>+ evidence gate]
+    RET --> ASK[Ask Gist]
+    DB --> CL[Clustering] --> OPP[Opportunities] --> PRI[Priorities]
+    OPP --> EXP[Experiments]
+
+    EDB --> TOOLS[Read-only analytics tools]
+    DB --> TOOLS
+    TOOLS --> INV[Investigations:<br/>plan → validate → execute → report]
+    INV --> AUD[(Hash-chained audit log)]
+
+    RET -. guarded .-> LLM((OpenAI))
+    INV -. guarded .-> LLM
+    LED[(Spend ledger)] --- LLM
+
+    REG[(evals/registry.json)] --> OBS[Evaluation & observability]
+    AUD --> OBS
+    LED --> OBS
 ```
 
-The UI sends a question and optional filters to `POST /api/ask`. Demo mode returns retrieved sources or an insufficient-evidence state without generating an answer or making API calls. The guarded OpenAI mode reuses a query embedding cached by exact question, model, dataset version, and source fingerprint when available; a cache miss still requires paid-call approval and a shared-ledger reservation. It combines semantic and keyword ranks, then sends only retrieved snippets to the Responses API. `GET /api/sources/{id}` returns the indexed original source text, and `GET /api/usage` reads the local ledger. Imported source text is evidence, never an instruction. Citation validation checks IDs, but cannot prove that every generated claim is supported. The default demo vectors are lexical hashes. Pulse v2's learned vectors remain stored separately by model and dataset database.
+## Data and indexing
 
-## Phase 2.1 investigation experiment
+- **Versioned datasets.** `GIST_DATASET_VERSION` (`v1` or `v2`) selects the corpus and the database. Each seeded database stores a SHA-256 fingerprint of its source files. The API refuses to serve a version mismatch or changed sources until the data is explicitly reseeded with `--replace`.
+- **Indexing** (`backend/app/rag/ingest.py`, `backend/app/database.py`): text is cleaned and chunked with its source metadata kept, then indexed in FTS5. Vectors are either free, deterministic lexical vectors or stored OpenAI `text-embedding-3-small` embeddings, which are paid for once and reused.
+- **Product events** (`backend/scripts/generate_events.py`): a deterministic generator for 800 accounts and about 155k events, with known causes planted for evaluation. The answer key stays in `evals/` and is never indexed.
+
+## Ask Gist (RAG)
 
 ```mermaid
 flowchart LR
-    Q[Development question] --> C[Deterministic type classification]
-    C --> P[At most three product-vocabulary subqueries]
-    Q --> K[Saved original-query keyword and vector rankings]
-    P --> F[Bounded FTS5 searches]
-    K --> M[Source-level weighted merge]
-    F --> M
-    M --> D[Document and kind diversity trial]
-    D --> T[Source IDs and evidence-need trace]
-    T --> E[Non-exhaustive development judgments]
+    Q[Question + filters] --> K[FTS5 keyword]
+    Q --> V[Vector cosine]
+    K --> F[Reciprocal rank fusion]
+    V --> F
+    F --> G{Evidence gate}
+    G -- not enough evidence --> A[Decline]
+    G --> S[Top sources]
+    S --> D[Free mode: ranked sources only]
+    S -. paid mode .-> L[Cited answer] --> C[Citation & number checks]
 ```
 
-The experimental reranker preserves source metadata and IDs and adds no model calls for subqueries. A trace says which query found a source; it does **not** prove that the source supports that need. Current measurements replay the saved top-20 original-query rankings, so they do not establish live end-to-end quality. The separate draft benchmark `evals/phase21/benchmark-v2-draft.json` uses the frozen Pulse v2 corpus and has held-out questions excluded from experiment code; its provisional labels require independent human review before a new final evaluation.
+- **Retrieval** (`rag/retrieval.py`): segment, area and date filters; FTS5 and NumPy cosine search combined with reciprocal rank fusion. The configuration is locked by `evals/v2/retrieval-lock.json`.
+- **Answers** (`rag/service.py`, `rag/evidence.py`): an evidence gate declines unanswerable questions, and answers can be marked partial. Cited IDs must have been sent to the model, and numbers must appear in the cited sources.
+- **Paid calls** (`rag/provider.py`, `rag/budget.py`) go through one guarded provider with output caps and per-call cost recording. A shared spend ledger reserves cost before each call, and an "uncertain" state blocks further spend until reconciled.
 
-## Phases 3–5: product intelligence, investigations and evaluation
+## Product intelligence
 
-```mermaid
-flowchart LR
-    S[(Pulse v2 sources<br/>+ stored embeddings)] --> CL[Clustering<br/>clustering.py, issues.py]
-    CL --> OP[Opportunities<br/>opportunities.py]
-    OP --> PR[Priorities<br/>priorities.py]
-    OP --> EX[Experiments<br/>experiments.py]
-    EX -. one approved paid run .-> GEN[(backend/generated/<br/>experiments-v2.json)]
-    S --> EVI[Evidence explorer<br/>evidence.py]
-    EVT[(Events DB<br/>generate_events.py)] --> T[Read-only tools<br/>investigate/tools.py]
-    S --> T
-    Q[Question] --> PL[Planner: rules or model<br/>investigate/plan.py, model.py]
-    PL --> VAL{Validator}
-    VAL -- invalid model plan --> PL2[Fall back to rule plan]
-    VAL --> EXE[Executor: limits, checks<br/>investigate/executor.py]
-    PL2 --> EXE
-    T --> EXE
-    EXE --> REP[Report writer + deterministic checks]
-    EXE --> AUD[(Hash-chained audit log<br/>investigate/audit.py)]
-    REP --> AUD
-    AUD --> OBS[Observability<br/>observability.py]
-    REG[(evals/registry.json<br/>evals/regressions.json)] --> OBS
-    LED[(Spend ledger)] --> OBS
-    PUB[public.py: read-only demo,<br/>rate limits, AI gate] -.guards.-> EXE
-```
+- **Clustering** (`clustering.py`, `issues.py`): average-linkage sub-themes with looser parent themes, explained by top terms and representative quotes. Vague groups are flagged for triage.
+- **Opportunities** (`opportunities.py`): one evidence card per sub-theme, with linked tickets and documents (similarity thresholds chosen on a development half), a severity proxy, a trend, an evidence checklist, assumptions and unknowns.
+- **Priorities** (`priorities.py`): a weighted, transparent evidence score. Strategic relevance and effort are optional owner estimates, labelled as estimates.
+- **Experiments** (`experiments.py`): AI-drafted experiment suggestions, generated once, checked deterministically and served from `backend/generated/`. They're labelled "not validated", and showing them never makes a paid call.
+- **Evidence explorer** (`evidence.py`): search across every source, showing where each one is used.
 
-- **Phase 3** turns feedback into issues → opportunities → priorities → experiments. Everything is deterministic except the experiment drafts, which were generated once, checked, and are served from a file. The API never makes a paid call to show them.
-- **Phase 4** adds a synthetic product-events database and bounded investigations. A plan (from rules, or from a model that must pass the same validator) runs up to 6 read-only tools under timeouts. An optional model report is checked for citations, numbers and certainty language. Every run is appended to a hash-chained audit log.
-- **Phase 4.5** reads benchmark values from versioned result files through `evals/registry.json`, and runtime cost and reliability from the ledger and the audit log.
-- **Phase 5** adds public mode (`backend/app/public.py`): owner-only writes are blocked, every route is rate-limited, and paid AI requires an access code, per-IP limits, one request at a time and a daily cap. Security headers are set in `frontend/next.config.mjs`.
+## Investigations
+
+- **Planner** (`investigate/plan.py`, `investigate/model.py`): a rule-based planner ($0), or a model planner whose plan must pass the same validator. The validator allows at most 6 steps, only read-only tools with typed arguments, and requires the baseline to come before the target.
+- **Executor** (`investigate/executor.py`): per-step and total timeouts, capped result sizes, no retries, and at most 2 model calls per investigation. Output checks flag small samples, tracking gaps and mostly-mix changes.
+- **Tools** (`investigate/tools.py`): a fixed metric catalogue over a read-only connection, a mix-vs-rate decomposition, a data-quality scan, release and document lookup, and feedback search.
+- **Report** (optional, paid): the report is checked before it's shown. Every claim must cite a step that ran, numbers must appear in the tool output, and certainty language is rejected. A failed report is withheld, with its raw text kept for audit.
+- **Audit** (`investigate/audit.py`): an append-only log in which each entry's hash covers the previous one, so any edit is detectable.
+
+## Evaluation and observability
+
+`observability.py` reads every benchmark metric from its versioned result file, through the locations listed in `evals/registry.json`, and shows each file's SHA-256 hash. Runtime cost, tokens, latency and failures come from read-only queries over the spend ledger and the audit log. `evals/regressions.json` maps past failures to the tests that guard them. See [how results are judged](../evals/README.md).
+
+## Public mode
+
+`backend/app/public.py` is enabled by `GIST_PUBLIC_MODE=true`:
+- shared state is read-only, and feedback is ratings only;
+- every route has a per-IP rate limit and a request-size cap;
+- paid AI requires an access code, per-IP limits, one request at a time and a daily cap checked before spending.
+
+`frontend/next.config.mjs` sets the CSP and security headers. The deployed API starts from a verified read-only data snapshot (`deploy/`).

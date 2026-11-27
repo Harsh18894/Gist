@@ -3,6 +3,7 @@ import pytest
 
 from app.schemas import AskResponse
 from scripts import run_benchmark3_answers as runner
+from helpers import require_private  # noqa: E402
 
 
 def _response(status, cited=(), retrieved=("a", "x")):
@@ -25,6 +26,7 @@ def test_checks_flag_hard_negatives_context_and_abstention():
     assert not runner.checks(unanswerable, _response("answered", ["a"]).model_dump(), "It was [a].")["abstention_correct"]
 
 
+@require_private()
 def test_run_refuses_rerun_and_keeps_answers_on_provider_error(tmp_path, monkeypatch):
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
     done = tmp_path / "done.json"
@@ -48,6 +50,7 @@ def test_run_refuses_rerun_and_keeps_answers_on_provider_error(tmp_path, monkeyp
     assert result["errors"][0]["error"] == "ProviderError" and (tmp_path / "review.csv").exists()
 
 
+@require_private()
 def test_labelled_rerun_is_development_only(tmp_path, monkeypatch):
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
     monkeypatch.setattr(runner, "RESULTS", tmp_path)

@@ -1,4 +1,5 @@
 """Issue Explorer API: consistent hierarchy, complete coverage, explanations, both clustering paths."""
+import shutil
 from pathlib import Path
 
 import pytest
@@ -7,6 +8,7 @@ from fastapi.testclient import TestClient
 from app import issues
 from app.main import app
 from scripts.seed import seed
+from helpers import V2_DB  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -44,10 +46,12 @@ def test_issue_map_without_stored_vectors_falls_back_to_words(version, tmp_path,
     assert data["method"].startswith("word similarity")
 
 
-def test_issue_map_uses_stored_learned_vectors_on_the_real_v2_index(monkeypatch):
+def test_issue_map_uses_stored_learned_vectors_on_the_real_v2_index(monkeypatch, tmp_path):
     issues._cache.clear()
     monkeypatch.setenv("GIST_DATASET_VERSION", "v2")
-    monkeypatch.setenv("GIST_DB_PATH", str(ROOT / "backend/gist-v2.sqlite3"))
+    copy = tmp_path / "gist-v2.sqlite3"
+    shutil.copyfile(V2_DB, copy)   # never write to the shipped snapshot
+    monkeypatch.setenv("GIST_DB_PATH", str(copy))
     with TestClient(app) as client:
         data = _check(client)
     assert data["method"].startswith("learned vectors")

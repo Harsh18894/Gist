@@ -15,7 +15,7 @@ import numpy as np
 from . import issues
 from .clustering import Vectorizer, _embeddings, _normalize
 
-# Revised 2026-11-26 after development-half calibration (see PLAN.md): the first rubric rated
+# Revised 2026-11-26 after development-half calibration (evals/phase33/results/): the first rubric rated
 # nearly everything high and medium groups were purer than high ones.
 CONFIDENCE_RUBRIC = [
     ("focus", "At least 80% of records come from one product area (mixed areas often mean mixed problems)"),

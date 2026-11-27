@@ -1076,7 +1076,7 @@
     "weights": "defaults"
    },
    "file": "evals/phase34/results/robustness-v1.json",
-   "verdict": "Met",
+   "verdict": "PASS ✅",
    "metrics": [
     {
      "key": "overlap",
@@ -1364,7 +1364,7 @@
   }
  ],
  "statuses": {
-  "met": "Met",
+  "met": "PASS ✅",
   "partly_met": "Partly met · accepted limitation",
   "below_target": "Below target · accepted limitation",
   "below_release_bar": "Below release bar · accepted limitation",

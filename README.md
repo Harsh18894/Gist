@@ -62,17 +62,17 @@ Gist was built one milestone at a time. Each milestone had acceptance targets wr
 
 | Area | Measure (held-out unless noted) | Result | Target | Status |
 |---|---|---|---|---|
-| Security | Prompt injection, unsafe SQL, citation fabrication, key leaks, runaway loops | 25 tests pass | all pass | **Met** |
-| Answers | Unanswerable questions correctly declined (Benchmarks 4 and 5) | 4 of 4, both benchmarks | 100% | **Met** |
-| Linking | Support-ticket link precision / top document correct | 0.88 / 1.00 | ≥ 0.80 / ≥ 0.75 | **Met** |
-| Prioritization | Top-10 overlap when any weight moves ±50% | 9.6 of 10 | ≥ 7 | **Met** |
-| Clustering | Purity / issue recall / look-alike issues separated (test half) | 0.91 / 0.82 / 7 of 7 | ≥ 0.85 / ≥ 0.75 / ≥ 6 | **Met** |
+| Security | Prompt injection, unsafe SQL, citation fabrication, key leaks, runaway loops | 25 tests pass | all pass | **PASS ✅** |
+| Answers | Unanswerable questions correctly declined (Benchmarks 4 and 5) | 4 of 4, both benchmarks | 100% | **PASS ✅** |
+| Linking | Support-ticket link precision / top document correct | 0.88 / 1.00 | ≥ 0.80 / ≥ 0.75 | **PASS ✅** |
+| Prioritization | Top-10 overlap when any weight moves ±50% | 9.6 of 10 | ≥ 7 | **PASS ✅** |
+| Clustering | Purity / issue recall / look-alike issues separated (test half) | 0.91 / 0.82 / 7 of 7 | ≥ 0.85 / ≥ 0.75 / ≥ 6 | **PASS ✅** |
 | Clustering | Number of themes; vague records left ungrouped | 64 themes; 0% | ≤ 24; ≥ 50% | Below target · accepted limitation |
-| Investigations | Planted root causes found | 4 of 6 | ≥ 4 | **Met** |
-| Investigations | Decoys (mix shift, tracking gap, holiday, untracked metric): correct top explanation | 3 of 4 | ≥ 3 | **Met** |
+| Investigations | Planted root causes found | 4 of 6 | ≥ 4 | **PASS ✅** |
+| Investigations | Decoys (mix shift, tracking gap, holiday, untracked metric): correct top explanation | 3 of 4 | ≥ 3 | **PASS ✅** |
 | Investigations | Decoys: never blamed a product change with high confidence | 3 of 4 (one report timed out) | 4 of 4 | Below target · accepted limitation |
 | Answers | Owner-rated "good": Benchmark 4 / Benchmark 5 (of 20 answerable) | 8 / 9 | ≥ 10 | Below target · accepted limitation |
-| Experiments | Owner review of 10 AI drafts: useful / sensible metric / wrong | 5 / 7 / 0 | ≥ 6 / ≥ 8 / ≤ 1 | Below target · accepted limitation (wrong: met) |
+| Experiments | Owner review of 10 AI drafts: useful / sensible metric / wrong | 5 / 7 / 0 | ≥ 6 / ≥ 8 / ≤ 1 | Below target · accepted limitation (wrong ≤ 1: PASS ✅) |
 | Retrieval | Hit rate @5: first v2 benchmark (hybrid, 18 answerable) | 38.9% | judged, no number | Below release bar · baseline |
 | Retrieval | Hit rate @5: Benchmark 4 / Benchmark 5 (20 answerable each) | 95.0% / 75.0% | none set | Measured |
 

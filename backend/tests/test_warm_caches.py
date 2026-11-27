@@ -38,3 +38,19 @@ def test_warming_failure_never_blocks_startup(monkeypatch, tmp_path):
     assert main.warm_caches() is None
     with TestClient(app) as client:
         assert client.get("/api/health").status_code == 200
+
+
+def test_warming_reports_what_it_built_in_the_log(monkeypatch, tmp_path, caplog):
+    import logging
+    _fresh(monkeypatch, tmp_path, "true")
+    gist = logging.getLogger("gist")
+    gist.addHandler(caplog.handler)            # Gist's logger does not propagate to the root logger
+    try:
+        with caplog.at_level(logging.INFO, logger="gist"):
+            seconds = main.warm_caches()
+    finally:
+        gist.removeHandler(caplog.handler)
+    assert seconds is not None
+    line = next(r.getMessage() for r in caplog.records if r.getMessage().startswith("Caches warmed"))
+    assert "sub-themes" in line and "opportunities" in line
+    assert gist.level == logging.INFO and gist.handlers      # Gist's INFO lines are printed under uvicorn

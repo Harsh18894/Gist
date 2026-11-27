@@ -28,6 +28,18 @@ from .rag.retrieval import Filters, hits_for_ids, hybrid_search, keyword_search,
 from .rag.ingest import demo_vector
 from .rag.service import answer, citation
 
+def _configure_logging() -> None:
+    """Print Gist's own INFO+ messages (uvicorn only configures its own loggers, so these were silently dropped)."""
+    gist = logging.getLogger("gist")
+    if not gist.handlers:
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter("%(levelname)s:     %(name)s: %(message)s"))
+        gist.addHandler(handler)
+        gist.setLevel(logging.INFO)
+        gist.propagate = False
+
+
+_configure_logging()
 logger = logging.getLogger("gist.api")
 
 
@@ -43,13 +55,14 @@ def warm_caches() -> float | None:
     started = time.perf_counter()
     try:
         with connection() as db:
-            issues.issue_map(db)
-            opportunities.build(db)
+            issue_map = issues.issue_map(db)
+            built = opportunities.build(db)
     except Exception:  # noqa: BLE001 - warming must never stop the API from starting
         logger.warning("Cache warming failed; caches will be built on first use.", exc_info=True)
         return None
     seconds = time.perf_counter() - started
-    logger.info("Caches warmed in %.2f s", seconds)
+    logger.info("Caches warmed in %.2f s (%d sub-themes, %d opportunities, %s)", seconds,
+                len(issue_map["sub_themes"]), len(built["opportunities"]), built["method"])
     return seconds
 
 

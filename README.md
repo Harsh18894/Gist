@@ -1,6 +1,6 @@
 # Gist
 
-**An AI product-intelligence copilot that shows its work.** Gist turns customer feedback, support tickets, product documents and usage data into product decisions you can trace: recurring problems, evidence-backed opportunities, a transparent priority score, experiment ideas, and root-cause investigations. Every claim links back to the records behind it.
+**An AI product-intelligence copilot that shows its work.** · [Live demo](https://gist-tau.vercel.app) Gist turns customer feedback, support tickets, product documents and usage data into product decisions you can trace: recurring problems, evidence-backed opportunities, a transparent priority score, experiment ideas, and root-cause investigations. Every claim links back to the records behind it.
 
 > **All data is synthetic.** "Pulse" is a fictional SaaS product. Gist is a portfolio project built to learn retrieval-augmented generation (RAG) and evaluation properly, not a commercial product.
 
@@ -105,7 +105,7 @@ Verify: `.venv/bin/pytest backend/tests` (394 tests) and `(cd frontend && npm ru
 
 ## Public demo
 
-Deployment is configured for Render (API) and Vercel (web); see the [deployment guide](docs/deployment.md). The public demo runs in **read-only public mode**:
+**Live demo: https://gist-tau.vercel.app** (the API sleeps when idle, so the first load can take up to a minute). It runs on Vercel and Render's free tiers; see the [deployment guide](docs/deployment.md). The public demo runs in **read-only public mode**:
 - visitors can't change what others see;
 - every route is rate-limited;
 - paid AI sits behind an access code with per-visitor limits, a daily budget, and a dedicated OpenAI project budget.

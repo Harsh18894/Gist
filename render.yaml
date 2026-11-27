@@ -1,0 +1,42 @@
+# Render Blueprint for the Gist API (public demo). See docs/deployment.md.
+# Secrets use `sync: false`: Render asks for them in its dashboard. Never put a real value in this file.
+services:
+  - type: web
+    name: gist-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: bash deploy/render-start.sh
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.14.7"            # the version Gist was tested on; see docs/deployment.md if unavailable
+      # Public demo: read-only shared state, per-IP rate limits, proxy-aware client IPs
+      - key: GIST_PUBLIC_MODE
+        value: "true"
+      - key: GIST_TRUST_PROXY
+        value: "true"
+      - key: GIST_CORS_ORIGIN       # your Vercel production URL, e.g. https://gist-xyz.vercel.app
+        sync: false
+      # Visitor AI stays OFF until you enable it deliberately (docs/deployment.md, step 7)
+      - key: GIST_PUBLIC_AI
+        value: "false"
+      - key: GIST_PUBLIC_AI_ACCESS_CODE   # at least 12 random characters; share only with reviewers
+        sync: false
+      - key: GIST_PUBLIC_AI_DAILY_USD
+        value: "0.10"
+      - key: GIST_PUBLIC_AI_PER_HOUR
+        value: "3"
+      - key: GIST_PUBLIC_AI_PER_DAY
+        value: "10"
+      # Existing paid guard (all three must allow a call; the OpenAI project budget is the durable limit)
+      - key: GIST_ENABLE_PAID_API
+        value: "false"
+      - key: GIST_PAID_EVAL_APPROVED
+        value: "false"
+      - key: GIST_MAX_API_SPEND_USD
+        value: "0.50"
+      - key: GIST_LLM_MODEL
+        value: gpt-6-luna
+      - key: OPENAI_API_KEY         # a key from a DEDICATED OpenAI project with a budget limit
+        sync: false

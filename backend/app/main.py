@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from . import analytics, evidence, experiments, issues, observability, opportunities, priorities
+from . import analytics, evidence, experiments, issues, observability, opportunities, priorities, public
 from .investigate import audit as investigation_log, executor as investigation_executor
 from .investigate.plan import rule_plan
 from .config import cors_origin
@@ -50,7 +50,24 @@ async def unexpected_errors(request: Request, call_next):
         return _error(500, "internal_error", "Gist hit an unexpected error. Check the API logs.")
 
 
-app.add_middleware(CORSMiddleware, allow_origins=[cors_origin()], allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
+@app.middleware("http")
+async def public_limits(request: Request, call_next):
+    """Public mode only: cap request bodies and rate-limit every API route per client IP."""
+    if public.public_mode() and request.url.path.startswith("/api/"):
+        lim = public.limits()
+        if request.method in ("POST", "PUT", "DELETE", "PATCH"):
+            length = request.headers.get("content-length")
+            if length is None and request.method != "DELETE":
+                return _error(411, "length_required", "Requests to the public demo must declare their size.")
+            if length is not None and (not length.isdigit() or int(length) > lim["max_body_bytes"]):
+                return _error(413, "too_large", "That request is too large for the public demo.")
+        if request.method != "OPTIONS" and not public.API_WINDOW.allow(public.client_ip(request), lim["api_per_minute"], 60):
+            return _error(429, "rate_limited", "Too many requests to the public demo. Wait a minute and try again.")
+    return await call_next(request)
+
+
+app.add_middleware(CORSMiddleware, allow_origins=[cors_origin()], allow_methods=["GET", "POST", "PUT", "DELETE"],
+                   allow_headers=["Content-Type", "X-Gist-Access-Code"])
 
 
 @app.exception_handler(GistError)
@@ -62,6 +79,12 @@ async def gist_error(_request: Request, error: GistError) -> JSONResponse:
 @app.exception_handler(RequestValidationError)
 async def validation_error(_request: Request, _error: RequestValidationError) -> JSONResponse:
     return JSONResponse(status_code=422, content={"error": {"code": "invalid_request", "message": "Check the supplied query parameters."}})
+
+
+@app.get("/api/public/status")
+def public_status() -> dict:
+    """Whether this server is the public demo, and whether visitor AI is available (never reveals the code)."""
+    return public.status()
 
 
 @app.get("/api/health")
@@ -179,8 +202,20 @@ def search(query: str = Query(min_length=3, max_length=500),
 
 @app.post("/api/ask", response_model=AskResponse,
           responses={403: {"model": ErrorResponse}, 422: {"model": ErrorResponse}, 502: {"model": ErrorResponse}})
-def ask(request: AskRequest) -> AskResponse | JSONResponse:
+def ask(request: AskRequest, http: Request) -> AskResponse | JSONResponse:
     try:
+        if request.mode == "openai" and public.public_mode():
+            from .rag.provider import MAX_OUTPUT_TOKENS
+            with public.GATE.admit(public.client_ip(http), http.headers.get("x-gist-access-code"),
+                                   public.worst_case_usd(1, MAX_OUTPUT_TOKENS)) as spend:
+                try:
+                    with connection() as db:
+                        result = answer(db, request)
+                except PaidApiDisabled:
+                    spend["usd"] = 0.0          # refused before any call (PaidRequestRejected included)
+                    raise
+                spend["usd"] = getattr(result, "estimated_cost_usd", 0.0) or 0.0
+                return result
         with connection() as db:
             return answer(db, request)
     except PaidRequestRejected as exc:  # subclass of PaidApiDisabled: must come first
@@ -301,6 +336,7 @@ def priority_table() -> dict:
 
 @app.put("/api/priorities/weights")
 def priority_weights(body: WeightsUpdate) -> dict:
+    public.require_owner_write("Editing priority weights")
     with connection() as db:
         key = priorities.dataset_key(db)
     return {"weights": priorities.set_weights(key, body.weights)}
@@ -308,6 +344,7 @@ def priority_weights(body: WeightsUpdate) -> dict:
 
 @app.delete("/api/priorities/weights")
 def priority_weights_reset() -> dict:
+    public.require_owner_write("Resetting priority weights")
     with connection() as db:
         key = priorities.dataset_key(db)
     return {"weights": priorities.reset_weights(key)}
@@ -315,6 +352,7 @@ def priority_weights_reset() -> dict:
 
 @app.put("/api/priorities/{opportunity_id}", response_model=None, responses={404: {"model": ErrorResponse}})
 def priority_input(opportunity_id: str, body: PriorityInput) -> dict | JSONResponse:
+    public.require_owner_write("Editing priority estimates")
     with connection() as db:
         key = priorities.dataset_key(db)
         known = {c["id"] for c in opportunities.build(db)["opportunities"]}
@@ -354,10 +392,22 @@ class InvestigationRequest(BaseModel):
 
 
 @app.post("/api/investigations", response_model=None, responses={503: {"model": ErrorResponse}})
-def investigate(body: InvestigationRequest) -> dict | JSONResponse:
+def investigate(body: InvestigationRequest, request: Request) -> dict | JSONResponse:
     """Plan, validate and run a bounded investigation. 'rules' is $0; 'model' needs the server's paid flags
-    and adds a model plan and report (two guarded calls). Every run is appended to the audit log."""
+    and adds a model plan and report (two guarded calls). Every run is appended to the audit log.
+    In the public demo, 'model' also passes the access-code, rate-limit and daily-cap gate."""
     try:
+        if body.planner == "model" and public.public_mode():
+            from .rag.provider import INVESTIGATION_MAX_OUTPUT_TOKENS
+            worst = public.worst_case_usd(2, INVESTIGATION_MAX_OUTPUT_TOKENS)
+            with public.GATE.admit(public.client_ip(request), request.headers.get("x-gist-access-code"), worst) as spend:
+                try:
+                    entry = investigation_executor.investigate(body.question.strip(), body.planner)
+                except PaidApiDisabled:
+                    spend["usd"] = 0.0          # refused before any call: release the reservation
+                    raise                       # (an uncertain ProviderError keeps the worst case: it may have been billed)
+                spend["usd"] = entry.get("cost_usd") or 0.0
+                return entry
         return investigation_executor.investigate(body.question.strip(), body.planner)
     except PaidApiDisabled:
         return _error(503, "paid_disabled", "AI investigation is off on this server (no paid-API approval is configured). "
@@ -403,6 +453,7 @@ class BillingEntry(BaseModel):
 @app.put("/api/observability/billing")
 def observability_billing(body: BillingEntry) -> dict:
     """Record the provider-billed amount for one UTC day (from the provider's cost export)."""
+    public.require_owner_write("Entering billing figures")
     return observability.set_billing(body.day, body.amount_usd, body.source)
 
 
@@ -415,6 +466,8 @@ class FeedbackEntry(BaseModel):
 
 @app.post("/api/feedback")
 def feedback(body: FeedbackEntry) -> dict:
+    if public.public_mode() and body.comment and body.comment.strip():
+        public.require_owner_write("Free-text feedback")       # ratings only in the public demo
     return observability.add_feedback(body.target_type, body.target_id, body.rating, body.comment)
 
 

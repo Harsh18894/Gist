@@ -1,128 +1,125 @@
 # Gist
 
-**Turn customer feedback into product decisions.** Gist is a local Product Intelligence Copilot prototype for Product Managers. It explores fictional Pulse customer feedback, calculates SQLite summaries, and retrieves source evidence in Ask Gist. The entire dataset is synthetic. The default retrieval demo requires no API key and makes no paid calls.
+**An AI product-intelligence copilot that shows its work.** Gist turns customer feedback, support tickets, product documents and usage data into product decisions you can trace: recurring problems, evidence-backed opportunities, a transparent priority score, experiment ideas, and root-cause investigations. Every claim links back to the records behind it.
 
-## Stack and structure
+> **All data is synthetic.** "Pulse" is a fictional SaaS product. Gist is a portfolio project built to learn retrieval-augmented generation (RAG) and evaluation properly, not a commercial product.
 
-- `frontend/` — Next.js App Router, TypeScript, Tailwind CSS UI.
-- `backend/app/` — FastAPI routes, Pydantic contracts, SQLite services, and RAG modules.
-- `backend/scripts/` — deterministic generator, seeder, importer, guarded embedding command, and evaluation.
-- `backend/tests/` — data, API, filter, and metric tests.
-- `data/` — unchanged Pulse v1 sources; `data/v2/` — versioned synthetic Pulse v2 sources.
-- `evals/` — v1 benchmark; `evals/v2/` — 50 questions and private source annotations.
-- `docs/` — architecture and learning notes.
+![Gist overview](docs/screenshots/overview.jpg)
 
-## Local setup
+## What it does
 
-Requires Python 3.11+ and Node.js 20+. Verified during development with Python 3.14.7 and Node.js 25.2.1. From the repository root:
+| | |
+|---|---|
+| **Ask Gist** | Ask a question in plain language. Free mode ranks the relevant sources (hybrid keyword + vector retrieval); paid mode writes a cited answer and declines when the evidence is thin. |
+| **Issues → Opportunities** | Clusters 400 feedback records into 67 recurring sub-themes, then turns each into an opportunity card: who is affected, how often, linked support tickets, related documents, assumptions and unknowns. |
+| **Priorities** | A transparent, editable score. Measured parts come from the data; strategic relevance and effort are *your* estimates, labelled as such. Revenue and effort are never made up. |
+| **Experiments** | One AI-drafted experiment per opportunity (hypothesis, metric, guardrails, design), checked automatically and clearly marked "not validated". |
+| **Investigate** | "Why did activation drop in October?" A bounded plan → read-only analytics tools → findings, and optionally an AI root-cause report that must cite every step and never claim certainty. |
+| **Evaluation** | Every quality, cost and reliability number, traced to a versioned result file, with who judged it and what it cost. |
 
-```sh
-python3 -m venv .venv
-.venv/bin/pip install -r backend/requirements-dev.txt
-python3 backend/scripts/generate_data.py
-.venv/bin/python backend/scripts/seed.py --dataset v1
-(cd frontend && npm install)
+<table><tr>
+<td><img src="docs/screenshots/c-investigation-ai-report.jpg" alt="AI investigation report with ranked explanations and confidence"/></td>
+<td><img src="docs/screenshots/a-onboarding-opportunities.jpg" alt="Onboarding opportunities with records, tickets and evidence checks"/></td>
+</tr><tr>
+<td><img src="docs/screenshots/d-priorities.jpg" alt="Transparent priority scores with measured evidence and your estimates"/></td>
+<td><img src="docs/screenshots/evaluation.jpg" alt="Evaluation page comparing retrieval strategies"/></td>
+</tr></table>
+
+Walk through it yourself with the [five demo scenarios](docs/demo-scenarios.md).
+
+## Architecture
+
+```mermaid
+flowchart LR
+    subgraph Data["Synthetic data (versioned, deterministic)"]
+      FB[Feedback, tickets,<br/>PRDs, release notes]
+      EV[Product events:<br/>800 accounts, 155k events]
+      KEY[(Answer keys &<br/>benchmarks — never indexed)]
+    end
+    FB --> IDX[(SQLite: FTS5 + stored<br/>embeddings)]
+    EV --> EDB[(Events DB, read-only)]
+    IDX --> RAG[Hybrid retrieval<br/>+ evidence gate]
+    RAG --> ASK[Ask Gist]
+    IDX --> CL[Clustering → issues] --> OPP[Opportunities] --> PRI[Priorities] --> EXP[Experiments]
+    EDB --> TOOLS[Read-only analytics tools]
+    IDX --> TOOLS
+    TOOLS --> INV[Plan → validate → execute<br/>→ checked AI report]
+    RAG & INV & EXP -. guarded, capped .-> LLM((OpenAI))
+    KEY --> EVAL[Evaluation registry<br/>& audit logs]
+    INV --> AUD[(Hash-chained audit log)]
+    AUD --> EVAL
 ```
 
-The v1 generator uses a fixed seed. It creates exactly 400 feedback records, 120 support tickets, six PRDs, eight release notes, and 20 benchmark questions. The v1 seeder builds 534 searchable sources and 534 chunks with local demo vectors. **Seeding refuses to overwrite an existing database.** If you intentionally rebuild a database after source changes, pass `--replace`; this clears imported sources and stored embeddings. The local database is ignored by Git.
+- **Frontend:** Next.js 15 (App Router), TypeScript, Tailwind. It renders only numbers the API returns.
+- **Backend:** FastAPI, Pydantic, SQLite (FTS5), NumPy. No LangChain, no vector database, no Docker: the whole corpus fits in SQLite, and every step stays inspectable.
+- **AI:** OpenAI `text-embedding-3-small` and `gpt-6-luna`, called only through one guarded provider with a spend ledger, output caps and per-call cost recording.
 
-## Pulse Dataset v2
+More: [architecture notes](docs/architecture.md) · [decisions log](docs/decisions.md) · [developer guide](docs/developer-guide.md).
 
-Pulse v2 is a more varied, still entirely fictional feedback fixture. It has 400 feedback entries, 120 support conversations, 14 product documents, private multi-label source annotations, and 50 benchmark questions. It includes ambiguous reports, hard negatives, mixed reactions, and release-aware timelines. See [dataset quality review](docs/dataset-v2-quality.md). The original v1 files remain unchanged.
+## Results (measured, including failures)
 
-From the repository root, generate and seed v2 without API calls:
+Gist was built one milestone at a time, each with acceptance criteria written **before** any run, and frozen held-out tests run **exactly once**. Most milestones failed at least one criterion; each failure is recorded and was accepted as a known limitation, not hidden. Full detail, with file hashes, is on the in-app **Evaluation** page.
+
+| Area | Measure (held-out unless noted) | Result | Verdict |
+|---|---|---|---|
+| Retrieval | Hit rate @5: first v2 benchmark (hybrid, 18 answerable) | 38.9% | FAIL |
+| Retrieval | Hit rate @5: Benchmark 4 / Benchmark 5 (20 answerable each) | 95.0% / 75.0% | FAIL, accepted |
+| Answers | Owner-rated "good": Benchmark 4 / Benchmark 5 (of 20 answerable) | 8 / 9 | FAIL (target 10) |
+| Answers | Unanswerable questions correctly declined | 4 of 4, both benchmarks | ✅ |
+| Clustering | Purity / issue recall / look-alike issues separated (test half) | 0.91 / 0.82 / 7 of 7 | FAIL on size (64 themes vs ≤ 24) |
+| Linking | Ticket-link precision / top document correct | 0.88 / 1.00 | PASS |
+| Prioritization | Top-10 overlap when any weight moves ±50% | 9.6 of 10 | PASS |
+| Experiments | Owner review: useful / sensible metric / wrong (of 10) | 5 / 7 / 0 | FAIL, accepted |
+| Investigations | Planted root causes found (held-out) | 4 of 6 | ✅ (target 4) |
+| Investigations | Decoys (mix shift, tracking gap, holiday, untracked metric): correct top explanation | 3 of 4 | ✅ (target 3) |
+| Investigations | Decoys: never blamed a product change with high confidence | 3 of 4 (one report timed out) | FAIL (target 4) |
+| Security | Prompt injection, unsafe SQL, citation fabrication, leaks, loops | 25 tests pass | PASS |
+
+Different benchmarks use different question sets, so their numbers are not directly comparable. The story, and the mistakes, are in the [case study](docs/case-study.md).
+
+**Total AI spend for the whole project: about $0.14** (537 requests; OpenAI billing for the busiest day matched the ledger within 3.1%).
+
+## Run it locally ($0, no API key)
+
+Requires Python 3.11+ and Node.js 20+.
 
 ```sh
-.venv/bin/python backend/scripts/generate_v2.py --replace
-.venv/bin/python backend/scripts/audit_v2.py --json evals/v2/quality-audit.json
+python3 -m venv .venv && .venv/bin/pip install -r backend/requirements-dev.txt
+(cd frontend && npm install)
 .venv/bin/python backend/scripts/seed.py --dataset v2
+.venv/bin/python backend/scripts/generate_events.py
 GIST_DATASET_VERSION=v2 npm run dev
 ```
 
-The committed v2 source files are already generated. If `backend/gist-v2.sqlite3` already exists, the seed command stops; use `--replace` only when you intend to rebuild that v2 database. To switch back, run `npm run dev` with `GIST_DATASET_VERSION` unset (v1 default). If you set `GIST_DB_PATH`, point it at the matching version's database. `/api/rag/status` reports the active version and source fingerprint. The API rejects a version mismatch or source files changed after indexing. Never index `evals/v2/`; it contains hidden answers. Neither version automatically generates OpenAI embeddings.
+Open http://localhost:3000. Everything here runs without a key: retrieval, analytics, issues, opportunities, priorities and rule-based investigations.
 
-## Run Gist
+**What a fresh clone does differently:** the learned embeddings were paid for once and live only in the original local database, as does the log of past AI investigations. A fresh seed uses free lexical vectors, so clustering falls back to word similarity, the issue groups differ from the screenshots, and the stored AI experiment drafts show as out of date (they are tied to the original groups). The [public demo](#public-demo) ships the original database read-only, with all stored AI runs.
 
-From the repository root (`gist %`), one command starts both servers:
+Try these:
+- **Ask Gist:** "What are enterprise customers saying about SSO setup?"
+- **Investigate:** "Why did onboarding activation drop in October?" (answer: who signed up changed, not the product)
+- **Investigate:** "Why did activation drop in February?" (answer: invite acceptance fell after release 01)
 
-```sh
-npm run dev
-```
+Verify: `.venv/bin/pytest backend/tests` (394 tests) and `(cd frontend && npm run build)`.
 
-You can also use two terminals. Start the API from the repository root:
+## Public demo
 
-```sh
-PYTHONPATH=backend .venv/bin/uvicorn app.main:app --reload --port 8000
-```
+Deployment is configured for Render (API) and Vercel (web); see the [deployment guide](docs/deployment.md). The public demo runs in **read-only public mode**:
+- visitors can't change what others see;
+- every route is rate-limited;
+- paid AI sits behind an access code with per-visitor limits, a daily budget, and a dedicated OpenAI project budget.
 
-Start the frontend from the repository root in the second terminal:
-
-```sh
-cd frontend
-npm run dev
-```
-
-If that terminal is already in `frontend/`, run only `npm run dev`. Python virtual environment activation does not change directories; npm looks for `package.json` in the current directory.
-
-Visit `http://localhost:3000`. API docs are at `http://localhost:8000/docs`. The frontend defaults to `http://localhost:8000`; set `NEXT_PUBLIC_GIST_API_URL` if needed. Optional configuration is documented in `.env.example`. Never put secrets in a `NEXT_PUBLIC_` variable.
-
-## Ask Gist and ingestion
-
-Ask Gist defaults to **local retrieval only**. It combines SQLite FTS5 keyword ranking and cosine similarity over deterministic token-hash vectors, then shows clickable retrieved sources. It does not synthesize an answer or call those sources generated citations. The local vectors are lexical stand-ins, not OpenAI embeddings. Questions asking for facts absent from the sources return an insufficient-evidence state, even if topically related records were retrieved.
-
-To import **synthetic** CSV, TXT, or Markdown sources from a local file:
-
-```sh
-.venv/bin/python backend/scripts/rag.py import data/examples/example.csv
-.venv/bin/python backend/scripts/rag.py import data/examples/example.txt --segment SMB --product-area Billing --source-date 2025-09-01
-.venv/bin/python backend/scripts/rag.py import data/examples/example.md
-```
-
-These example files are included in `data/examples/`. CSV requires a `text`, `content`, `feedback_text`, or `description` column. Optional columns include `title`, `segment`/`customer_segment`, `product_area`, and `source_date`/`date`/`timestamp`. Text and Markdown accept the metadata flags shown above; Markdown also reads `Published:` and `Product area:` lines. Reimporting unchanged content preserves cached embeddings; changed content invalidates its vectors. Files are limited to 5 MB. Keep all imports synthetic.
-
-The OpenAI path is implemented but **disabled by default**. It requires explicit user approval, a server-side key, both `GIST_ENABLE_PAID_API=true` and `GIST_PAID_EVAL_APPROVED=true`, and a positive cap. The project-wide ledger atomically reserves at least $0.05 per request and enforces a maximum **$0.50** validation allocation across embeddings and generation. Reported tokens reconcile successful reservations; uncertain requests retain theirs and are not retried automatically. The ledger is an estimate; compare it with provider billing. Never put the key in a `NEXT_PUBLIC_` variable. The app does not automatically load `.env.example` or `backend/.env`.
-
-## Verify
-
-```sh
-PYTHONPATH=backend .venv/bin/pytest backend/tests -q
-(cd frontend && npm run build)
-.venv/bin/python backend/scripts/evaluate_retrieval.py
-```
-
-The legacy evaluator defaults to the original v1 benchmark. Pulse v2 uses a frozen 30-question development and 20-question held-out split. Run `.venv/bin/python backend/scripts/freeze_v2_split.py` to verify its hashes. The old `--dataset v2` evaluator is disabled because it would expose the held-out set. The learned-vector development comparison and the **one-time** frozen held-out evaluation are complete; see [Phase 2 validation](docs/phase2-validation.md). Do not rerun or tune against the held-out set in this benchmark version. Do not interpret demo hash-vector scores as learned semantic retrieval quality.
-
-For a reproducible read-only v2 preflight, run:
-
-```sh
-.venv/bin/python backend/scripts/freeze_v2_split.py
-.venv/bin/python backend/scripts/preflight_v2.py
-.venv/bin/python backend/scripts/run_v2_retrieval.py --split development
-.venv/bin/python backend/scripts/check_v2_demo_answers.py
-```
-
-The development and held-out results are in `evals/v2/results/`. `evals/v2/development-judgments.json` contains additional source-reviewed, **non-exhaustive** development labels and evidence groups. The original benchmark and held-out split remain hash-frozen. For the read-only retrieval lock, index inventory, and shared cost ledger:
-
-```sh
-PYTHONPATH=backend .venv/bin/python backend/scripts/lock_v2_retrieval.py
-PYTHONPATH=backend .venv/bin/python backend/scripts/rag.py index-preflight
-PYTHONPATH=backend .venv/bin/python backend/scripts/rag.py spend-report
-```
-
-The authorized validation indexed **536/536** learned v2 vectors. The retrieval configuration is locked in `evals/v2/retrieval-lock.json`; the final held-out set has already been run once. Saved development and final results are reviewable without further API calls. Any future paid run requires new explicit approval. Review generated claims and citations with [the answer rubric](evals/v2/answer-review-rubric.md). An interrupted embedding batch with uncertain billing stops and requires manual reconciliation; it is never automatically rebilled.
-
-Phase 2.1 has an **experimental offline retriever** with bounded local subqueries and a separate [retrieval improvement report](docs/phase2-retrieval-improvements.md). It is not the Ask Gist default. Its draft 24-question benchmark under `evals/phase21/` needs independent human relevance review; do not run its held-out questions for tuning. After the owner completes the review CSVs, `backend/scripts/import_phase21_review.py check` validates them and `freeze` writes an immutable reviewed benchmark; see [the review guide](evals/phase21/human-review.md). Exact paid-mode query embeddings are now cached by model and dataset fingerprint, while source embeddings and the frozen v2 baseline remain intact.
-
-Phase 2.1 final validation is complete: see [the report](docs/phase21-final-validation.md). Held-out retrieval Hit@5 was 0.80 on five questions, but only 5 of 20 answerable answers were rated good in the owner's claim review. Proposed release readiness: **FAIL**.
-
-Phase 2.2 final validation is complete: see [the report](docs/phase22-final-validation.md). On 24 new held-out questions, all 4 unanswerables were declined, wrong refusals were 10%, and the owner rated 40% of answerable answers good and 20% poor. That misses the 50%-good target, so the proposed verdict is **FAIL**. Benchmark-v4 labels are AI-judge labels adopted by the owner.
-
-Phase 2.3 final validation is complete: see [the report](docs/phase23-final-validation.md). On 24 new held-out questions with owner-written labels, all unanswerables were declined, wrong refusals were 5%, poor answers 15%, and no temporal answer was rated poor. 45% of answerable answers were rated good, just under the 50% target, so the proposed verdict is **FAIL (narrow)**. Multi-source and contradictory questions remain the limitation.
-
-## API
-
-Phase 1: `GET /api/health`, `GET /api/stats`, `GET /api/records`, and `GET /api/records/{id}`. Phase 2: `GET /api/search` (`keyword`, `semantic`, or `hybrid`), `POST /api/ask`, `GET /api/sources/{id}`, `GET /api/rag/status`, and `GET /api/usage`. Search and Ask support segment, product-area, and inclusive date filters. Ask defaults to `mode: "demo"`; `mode: "openai"` is guarded. Invalid input returns structured 422 errors. Retrieval-only results use `retrieved_sources`; generated answers use `citations`. The source endpoint returns the indexed original text for verification.
+See [production readiness](docs/production-readiness.md).
 
 ## Known limitations
 
-The no-key demo uses token-hash vectors, so its cosine ranking is lexical and should not be described as learned semantic understanding. OpenAI embeddings and Responses answering were exercised in a bounded paid validation; the resulting Phase 2 release readiness is **FAIL** because held-out retrieval is weak and one answerable multi-source development case abstained. Judgments are non-exhaustive, so the reported scores are conditional. A valid citation ID does not prove a qualitative claim is supported; independent human claim-level review remains required. Opportunity ranking, authentication, and deployment remain future work. SQLite is local single-user storage. The shared ledger records **$0.00141804 estimated external API cost** from 137 completed requests, with zero uncertain requests, against the $0.50 local allocation. Provider billing was not independently verified.
+- **Synthetic data only.** The results show the method works on a controlled dataset with known answers, not that it would work on a real company's feedback.
+- **Multi-source and contradictory questions** are the main answer-quality weakness (Phase 2.3).
+- **The AI experiment suggestions** are generic in places and sometimes propose a fix before diagnosing the cause (5 of 10 useful).
+- **AI root-cause reports** are cautious: no "high" confidence was ever given. One held-out report timed out, and one misread a launch as a tracking gap.
+- **The AI judge was calibrated and not adopted;** human review remains the measure.
+- **SQLite and single-process limits:** the public demo's in-app spending limits reset when it restarts, so the OpenAI project budget is the durable control.
+
+## Project docs
+
+[Case study](docs/case-study.md) · [Demo scenarios](docs/demo-scenarios.md) · [Demo script](docs/demo-script.md) · [Decisions](docs/decisions.md) · [Production readiness](docs/production-readiness.md) · [Deployment](docs/deployment.md) · [Design system](docs/design-system.md) · [Developer guide](docs/developer-guide.md) · [Learning notes](docs/learning-notes.md) · [Milestone log](PLAN.md)

@@ -5,6 +5,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import { ArrowRight, ChevronDown, ChevronRight, RotateCcw } from "lucide-react";
 import { apiGet, apiSend, Effort, PartKey, PriorityRow, PriorityTable, Strategic } from "@/lib/api";
 import { ErrorState, Loading } from "@/components/states";
+import { usePublicStatus } from "@/lib/public";
 import { Button, buttonClass, cx, Id, Notice, PageHeader, Select, Tag, useFlash } from "@/components/ui";
 
 type SortKey = "priority" | "per_effort";
@@ -57,6 +58,7 @@ function NoteEditor({ row, value, onChange, onSave }: { row: PriorityRow; value:
 
 export default function Priorities() {
   const [data, setData] = useState<PriorityTable | null>(null);
+  const readOnly = usePublicStatus()?.read_only ?? false;
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
   const [sort, setSort] = useState<SortKey>("priority");
@@ -94,13 +96,13 @@ export default function Priorities() {
   const custom = (Object.keys(data.weights) as PartKey[]).some(k => data.weights[k] !== data.default_weights[k]);
   const draftTotal = Object.values(draft).reduce((a, b) => a + b, 0);
   const anyEffort = data.rows.some(r => r.estimates.effort);
-  const strategicSelect = (row: PriorityRow, className?: string) => <Select aria-label={`Strategic relevance for ${row.opportunity_id}`} value={row.estimates.strategic ?? ""} disabled={saving === row.opportunity_id}
-    onChange={e => saveInput(row, { strategic: (e.target.value || null) as Strategic | null })} className={cx("h-9 text-sm", className)}>
+  const strategicSelect = (row: PriorityRow, className?: string) => <Select aria-label={`Strategic relevance for ${row.opportunity_id}`} value={row.estimates.strategic ?? ""} disabled={readOnly || saving === row.opportunity_id}
+    onChange={e => saveInput(row, { strategic: (e.target.value || null) as Strategic | null })} className={cx("h-9 min-w-[7.5rem] text-sm", className)}>
     <option value="">Not rated</option>{(Object.keys(data.strategic_multipliers) as Strategic[]).map(s => <option key={s} value={s}>{s} (×{data.strategic_multipliers[s]})</option>)}</Select>;
-  const effortSelect = (row: PriorityRow, className?: string) => <Select aria-label={`Effort for ${row.opportunity_id}`} value={row.estimates.effort ?? ""} disabled={saving === row.opportunity_id}
-    onChange={e => saveInput(row, { effort: (e.target.value || null) as Effort | null })} className={cx("h-9 text-sm", className)}>
+  const effortSelect = (row: PriorityRow, className?: string) => <Select aria-label={`Effort for ${row.opportunity_id}`} value={row.estimates.effort ?? ""} disabled={readOnly || saving === row.opportunity_id}
+    onChange={e => saveInput(row, { effort: (e.target.value || null) as Effort | null })} className={cx("h-9 min-w-[7.5rem] text-sm", className)}>
     <option value="">Not entered</option>{(Object.keys(data.effort_points) as Effort[]).map(s => <option key={s} value={s}>{s} ({data.effort_points[s]} pt)</option>)}</Select>;
-  const note = (row: PriorityRow) => <NoteEditor row={row} value={notes[row.opportunity_id] ?? row.estimates.note ?? ""} onChange={v => setNotes({ ...notes, [row.opportunity_id]: v })}
+  const note = (row: PriorityRow) => readOnly ? (row.estimates.note ? <p className="mt-5 text-sm text-ink-2">Note: {row.estimates.note}</p> : null) : <NoteEditor row={row} value={notes[row.opportunity_id] ?? row.estimates.note ?? ""} onChange={v => setNotes({ ...notes, [row.opportunity_id]: v })}
     onSave={() => saveInput(row, { note: notes[row.opportunity_id] ?? row.estimates.note ?? null })}/>;
 
   return <>
@@ -109,6 +111,7 @@ export default function Priorities() {
 
     <div className="mb-8 space-y-3">
       <Notice title="How the score works"><p>{data.formula}</p><p className="mt-1">{data.interpretation}</p></Notice>
+      {readOnly && <Notice tone="caution" title="Read-only public demo">Weights, estimates and notes are shown but can’t be changed here, so visitors can’t alter what others see. Run Gist locally to edit them.</Notice>}
       {data.stale_inputs > 0 && <Notice tone="caution" title={`${data.stale_inputs} saved estimate${data.stale_inputs === 1 ? "" : "s"} not applied`}>They belong to an older version of the data.</Notice>}
     </div>
 
@@ -122,14 +125,14 @@ export default function Priorities() {
       <div className="border-t border-line px-4 py-4 sm:px-5">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">{data.parts.map(p => <div key={p.part}>
           <label htmlFor={`w-${p.part}`} className="block text-xs font-medium text-ink-2" title={p.source}>{p.label}</label>
-          <input id={`w-${p.part}`} type="number" inputMode="numeric" min={0} max={100} step={1} value={draft[p.part]} onChange={e => setDraft({ ...draft, [p.part]: Math.max(0, Math.min(100, Math.round(Number(e.target.value) || 0))) })}
+          <input id={`w-${p.part}`} type="number" inputMode="numeric" min={0} max={100} step={1} value={draft[p.part]} disabled={readOnly} onChange={e => setDraft({ ...draft, [p.part]: Math.max(0, Math.min(100, Math.round(Number(e.target.value) || 0))) })}
             className="num mt-1.5 block h-10 w-full rounded border border-control/70 bg-surface px-3 text-sm text-ink outline-none hover:border-control focus:border-accent"/>
           <span className="num mt-1 block text-2xs text-ink-3">{draftTotal ? Math.round(100 * draft[p.part] / draftTotal) : 0}% of score</span></div>)}</div>
         {draftTotal === 0 && <p role="alert" className="mt-3 text-xs font-medium text-signal">Set at least one weight above 0.</p>}
         <div className="mt-4 flex flex-wrap gap-2">
-          <Button variant="primary" size="sm" disabled={!weightsChanged || draftTotal === 0 || saving === "weights"} onClick={() => act("weights", () => apiSend("PUT", "/api/priorities/weights", { weights: draft }), "Weights saved. Ranks updated.")}>Save weights</Button>
+          <Button variant="primary" size="sm" disabled={readOnly || !weightsChanged || draftTotal === 0 || saving === "weights"} onClick={() => act("weights", () => apiSend("PUT", "/api/priorities/weights", { weights: draft }), "Weights saved. Ranks updated.")}>Save weights</Button>
           {weightsChanged && <Button size="sm" variant="ghost" onClick={() => setDraft(data.weights)}>Discard changes</Button>}
-          <Button size="sm" disabled={!custom} onClick={() => act("weights", () => apiSend("DELETE", "/api/priorities/weights"), "Weights reset to defaults.")}><RotateCcw size={13}/>Reset to defaults</Button>
+          <Button size="sm" disabled={readOnly || !custom} onClick={() => act("weights", () => apiSend("DELETE", "/api/priorities/weights"), "Weights reset to defaults.")}><RotateCcw size={13}/>Reset to defaults</Button>
         </div>
       </div>
     </details>

@@ -76,3 +76,35 @@ flowchart LR
 ```
 
 The experimental reranker preserves source metadata and IDs and adds no model calls for subqueries. A trace says which query found a source; it does **not** prove that the source supports that need. Current measurements replay the saved top-20 original-query rankings, so they do not establish live end-to-end quality. The separate draft benchmark `evals/phase21/benchmark-v2-draft.json` uses the frozen Pulse v2 corpus and has held-out questions excluded from experiment code; its provisional labels require independent human review before a new final evaluation.
+
+## Phases 3–5: product intelligence, investigations and evaluation
+
+```mermaid
+flowchart LR
+    S[(Pulse v2 sources<br/>+ stored embeddings)] --> CL[Clustering<br/>clustering.py, issues.py]
+    CL --> OP[Opportunities<br/>opportunities.py]
+    OP --> PR[Priorities<br/>priorities.py]
+    OP --> EX[Experiments<br/>experiments.py]
+    EX -. one approved paid run .-> GEN[(backend/generated/<br/>experiments-v2.json)]
+    S --> EVI[Evidence explorer<br/>evidence.py]
+    EVT[(Events DB<br/>generate_events.py)] --> T[Read-only tools<br/>investigate/tools.py]
+    S --> T
+    Q[Question] --> PL[Planner: rules or model<br/>investigate/plan.py, model.py]
+    PL --> VAL{Validator}
+    VAL -- invalid model plan --> PL2[Fall back to rule plan]
+    VAL --> EXE[Executor: limits, checks<br/>investigate/executor.py]
+    PL2 --> EXE
+    T --> EXE
+    EXE --> REP[Report writer + deterministic checks]
+    EXE --> AUD[(Hash-chained audit log<br/>investigate/audit.py)]
+    REP --> AUD
+    AUD --> OBS[Observability<br/>observability.py]
+    REG[(evals/registry.json<br/>evals/regressions.json)] --> OBS
+    LED[(Spend ledger)] --> OBS
+    PUB[public.py: read-only demo,<br/>rate limits, AI gate] -.guards.-> EXE
+```
+
+- **Phase 3** turns feedback into issues → opportunities → priorities → experiments. Everything is deterministic except the experiment drafts, which were generated once, checked, and are served from a file. The API never makes a paid call to show them.
+- **Phase 4** adds a synthetic product-events database and bounded investigations. A plan (from rules, or from a model that must pass the same validator) runs up to 6 read-only tools under timeouts. An optional model report is checked for citations, numbers and certainty language. Every run is appended to a hash-chained audit log.
+- **Phase 4.5** reads benchmark values from versioned result files through `evals/registry.json`, and runtime cost and reliability from the ledger and the audit log.
+- **Phase 5** adds public mode (`backend/app/public.py`): owner-only writes are blocked, every route is rate-limited, and paid AI requires an access code, per-IP limits, one request at a time and a daily cap. Security headers are set in `frontend/next.config.mjs`.

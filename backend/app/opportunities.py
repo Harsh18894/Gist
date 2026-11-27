@@ -2,7 +2,7 @@
 
 Everything is deterministic and derived from stored data or documented rules. There is no
 generated prose and no model call. Evidence volume is not business value; revenue, churn,
-conversion and effort are never estimated, only listed as unknowns. Ranking is Phase 3.4.
+conversion and effort are never estimated, only listed as unknowns. Scoring lives in priorities.py (Phase 3.4).
 """
 from __future__ import annotations
 
@@ -152,4 +152,4 @@ def build(db: sqlite3.Connection, link: LinkConfig = LinkConfig()) -> dict:
             "confidence_rubric": [{"check": k, "rule": v} for k, v in CONFIDENCE_RUBRIC] +
                                  [{"check": "levels", "rule": "High: all 4 checks; medium: 3; low: 2 or fewer. A coarse rubric, not a probability."}],
             "interpretation": ("Opportunities are evidence summaries for discussion, not recommendations. Frequency is not "
-                               "business value; revenue, churn and effort are unknown. Ranking comes in Phase 3.4.")}
+                               "business value; revenue, churn and effort are unknown. The Priorities page scores them transparently.")}

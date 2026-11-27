@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-11-27T04:44:58+00:00",
+  "checks": {
+    "dataset_version": "v2",
+    "source_sha256": "f7f810d6949673611e9b434baf1717d4aa6c1637f1a309745cfb8789fd243d7f",
+    "learned_vectors": 536,
+    "audit_entries": 28,
+    "stored_ai_investigations": 26,
+    "events_content_sha256": "20ce94ac425096e2f38b9134435140e9d54a007a622c58756b29e59820db76fc",
+    "privacy_scan": "clean",
+    "extra_words_checked": 2
+  },
+  "files": {
+    "gist-v2.sqlite3": {
+      "sha256": "3fcd455bee5e4c62cc87862ad9cf1fa46eb1148c126a2897377bc12eb88abf92",
+      "bytes": 7122944
+    },
+    "gist-investigations.sqlite3": {
+      "sha256": "4fa0f99b3741dd7c78b6e95f37008a6e19970fb0f1721422cb55ce4fbd48a444",
+      "bytes": 413696
+    },
+    "gist-spend.sqlite3": {
+      "sha256": "cec39cc1189fe47d777c3388cadd5fcd39c0a758b8dffa779b79f0737c5b2d90",
+      "bytes": 147456
+    },
+    "gist-ops.sqlite3": {
+      "sha256": "d088c4e633adb4a66ee33dff9b38dddee56bbad7fa85ecdb5d7a8ba9d0f343df",
+      "bytes": 20480
+    }
+  }
+}

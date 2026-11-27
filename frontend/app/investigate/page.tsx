@@ -5,6 +5,8 @@ import { ShieldCheck, ShieldAlert } from "lucide-react";
 import { apiGet, apiPost, CitedItem, Investigation, InvestigationList, InvestigationReportBlock } from "@/lib/api";
 import { ErrorState, Loading } from "@/components/states";
 import { FeedbackButtons } from "@/components/feedback";
+import { AccessCodeField } from "@/components/access-code";
+import { usePublicStatus } from "@/lib/public";
 import { Button, cx, Id, Input, Meta, Notice, PageHeader, Panel, Section, Segmented, Status, Tag } from "@/components/ui";
 
 const EXAMPLES = [
@@ -73,7 +75,7 @@ function Report({ run }: { run: Investigation }) {
       <p className="font-serif text-lg text-ink">{run.question}</p>
       <Meta className="mt-2" items={[<Status key="s" tone={runTone(run.status)}>{run.status}</Status>, `planner: ${run.planner}`,
         run.plan.window?.label, run.plan.window?.baseline && `baseline ${run.plan.window.baseline[0]} to ${run.plan.window.baseline[1]}`,
-        `cost $${run.cost_usd.toFixed(2)}`, <Id key="id">{run.id}</Id>]}/>
+        `cost $${run.cost_usd.toFixed(4)}`, <Id key="id">{run.id}</Id>]}/>
       {run.plan.notes?.map(n => <p key={n} className="mt-2 text-xs text-ink-3">{n}</p>)}
     </Panel>
 
@@ -114,6 +116,7 @@ function Report({ run }: { run: Investigation }) {
 export default function Investigate() {
   const [question, setQuestion] = useState("");
   const [planner, setPlanner] = useState<"rules" | "model">("rules");
+  const pub = usePublicStatus();
   const [run, setRun] = useState<Investigation | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -160,6 +163,7 @@ export default function Investigate() {
     </div>
     <div className="mb-3"><Segmented label="Planner" value={planner} onChange={setPlanner} size="sm"
       options={[{ value: "rules", label: "Rules · $0" }, { value: "model", label: "AI plan + report · paid" }]}/></div>
+    {planner === "model" && <div className="mb-3"><AccessCodeField status={pub}/></div>}
     <Notice className="mb-8">{planner === "rules"
       ? "Rules planner ($0, no AI) picks the metric and time window. It measures; it does not explain causes."
       : "AI mode makes two guarded paid calls (about $0.002): a plan that must pass the same validator, and a report checked before it is shown. It works only when the server has paid-API approval configured; otherwise use the rules planner or open a past AI run from the list."}

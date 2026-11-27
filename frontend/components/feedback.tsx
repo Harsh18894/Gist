@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import { apiPost } from "@/lib/api";
+import { usePublicStatus } from "@/lib/public";
 import { cx } from "./ui";
 
 /** Helpful / not helpful on an AI-written result, with an optional comment. Stored locally for the Evaluation page. */
@@ -10,6 +11,7 @@ export function FeedbackButtons({ targetType, targetId }: { targetType: "investi
   const [rating, setRating] = useState<"up" | "down" | null>(null);
   const [comment, setComment] = useState("");
   const [state, setState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const publicMode = usePublicStatus()?.public_mode ?? false;   // ratings only in the public demo
 
   const send = async (r: "up" | "down", text?: string) => {
     setRating(r); setState("saving");
@@ -24,7 +26,7 @@ export function FeedbackButtons({ targetType, targetId }: { targetType: "investi
       className={cx("inline-flex h-7 w-7 items-center justify-center rounded border border-line-strong transition-colors duration-fast hover:border-control",
         rating === r ? "bg-accent-soft text-accent" : "bg-surface text-ink-3")}>
       {r === "up" ? <ThumbsUp size={13}/> : <ThumbsDown size={13}/>}</button>)}
-    {rating && state !== "error" && <form className="flex min-w-[12rem] flex-1 items-center gap-1.5" onSubmit={e => { e.preventDefault(); send(rating, comment.trim()); }}>
+    {rating && state !== "error" && !publicMode && <form className="flex min-w-[12rem] flex-1 items-center gap-1.5" onSubmit={e => { e.preventDefault(); send(rating, comment.trim()); }}>
       <label htmlFor={`fb-${targetId}`} className="sr-only">Optional comment</label>
       <input id={`fb-${targetId}`} value={comment} onChange={e => setComment(e.target.value)} maxLength={500} placeholder="Optional: what was off?"
         className="h-7 min-w-0 flex-1 rounded border border-line-strong bg-surface px-2 text-xs text-ink"/>

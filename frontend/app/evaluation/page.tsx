@@ -5,6 +5,7 @@ import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { CircleCheck, CircleX, ShieldAlert, ShieldCheck } from "lucide-react";
 import { apiGet, apiSend, BenchmarkMetric, BenchmarkRun, Benchmarks, FeedbackSummary, Regressions, Runtime } from "@/lib/api";
 import { ErrorState, Loading } from "@/components/states";
+import { usePublicStatus } from "@/lib/public";
 import { Button, cx, Field, Figure, Id, Input, Meta, Notice, PageHeader, Section, Select, Status, Tag } from "@/components/ui";
 
 const FAMILY: Record<string, string> = {
@@ -97,6 +98,7 @@ export default function Evaluation() {
   const [kind, setKind] = useState("");
   const [billing, setBilling] = useState({ day: "", amount: "", source: "provider cost export" });
   const [billingMsg, setBillingMsg] = useState("");
+  const readOnly = usePublicStatus()?.read_only ?? false;
 
   const load = useCallback(() => {
     Promise.all([apiGet<Benchmarks>("/api/eval/benchmarks"), apiGet<Runtime>("/api/observability/runtime"),
@@ -150,13 +152,13 @@ export default function Evaluation() {
           rows={L.by_day.map(d => { const b = runtime.billing.days.find(x => x.day === d.key);
             return [d.key, d.requests, `${d.input_tokens.toLocaleString()} / ${d.output_tokens.toLocaleString()}`, usd(d.cost_usd), usd(b?.billed_usd),
               b?.ledger_vs_billed ? `${(b.ledger_vs_billed * 100).toFixed(1)}%` : "—", `${d.latency_p50_ms ?? "—"} / ${d.latency_p95_ms ?? "—"} ms`, d.failed_or_uncertain]; })}/>
-        <form className="mt-3 flex flex-wrap items-end gap-2" onSubmit={e => { e.preventDefault(); saveBilling(); }}>
+        {!readOnly && <form className="mt-3 flex flex-wrap items-end gap-2" onSubmit={e => { e.preventDefault(); saveBilling(); }}>
           <Field label="Billed day (UTC)" htmlFor="bill-day"><Input id="bill-day" type="date" value={billing.day} onChange={e => setBilling({ ...billing, day: e.target.value })} className="h-9 w-40"/></Field>
           <Field label="Amount (USD)" htmlFor="bill-amt"><Input id="bill-amt" inputMode="decimal" value={billing.amount} onChange={e => setBilling({ ...billing, amount: e.target.value })} className="h-9 w-28"/></Field>
           <Field label="Source" htmlFor="bill-src"><Input id="bill-src" value={billing.source} maxLength={120} onChange={e => setBilling({ ...billing, source: e.target.value })} className="h-9 w-48"/></Field>
           <Button type="submit" size="sm" disabled={!billing.day || billing.amount === ""}>Save billed amount</Button>
           <span role="status" className="text-xs text-ink-3">{billingMsg}</span>
-        </form>
+        </form>}
         <p className="mt-1 text-2xs text-ink-3">{runtime.billing.note}</p>
 
         <h3 className="mb-2 mt-8 text-xs font-semibold uppercase tracking-wide text-ink-3">By endpoint and model</h3>

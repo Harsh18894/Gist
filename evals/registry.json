@@ -345,7 +345,7 @@
   {
    "id": "p21-b3-heldout-candidate_locked",
    "phase": "2.1",
-   "title": "Benchmark 3 held-out retrieval: subquery candidate (locked)",
+   "title": "Benchmark 3 held-out retrieval: MMR candidate (locked, \u03bb=0.7)",
    "family": "retrieval-strategy",
    "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
    "version": "gist-phase2.1-benchmark-3-reviewed",
@@ -354,7 +354,7 @@
    "judged_by": "owner",
    "process": "docs/phase21-final-validation.md",
    "config": {
-    "retriever": "subquery candidate (locked)",
+    "retriever": "MMR re-ranking \u03bb=0.7 (locked)",
     "embedding": "text-embedding-3-small"
    },
    "file": "evals/phase21/results/benchmark3-heldout-final.json",

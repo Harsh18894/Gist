@@ -266,10 +266,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--replace", action="store_true")
+    parser.add_argument("--no-answer-key", action="store_true", help="do not (re)write the answer key (deployment start)")
     args = parser.parse_args()
     meta = write(args.db, replace=args.replace)
-    ANSWER_KEY.parent.mkdir(parents=True, exist_ok=True)
-    ANSWER_KEY.write_text(json.dumps(ANSWER, indent=2) + "\n")
+    if not args.no_answer_key:
+        ANSWER_KEY.parent.mkdir(parents=True, exist_ok=True)
+        ANSWER_KEY.write_text(json.dumps(ANSWER, indent=2) + "\n")
     print(json.dumps(meta, indent=2))
     return 0
 

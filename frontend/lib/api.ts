@@ -50,7 +50,11 @@ function fallbackMessage(status: number): string {
 async function request<T>(path: string, init: RequestInit): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(`${base}${path}`, { ...init, cache: "no-store" });
+    let code = "";
+    try { code = typeof window === "undefined" ? "" : window.sessionStorage.getItem("gist-access-code") ?? ""; } catch { /* storage blocked */ }
+    const headers = new Headers(init.headers);
+    if (code) headers.set("X-Gist-Access-Code", code);
+    response = await fetch(`${base}${path}`, { ...init, headers, cache: "no-store" });
   } catch (error) {
     // Aborts are expected on navigation; pages ignore them by name.
     if (error instanceof DOMException && error.name === "AbortError") throw error;

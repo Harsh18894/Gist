@@ -10,12 +10,11 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import re
 import sqlite3
 from pathlib import Path
 
-from .config import ROOT
+from .config import ROOT, env_path
 from .opportunities import build
 from .priorities import dataset_key
 from .rag.evidence import unsupported_numbers
@@ -137,8 +136,7 @@ def check(text: str, data: dict) -> tuple[dict | None, list[str]]:
 
 
 def generated_path(version: str) -> Path:
-    directory = Path(os.getenv("GIST_EXPERIMENTS_DIR") or GENERATED_DIR)
-    return (directory if directory.is_absolute() else ROOT / directory) / f"experiments-{version}.json"
+    return env_path("GIST_EXPERIMENTS_DIR", GENERATED_DIR) / f"experiments-{version}.json"
 
 
 def load(version: str) -> dict:

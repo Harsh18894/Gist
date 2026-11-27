@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from pathlib import Path
 
 from scripts.freeze_v2_split import ROOT, verify
 

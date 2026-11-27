@@ -8,6 +8,7 @@ Functions take directories from the caller (rather than reading a module ROOT)
 so scripts and tests that redirect their data folder keep working.
 """
 import hashlib
+import sqlite3
 from pathlib import Path
 
 from .config import ROOT
@@ -43,3 +44,10 @@ def fingerprint(files: list[Path]) -> str:
 
 def default_db_path(version: str, root: Path = ROOT) -> Path:
     return root / "backend" / f"gist{'-v2' if version == 'v2' else ''}.sqlite3"
+
+
+def read_meta(db: sqlite3.Connection) -> dict[str, str] | None:
+    """The seeded database's ``dataset_meta`` rows, or None when the table does not exist."""
+    if not db.execute("SELECT name FROM sqlite_master WHERE name = 'dataset_meta'").fetchone():
+        return None
+    return dict(db.execute("SELECT key, value FROM dataset_meta"))

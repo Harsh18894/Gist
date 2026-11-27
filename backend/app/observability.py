@@ -11,7 +11,6 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import os
 import re
 import sqlite3
 import statistics
@@ -19,7 +18,7 @@ from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from .config import ROOT
+from .config import ROOT, env_path
 from .errors import InvalidRequest
 from .investigate import audit
 from .rag import budget
@@ -195,11 +194,7 @@ def investigation_summary(limit: int = 15) -> dict:
 # ---------------- Local ops store: billing figures and feedback
 
 def ops_path() -> Path:
-    value = os.getenv("GIST_OPS_DB_PATH")
-    if not value:
-        return ROOT / "backend" / "gist-ops.sqlite3"
-    path = Path(value)
-    return path if path.is_absolute() else ROOT / path
+    return env_path("GIST_OPS_DB_PATH", ROOT / "backend" / "gist-ops.sqlite3")
 
 
 def _ops() -> sqlite3.Connection:

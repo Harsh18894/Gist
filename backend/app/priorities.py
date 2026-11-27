@@ -7,12 +7,12 @@ estimates. Revenue, lifetime value, conversion and effort are never generated.
 """
 from __future__ import annotations
 
-import os
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .config import ROOT
+from .config import ROOT, env_path
+from .dataset import read_meta
 from .errors import InvalidRequest
 
 PARTS = {
@@ -30,11 +30,7 @@ NOTE_LIMIT = 500
 
 
 def store_path() -> Path:
-    value = os.getenv("GIST_PRIORITIES_DB_PATH")
-    if not value:
-        return ROOT / "backend" / "gist-priorities.sqlite3"
-    path = Path(value)
-    return path if path.is_absolute() else ROOT / path
+    return env_path("GIST_PRIORITIES_DB_PATH", ROOT / "backend" / "gist-priorities.sqlite3")
 
 
 def _store() -> sqlite3.Connection:
@@ -48,8 +44,7 @@ def _store() -> sqlite3.Connection:
 
 
 def dataset_key(db: sqlite3.Connection) -> str:
-    has_meta = db.execute("SELECT name FROM sqlite_master WHERE name = 'dataset_meta'").fetchone()
-    meta = dict(db.execute("SELECT key, value FROM dataset_meta")) if has_meta else {}
+    meta = read_meta(db) or {}
     return f"{meta.get('version', 'unknown')}:{meta.get('source_sha256', 'unknown')}"
 
 

@@ -67,7 +67,6 @@ function AiReport({ block, id }: { block: InvestigationReportBlock; id: string }
 const runTone = (s: string) => s === "completed" ? "positive" as const : s === "rejected" ? "signal" as const : "caution" as const;
 
 function Report({ run }: { run: Investigation }) {
-  const steps = new Map(run.trace.map(t => [t.step, t]));
   const groups = Object.keys(KIND).map(k => [k, run.findings.filter(f => f.kind === k)] as const).filter(([, f]) => f.length);
   const limits = run.findings.filter(f => f.kind === "limitation");
   return <div className="space-y-10">

@@ -13,9 +13,9 @@ from pydantic import BaseModel, Field
 
 from . import analytics, evidence, experiments, issues, observability, opportunities, priorities, public
 from .investigate import audit as investigation_log, executor as investigation_executor
-from .investigate.plan import rule_plan
 from .config import cors_origin
 from .database import connection
+from .dataset import read_meta
 from .errors import GistError, InvalidRequest
 from .schemas import (AnalyticsReleases, AnalyticsRepeated, AnalyticsSummary, AnalyticsTrends, Area, AskRequest,
                       AskResponse, Category, ErrorResponse, Feedback, Page, SearchHit, Segment, Sentiment,
@@ -293,14 +293,14 @@ def usage() -> UsageSummary:
 @app.get("/api/rag/status")
 def rag_status() -> dict:
     with connection() as db:
-        has_meta = db.execute("SELECT name FROM sqlite_master WHERE name = 'dataset_meta'").fetchone()
-        version = db.execute("SELECT value FROM dataset_meta WHERE key = 'version'").fetchone() if has_meta else None
-        fingerprint = db.execute("SELECT value FROM dataset_meta WHERE key = 'source_sha256'").fetchone() if has_meta else None
+        meta = read_meta(db)
         sources = db.execute("SELECT COUNT(*) FROM sources").fetchone()[0]
         chunks = db.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
         openai_vectors = db.execute("SELECT COUNT(*) FROM embeddings WHERE model = ?", (EMBED_MODEL,)).fetchone()[0]
-    legacy_v1 = not has_meta and sources > 0
-    return {"dataset_version": version[0] if version else "v1" if legacy_v1 else "unseeded", "source_sha256": fingerprint[0] if fingerprint else None,
+    legacy_v1 = meta is None and sources > 0
+    recorded = meta or {}
+    version = recorded["version"] if "version" in recorded else "v1" if legacy_v1 else "unseeded"
+    return {"dataset_version": version, "source_sha256": recorded.get("source_sha256"),
             "sources": sources, "chunks": chunks, "openai_vectors": openai_vectors,
             "paid_api_enabled": os.getenv("GIST_ENABLE_PAID_API") == "true" and
             os.getenv("GIST_PAID_EVAL_APPROVED") == "true" and chunks > 0 and openai_vectors == chunks,

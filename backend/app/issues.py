@@ -9,6 +9,7 @@ import sqlite3
 from collections import Counter
 
 from .clustering import ClusterConfig, themes
+from .dataset import read_meta
 
 DISPLAY_SUB = ClusterConfig("embedding", 0.65, 3, 0.45)
 DISPLAY_THEME_THRESHOLD = 0.65
@@ -18,8 +19,7 @@ _cache: dict[tuple, dict] = {}
 
 
 def _key(db: sqlite3.Connection) -> tuple:
-    has_meta = db.execute("SELECT name FROM sqlite_master WHERE name = 'dataset_meta'").fetchone()
-    meta = dict(db.execute("SELECT key, value FROM dataset_meta")) if has_meta else {}
+    meta = read_meta(db) or {}
     count = db.execute("SELECT COUNT(*), MAX(id) FROM feedback").fetchone()
     return (meta.get("version"), meta.get("source_sha256"), tuple(count))
 

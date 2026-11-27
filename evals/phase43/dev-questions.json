@@ -1,0 +1,118 @@
+{
+  "note": "Phase 4.3 development set: used to build and iterate on the model planner and report prompts. Phase 4.4 writes a separate held-out set (different phrasings and months) and runs it once. Expectations come from evals/phase4/events-answer-key.json.",
+  "questions": [
+    {
+      "id": "D1",
+      "question": "Why did onboarding activation drop in October?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "SIGNUP_MIX_SHIFT",
+        "top_types": [
+          "segment_mix"
+        ]
+      }
+    },
+    {
+      "id": "D2",
+      "question": "Why did activation drop in February?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-01",
+        "terms": [
+          "invit"
+        ],
+        "answer_key": "INVITE_LOOP"
+      }
+    },
+    {
+      "id": "D3",
+      "question": "Why did CRM sync failures rise in July?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-05",
+        "terms": [
+          "sync",
+          "crm",
+          "connector"
+        ],
+        "answer_key": "CRM_SYNC"
+      }
+    },
+    {
+      "id": "D4",
+      "question": "Why did activation look worse last month?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "TRACKING_OUTAGE",
+        "top_types": [
+          "data_quality"
+        ]
+      }
+    },
+    {
+      "id": "D5",
+      "question": "Why are urgent alerts arriving late recently?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-08",
+        "terms": [
+          "notification",
+          "alert",
+          "control",
+          "setting"
+        ],
+        "answer_key": "ALERT_DELAY"
+      }
+    },
+    {
+      "id": "D6",
+      "question": "Why did digest email volume jump in May?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-03",
+        "terms": [
+          "digest"
+        ],
+        "answer_key": "DIGEST_NOISE"
+      }
+    },
+    {
+      "id": "D7",
+      "question": "Did dashboard load times change in September?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-07",
+        "terms": [
+          "load",
+          "large",
+          "portfolio"
+        ],
+        "answer_key": "DASH_SLOW_FIXED"
+      }
+    },
+    {
+      "id": "D8",
+      "question": "Why did sign-ups spike in October?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "SIGNUP_MIX_SHIFT",
+        "top_types": [
+          "segment_mix",
+          "volume_or_seasonality"
+        ],
+        "terms": [
+          "campaign",
+          "paid"
+        ]
+      }
+    }
+  ],
+  "revisions": [
+    "2026-11-27, before any run: D8 accepts segment_mix or volume_or_seasonality (a campaign-driven volume jump fits either) but must name the campaign."
+  ]
+}

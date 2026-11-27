@@ -204,3 +204,47 @@ export interface EvidencePage {
   total: number; page: number; page_size: number; items: EvidenceItem[];
   status_counts: Record<string, number>; status_labels: Record<string, string>; note: string;
 }
+
+// --- Phase 4.2 investigations (bounded plan → tools → findings; demo planner makes no causal claims)
+export interface InvestigationStep { step: string; tool: string; args: Record<string, unknown>; purpose: string; status: string; duration_ms: number; error?: string; result_sha256?: string }
+export interface InvestigationFinding { kind: "observed" | "data_quality" | "timing" | "customer_voice" | "limitation"; step: string | null; text: string }
+export interface InvestigationCheck { step: string | null; kind: string; message: string }
+export interface Investigation {
+  id: string; created_at: string; question: string; planner: string; status: "completed" | "partial" | "rejected";
+  plan: { intent?: string; window?: { from_date: string; to_date: string; label: string; baseline: string[] | null }; notes?: string[]; steps?: unknown[] };
+  trace: InvestigationStep[]; results: Record<string, unknown>; checks: InvestigationCheck[]; findings: InvestigationFinding[];
+  cost_usd: number; entry_hash: string; report: InvestigationReportBlock | null;
+}
+export type ExplanationType = "product_change" | "segment_mix" | "data_quality" | "volume_or_seasonality" | "unclear";
+export interface CitedItem { text: string; evidence: string[] }
+export interface InvestigationReport {
+  summary: string; observed_changes: CitedItem[];
+  possible_explanations: (CitedItem & { type: ExplanationType; confidence: "low" | "medium" | "high"; confidence_reason: string; conflicting?: string })[];
+  conflicting_evidence: CitedItem[]; ruled_out: CitedItem[]; data_quality: CitedItem[]; suggested_experiments: string[]; limitations: string[];
+}
+export interface InvestigationReportBlock {
+  prompt_version: string; status: "passed" | "failed_checks" | "provider_error" | "not_run"; report: InvestigationReport | null;
+  problems?: string[]; planner_problems?: string[]; usage: { call: string; model: string; estimated_cost_usd?: number }[];
+}
+export interface InvestigationSummary { id: string; created_at: string; question: string; planner: string; status: string; cost_usd: number; entry_hash: string; has_report: boolean }
+export interface InvestigationList { investigations: InvestigationSummary[]; audit: { ok: boolean; entries: number; first_bad: string | null } }
+
+// --- Phase 4.5 evaluation and observability (values read from versioned files and logs)
+export interface BenchmarkMetric { key: string; label: string; unit: string; better: "higher" | "lower"; value: number | null; raw: string | null; of: number | null; problem: string | null; not_applicable?: boolean }
+export interface BenchmarkRun {
+  id: string; phase: string; title: string; family: string; benchmark: string; version: string; split: string; kind: string;
+  judged_by: string; process: string; config: Record<string, string | number>; file: string; verdict: string;
+  metrics: BenchmarkMetric[]; files: { path: string; sha256: string | null }[];
+}
+export interface Benchmarks { judged_by: Record<string, string>; runs: BenchmarkRun[]; families: Record<string, string[]>; note: string }
+export interface LedgerGroup { key: string; requests: number; cost_usd: number; input_tokens: number; output_tokens: number; latency_p50_ms: number | null; latency_p95_ms: number | null; failed_or_uncertain: number }
+export interface Runtime {
+  ledger: { available: boolean; by_day: LedgerGroup[]; by_endpoint: LedgerGroup[]; totals: { requests?: number; cost_usd?: number; uncertain?: number; reconciled?: number; cap_usd?: number }; note?: string };
+  investigations: { available: boolean; runs?: number; by_planner?: Record<string, number>; by_status?: Record<string, number>; report_status?: Record<string, number>;
+    report_problems?: Record<string, number>; step_status?: Record<string, number>; step_latency?: { tool: string; steps: number; p50_ms: number; p95_ms: number }[];
+    cost_per_ai_investigation?: { runs: number; mean_usd: number | null; max_usd: number | null }; audit?: { ok: boolean; entries: number; first_bad: string | null };
+    recent?: { id: string; created_at: string; question: string; planner: string; status: string; cost_usd: number }[] };
+  billing: { days: { day: string; billed_usd: number | null; ledger_usd: number | null; source: string | null; difference_usd: number | null; ledger_vs_billed: number | null }[]; note: string };
+}
+export interface FeedbackSummary { total: number; by_target: Record<string, { up: number; down: number }>; recent: { id: number; created_at: string; target_type: string; target_id: string; rating: string; comment: string | null }[]; note: string }
+export interface Regressions { note: string; cases: { id: string; phase: string; failure: string; test: string; test_exists: boolean }[] }

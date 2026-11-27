@@ -1,0 +1,129 @@
+{
+  "diagnostic": "Run 2 rescored offline with the negation fix to the certainty check (made after seeing run 2). No new model calls. Not the official result; see dev-run2.json.",
+  "rows": [
+    {
+      "id": "D1",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "segment_mix",
+          "medium"
+        ],
+        [
+          "product_change",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D2",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "product_change",
+          "medium"
+        ],
+        [
+          "segment_mix",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D3",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "product_change",
+          "medium"
+        ],
+        [
+          "data_quality",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D4",
+      "rescored_report_passed": false,
+      "pass": false,
+      "types": null
+    },
+    {
+      "id": "D5",
+      "rescored_report_passed": true,
+      "pass": false,
+      "types": [
+        [
+          "unclear",
+          "low"
+        ],
+        [
+          "data_quality",
+          "low"
+        ],
+        [
+          "product_change",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D6",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "product_change",
+          "medium"
+        ],
+        [
+          "volume_or_seasonality",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D7",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "product_change",
+          "medium"
+        ],
+        [
+          "segment_mix",
+          "low"
+        ],
+        [
+          "unclear",
+          "low"
+        ]
+      ]
+    },
+    {
+      "id": "D8",
+      "rescored_report_passed": true,
+      "pass": true,
+      "types": [
+        [
+          "segment_mix",
+          "medium"
+        ],
+        [
+          "segment_mix",
+          "low"
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "reports_passed": 7,
+    "planted_found": 4,
+    "decoy_pass": 2
+  }
+}

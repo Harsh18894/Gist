@@ -1,0 +1,1322 @@
+{
+ "note": "Evaluation registry: metadata and metric LOCATIONS only. Values are read from the files at request time; never type a number here.",
+ "judged_by": {
+  "automatic": "Scored by code against a fixed key or rule",
+  "owner": "Labelled or reviewed by the project owner",
+  "ai-judge": "Scored by an AI judge (not adopted as a measure)"
+ },
+ "runs": [
+  {
+   "id": "p2-v2-heldout-keyword",
+   "phase": "2",
+   "title": "Pulse v2 held-out retrieval: keyword",
+   "family": "retrieval-strategy",
+   "benchmark": "Pulse v2 benchmark (20 held-out questions)",
+   "version": "v2-baseline-1",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase2-validation.md",
+   "config": {
+    "retriever": "keyword",
+    "embedding": "none"
+   },
+   "file": "evals/v2/results/heldout_test-all.json",
+   "verdict": "FAIL (Phase 2 release readiness)",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.keyword.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.keyword.judged_mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "coverage_at_20",
+     "label": "Reviewed coverage @20",
+     "source": {
+      "json": "strategies.keyword.reviewed_subset_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.keyword.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p2-v2-heldout-vector",
+   "phase": "2",
+   "title": "Pulse v2 held-out retrieval: vector",
+   "family": "retrieval-strategy",
+   "benchmark": "Pulse v2 benchmark (20 held-out questions)",
+   "version": "v2-baseline-1",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase2-validation.md",
+   "config": {
+    "retriever": "vector",
+    "embedding": "text-embedding-3-small"
+   },
+   "file": "evals/v2/results/heldout_test-all.json",
+   "verdict": "FAIL (Phase 2 release readiness)",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.vector.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.vector.judged_mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "coverage_at_20",
+     "label": "Reviewed coverage @20",
+     "source": {
+      "json": "strategies.vector.reviewed_subset_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.vector.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p2-v2-heldout-hybrid",
+   "phase": "2",
+   "title": "Pulse v2 held-out retrieval: hybrid",
+   "family": "retrieval-strategy",
+   "benchmark": "Pulse v2 benchmark (20 held-out questions)",
+   "version": "v2-baseline-1",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase2-validation.md",
+   "config": {
+    "retriever": "hybrid",
+    "embedding": "text-embedding-3-small"
+   },
+   "file": "evals/v2/results/heldout_test-all.json",
+   "verdict": "FAIL (Phase 2 release readiness)",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.hybrid.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.hybrid.judged_mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "coverage_at_20",
+     "label": "Reviewed coverage @20",
+     "source": {
+      "json": "strategies.hybrid.reviewed_subset_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.hybrid.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-b3-heldout-keyword",
+   "phase": "2.1",
+   "title": "Benchmark 3 held-out retrieval: keyword",
+   "family": "retrieval-strategy",
+   "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
+   "version": "gist-phase2.1-benchmark-3-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "retriever": "keyword",
+    "embedding": "none"
+   },
+   "file": "evals/phase21/results/benchmark3-heldout-final.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.keyword.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.keyword.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "strategies.keyword.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.keyword.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-b3-heldout-vector",
+   "phase": "2.1",
+   "title": "Benchmark 3 held-out retrieval: vector",
+   "family": "retrieval-strategy",
+   "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
+   "version": "gist-phase2.1-benchmark-3-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "retriever": "vector",
+    "embedding": "text-embedding-3-small"
+   },
+   "file": "evals/phase21/results/benchmark3-heldout-final.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.vector.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.vector.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "strategies.vector.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.vector.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-b3-heldout-hybrid_locked_v2",
+   "phase": "2.1",
+   "title": "Benchmark 3 held-out retrieval: hybrid (locked v2)",
+   "family": "retrieval-strategy",
+   "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
+   "version": "gist-phase2.1-benchmark-3-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "retriever": "hybrid (locked v2)",
+    "embedding": "text-embedding-3-small"
+   },
+   "file": "evals/phase21/results/benchmark3-heldout-final.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.hybrid_locked_v2.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.hybrid_locked_v2.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "strategies.hybrid_locked_v2.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.hybrid_locked_v2.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-b3-heldout-candidate_locked",
+   "phase": "2.1",
+   "title": "Benchmark 3 held-out retrieval: subquery candidate (locked)",
+   "family": "retrieval-strategy",
+   "benchmark": "Benchmark 3 (owner-reviewed, held-out)",
+   "version": "gist-phase2.1-benchmark-3-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "retriever": "subquery candidate (locked)",
+    "embedding": "text-embedding-3-small"
+   },
+   "file": "evals/phase21/results/benchmark3-heldout-final.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "strategies.candidate_locked.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "strategies.candidate_locked.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "strategies.candidate_locked.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Retrieval p50",
+     "source": {
+      "json": "strategies.candidate_locked.retrieval_latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-b3-answers",
+   "phase": "2.1",
+   "title": "Generated answers, 350-token output cap (benchmark 3 answers)",
+   "family": "answer-budget",
+   "benchmark": "Benchmark 3 questions",
+   "version": "benchmark 3 answers",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "automatic",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "output_cap_tokens": 350,
+    "retriever": "hybrid (locked v2)"
+   },
+   "file": "evals/phase21/results/benchmark3-answers.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "answered",
+     "label": "Answerable questions answered",
+     "source": {
+      "json": "summary.answerable_answered_by_gist"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstained",
+     "label": "Unanswerables declined",
+     "source": {
+      "json": "summary.unanswerable_abstained"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "rejected_after_generation",
+     "label": "Answers rejected by Gist's checks",
+     "source": {
+      "json": "summary.answers_rejected_by_gist_after_generation"
+     },
+     "unit": "count",
+     "better": "lower"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost",
+     "source": {
+      "json": "summary.run_estimated_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Answer p50",
+     "source": {
+      "json": "summary.latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p22-b3-dev-cap350",
+   "phase": "2.2",
+   "title": "Generated answers, 350-token output cap (Phase 2.2 dev (stopped early))",
+   "family": "answer-budget",
+   "benchmark": "Benchmark 3 questions",
+   "version": "Phase 2.2 dev (stopped early)",
+   "split": "development",
+   "kind": "development",
+   "judged_by": "automatic",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "output_cap_tokens": 350,
+    "retriever": "hybrid (locked v2)"
+   },
+   "file": "evals/phase21/results/benchmark3-answers-phase22-dev.json",
+   "verdict": "development only",
+   "metrics": [
+    {
+     "key": "answered",
+     "label": "Answerable questions answered",
+     "source": {
+      "json": "summary.answerable_answered_by_gist"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstained",
+     "label": "Unanswerables declined",
+     "source": {
+      "json": "summary.unanswerable_abstained"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "rejected_after_generation",
+     "label": "Answers rejected by Gist's checks",
+     "source": {
+      "json": "summary.answers_rejected_by_gist_after_generation"
+     },
+     "unit": "count",
+     "better": "lower"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost",
+     "source": {
+      "json": "summary.run_estimated_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Answer p50",
+     "source": {
+      "json": "summary.latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p22-b3-dev-cap600",
+   "phase": "2.2",
+   "title": "Generated answers, 600-token output cap (Phase 2.2 dev)",
+   "family": "answer-budget",
+   "benchmark": "Benchmark 3 questions",
+   "version": "Phase 2.2 dev",
+   "split": "development",
+   "kind": "development",
+   "judged_by": "automatic",
+   "process": "docs/phase21-final-validation.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "output_cap_tokens": 600,
+    "retriever": "hybrid (locked v2)"
+   },
+   "file": "evals/phase21/results/benchmark3-answers-phase22-dev-cap600.json",
+   "verdict": "development only",
+   "metrics": [
+    {
+     "key": "answered",
+     "label": "Answerable questions answered",
+     "source": {
+      "json": "summary.answerable_answered_by_gist"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstained",
+     "label": "Unanswerables declined",
+     "source": {
+      "json": "summary.unanswerable_abstained"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "rejected_after_generation",
+     "label": "Answers rejected by Gist's checks",
+     "source": {
+      "json": "summary.answers_rejected_by_gist_after_generation"
+     },
+     "unit": "count",
+     "better": "lower"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost",
+     "source": {
+      "json": "summary.run_estimated_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    },
+    {
+     "key": "latency_p50_ms",
+     "label": "Answer p50",
+     "source": {
+      "json": "summary.latency_p50_ms"
+     },
+     "unit": "ms",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p22-b4-final",
+   "phase": "2.2",
+   "title": "Benchmark 4 held-out final (retrieval + answers)",
+   "family": "frozen-finals",
+   "benchmark": "Benchmark 4 (AI-judge labels adopted by the owner)",
+   "version": "gist-phase2.2-benchmark-4-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "evals/v2/answer-review-rubric.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "output_cap_tokens": 600,
+    "retriever": "hybrid (locked v2)"
+   },
+   "file": "evals/phase22/results/benchmark4-final.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "retrieval.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "retrieval.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "retrieval.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "answers_good",
+     "label": "Answers rated good (owner)",
+     "source": {
+      "csv_count": {
+       "file": "evals/phase22/results/benchmark4-final-answer-review-completed.csv",
+       "column": "overall (good/acceptable/poor)",
+       "equals": "good"
+      }
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "answers_poor",
+     "label": "Answers rated poor (owner)",
+     "source": {
+      "csv_count": {
+       "file": "evals/phase22/results/benchmark4-final-answer-review-completed.csv",
+       "column": "overall (good/acceptable/poor)",
+       "equals": "poor"
+      }
+     },
+     "unit": "count",
+     "better": "lower"
+    },
+    {
+     "key": "cost",
+     "label": "Answer cost",
+     "source": {
+      "json": "answers_summary.estimated_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p23-b5-final",
+   "phase": "2.3",
+   "title": "Benchmark 5 held-out final (retrieval + answers)",
+   "family": "frozen-finals",
+   "benchmark": "Benchmark 5 (owner-written labels)",
+   "version": "gist-phase2.3-benchmark-5-reviewed",
+   "split": "held-out",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "evals/v2/answer-review-rubric.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "output_cap_tokens": 600,
+    "retriever": "hybrid (locked v2)"
+   },
+   "file": "evals/phase23/results/benchmark5-final.json",
+   "verdict": "FAIL, accepted (multi-source limitation)",
+   "metrics": [
+    {
+     "key": "hit_at_5",
+     "label": "Hit rate @5",
+     "source": {
+      "json": "retrieval.judged_hit_rate_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "mrr_at_5",
+     "label": "MRR @5",
+     "source": {
+      "json": "retrieval.mrr_at_5"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "group_coverage_at_20",
+     "label": "Evidence-group coverage @20",
+     "source": {
+      "json": "retrieval.evidence_group_coverage_at_20"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "answers_good",
+     "label": "Answers rated good (owner)",
+     "source": {
+      "csv_count": {
+       "file": "evals/phase23/results/benchmark5-final-answer-review-completed.csv",
+       "column": "overall (good/acceptable/poor)",
+       "equals": "good"
+      }
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "answers_poor",
+     "label": "Answers rated poor (owner)",
+     "source": {
+      "csv_count": {
+       "file": "evals/phase23/results/benchmark5-final-answer-review-completed.csv",
+       "column": "overall (good/acceptable/poor)",
+       "equals": "poor"
+      }
+     },
+     "unit": "count",
+     "better": "lower"
+    },
+    {
+     "key": "cost",
+     "label": "Answer cost",
+     "source": {
+      "json": "answers_summary.estimated_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p21-judge-v1",
+   "phase": "2.2",
+   "title": "AI judge calibration (prompt v1, cap 600)",
+   "family": "judge-prompt",
+   "benchmark": "Agreement with owner answer reviews",
+   "version": "judge-calibrate-v1",
+   "split": "calibration",
+   "kind": "diagnostic",
+   "judged_by": "ai-judge",
+   "process": "docs/phase22-final-validation.md",
+   "config": {
+    "judge_model": "gpt-6-luna",
+    "judge_prompt": "v1",
+    "output_cap_tokens": 600
+   },
+   "file": "evals/phase21/results/judge-calibrate-v1.json",
+   "verdict": "not adopted; human review remains the measure",
+   "metrics": [
+    {
+     "key": "overall_agreement",
+     "label": "Agreement on overall rating",
+     "source": {
+      "json": "agreement.all_rows.overall.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "claims_agreement",
+     "label": "Agreement on claim support",
+     "source": {
+      "json": "agreement.all_rows.claims_supported.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstention_agreement",
+     "label": "Agreement on abstention",
+     "source": {
+      "json": "agreement.all_rows.correct_abstention.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    }
+   ]
+  },
+  {
+   "id": "p21-judge-v2-cap1500",
+   "phase": "2.2",
+   "title": "AI judge calibration (prompt v1, cap 1500)",
+   "family": "judge-prompt",
+   "benchmark": "Agreement with owner answer reviews",
+   "version": "judge-calibrate-v2-cap1500",
+   "split": "calibration",
+   "kind": "diagnostic",
+   "judged_by": "ai-judge",
+   "process": "docs/phase22-final-validation.md",
+   "config": {
+    "judge_model": "gpt-6-luna",
+    "judge_prompt": "v1",
+    "output_cap_tokens": 1500
+   },
+   "file": "evals/phase21/results/judge-calibrate-v2-cap1500.json",
+   "verdict": "not adopted; human review remains the measure",
+   "metrics": [
+    {
+     "key": "overall_agreement",
+     "label": "Agreement on overall rating",
+     "source": {
+      "json": "agreement.all_rows.overall.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "claims_agreement",
+     "label": "Agreement on claim support",
+     "source": {
+      "json": "agreement.all_rows.claims_supported.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstention_agreement",
+     "label": "Agreement on abstention",
+     "source": {
+      "json": "agreement.all_rows.correct_abstention.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    }
+   ]
+  },
+  {
+   "id": "p21-judge-v2-fresh18",
+   "phase": "2.2",
+   "title": "AI judge calibration (prompt v2, cap 1500)",
+   "family": "judge-prompt",
+   "benchmark": "Agreement with owner answer reviews",
+   "version": "judge-calibrate-v2-prompt-fresh18",
+   "split": "calibration",
+   "kind": "diagnostic",
+   "judged_by": "ai-judge",
+   "process": "docs/phase22-final-validation.md",
+   "config": {
+    "judge_model": "gpt-6-luna",
+    "judge_prompt": "v2",
+    "output_cap_tokens": 1500
+   },
+   "file": "evals/phase21/results/judge-calibrate-v2-prompt-fresh18.json",
+   "verdict": "not adopted; human review remains the measure",
+   "metrics": [
+    {
+     "key": "overall_agreement",
+     "label": "Agreement on overall rating",
+     "source": {
+      "json": "agreement.all_rows.overall.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "claims_agreement",
+     "label": "Agreement on claim support",
+     "source": {
+      "json": "agreement.all_rows.claims_supported.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstention_agreement",
+     "label": "Agreement on abstention",
+     "source": {
+      "json": "agreement.all_rows.correct_abstention.rate"
+     },
+     "unit": "share",
+     "better": "higher"
+    }
+   ]
+  },
+  {
+   "id": "p32-clustering",
+   "phase": "3.2",
+   "title": "Issue clustering (themes v1), test half",
+   "family": "product-intelligence",
+   "benchmark": "v2 source annotations (hash split)",
+   "version": "themes-v1",
+   "split": "test half",
+   "kind": "frozen-final",
+   "judged_by": "automatic",
+   "process": "evals/phase32/results/clustering-themes-v1.json (selection rule) and PLAN.md Phase 3.2",
+   "config": {
+    "method": "embedding average-linkage",
+    "threshold": 0.65
+   },
+   "file": "evals/phase32/results/clustering-themes-v1.json",
+   "verdict": "FAIL on size target, accepted",
+   "metrics": [
+    {
+     "key": "purity",
+     "label": "Purity",
+     "source": {
+      "json": "chosen.test.purity"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "issue_recall",
+     "label": "Issue recall",
+     "source": {
+      "json": "chosen.test.issue_recall"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "hard_negatives",
+     "label": "Look-alike issues separated (of 7)",
+     "source": {
+      "json": "chosen.test.hard_negatives_separated"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "themes",
+     "label": "Themes",
+     "source": {
+      "json": "chosen.test.themes"
+     },
+     "unit": "count",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p33-linking",
+   "phase": "3.3",
+   "title": "Opportunity linking (owner-reviewed document key), test half",
+   "family": "product-intelligence",
+   "benchmark": "v2 annotations + document-issue key",
+   "version": "linking-v3-owner-key",
+   "split": "test half",
+   "kind": "frozen-final",
+   "judged_by": "automatic",
+   "process": "evals/phase33/document-issue-key.json (owner-reviewed) and PLAN.md Phase 3.3",
+   "config": {
+    "ticket_threshold": 0.6,
+    "document_threshold": 0.5
+   },
+   "file": "evals/phase33/results/linking-v3-owner-key.json",
+   "verdict": "PASS linking; confidence rubric FAIL (shown as checklist)",
+   "metrics": [
+    {
+     "key": "ticket_precision",
+     "label": "Ticket-link precision",
+     "source": {
+      "json": "chosen.test.ticket_precision"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "ticket_recall",
+     "label": "Ticket-link recall",
+     "source": {
+      "json": "chosen.test.ticket_recall"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "doc_top1",
+     "label": "Top document correct",
+     "source": {
+      "json": "chosen.test.document_top1_precision"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "doc_recall",
+     "label": "Document recall",
+     "source": {
+      "json": "chosen.test.document_recall"
+     },
+     "unit": "share",
+     "better": "higher"
+    },
+    {
+     "key": "abstention",
+     "label": "No document where none exists",
+     "source": {
+      "json": "chosen.test.no_document_abstention"
+     },
+     "unit": "share",
+     "better": "higher"
+    }
+   ]
+  },
+  {
+   "id": "p34-robustness",
+   "phase": "3.4",
+   "title": "Prioritization robustness (\u00b150% weight changes)",
+   "family": "product-intelligence",
+   "benchmark": "Pulse v2 opportunities",
+   "version": "robustness-v1",
+   "split": "all",
+   "kind": "frozen-final",
+   "judged_by": "automatic",
+   "process": "backend/scripts/evaluate_priorities.py (criteria in PLAN.md Phase 3.4)",
+   "config": {
+    "weights": "defaults"
+   },
+   "file": "evals/phase34/results/robustness-v1.json",
+   "verdict": "PASS",
+   "metrics": [
+    {
+     "key": "overlap",
+     "label": "Mean top-10 overlap (of 10)",
+     "source": {
+      "json": "summary.mean_top10_overlap"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "min_overlap",
+     "label": "Minimum top-10 overlap",
+     "source": {
+      "json": "summary.min_top10_overlap"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "spearman_reach",
+     "label": "Spearman with reach",
+     "source": {
+      "json": "summary.spearman_with_reach"
+     },
+     "unit": "ratio",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p35-experiment-review",
+   "phase": "3.5",
+   "title": "Experiment suggestions: owner review of 10 cards",
+   "family": "product-intelligence",
+   "benchmark": "10 hash-sampled experiment cards",
+   "version": "review-v1",
+   "split": "sample",
+   "kind": "frozen-final",
+   "judged_by": "owner",
+   "process": "evals/phase35/review/README.md",
+   "config": {
+    "model": "gpt-6-luna",
+    "prompt": "exp-v1"
+   },
+   "file": "evals/phase35/results/review-v1.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "useful",
+     "label": "Rated useful (of 10)",
+     "source": {
+      "json": "usefulness.useful"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "sensible_metric",
+     "label": "Sensible primary metric (of 10)",
+     "source": {
+      "json": "metric_sensible.yes"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "grounded",
+     "label": "Grounded (of 10)",
+     "source": {
+      "json": "grounded.yes"
+     },
+     "unit": "count",
+     "better": "higher"
+    }
+   ]
+  },
+  {
+   "id": "p43-dev-run1",
+   "phase": "4.3",
+   "title": "AI investigations, prompt inv-v1 (development (8))",
+   "family": "investigation-prompt",
+   "benchmark": "Product-events answer key (planted causes and decoys)",
+   "version": "inv-v1",
+   "split": "development (8)",
+   "kind": "development",
+   "judged_by": "automatic",
+   "process": "evals/phase4/events-answer-key.json + backend/scripts/run_investigation_dev.py (score)",
+   "config": {
+    "model": "gpt-6-luna",
+    "prompt": "inv-v1",
+    "output_cap_tokens": 3000
+   },
+   "file": "evals/phase43/results/dev-run1.json",
+   "verdict": "development only",
+   "metrics": [
+    {
+     "key": "planted",
+     "label": "Planted causes found",
+     "source": {
+      "json": "totals.planted_found"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "planted_total",
+     "label": "Planted questions",
+     "source": {
+      "json": "totals.planted_total"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "decoy_top",
+     "label": "Decoys: correct top explanation",
+     "source": {
+      "json": "totals.decoy_top_type_ok"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "reports_passed",
+     "label": "Reports passing checks",
+     "source": {
+      "json": "totals.reports_passed"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost (ledger)",
+     "source": {
+      "json": "totals.run_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p43-dev-run2",
+   "phase": "4.3",
+   "title": "AI investigations, prompt inv-v2 (development (8))",
+   "family": "investigation-prompt",
+   "benchmark": "Product-events answer key (planted causes and decoys)",
+   "version": "inv-v2",
+   "split": "development (8)",
+   "kind": "development",
+   "judged_by": "automatic",
+   "process": "evals/phase4/events-answer-key.json + backend/scripts/run_investigation_dev.py (score)",
+   "config": {
+    "model": "gpt-6-luna",
+    "prompt": "inv-v2",
+    "output_cap_tokens": 3000
+   },
+   "file": "evals/phase43/results/dev-run2.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "planted",
+     "label": "Planted causes found",
+     "source": {
+      "json": "totals.planted_found"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "planted_total",
+     "label": "Planted questions",
+     "source": {
+      "json": "totals.planted_total"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "decoy_top",
+     "label": "Decoys: correct top explanation",
+     "source": {
+      "json": "totals.decoy_top_type_ok"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "reports_passed",
+     "label": "Reports passing checks",
+     "source": {
+      "json": "totals.reports_passed"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost (ledger)",
+     "source": {
+      "json": "totals.run_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    }
+   ]
+  },
+  {
+   "id": "p44-heldout",
+   "phase": "4.4",
+   "title": "AI investigations, prompt inv-v2 (held-out (10))",
+   "family": "investigation-prompt",
+   "benchmark": "Product-events answer key (planted causes and decoys)",
+   "version": "inv-v2",
+   "split": "held-out (10)",
+   "kind": "frozen-final",
+   "judged_by": "automatic",
+   "process": "evals/phase4/events-answer-key.json + backend/scripts/run_investigation_dev.py (score)",
+   "config": {
+    "model": "gpt-6-luna",
+    "prompt": "inv-v2",
+    "output_cap_tokens": 3000
+   },
+   "file": "evals/phase44/results/heldout-run.json",
+   "verdict": "FAIL, accepted",
+   "metrics": [
+    {
+     "key": "planted",
+     "label": "Planted causes found",
+     "source": {
+      "json": "totals.planted_found"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "planted_total",
+     "label": "Planted questions",
+     "source": {
+      "json": "totals.planted_total"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "decoy_top",
+     "label": "Decoys: correct top explanation",
+     "source": {
+      "json": "totals.decoy_top_type_ok"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "reports_passed",
+     "label": "Reports passing checks",
+     "source": {
+      "json": "totals.reports_passed"
+     },
+     "unit": "count",
+     "better": "higher"
+    },
+    {
+     "key": "cost",
+     "label": "Run cost (ledger)",
+     "source": {
+      "json": "totals.run_cost_usd"
+     },
+     "unit": "usd",
+     "better": "lower"
+    }
+   ]
+  }
+ ]
+}

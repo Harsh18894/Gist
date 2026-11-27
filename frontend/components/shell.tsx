@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Boxes, ChartColumn, Compass, Database, FileSearch, FlaskConical, LifeBuoy, ListOrdered, Menu, MessageSquareText, Monitor, Moon, Search, SearchCheck, Sun } from "lucide-react";
+import { ArrowRight, Boxes, Gauge, ChartColumn, Compass, Database, FileSearch, FlaskConical, LifeBuoy, ListOrdered, Menu, Microscope, MessageSquareText, Monitor, Moon, Search, SearchCheck, Sun } from "lucide-react";
 import { apiGet, RagStatus } from "@/lib/api";
 import { Dialog } from "./dialog";
 import { cx, Kbd } from "./ui";
@@ -12,6 +12,7 @@ type NavItem = { href: string; name: string; short?: string; icon: typeof Boxes;
 const PRIMARY: NavItem[] = [
   { href: "/", name: "Overview", icon: ChartColumn, hint: "Volumes, trends and breakdowns" },
   { href: "/ask-gist", name: "Ask Gist", short: "Ask", icon: SearchCheck, hint: "Question the evidence, with sources" },
+  { href: "/investigate", name: "Investigate", icon: Microscope, hint: "Bounded multi-step analysis of a metric change" },
 ];
 const EVIDENCE: NavItem[] = [
   { href: "/feedback", name: "Feedback", icon: MessageSquareText, hint: "Every customer record" },
@@ -25,7 +26,8 @@ const PIPELINE: NavItem[] = [
   { href: "/experiments", name: "Experiments", icon: FlaskConical, hint: "Draft tests to run" },
 ];
 const SETTINGS: NavItem = { href: "/settings", name: "Data & usage", icon: Database, hint: "Dataset, index and API spend" };
-const ALL = [...PRIMARY, ...EVIDENCE, ...PIPELINE, SETTINGS];
+const EVALUATION: NavItem = { href: "/evaluation", name: "Evaluation", icon: Gauge, hint: "Benchmarks, cost, traces and regressions" };
+const ALL = [...PRIMARY, ...EVIDENCE, ...PIPELINE, EVALUATION, SETTINGS];
 const MOBILE_TABS = [PRIMARY[0], PRIMARY[1], EVIDENCE[0], PIPELINE[0]];
 
 const isActive = (pathname: string, href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -223,6 +225,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </div>
       <nav aria-label="Main" className="mt-5 flex-1 overflow-y-auto px-3 pb-4"><NavGroups pathname={pathname}/></nav>
       <div className="space-y-3 border-t border-line px-3 py-3">
+        <NavLink item={EVALUATION} pathname={pathname}/>
         <NavLink item={SETTINGS} pathname={pathname}/>
         <div className="flex items-center justify-between gap-2 px-2.5"><DatasetBadge status={status}/></div>
         <ThemeSwitch theme={theme} onChange={setTheme}/>
@@ -264,7 +267,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <Dialog open={menu} onClose={closeMenu} title="Gist" variant="drawer" size="sm"
       footer={<div className="flex items-center justify-between gap-4"><DatasetBadge status={status}/><div className="w-32"><ThemeSwitch theme={theme} onChange={setTheme}/></div></div>}>
       <nav aria-label="All pages"><NavGroups pathname={pathname} onNavigate={closeMenu}/>
-        <div className="mt-6 border-t border-line pt-4"><NavLink item={SETTINGS} pathname={pathname} onNavigate={closeMenu}/></div></nav>
+        <div className="mt-6 border-t border-line pt-4"><NavLink item={EVALUATION} pathname={pathname} onNavigate={closeMenu}/><NavLink item={SETTINGS} pathname={pathname} onNavigate={closeMenu}/></div></nav>
     </Dialog>
     <CommandPalette open={palette} onClose={closePalette} setTheme={setTheme}/>
   </div>;

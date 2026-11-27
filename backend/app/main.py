@@ -10,7 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from . import analytics, evidence, experiments, issues, opportunities, priorities
+from . import analytics, evidence, experiments, issues, observability, opportunities, priorities
+from .investigate import audit as investigation_log, executor as investigation_executor
+from .investigate.plan import rule_plan
 from .config import cors_origin
 from .database import connection
 from .errors import GistError, InvalidRequest
@@ -344,3 +346,78 @@ def evidence_search(q: str = "", kind: str | None = None, product_area: str | No
     """Search every indexed source and show where Gist uses it (opportunity evidence, links, triage)."""
     with connection() as db:
         return evidence.search(db, q, kind, product_area, segment, status, page, page_size)
+
+
+class InvestigationRequest(BaseModel):
+    question: str = Field(min_length=3, max_length=500)
+    planner: Literal["rules", "model"] = "rules"
+
+
+@app.post("/api/investigations", response_model=None, responses={503: {"model": ErrorResponse}})
+def investigate(body: InvestigationRequest) -> dict | JSONResponse:
+    """Plan, validate and run a bounded investigation. 'rules' is $0; 'model' needs the server's paid flags
+    and adds a model plan and report (two guarded calls). Every run is appended to the audit log."""
+    try:
+        return investigation_executor.investigate(body.question.strip(), body.planner)
+    except PaidApiDisabled:
+        return _error(503, "paid_disabled", "AI investigation is off on this server (no paid-API approval is configured). "
+                      "The rule-based mode still works at no cost.")
+
+
+@app.get("/api/investigations")
+def investigation_list() -> dict:
+    """Recent investigations and the audit-chain check. The log has no update or delete route."""
+    return {"investigations": investigation_log.recent(), "audit": investigation_log.verify()}
+
+
+@app.get("/api/investigations/{investigation_id}", response_model=None, responses={404: {"model": ErrorResponse}})
+def investigation_detail(investigation_id: str) -> dict | JSONResponse:
+    found = investigation_log.get(investigation_id)
+    return found if found else _error(404, "not_found", "Investigation not found.")
+
+
+@app.get("/api/eval/benchmarks")
+def eval_benchmarks() -> dict:
+    """Versioned benchmark results: registry metadata with values read from the result files."""
+    return observability.benchmarks()
+
+
+@app.get("/api/eval/regressions")
+def eval_regressions() -> dict:
+    return observability.regressions()
+
+
+@app.get("/api/observability/runtime")
+def observability_runtime() -> dict:
+    """Spend ledger and investigation audit log, read-only."""
+    return {"ledger": observability.ledger_summary(), "investigations": observability.investigation_summary(),
+            "billing": observability.billing_vs_ledger()}
+
+
+class BillingEntry(BaseModel):
+    day: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    amount_usd: float
+    source: str = Field(default="owner entry", max_length=120)
+
+
+@app.put("/api/observability/billing")
+def observability_billing(body: BillingEntry) -> dict:
+    """Record the provider-billed amount for one UTC day (from the provider's cost export)."""
+    return observability.set_billing(body.day, body.amount_usd, body.source)
+
+
+class FeedbackEntry(BaseModel):
+    target_type: Literal["investigation", "ask"]
+    target_id: str = Field(min_length=1, max_length=80)
+    rating: Literal["up", "down"]
+    comment: str | None = Field(default=None, max_length=observability.COMMENT_LIMIT)
+
+
+@app.post("/api/feedback")
+def feedback(body: FeedbackEntry) -> dict:
+    return observability.add_feedback(body.target_type, body.target_id, body.rating, body.comment)
+
+
+@app.get("/api/feedback")
+def feedback_summary() -> dict:
+    return observability.feedback_summary()

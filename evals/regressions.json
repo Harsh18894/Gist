@@ -1,0 +1,131 @@
+{
+ "note": "Past failures and the tests that now guard them. A test checks that every listed test exists; the suite runs them all.",
+ "cases": [
+  {
+   "id": "R01",
+   "phase": "2.2",
+   "failure": "Citations separated by semicolons were rejected",
+   "test": "backend/tests/test_phase22_answers.py::test_semicolon_citations_and_unsent_sources"
+  },
+  {
+   "id": "R02",
+   "phase": "2.2",
+   "failure": "Numbers followed by punctuation ('May 5, 2025.') failed the number check",
+   "test": "backend/tests/test_phase22_answers.py::test_numbers_followed_by_punctuation_are_matched_without_it"
+  },
+  {
+   "id": "R03",
+   "phase": "2.1",
+   "failure": "Answers citing hard-negative look-alike sources",
+   "test": "backend/tests/test_benchmark3_answers.py::test_checks_flag_hard_negatives_context_and_abstention"
+  },
+  {
+   "id": "R04",
+   "phase": "2.0",
+   "failure": "Evidence gate let unsupported numbers and ambiguous hard negatives through",
+   "test": "backend/tests/test_paid_preflight.py::test_evidence_gate_rejects_hard_negative_ambiguity_and_unsupported_numbers"
+  },
+  {
+   "id": "R05",
+   "phase": "2.2",
+   "failure": "AI judge produced labels outside the allowed set",
+   "test": "backend/tests/test_judge_answers.py::test_parse_verdict_validates_labels"
+  },
+  {
+   "id": "R06",
+   "phase": "2.1",
+   "failure": "A stale review correction could overwrite newer labels",
+   "test": "backend/tests/test_phase21_review.py::test_stale_correction_is_rejected_without_writing"
+  },
+  {
+   "id": "R07",
+   "phase": "3.2",
+   "failure": "Cluster labels repeated words from their leading phrase",
+   "test": "backend/tests/test_clustering.py::test_labels_do_not_repeat_words_from_their_leading_phrase"
+  },
+  {
+   "id": "R08",
+   "phase": "3.3",
+   "failure": "Opportunity frequency counted secondary mentions (29 shown, 3 real)",
+   "test": "backend/tests/test_opportunities.py::test_frequency_counts_primary_records_only"
+  },
+  {
+   "id": "R09",
+   "phase": "3.4",
+   "failure": "CORS blocked every browser edit (PUT/DELETE not allowed)",
+   "test": "backend/tests/test_priorities.py::test_browser_preflight_allows_priority_edits"
+  },
+  {
+   "id": "R10",
+   "phase": "3.4",
+   "failure": "Saved estimates for changed data were applied to new data",
+   "test": "backend/tests/test_priorities.py::test_inputs_for_changed_data_are_stale_not_applied"
+  },
+  {
+   "id": "R11",
+   "phase": "3.5",
+   "failure": "Unit-suffixed invented numbers ('5k', '24h', '2x') passed the number check",
+   "test": "backend/tests/test_experiments.py::test_check_rejects_unsafe_or_malformed_drafts"
+  },
+  {
+   "id": "R12",
+   "phase": "3.6",
+   "failure": "Two usage statuses had the same label",
+   "test": "backend/tests/test_evidence.py::test_status_labels_are_distinct"
+  },
+  {
+   "id": "R13",
+   "phase": "3.6",
+   "failure": "Search wildcards (%) were not treated literally",
+   "test": "backend/tests/test_evidence.py::test_search_filters_combine_and_wildcards_are_literal"
+  },
+  {
+   "id": "R14",
+   "phase": "4.1",
+   "failure": "The mix-shift decoy read as a rate change (Individual activation too close to team)",
+   "test": "backend/tests/test_events.py::test_mix_shift_decoy_reads_as_mix_not_rate"
+  },
+  {
+   "id": "R15",
+   "phase": "4.2",
+   "failure": "A group with n = 5 was headlined as the largest within-group change",
+   "test": "backend/tests/test_regressions.py::test_small_groups_are_flagged_not_headlined"
+  },
+  {
+   "id": "R16",
+   "phase": "4.2",
+   "failure": "Keyword routing missed plurals ('invitations')",
+   "test": "backend/tests/test_investigate.py::test_rule_planner_routes_intent_and_window"
+  },
+  {
+   "id": "R17",
+   "phase": "4.3",
+   "failure": "The model planner put the target month in the baseline slot (flipped signs)",
+   "test": "backend/tests/test_investigate_model.py::test_baseline_must_precede_target"
+  },
+  {
+   "id": "R18",
+   "phase": "4.3",
+   "failure": "Negated certainty ('does not \u2026 or prove') was flagged as certainty",
+   "test": "backend/tests/test_investigate_model.py::test_certainty_check_understands_negation"
+  },
+  {
+   "id": "R19",
+   "phase": "4.3",
+   "failure": "Shares written as percentages ('17.4') counted as invented numbers",
+   "test": "backend/tests/test_investigate_model.py::test_negated_certainty_and_percent_conversions_are_allowed"
+  },
+  {
+   "id": "R20",
+   "phase": "4.3",
+   "failure": "Withheld reports lost their raw text, so they could not be rescored",
+   "test": "backend/tests/test_investigate_model.py::test_failed_report_raw_text_is_kept_for_audit"
+  },
+  {
+   "id": "R21",
+   "phase": "4.4",
+   "failure": "A test asserting the API key never leaks was vacuous ('or True')",
+   "test": "backend/tests/test_security_phase4.py::test_api_key_never_leaks"
+  }
+ ]
+}

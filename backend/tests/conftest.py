@@ -47,6 +47,9 @@ def _offline_env(monkeypatch, tmp_path: Path):
     monkeypatch.setenv("GIST_SPEND_DB_PATH", str(tmp_path / "spend.sqlite3"))
     monkeypatch.setenv("GIST_PRIORITIES_DB_PATH", str(tmp_path / "priorities.sqlite3"))
     monkeypatch.setenv("GIST_EXPERIMENTS_DIR", str(tmp_path / "generated"))
+    monkeypatch.setenv("GIST_EVENTS_DB_PATH", str(tmp_path / "no-events.sqlite3"))  # tests opt in via a fixture
+    monkeypatch.setenv("GIST_INVESTIGATIONS_DB_PATH", str(tmp_path / "investigations.sqlite3"))
+    monkeypatch.setenv("GIST_OPS_DB_PATH", str(tmp_path / "ops.sqlite3"))
     for name in CLEARED_ENV:
         monkeypatch.delenv(name, raising=False)
     before = _ledger_state()
@@ -62,3 +65,11 @@ def client(tmp_path: Path, monkeypatch):
     seed()
     with TestClient(app) as test_client:
         yield test_client
+
+
+@pytest.fixture(scope="session")
+def events_db(tmp_path_factory):
+    """A fresh product-events dataset (Phase 4), generated once per test session."""
+    from scripts import generate_events
+    path = tmp_path_factory.mktemp("events") / "events.sqlite3"
+    return path, generate_events.write(path)

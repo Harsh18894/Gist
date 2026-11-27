@@ -1,0 +1,15 @@
+{
+  "note": "Phase 4.4 held-out investigation benchmark. Agent-authored on 2026-11-27 from evals/phase4/events-answer-key.json, before any held-out run; phrasings and months differ from the 4.3 development set. Frozen by evals/phase44/lock.json and run exactly once. Do not tune against it.",
+  "questions": [
+    {"id": "H1", "question": "Why are fewer invited teammates joining their workspace in March?", "expect": {"kind": "planted", "type": "product_change", "release": "release-01", "terms": ["invit", "verification", "join"], "answer_key": "INVITE_LOOP"}},
+    {"id": "H2", "question": "What happened to CRM sync reliability in August?", "expect": {"kind": "planted", "type": "product_change", "release": "release-05", "terms": ["sync", "crm", "connector"], "answer_key": "CRM_SYNC"}},
+    {"id": "H3", "question": "Why did critical alert delays increase in October?", "expect": {"kind": "planted", "type": "product_change", "release": "release-08", "terms": ["notification", "setting", "control", "mute"], "answer_key": "ALERT_DELAY"}},
+    {"id": "H4", "question": "Why were people receiving so many digest emails in June?", "expect": {"kind": "planted", "type": "product_change", "release": "release-03", "terms": ["digest"], "answer_key": "DIGEST_NOISE"}},
+    {"id": "H5", "question": "Why did portfolio dashboard load times improve in August?", "expect": {"kind": "planted", "type": "product_change", "release": "release-07", "terms": ["load", "large", "portfolio"], "answer_key": "DASH_SLOW_FIXED"}},
+    {"id": "H6", "question": "Why are template duplicate denials showing up since July?", "expect": {"kind": "planted", "type": "product_change", "release": "release-06", "terms": ["template", "permission", "role", "gallery"], "answer_key": "TEMPLATES"}},
+    {"id": "H7", "question": "Why did the share of new users who activate fall in October?", "expect": {"kind": "decoy", "top_types": ["segment_mix"], "answer_key": "SIGNUP_MIX_SHIFT"}},
+    {"id": "H8", "question": "Why did weekly active users dip in the week of November 17?", "expect": {"kind": "decoy", "top_types": ["data_quality"], "answer_key": "TRACKING_OUTAGE"}},
+    {"id": "H9", "question": "Why were there fewer sign-ups at the end of November?", "expect": {"kind": "decoy", "top_types": ["volume_or_seasonality", "data_quality"], "answer_key": "HOLIDAY_DIP"}},
+    {"id": "H10", "question": "Why did revenue per account fall in September?", "expect": {"kind": "unanswerable", "top_types": ["unclear", "data_quality"], "answer_key": null}}
+  ]
+}

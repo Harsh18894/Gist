@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { askId, FeedbackButtons } from "@/components/feedback";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowUp, Check, Copy, CornerDownLeft, History, PencilLine, SlidersHorizontal, Square } from "lucide-react";
 import { ApiError, apiGet, apiPost, AskResult, RagStatus, SearchHit, SourceDetail, UsageSummary } from "@/lib/api";
@@ -215,6 +216,7 @@ export default function AskGist() {
 
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
           {(result.status === "answered" || result.status === "partial") && <Button size="sm" variant="ghost" onClick={copyAnswer}>{copied ? <Check size={14} className="text-positive"/> : <Copy size={14}/>}{copied ? "Copied" : "Copy with sources"}</Button>}
+          {asked && result.mode === "openai" && (result.status === "answered" || result.status === "partial") && <FeedbackButtons targetType="ask" targetId={askId(asked.question, result.mode)}/>}
           <Meta className="ml-auto" items={[`${result.latency_ms} ms`, result.mode === "openai" && `${result.input_tokens + result.output_tokens} tokens`, result.mode === "openai" ? `$${result.estimated_cost_usd.toFixed(5)} est.` : "No API cost"]}/>
         </div>
 

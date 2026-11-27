@@ -1,0 +1,391 @@
+{
+  "prompt_version": "inv-v1",
+  "totals": {
+    "questions": 8,
+    "reports_passed": 1,
+    "planted_found": 0,
+    "planted_total": 5,
+    "decoy_no_high_product_change": 0,
+    "decoy_top_type_ok": 0,
+    "decoy_total": 3,
+    "planner_fallbacks": 0,
+    "run_cost_usd": 0.017456,
+    "ledger": {
+      "committed_or_reserved_usd": 0.09598318,
+      "requests": 501,
+      "uncertain_requests": 0,
+      "input_tokens": 282897,
+      "output_tokens": 139730,
+      "allocation_usd": 0.5,
+      "uncertain_entries": []
+    },
+    "criteria": {
+      "planted_ge_4_of_5": false,
+      "decoy_no_high_3_of_3": false,
+      "decoy_top_type_ge_2_of_3": false,
+      "reports_ge_7_of_8": false,
+      "cost_le_0_10": true,
+      "no_uncertain": true
+    }
+  },
+  "rows": [
+    {
+      "id": "D1",
+      "question": "Why did onboarding activation drop in October?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "SIGNUP_MIX_SHIFT",
+        "top_types": [
+          "segment_mix"
+        ]
+      },
+      "investigation_id": "INV-6371626057",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0022609,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D2",
+      "question": "Why did activation drop in February?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-01",
+        "terms": [
+          "invit"
+        ],
+        "answer_key": "INVITE_LOOP"
+      },
+      "investigation_id": "INV-5c95959c8c",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "planner_problems": [],
+      "cost_usd": 0.0021796,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "product_change",
+        "types": [
+          [
+            "product_change",
+            "low"
+          ],
+          [
+            "segment_mix",
+            "low"
+          ],
+          [
+            "data_quality",
+            "low"
+          ]
+        ],
+        "pass": false
+      },
+      "report": {
+        "summary": "February activation was lower: 60.0% versus 72.5% in the baseline (s1, s2). The reported splits attribute more of the change to rates within groups than to mix, but the available evidence does not establish why those rates changed; release timing alone is not proof of cause (s1, s2, s4).",
+        "observed_changes": [
+          {
+            "text": "Activation was 60.0% in February versus 72.5% in the baseline (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "The segment split reports +1.1 points from segment mix and +11.4 points from within-segment rates; the channel split reports +2.3 points from channel mix and +10.2 points from within-channel rates (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "Mid-market went from 41% to 27% of segment mix, and invite went from 75% to 56% of channel mix (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "A product behaviour change may have affected activation within some groups; the splits attribute more change to within-group rates than to mix (s1, s2).",
+            "type": "product_change",
+            "confidence": "low",
+            "confidence_reason": "Within-group rate changes are reported, but no evidence links them to a product change. The nearby release is timing only, and some group samples are small (s1, s2, s4).",
+            "evidence": [
+              "s1",
+              "s2",
+              "s4"
+            ],
+            "conflicting": "The evidence does not show a consistent decline across all groups, and there were no matching onboarding feedback records (s1, s2, s5)."
+          },
+          {
+            "text": "A change in who entered each segment or channel may have contributed to the overall result (s1, s2).",
+            "type": "segment_mix",
+            "confidence": "low",
+            "confidence_reason": "Mix did change, but the reported mix contributions are smaller than the within-group rate contributions (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ],
+            "conflicting": "The splits attribute more change to within-group rates than to mix, so mix alone is not a strong explanation (s1, s2)."
+          },
+          {
+            "text": "A tracking or measurement issue could have affected the rates, but the checks do not establish one (s3).",
+            "type": "data_quality",
+            "confidence": "low",
+            "confidence_reason": "No low-volume days were flagged, but that check does not rule out other tracking or measurement gaps (s3).",
+            "evidence": [
+              "s3"
+            ],
+            "conflicting": "No low-volume days were flagged in February (s3)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The reported segment and channel splits attribute more of the change to within-group rates than to mix, weakening a mix-only explanation (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "The release record says the nearby release timing is not evidence of cause, and the feedback search found no matching records (s4, s5).",
+            "evidence": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "Portfolio filters was released on 2025-03-05, after the February window, so it cannot explain the February change (s4).",
+            "evidence": [
+              "s4"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "Fewer than 30 records were reported for Individual, Mid-market, SMB, partner, and sales in a period; treat those rates as noisy (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "No low-volume days were flagged, but the check does not assess every possible tracking issue (s3).",
+            "evidence": [
+              "s3"
+            ]
+          },
+          {
+            "text": "The search found 0 feedback records mentioning onboarding, activation, or signup in Onboarding; absence of matches does not establish absence of friction (s5).",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Compare activation by segment and channel using larger samples and the same definitions across periods to test whether within-group changes persist (s1, s2).",
+          "Audit activation-event instrumentation and event completeness for February against the baseline (s3).",
+          "Review the Workspace verification checklist change with a controlled exposure or rollback comparison before attributing any effect to it (s4)."
+        ],
+        "limitations": [
+          "The baseline and February windows differ, and the supplied results do not establish a causal comparison (s1, s2).",
+          "Several subgroup samples are small, reducing confidence in their rates (s1, s2).",
+          "The release record and feedback search provide limited causal evidence (s4, s5)."
+        ]
+      }
+    },
+    {
+      "id": "D3",
+      "question": "Why did CRM sync failures rise in July?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-05",
+        "terms": [
+          "sync",
+          "crm",
+          "connector"
+        ],
+        "answer_key": "CRM_SYNC"
+      },
+      "investigation_id": "INV-861d2dd3c6",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "numbers not in the evidence: 17.4, 18.8, 7.3"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0020326,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D4",
+      "question": "Why did activation look worse last month?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "TRACKING_OUTAGE",
+        "top_types": [
+          "data_quality"
+        ]
+      },
+      "investigation_id": "INV-6c580c8b95",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0020232,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D5",
+      "question": "Why are urgent alerts arriving late recently?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-08",
+        "terms": [
+          "notification",
+          "alert",
+          "control",
+          "setting"
+        ],
+        "answer_key": "ALERT_DELAY"
+      },
+      "investigation_id": "INV-758e9f423e",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0023966,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D6",
+      "question": "Why did digest email volume jump in May?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-03",
+        "terms": [
+          "digest"
+        ],
+        "answer_key": "DIGEST_NOISE"
+      },
+      "investigation_id": "INV-dde6cbe342",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.00204,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D7",
+      "question": "Did dashboard load times change in September?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-07",
+        "terms": [
+          "load",
+          "large",
+          "portfolio"
+        ],
+        "answer_key": "DASH_SLOW_FIXED"
+      },
+      "investigation_id": "INV-1c740009a8",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0023165,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    },
+    {
+      "id": "D8",
+      "question": "Why did sign-ups spike in October?",
+      "expect": {
+        "kind": "decoy",
+        "answer_key": "SIGNUP_MIX_SHIFT",
+        "top_types": [
+          "segment_mix",
+          "volume_or_seasonality"
+        ],
+        "terms": [
+          "campaign",
+          "paid"
+        ]
+      },
+      "investigation_id": "INV-a3d58f391b",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "uses certainty language (for example 'proves' or 'the cause is')"
+      ],
+      "planner_problems": [],
+      "cost_usd": 0.0022069,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null
+    }
+  ]
+}

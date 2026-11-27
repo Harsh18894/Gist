@@ -1,0 +1,108 @@
+{
+  "dataset": "events-v1",
+  "seed": 20261127,
+  "note": "Authoring answer key for scoring Phase 4 investigations. Never index it or load it into the events database.",
+  "planted": [
+    {
+      "id": "INVITE_LOOP",
+      "metric": "invite_acceptance_rate",
+      "start": "2025-02-06",
+      "end": null,
+      "scope": "team accounts (SMB, Mid-market, Enterprise)",
+      "design": {
+        "before": 0.88,
+        "after": 0.62
+      },
+      "also": "invited admin/member activation 0.72 -> 0.58; repeated verification events",
+      "related_release": "release-01",
+      "v2_feedback_issue": "INVITE_LOOP"
+    },
+    {
+      "id": "CRM_SYNC",
+      "metric": "crm_sync_failure_rate",
+      "start": "2025-06-06",
+      "end": "2025-10-10",
+      "scope": "CRM-connected team accounts",
+      "design": {
+        "before": 0.02,
+        "during": 0.18,
+        "after": 0.02
+      },
+      "related_release": "release-05",
+      "v2_feedback_issue": "CRM_SYNC"
+    },
+    {
+      "id": "ALERT_DELAY",
+      "metric": "alert_delayed_share (median hides it: only ~40% of accounts affected)",
+      "start": "2025-09-06",
+      "end": null,
+      "scope": "team accounts that changed notification settings (~40%)",
+      "design": {
+        "median_minutes_before": 1.2,
+        "median_minutes_after_affected": 120
+      },
+      "related_release": "release-08",
+      "v2_feedback_issue": "ALERT_DELAY"
+    },
+    {
+      "id": "DASH_SLOW_FIXED",
+      "metric": "dashboard_load_p50_ms by workspace_size (overall median hides it)",
+      "start": "2025-01-08",
+      "end": "2025-08-05",
+      "scope": "large workspaces",
+      "design": {
+        "median_ms_large_before": 9000,
+        "median_ms_large_after": 3200,
+        "median_ms_other": 1200
+      },
+      "related_release": "release-07",
+      "v2_feedback_issue": "DASH_SLOW"
+    },
+    {
+      "id": "DIGEST_NOISE",
+      "metric": "digest_emails_per_user_week",
+      "start": "2025-04-06",
+      "end": "2025-09-05",
+      "scope": "team accounts",
+      "design": {
+        "before": 2,
+        "during": 7,
+        "after": 2
+      },
+      "related_release": "release-03 (fixed by release-08)",
+      "v2_feedback_issue": "DIGEST_NOISE"
+    },
+    {
+      "id": "TEMPLATES",
+      "metric": "template_uses / template_duplicate_denials",
+      "start": "2025-07-06",
+      "end": null,
+      "scope": "all; denials for members/viewers in template-restricted accounts",
+      "related_release": "release-06",
+      "v2_feedback_issue": "TEMPLATE_FIND / TEMPLATE_ACCESS"
+    }
+  ],
+  "decoys": [
+    {
+      "id": "SIGNUP_MIX_SHIFT",
+      "start": "2025-10-13",
+      "end": "2025-11-09",
+      "design": "200 extra Individual accounts from a paid campaign with the same activation as other Individual accounts",
+      "expected_reading": "overall activation falls because the mix shifts to the lowest-activation segment; rates within segments do not change; not a product defect"
+    },
+    {
+      "id": "TRACKING_OUTAGE",
+      "start": "2025-11-18",
+      "end": "2025-11-19",
+      "design": "85% of events on these days were never recorded",
+      "expected_reading": "a data-quality gap, not a behaviour change; activation for those sign-ups is under-measured"
+    },
+    {
+      "id": "HOLIDAY_DIP",
+      "start": "2025-11-27",
+      "end": "2025-11-28",
+      "design": "fewer sign-ups and sessions",
+      "expected_reading": "lower volume, unchanged rates"
+    }
+  ]
+}

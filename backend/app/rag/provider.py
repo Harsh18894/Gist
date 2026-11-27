@@ -28,6 +28,10 @@ MAX_OUTPUT_TOKENS = 600
 # Evaluation judge only (owner approved 2026-11-25): claim-by-claim judging needs more hidden
 # reasoning. Worst case about $0.00075 per judged row at default prices. Answers keep 600.
 JUDGE_MAX_OUTPUT_TOKENS = 1_500
+# Phase 4.3 investigation planner and report writer only (owner approved 2026-11-27 with the
+# development runs): structured multi-part reports need room for hidden reasoning plus JSON. Worst case
+# about $0.0015 per call at default prices.
+INVESTIGATION_MAX_OUTPUT_TOKENS = 3_000
 
 
 class PaidApiDisabled(Exception):
@@ -78,7 +82,7 @@ def _post(db: sqlite3.Connection, endpoint: str, model: str, body: dict,
           input_price: float, output_price: float = 0.0,
           request_key: str | None = None, output_cap: int = MAX_OUTPUT_TOKENS) -> tuple[dict, dict]:
     key = _guard(db)
-    if output_cap not in {MAX_OUTPUT_TOKENS, JUDGE_MAX_OUTPUT_TOKENS}:
+    if output_cap not in {MAX_OUTPUT_TOKENS, JUDGE_MAX_OUTPUT_TOKENS, INVESTIGATION_MAX_OUTPUT_TOKENS}:
         raise PaidRequestRejected("Unsupported output cap")
     if endpoint not in {"embeddings", "responses"}:
         raise PaidRequestRejected("Unsupported paid endpoint")
@@ -257,6 +261,16 @@ def judge(db: sqlite3.Connection, instructions: str, payload: dict) -> tuple[str
 def suggest(db: sqlite3.Connection, instructions: str, payload: dict) -> tuple[str, dict]:
     """One bounded Phase 3.5 suggestion-drafting call: same guards, cap and ledger as the judge."""
     return judge(db, instructions, payload)
+
+
+def investigation_call(db: sqlite3.Connection, instructions: str, payload: dict) -> tuple[str, dict]:
+    """One bounded Phase 4.3 planner or report call: same guards and ledger, investigation output cap."""
+    model, input_price, output_price = _llm_settings()
+    body = {"model": model, "instructions": instructions, "input": json.dumps(payload, ensure_ascii=True),
+            "max_output_tokens": INVESTIGATION_MAX_OUTPUT_TOKENS, "store": False}
+    response, usage = _post(db, "responses", model, body, input_price, output_price,
+                            output_cap=INVESTIGATION_MAX_OUTPUT_TOKENS)
+    return _output_text(response), {**usage, "model": model}
 
 
 def complete(db: sqlite3.Connection, question: str, evidence: list[tuple]) -> tuple[str, dict]:

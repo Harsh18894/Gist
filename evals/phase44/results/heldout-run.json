@@ -1,0 +1,1185 @@
+{
+  "lock": {
+    "locked_at": "2026-11-26T21:54:59+00:00",
+    "fingerprint": {
+      "questions_sha256": "e0507478790f606212086504d131ecf8926f8bbf966d8ffe7a550ebf2c30408a",
+      "answer_key_sha256": "53dfbff03210c57ea32b5e6fe36d03f23417ba0f2f6cfc294278f72a61e4628b",
+      "events_content_sha256": "20ce94ac425096e2f38b9134435140e9d54a007a622c58756b29e59820db76fc",
+      "prompt_version": "inv-v2",
+      "code_sha256": {
+        "backend/app/investigate/model.py": "519cbb62735d1fd76776ce5790161a7955aa19a605916a34d5c2032f9c2df174",
+        "backend/app/investigate/plan.py": "5641ad4ccf0e1ade452b31fa30db6db0762e771ff514ab66d8e28eb7cfd49065",
+        "backend/app/investigate/executor.py": "aea42d27178429678eb554ae26a93ff6468bedd6601f3266689144a321d6ac85",
+        "backend/app/investigate/tools.py": "a8ee9e52f8e8dc68883f87a2da33e9e94db42812c1784c7f521cbfd60101282c",
+        "backend/app/investigate/audit.py": "4910933d3df81e7b8af6219612ebf9d568cb947206300d18b4486dd1ca47a24c",
+        "backend/app/rag/provider.py": "7e8b7d7ac8abf2f70d8d508e0a3989fb42c3d2f5d559945259e0bb9af6402e07",
+        "backend/scripts/run_investigation_dev.py": "eecc36662b2ae6190a4cb5e2a8a2237edf1243ea98276f919c1262cdeda3590b",
+        "backend/scripts/heldout_investigations.py": "e94e07089b0da39c3c7edaecf599e86167be151fde70ce01110306f450b9db3a"
+      }
+    },
+    "criteria": {
+      "planted_found_min": 4,
+      "planted_total": 6,
+      "decoy_no_high_product_change": 4,
+      "decoy_top_type_min": 3,
+      "reports_passed_min": 8,
+      "cost_max_usd": 0.08
+    }
+  },
+  "totals": {
+    "questions_run": 10,
+    "reports_passed": 8,
+    "planted_found": 4,
+    "planted_total": 6,
+    "decoy_no_high_product_change": 3,
+    "decoy_top_type_ok": 3,
+    "decoy_total": 4,
+    "planner_fallbacks": 0,
+    "run_cost_usd": 0.069864,
+    "ledger": {
+      "committed_or_reserved_usd": 0.18403298,
+      "requests": 537,
+      "uncertain_requests": 1,
+      "input_tokens": 361035,
+      "output_tokens": 200202,
+      "allocation_usd": 0.5,
+      "uncertain_entries": [
+        {
+          "id": "149ec717-438b-490d-842e-5c3c4c4f27af",
+          "created_at": "2026-11-26T21:59:40.195921+00:00",
+          "endpoint": "responses",
+          "model": "gpt-6-luna",
+          "reserved_usd": 0.05,
+          "failure": "ReadTimeout: response unavailable or rejected"
+        }
+      ]
+    },
+    "criteria": {
+      "planted": true,
+      "decoy_no_high": false,
+      "decoy_top_type": true,
+      "reports": true,
+      "cost": true,
+      "no_uncertain": false,
+      "all_questions_run": true
+    },
+    "pass": false
+  },
+  "rows": [
+    {
+      "id": "H1",
+      "question": "Why are fewer invited teammates joining their workspace in March?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-01",
+        "terms": [
+          "invit",
+          "verification",
+          "join"
+        ],
+        "answer_key": "INVITE_LOOP"
+      },
+      "investigation_id": "INV-74aba2e25c",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.002133,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "product_change",
+        "types": [
+          [
+            "product_change",
+            "medium"
+          ],
+          [
+            "data_quality",
+            "low"
+          ]
+        ],
+        "pass": true
+      },
+      "report": {
+        "summary": "Invite acceptance fell from 70.9% to 63.8% in March, and the decrease came from lower rates within segments and roles rather than a change in their mix (s1, s2). Joining-flow problems are a plausible explanation, supported by customer reports, but the evidence does not establish a cause; the nearby releases are not proof of one (s5, s6).",
+        "observed_changes": [
+          {
+            "text": "Invite acceptance was 70.9% in 2025-01-08–2025-02-28 and 63.8% in 2025-03-01–2025-03-31, a decrease of -7.2 points (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "The segment split attributes +0.0 points to mix change and -7.2 points to rate changes within segments; Enterprise had the largest within-group decline, from 73.3% to 61.8% (-11.5 points) (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "By role, mix change contributed +0.0 points and within-role rate changes contributed -7.1 points. Viewer acceptance fell from 75.8% to 52.5% (-23.2 points); the admin rates are noisy because the sample was small (s2).",
+            "evidence": [
+              "s2"
+            ]
+          },
+          {
+            "text": "March activation rates are available by segment, but there is no baseline activation rate in the results to establish whether activation also declined (s3).",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "Possible joining-flow or invitation-handling friction, such as a join loop, stale email, or inconsistent accepted/pending status, could be reducing acceptance. This is plausible, not proven (s6).",
+            "type": "product_change",
+            "confidence": "medium",
+            "confidence_reason": "Acceptance fell within segments and roles, and customer reports describe problems in the invite/join journey. The data-quality check found no low-volume days, but no release specifically establishes a change to invitations (s1, s2, s4, s5, s6).",
+            "evidence": [
+              "s1",
+              "s2",
+              "s6"
+            ],
+            "conflicting": "The releases listed around March were Portfolio filters and Project digest update, not an identified invitation or joining change; release timing alone is not causal evidence (s5)."
+          },
+          {
+            "text": "A tracking or state-consistency issue could contribute to the measured decline; one customer reported that an invite showed accepted while the member list showed pending. This report does not establish a measurement fault (s6).",
+            "type": "data_quality",
+            "confidence": "low",
+            "confidence_reason": "There is a customer report of conflicting invite status, but no direct tracking validation or other evidence that the acceptance metric is under-measured (s4, s6).",
+            "evidence": [
+              "s6"
+            ],
+            "conflicting": "Rates declined within segments and roles, while the data-quality check found no low-volume days; neither check verifies the accuracy of invite-state tracking (s1, s2, s4)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The reported releases do not identify an invitation or joining change, and the release results explicitly caution that timing is not evidence of cause (s5).",
+            "evidence": [
+              "s5"
+            ]
+          },
+          {
+            "text": "The activation results have no pre-March comparison, so they do not confirm a broader downstream decline (s3).",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "A change in segment mix is not a meaningful explanation for the acceptance decline: the decomposition reports +0.0 points from mix and -7.2 points from within-segment rates (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "A change in role mix is not a meaningful explanation: the role decomposition reports +0.0 points from mix and -7.1 points from within-role rates (s2).",
+            "evidence": [
+              "s2"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "No low-volume days were flagged in March. This check does not, by itself, validate invite-state tracking or exclude other measurement gaps (s4).",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "Admin role rates should be treated as noisy because fewer than 30 records were available in a period; the viewer and other role changes are also reported in the role comparison (s2).",
+            "evidence": [
+              "s2"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Reproduce the invite and join journey, checking for loops and stale invitation or reset emails; compare findings with the customer reports (s6).",
+          "Audit event and member-list state transitions for cases where an invite is marked accepted but the member appears pending; verify whether these affect the acceptance metric (s6, s4).",
+          "Compare acceptance before and after any verified invitation-flow change, split by segment and role, to see whether the within-group declines persist (s1, s2, s5)."
+        ],
+        "limitations": [
+          "The comparison uses 2025-01-08–2025-02-28 as baseline, not a matched March-only comparison period (s1, s2).",
+          "Feedback search returned 3 records, and customer reports are signals rather than proof of prevalence or cause (s6).",
+          "March activation is reported without a baseline, and the data-quality result only reports low-volume-day checks (s3, s4)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H2",
+      "question": "What happened to CRM sync reliability in August?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-05",
+        "terms": [
+          "sync",
+          "crm",
+          "connector"
+        ],
+        "answer_key": "CRM_SYNC"
+      },
+      "investigation_id": "INV-b2d89fc059",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0021393,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "product_change",
+        "types": [
+          [
+            "product_change",
+            "medium"
+          ],
+          [
+            "data_quality",
+            "low"
+          ]
+        ],
+        "pass": true
+      },
+      "report": {
+        "summary": "CRM sync failure rate rose in August compared with the prior three months, and the increase was within segments and workspace sizes rather than due to a measured mix shift (s1, s2). Customer reports are consistent with missing CRM records, but the available evidence does not establish what caused the increase (s1, s2, s4, s5, s6).",
+        "observed_changes": [
+          {
+            "text": "The CRM sync failure rate increased from 13.3% to 17.4% (+4.1 points) (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "Rates rose within every reported segment and workspace-size group; the largest segment increase was SMB, from 12.3% to 19.9% (+7.6 points) (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "Feedback includes reports of CRM records missing from project views despite a green CRM tile (s6).",
+            "evidence": [
+              "s6"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "A change in CRM sync behavior may have increased failures across customer groups; the evidence does not identify a specific change or prove causation (s1, s2, s4, s5, s6).",
+            "type": "product_change",
+            "confidence": "medium",
+            "confidence_reason": "Rates increased within both segmentation schemes, and customer reports describe missing records. However, the listed August release concerns portfolio loading, not CRM sync, and timing alone does not establish a link (s1, s2, s4, s5, s6).",
+            "evidence": [
+              "s1",
+              "s2",
+              "s6"
+            ],
+            "conflicting": "No CRM-specific change is documented in the release information; the August release is described as a portfolio loading update, and its timing is not proof of cause (s4, s5)."
+          },
+          {
+            "text": "Some sync failures may not be reflected accurately by the reliability measurement or status indicator; customer reports of missing records alongside a green tile make this possible but do not demonstrate a tracking fault (s3, s6).",
+            "type": "data_quality",
+            "confidence": "low",
+            "confidence_reason": "The green-tile reports suggest a possible status-versus-outcome mismatch, but there is no direct validation of tracking, and the data-quality check only reports low-volume days (s3, s6).",
+            "evidence": [
+              "s3",
+              "s6"
+            ],
+            "conflicting": "No low-volume days were flagged, and customer reports independently describe missing CRM records; neither finding confirms a measurement problem (s3, s6)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The releases and documentation do not identify a CRM sync change: the release near the increase concerns portfolio loading, while the other listed changes concern templates or notifications (s4, s5).",
+            "evidence": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "text": "Feedback supports reports of missing records but does not connect them to a product release or identify a technical cause (s6).",
+            "evidence": [
+              "s6"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "A change in segment mix is not a meaningful explanation for the increase: the reported decomposition assigns -0.0 points to mix and +4.1 points to within-segment rate changes (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "A change in workspace-size mix is not a meaningful explanation: the decomposition assigns -0.0 points to mix and +4.1 points to within-size rate changes (s2).",
+            "evidence": [
+              "s2"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "No low-volume days were flagged in the August window. This check does not by itself rule out other tracking or measurement issues (s3).",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Compare CRM sync failures and successful-sync records before and after the August increase, segmented by workspace size and customer segment, to verify the within-group pattern (s1, s2).",
+          "Trace reported missing CRM records through sync logs and the status indicator to check whether a green tile can coincide with an incomplete sync (s6).",
+          "Review CRM sync code and deployment history around the increase; verify whether any change affected sync behavior rather than inferring a link from release timing (s4, s5)."
+        ],
+        "limitations": [
+          "The release information provides timing and descriptions, not evidence that a release caused the failure-rate increase (s4, s5).",
+          "The feedback results include five records, but the supplied details do not establish how representative they are of all CRM sync activity (s6).",
+          "The data-quality result checks for low-volume days and does not report a broader validation of CRM sync tracking (s3)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H3",
+      "question": "Why did critical alert delays increase in October?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-08",
+        "terms": [
+          "notification",
+          "setting",
+          "control",
+          "mute"
+        ],
+        "answer_key": "ALERT_DELAY"
+      },
+      "investigation_id": "INV-5840cfa6e2",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0020836,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "product_change",
+        "types": [
+          [
+            "product_change",
+            "medium"
+          ]
+        ],
+        "pass": true
+      },
+      "report": {
+        "summary": "Critical alert delay increased in October, and the rise appears within segments rather than being explained by changes in segment mix [s1, s3]. A notification-controls product change is plausible, but the available evidence does not establish it as the cause [s5, s6].",
+        "observed_changes": [
+          {
+            "text": "Overall median alert delay rose from 1.3 min in 2025-07-01–2025-09-30 to 2.0 min in 2025-10-01–2025-10-31 (+54%). SMB had the largest within-segment increase: 1.3 min → 2.4 min (+85%) [s1].",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "The share of alerts delayed rose from 13.6% to 41.7% (+28.1 points). The decomposition attributes +28.2 points to rates changing within segments and -0.1 points to segment mix; SMB rose from 14.8% to 45.5% (+30.7 points) [s3].",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "A product behavior change associated with per-project notification controls could have contributed to the increase; the release is a lead to investigate, not proof of cause [s5].",
+            "type": "product_change",
+            "confidence": "medium",
+            "confidence_reason": "Delay and delayed-share increases appear within groups, and a notification-controls release is documented. The evidence lacks customer reports or direct linkage between release exposure and delays, so it supports investigation but not attribution [s1, s2, s3, s5, s6].",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3",
+              "s5"
+            ],
+            "conflicting": "The release result explicitly says timing is not evidence of cause, and the feedback search found no matching records [s5, s6]."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "There were no matching customer feedback records in the Notifications search, so customer reports do not corroborate a release-related explanation [s6].",
+            "evidence": [
+              "s6"
+            ]
+          },
+          {
+            "text": "The release result cautions that timing alone is not evidence of cause [s5].",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "Segment mix is not a plausible explanation for the delayed-share increase: the reported mix effect was -0.1 points while within-segment rate changes contributed +28.2 points [s3].",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "No low-volume days were flagged in October. This check does not establish that all tracking or measurement issues are absent [s4].",
+            "evidence": [
+              "s4"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Compare delay rates for projects using per-project notification controls with projects not using them, before and after release-08; check whether the change tracks feature exposure rather than calendar timing [s5].",
+          "Validate alert creation and delivery timestamps against an independent event or delivery log to check for measurement gaps [s4].",
+          "Use a controlled rollout or holdout for the relevant notification-control behavior and compare median delay and delayed-share outcomes [s1, s3, s5]."
+        ],
+        "limitations": [
+          "The available data does not link individual alert delays to release exposure, and the release record cautions that timing is not proof of cause [s5].",
+          "The feedback search returned no matching records, and the data-quality result reports only the low-volume-day check [s4, s6]."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H4",
+      "question": "Why were people receiving so many digest emails in June?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-03",
+        "terms": [
+          "digest"
+        ],
+        "answer_key": "DIGEST_NOISE"
+      },
+      "investigation_id": "INV-a4291c5446",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0019993,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "product_change",
+        "types": [
+          [
+            "product_change",
+            "medium"
+          ],
+          [
+            "segment_mix",
+            "low"
+          ]
+        ],
+        "pass": true
+      },
+      "report": {
+        "summary": "Digest emails per user per week rose from 5.47 to 6.97 in June, and the increase appears within every listed segment and role, not just in the overall population (s1, s2). The evidence suggests a broad rate change, but does not establish why it happened or tie it to a specific release (s1, s2, s5, s6).",
+        "observed_changes": [
+          {
+            "text": "Overall digest emails per user per week increased from 5.47 in 2025-03-01–2025-05-31 to 6.97 in 2025-06-01–2025-06-30 (+27%).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "The rate increased within every listed segment and role. The largest reported within-group changes were Mid-market, 5.48 → 6.97 (+27%), and member, 5.48 → 6.94 (+27%).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "No low-volume days were flagged in June. The active-user result covers June only, so it does not show whether active-user levels changed from the baseline period.",
+            "evidence": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "A product or notification behavior change may have increased digest frequency broadly. The rate rose within both segment and role breakdowns, but the available evidence does not identify a specific change or prove a product cause.",
+            "type": "product_change",
+            "confidence": "medium",
+            "confidence_reason": "The increase is clear and consistent across the segment and role comparisons, and no low-volume days were flagged. There is no direct evidence linking the increase to a digest-related release or customer reports.",
+            "evidence": [
+              "s5",
+              "s6"
+            ],
+            "conflicting": "The June release listed is a CRM connector refresh, and release timing alone is not evidence of cause. The sole feedback match says the digest works well for that person's one-board workspace."
+          },
+          {
+            "text": "A change in who was measured could contribute, but is unlikely to explain the increase by itself: the rate also rose within each listed segment and role.",
+            "type": "segment_mix",
+            "confidence": "low",
+            "confidence_reason": "The breakdowns show within-group increases, which weakens a mix-only account; the results provide no decomposition quantifying any mix contribution.",
+            "evidence": [
+              "s1",
+              "s2"
+            ],
+            "conflicting": "Rates rose in every listed segment and role, rather than only in groups whose representation changed."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The only feedback match is not a report of excessive frequency; it says the digest works well for a one-board workspace.",
+            "evidence": [
+              "s6"
+            ]
+          },
+          {
+            "text": "The release list provides timing, not a demonstrated link to digest behavior; the June release is titled CRM connector refresh.",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "A segment-mix shift alone is not supported as the explanation because the digest rate increased within every listed segment and role.",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "No specific release can be identified as the cause from the release timing alone.",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "No low-volume days were flagged in June. This check does not rule out all possible tracking or measurement problems.",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "The active-user series is for June only and has no baseline comparison, limiting its usefulness for explaining the rate increase.",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Compare send-event logs and digest settings before and during June to check whether the actual send frequency or eligibility rules changed; compare findings with the segment and role rate increases (s1, s2).",
+          "Review the CRM connector refresh for any indirect effect on notification triggers, and verify whether digest send rates changed around its release; treat timing alone as insufficient evidence (s5).",
+          "Check whether June’s increase persists within the same accounts and users, using comparable baseline and June windows, to distinguish behavior change from audience composition changes (s1, s2)."
+        ],
+        "limitations": [
+          "The comparisons show rates by segment and role but do not provide a causal decomposition or identify which product behavior, if any, changed (s1, s2).",
+          "Only one feedback record matched, and it does not report excessive digest frequency (s6).",
+          "The active-user series has no baseline-period comparison, and the low-volume check does not assess every possible measurement issue (s3, s4)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H5",
+      "question": "Why did portfolio dashboard load times improve in August?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-07",
+        "terms": [
+          "load",
+          "large",
+          "portfolio"
+        ],
+        "answer_key": "DASH_SLOW_FIXED"
+      },
+      "investigation_id": "INV-a1a9e3f96f",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "failed_checks",
+      "report_problems": [
+        "numbers not in the evidence: 199, 206"
+      ],
+      "cost_usd": 0.0021368,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "failed_checks"
+      },
+      "report": null,
+      "report_raw_if_withheld": "{\n  \"summary\": \"Portfolio load time improved sharply within large workspaces, while the overall median improved only slightly and standard workspaces were marginally slower (s1). The leading explanation is the August portfolio loading update, which documents a faster path for large-workspace aggregations and aligns with the measured change, but the evidence does not prove causation (s1, s3, s4, s5).\",\n  \"observed_changes\": [\n    {\n      \"text\": \"The overall dashboard_load_p50_ms median changed from 1,480 ms in 2025-05-01–2025-07-31 to 1,463 ms in 2025-08-01–2025-08-31 (-1%).\",\n      \"evidence\": [\"s1\"]\n    },\n    {\n      \"text\": \"The large-workspace median changed from 9,013 ms to 3,403 ms (-62%); the standard-workspace median changed from 1,199 ms to 1,206 ms.\",\n      \"evidence\": [\"s1\"]\n    },\n    {\n      \"text\": \"The Portfolio loading update was released on 2025-08-05. Its release note says large workspace aggregations use a faster path and smaller workspaces may see little difference.\",\n      \"evidence\": [\"s3\", \"s4\"]\n    }\n  ],\n  \"possible_explanations\": [\n    {\n      \"text\": \"The Portfolio loading update may have improved load times for large workspaces through its faster aggregation path.\",\n      \"type\": \"product_change\",\n      \"confidence\": \"medium\",\n      \"confidence_reason\": \"There is a clear within-group improvement aligned with the update, the release note describes the relevant behavior, and a customer later reported relief for a large workspace. No low-volume days were flagged, but timing and feedback do not establish causation.\",\n      \"evidence\": [\"s1\", \"s2\", \"s3\", \"s4\", \"s5\"],\n      \"conflicting\": \"Standard workspaces did not improve, and a September customer still reported a portfolio screen that kept loading; the release note also acknowledges that some customers still report slow views.\"\n    },\n    {\n      \"text\": \"Workspace-size composition could affect the small overall median change, but it does not explain the large-workspace within-group improvement.\",\n      \"type\": \"segment_mix\",\n      \"confidence\": \"low\",\n      \"confidence_reason\": \"The overall result differs from the large-workspace result, so composition is a possible influence on the aggregate; however, the measured large-workspace change occurs within that group.\",\n      \"evidence\": [\"s1\"],\n      \"conflicting\": \"The large-workspace median improved within-group, so composition alone cannot explain that change.\"\n    }\n  ],\n  \"conflicting_evidence\": [\n    {\n      \"text\": \"The improvement was not consistent across workspace sizes: the standard-workspace median was marginally higher in August.\",\n      \"evidence\": [\"s1\"]\n    },\n    {\n      \"text\": \"Feedback is mixed and limited: one customer described relief from the August update, while another later said the portfolio screen kept loading.\",\n      \"evidence\": [\"s5\"]\n    }\n  ],\n  \"ruled_out\": [\n    {\n      \"text\": \"A uniform improvement across workspace sizes is not supported by the measurements; standard workspaces were marginally slower.\",\n      \"evidence\": [\"s1\"]\n    }\n  ],\n  \"data_quality\": [\n    {\n      \"text\": \"No low-volume days were flagged in August. The input does not provide broader tracking validation, so this does not rule out every measurement issue.\",\n      \"evidence\": [\"s2\"]\n    }\n  ],\n  \"suggested_experiments\": [\n    \"Compare large-workspace load times before and after the update for the same workspaces, checking whether the improvement persists.\",\n    \"Run a controlled comparison of the faster aggregation path against the prior path for large workspaces, using the same dashboard workloads.\",\n    \"Validate load-time event coverage and aggregation behavior across workspace sizes to check for tracking or measurement changes.\"\n  ],\n  \"limitations\": [\n    \"The period comparison does not isolate the update from other changes or establish causality.\",\n    \"Feedback is sparse and includes both a positive report and a later complaint; it cannot establish how broadly the improvement was experienced.\",\n    \"The quality check reports low-volume days only, not a full audit of tracking completeness.\"\n  ]\n}"
+    },
+    {
+      "id": "H6",
+      "question": "Why are template duplicate denials showing up since July?",
+      "expect": {
+        "kind": "planted",
+        "type": "product_change",
+        "release": "release-06",
+        "terms": [
+          "template",
+          "permission",
+          "role",
+          "gallery"
+        ],
+        "answer_key": "TEMPLATES"
+      },
+      "investigation_id": "INV-8b1bfe318c",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0021116,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "data_quality",
+        "types": [
+          [
+            "data_quality",
+            "low"
+          ],
+          [
+            "product_change",
+            "low"
+          ],
+          [
+            "volume_or_seasonality",
+            "low"
+          ]
+        ],
+        "pass": false
+      },
+      "report": {
+        "summary": "The data show 410 template duplicate denials recorded in the since-July window, but no baseline data for this metric, so they do not establish that denials began then or explain why. A shared-template release and customer reports make a product or permissions change plausible, while data gaps and the lack of comparable baseline rates limit confidence (s1, s4, s5, s6).",
+        "observed_changes": [
+          {
+            "text": "The metric has no data for 2025-04-01–2025-06-30 and records 410 denials for 2025-07-01–2025-12-15; the baseline therefore cannot show whether denial behaviour changed.",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "In the target window, denials were recorded across Enterprise, Mid-market, SMB, member, and viewer groups. These are counts, not comparable within-group rates.",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "There were 3,317 template uses in the target window, with no baseline data. This does not establish whether usage or the denial rate changed.",
+            "evidence": [
+              "s3"
+            ]
+          },
+          {
+            "text": "The data-quality check found low recorded event volume on 2025-11-18 and 2025-11-19. Feedback searches found 23 relevant records, including reports about duplication restrictions and a hard-to-find entry point.",
+            "evidence": [
+              "s4",
+              "s6"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "A measurement or tracking change may explain why denials are recorded in the target window but absent from the baseline; the available data do not establish that this is what happened.",
+            "type": "data_quality",
+            "confidence": "low",
+            "confidence_reason": "The metric has no baseline data, and the check identifies low event volume on some target-window days. Those findings make measurement gaps plausible but do not show that they caused the recorded denials.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s4"
+            ],
+            "conflicting": "The reported low-volume days are in the target window and do not explain the missing baseline by themselves; no result directly identifies a tracking change for this metric (s1, s2, s4)."
+          },
+          {
+            "text": "A product or permissions change related to shared templates may have led to more duplicate attempts being denied. The shared template gallery release and customer reports are consistent with this possibility, but do not prove it.",
+            "type": "product_change",
+            "confidence": "low",
+            "confidence_reason": "A release in the relevant area and feedback about duplication restrictions provide supporting context, but there is no baseline rate, direct evidence that the release changed denial behaviour, or confirmation that the reports describe the measured denials.",
+            "evidence": [
+              "s1",
+              "s5",
+              "s6"
+            ],
+            "conflicting": "The release result says timing alone is not evidence of cause; another feedback report describes a hard-to-find entry point rather than a denial (s5, s6)."
+          },
+          {
+            "text": "The longer target window and raw event counts may contribute to the apparent difference; counts across windows do not show a rate change. This cannot explain why the baseline has no data.",
+            "type": "volume_or_seasonality",
+            "confidence": "low",
+            "confidence_reason": "The comparison reports counts without comparable baseline data or rates, so differences in observation time or event volume cannot be separated from behaviour.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3"
+            ],
+            "conflicting": "The baseline is reported as having no data rather than a lower count, and the results provide no volume-adjusted comparison (s1, s2, s3)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The two low-volume days may mean metrics depending on those events are under-measured; they weaken any interpretation of target-window counts as complete behaviour data.",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "The release list notes that timing is not evidence of cause, and the feedback records do not establish that the reported experiences generated the measured denials.",
+            "evidence": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "ruled_out": [],
+        "data_quality": [
+          {
+            "text": "Low recorded event volume was flagged on 2025-11-18 and 2025-11-19; metrics depending on those events may be under-measured. The check does not establish whether these dips were tracking gaps or real dips.",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "The denial and template-use metrics have no baseline data, preventing a before-and-after comparison of rates or group distributions.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Check whether denial events were instrumented consistently in the baseline and target windows, including on the flagged low-volume days; compare event delivery with source logs (s1, s2, s4).",
+          "Measure denial rates using duplicate attempts as the denominator, split by segment and role, across comparable periods once baseline events are available (s1, s2, s3).",
+          "Review the shared template gallery’s permission and duplication behaviour, and check whether denial patterns changed after its release; treat timing as a hypothesis, not proof (s5, s6)."
+        ],
+        "limitations": [
+          "The baseline has no denial or template-use data, so the results cannot establish when denials began or whether denial rates changed (s1, s2, s3).",
+          "The reported denial and usage values are counts, and there is no comparable baseline or within-group rate analysis (s1, s2, s3).",
+          "Feedback and release timing are contextual evidence, not confirmation of the cause of the measured denials (s5, s6)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H7",
+      "question": "Why did the share of new users who activate fall in October?",
+      "expect": {
+        "kind": "decoy",
+        "top_types": [
+          "segment_mix"
+        ],
+        "answer_key": "SIGNUP_MIX_SHIFT"
+      },
+      "investigation_id": "INV-6850a9be3e",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0022292,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "segment_mix",
+        "types": [
+          [
+            "segment_mix",
+            "medium"
+          ]
+        ],
+        "no_high_product_change": true,
+        "top_type_ok": true,
+        "pass": true
+      },
+      "report": {
+        "summary": "The activation share fell from 58.2% to 51.2%, and the period comparisons attribute most of the decline to changing segment and channel mix rather than lower activation rates within groups (s1, s2). The evidence points to a mix shift as the likeliest explanation, but it does not establish why the mix changed or show that a product release caused it (s1, s2, s5).",
+        "observed_changes": [
+          {
+            "text": "Overall activation_rate fell from 58.2% to 51.2% (-7.1 points); the segment decomposition attributes -9.2 points to mix and +2.1 points to within-segment rate changes (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "Individual grew from 6% to 41% of the segment mix, while paid_campaign grew from 0% to 38% of the channel mix. The channel decomposition attributes -22.7 points to mix and +1.1 points to within-channel rate changes (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "Invite acceptance did not fall: it increased from 63.2% to 64.4% (s3).",
+            "evidence": [
+              "s3"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "The new-user composition shifted toward different segments and acquisition channels, lowering the overall activation share even though within-group rates did not show a comparable decline (s1, s2).",
+            "type": "segment_mix",
+            "confidence": "medium",
+            "confidence_reason": "Both segment and channel decompositions, and their mostly_mix checks, point to mix as the main contributor; no low-volume days were flagged. Small channel samples and the absence of evidence explaining the mix shift limit confidence (s1, s2, s4).",
+            "evidence": [
+              "s1",
+              "s2"
+            ],
+            "conflicting": "Within-segment rates contributed +2.1 points, and the largest within-segment change was an improvement for Individual; invite acceptance also increased (s1, s3)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "Within-segment activation rates contributed positively overall (+2.1 points), and invite acceptance increased rather than declining, which weighs against a broad deterioration in onboarding behaviour (s1, s3).",
+            "evidence": [
+              "s1",
+              "s3"
+            ]
+          },
+          {
+            "text": "Several channel groups have fewer than 30 records in a period, so their rates are noisy; this limits how confidently channel-level rate differences can be interpreted (s2).",
+            "evidence": [
+              "s2"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "A decline in invite acceptance is not supported as the explanation: the measured rate increased from 63.2% to 64.4% (s3).",
+            "evidence": [
+              "s3"
+            ]
+          },
+          {
+            "text": "The release record does not establish a release cause: it notes timing only, and lists Per-project notification controls released on 2025-09-05 (s5).",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "No low-volume days were flagged in the target window. This check does not establish that all tracking or classification was complete (s4).",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "Channel rates should be treated cautiously because the check flags fewer than 30 records in a period for organic, paid_campaign, partner, and sales (s2).",
+            "evidence": [
+              "s2"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Check whether segment and channel classification, eligibility, or acquisition processes changed between the baseline and October; verify whether the observed mix shifts reflect actual user composition (s1, s2).",
+          "Compare activation within stable segment-by-channel cohorts, using sufficiently large samples, to test whether the overall decline remains after holding composition constant (s1, s2).",
+          "Review the onboarding event and activation definitions and tracking for October, then compare event completeness with the baseline (s4)."
+        ],
+        "limitations": [
+          "The results identify mix as the main measured contributor but do not explain what caused the segment or channel mix to change (s1, s2).",
+          "No customer feedback records matched the onboarding, activation, and invite search in the Onboarding area, so feedback provides no corroboration here (s6).",
+          "Small samples in some channel groups make their rate comparisons noisy (s2)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H8",
+      "question": "Why did weekly active users dip in the week of November 17?",
+      "expect": {
+        "kind": "decoy",
+        "top_types": [
+          "data_quality"
+        ],
+        "answer_key": "TRACKING_OUTAGE"
+      },
+      "investigation_id": "INV-6e1ed9dfc5",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0022297,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "data_quality",
+        "types": [
+          [
+            "data_quality",
+            "medium"
+          ],
+          [
+            "unclear",
+            "low"
+          ],
+          [
+            "segment_mix",
+            "low"
+          ]
+        ],
+        "no_high_product_change": true,
+        "top_type_ok": true,
+        "pass": true
+      },
+      "report": {
+        "summary": "Weekly active users fell from 1,201 to 1,015 (-15%) in the week of November 17, while counts also fell within the reported segments and workspace sizes (s1, s2). A sharp event-volume anomaly makes under-measurement the leading explanation, but the available checks do not establish whether the dip was tracking-related or a real activity decline (s3, s4).",
+        "observed_changes": [
+          {
+            "text": "Weekly active users fell from 1,201 to 1,015 (-15%) between the compared weeks (s1).",
+            "evidence": [
+              "s1"
+            ]
+          },
+          {
+            "text": "Counts declined within segments and workspace sizes; the largest reported within-group changes were Mid-market 439 → 370 (-16%) and standard 826 → 694 (-16%) (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "Event volume fell from 5,929 to 4,211; recorded event volume was 17% and 16% of usual volume on two days in the target week (s3, s4).",
+            "evidence": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "text": "Feedback included a Mid-market report about a contractor being unable to use company login, dated during the target week; another login report was dated before it (s6).",
+            "evidence": [
+              "s6"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "Data quality / under-measurement is the leading explanation: low event volume on some days could have reduced recorded weekly active users.",
+            "type": "data_quality",
+            "confidence": "medium",
+            "confidence_reason": "The event-volume decline and the data-quality check independently point to a measurement concern, but the check says low volume may also reflect a real dip and does not confirm tracking failure (s3, s4).",
+            "evidence": [
+              "s3",
+              "s4"
+            ],
+            "conflicting": "The available results do not directly verify a tracking failure; low event volume could reflect a real activity decline (s4)."
+          },
+          {
+            "text": "A real decline in user activity, potentially involving access friction, is possible; feedback reports login problems, but do not establish that they caused the weekly decline.",
+            "type": "unclear",
+            "confidence": "low",
+            "confidence_reason": "The within-group declines and a login complaint are consistent with reduced activity, but the tracking-gap check weakens interpretation of the metric and the feedback is limited (s1, s2, s4, s6).",
+            "evidence": [
+              "s1",
+              "s2",
+              "s4",
+              "s6"
+            ],
+            "conflicting": "Possible under-measurement could account for some or all of the recorded decline, and no release was found in the queried period (s4, s5)."
+          },
+          {
+            "text": "A change in segment mix may have contributed, but it does not appear to explain the dip by itself because counts also fell within groups.",
+            "type": "segment_mix",
+            "confidence": "low",
+            "confidence_reason": "Group shares shifted, but within-group counts declined across the reported segment and workspace-size breakdowns; no decomposition of the overall change is provided (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ],
+            "conflicting": "The declines within groups weaken a mix-only explanation (s1, s2)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "The data-quality note allows that low event volume may represent a real dip rather than a tracking gap, so the observed anomaly does not settle the cause (s4).",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "The login feedback is limited and does not establish that the reported issue affected weekly active users; one related report predates the target week (s6).",
+            "evidence": [
+              "s6"
+            ]
+          }
+        ],
+        "ruled_out": [
+          {
+            "text": "A pure segment-mix explanation is weakened by declines within the reported segment and workspace-size groups (s1, s2).",
+            "evidence": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "text": "A release in the queried period is not supported by the release results; this does not rule out other product issues (s5).",
+            "evidence": [
+              "s5"
+            ]
+          }
+        ],
+        "data_quality": [
+          {
+            "text": "The data-quality check flagged unusually low recorded event volume on two days; metrics depending on those events may be under-measured (s4).",
+            "evidence": [
+              "s4"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Audit event ingestion and instrumentation for the low-volume days, then compare repaired or independently verified event counts with weekly active users (s3, s4).",
+          "Recalculate weekly active users using an independent activity signal or validated event source to test whether the decline persists (s3, s4).",
+          "Check whether login failures rose during the target week and whether affected workspaces show a larger activity decline than unaffected workspaces (s1, s6)."
+        ],
+        "limitations": [
+          "The data-quality check warns of possible under-measurement but does not distinguish tracking loss from a real dip (s4).",
+          "The results provide no decomposition of the overall decline and no release was recorded in the queried period (s1, s2, s5).",
+          "Feedback records are limited and do not establish prevalence or causal impact on weekly active users (s6)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H9",
+      "question": "Why were there fewer sign-ups at the end of November?",
+      "expect": {
+        "kind": "decoy",
+        "top_types": [
+          "volume_or_seasonality",
+          "data_quality"
+        ],
+        "answer_key": "HOLIDAY_DIP"
+      },
+      "investigation_id": "INV-5eda91427c",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "passed",
+      "report_problems": [],
+      "cost_usd": 0.0021921,
+      "score": {
+        "report_passed": true,
+        "planner": "model",
+        "top_type": "data_quality",
+        "types": [
+          [
+            "data_quality",
+            "low"
+          ]
+        ],
+        "no_high_product_change": true,
+        "top_type_ok": true,
+        "pass": true
+      },
+      "report": {
+        "summary": "The supplied results do not establish that sign-ups fell in the final week of November: the sign-up, segment, and activation series stop before the requested target week. The cause therefore cannot be determined from this evidence; no releases, low-volume days, or relevant feedback were returned, but those checks do not explain the missing series coverage (s1, s2, s3, s4, s5, s6).",
+        "observed_changes": [
+          {
+            "text": "The returned sign-up, segment, and activation series end at 2025-09-29, although the requested window extends to 2025-11-30; no target-week change can be read from them.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "text": "The data-quality check flagged no low-volume days in the target window.",
+            "evidence": [
+              "s4"
+            ]
+          },
+          {
+            "text": "The release lookup returned no releases in its queried period, and the feedback search returned no matching records.",
+            "evidence": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "possible_explanations": [
+          {
+            "text": "The apparent decline may reflect incomplete result coverage rather than a verified change in sign-up behavior; the target-week values are absent from the returned series.",
+            "type": "data_quality",
+            "confidence": "low",
+            "confidence_reason": "The target-week series values are missing, but there is no direct evidence of a tracking failure; the data-quality check flagged no low-volume days.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ],
+            "conflicting": "No low-volume days were flagged, and the results do not identify a tracking gap; incomplete returned series alone do not prove a measurement problem (s4)."
+          }
+        ],
+        "conflicting_evidence": [
+          {
+            "text": "No release was listed and no relevant customer feedback was found. This leaves a release-related or customer-reported product explanation unsupported, but does not rule one out.",
+            "evidence": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "ruled_out": [],
+        "data_quality": [
+          {
+            "text": "The returned metric series omit the requested target week, so a target-versus-baseline comparison is not possible from these results. The separate check found no low-volume days.",
+            "evidence": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "suggested_experiments": [
+          "Rerun or export sign-ups by week, channel, and segment with explicit coverage through the target week and baseline; confirm the returned buckets include the requested dates (s1, s2).",
+          "Validate signup_completed event and reporting-pipeline coverage for the target week against the underlying signup records before treating the apparent decline as real (s1, s4).",
+          "If a decline is confirmed, compare activation rates by channel over the same complete period to check whether the change is also visible downstream (s3)."
+        ],
+        "limitations": [
+          "The supplied series do not include the target week, so neither the reported decline nor its size can be verified here (s1, s2, s3).",
+          "The release and feedback checks returned no supporting records; their absence does not establish that no product or customer factors contributed (s5, s6)."
+        ]
+      },
+      "report_raw_if_withheld": null
+    },
+    {
+      "id": "H10",
+      "question": "Why did revenue per account fall in September?",
+      "expect": {
+        "kind": "unanswerable",
+        "top_types": [
+          "unclear",
+          "data_quality"
+        ],
+        "answer_key": null
+      },
+      "investigation_id": "INV-168d89ebd0",
+      "planner": "model",
+      "status": "completed",
+      "report_status": "provider_error",
+      "report_problems": [
+        "OpenAI request failed; billing is uncertain and the reservation remains held."
+      ],
+      "cost_usd": 0.000609,
+      "score": {
+        "report_passed": false,
+        "pass": false,
+        "why": "provider_error"
+      },
+      "report": null,
+      "report_raw_if_withheld": null
+    }
+  ]
+}

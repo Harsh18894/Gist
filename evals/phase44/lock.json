@@ -1,0 +1,27 @@
+{
+  "locked_at": "2026-11-26T21:54:59+00:00",
+  "fingerprint": {
+    "questions_sha256": "e0507478790f606212086504d131ecf8926f8bbf966d8ffe7a550ebf2c30408a",
+    "answer_key_sha256": "53dfbff03210c57ea32b5e6fe36d03f23417ba0f2f6cfc294278f72a61e4628b",
+    "events_content_sha256": "20ce94ac425096e2f38b9134435140e9d54a007a622c58756b29e59820db76fc",
+    "prompt_version": "inv-v2",
+    "code_sha256": {
+      "backend/app/investigate/model.py": "519cbb62735d1fd76776ce5790161a7955aa19a605916a34d5c2032f9c2df174",
+      "backend/app/investigate/plan.py": "5641ad4ccf0e1ade452b31fa30db6db0762e771ff514ab66d8e28eb7cfd49065",
+      "backend/app/investigate/executor.py": "aea42d27178429678eb554ae26a93ff6468bedd6601f3266689144a321d6ac85",
+      "backend/app/investigate/tools.py": "a8ee9e52f8e8dc68883f87a2da33e9e94db42812c1784c7f521cbfd60101282c",
+      "backend/app/investigate/audit.py": "4910933d3df81e7b8af6219612ebf9d568cb947206300d18b4486dd1ca47a24c",
+      "backend/app/rag/provider.py": "7e8b7d7ac8abf2f70d8d508e0a3989fb42c3d2f5d559945259e0bb9af6402e07",
+      "backend/scripts/run_investigation_dev.py": "eecc36662b2ae6190a4cb5e2a8a2237edf1243ea98276f919c1262cdeda3590b",
+      "backend/scripts/heldout_investigations.py": "e94e07089b0da39c3c7edaecf599e86167be151fde70ce01110306f450b9db3a"
+    }
+  },
+  "criteria": {
+    "planted_found_min": 4,
+    "planted_total": 6,
+    "decoy_no_high_product_change": 4,
+    "decoy_top_type_min": 3,
+    "reports_passed_min": 8,
+    "cost_max_usd": 0.08
+  }
+}
